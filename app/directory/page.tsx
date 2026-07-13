@@ -3,9 +3,7 @@ import { prisma } from "@/lib/db";
 import { CATEGORIES } from "@/lib/categories";
 import { COUNTIES } from "@/lib/counties";
 import { DAYS } from "@/lib/days";
-import { categoryStyle } from "@/lib/categoryStyles";
-import CategoryBadge from "@/components/CategoryBadge";
-import CostBadge from "@/components/CostBadge";
+import ListingCard from "@/components/ListingCard";
 
 type SearchParams = {
   county?: string;
@@ -113,35 +111,11 @@ export default async function DirectoryPage({
         </p>
       ) : (
         <ul className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {listings.map((l) => {
-            const style = categoryStyle(l.category);
-            const days = Array.isArray(l.days) ? (l.days as string[]) : [];
-            return (
-              <li key={l.id}>
-                <Link
-                  href={`/${l.slug}`}
-                  className="flex h-full flex-col gap-3 rounded-card bg-card p-5 no-underline shadow-sm ring-1 ring-black/5 transition-shadow hover:shadow-md"
-                >
-                  <div
-                    className={`flex h-24 items-center justify-center rounded-card ${style.tint} text-4xl`}
-                    aria-hidden="true"
-                  >
-                    {style.icon}
-                  </div>
-                  <CategoryBadge category={l.category} />
-                  <h2 className="text-lg font-bold leading-snug text-ink">{l.name}</h2>
-                  <p className="text-base text-ink-muted">
-                    {l.neighborhood ? `${l.neighborhood}, ` : ""}
-                    {l.county} County
-                    {days.length > 0 ? ` · ${days.join("/")}` : ""}
-                  </p>
-                  <div className="mt-auto pt-1">
-                    <CostBadge cost={l.cost} />
-                  </div>
-                </Link>
-              </li>
-            );
-          })}
+          {listings.map((l) => (
+            <li key={l.id}>
+              <ListingCard listing={l} />
+            </li>
+          ))}
         </ul>
       )}
     </main>

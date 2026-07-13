@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { prisma } from "@/lib/db";
+import CategoryTiles from "@/components/CategoryTiles";
 
 export default async function Home() {
   const count = await prisma.listing.count({ where: { status: "PUBLISHED" } });
@@ -11,9 +12,7 @@ export default async function Home() {
           Find your next Tuesday.
         </h1>
         <p className="mt-4 text-lg text-ink-muted sm:text-xl">
-          A free, joyful directory of park district programs, senior center events, library
-          classes, walking groups, pickleball, museum days, and day trips for active adults 50+
-          across Chicagoland.
+          A free directory of things to do for active adults 50+ across Chicagoland.
         </p>
 
         {/* One red CTA per screen — this is it. */}
@@ -28,6 +27,15 @@ export default async function Home() {
           {count} thing{count === 1 ? "" : "s"} to do, and counting.
         </p>
       </div>
+
+      <section className="mt-16">
+        <h2 className="text-center text-2xl font-extrabold tracking-tight text-ink">
+          Browse by category
+        </h2>
+        <div className="mt-6">
+          <CategoryTiles />
+        </div>
+      </section>
     </main>
   );
 }

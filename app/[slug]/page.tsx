@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { prisma } from "@/lib/db";
 import { categoryStyle } from "@/lib/categoryStyles";
 import CategoryBadge from "@/components/CategoryBadge";
@@ -18,6 +19,13 @@ export default async function ListingDetail({
   const days = Array.isArray(listing.days) ? (listing.days as string[]) : [];
   const style = categoryStyle(listing.category);
 
+  const mapQuery = encodeURIComponent(
+    [listing.name, listing.neighborhood, `${listing.county} County`, "IL"]
+      .filter(Boolean)
+      .join(", "),
+  );
+  const mapUrl = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`;
+
   return (
     <main className="mx-auto w-full max-w-2xl flex-1 px-4 py-8 sm:px-6 sm:py-12">
       <Link
@@ -27,12 +35,26 @@ export default async function ListingDetail({
         ← Back to directory
       </Link>
 
-      <div
-        className={`mt-4 flex h-40 items-center justify-center rounded-card ${style.tint} text-6xl`}
-        aria-hidden="true"
-      >
-        {style.icon}
-      </div>
+      {/* No real photo sourced yet for this listing — tinted category icon
+          is a fixed-size placeholder (no layout shift). Swap to next/image
+          (lazy-loaded, explicit dimensions) once real photos are sourced. */}
+      {listing.imageUrl ? (
+        <Image
+          src={listing.imageUrl}
+          alt={listing.name}
+          width={800}
+          height={320}
+          loading="lazy"
+          className="mt-4 h-40 w-full rounded-card object-cover sm:h-56"
+        />
+      ) : (
+        <div
+          className={`mt-4 flex h-40 items-center justify-center rounded-card ${style.tint} text-6xl sm:h-56`}
+          aria-hidden="true"
+        >
+          {style.icon}
+        </div>
+      )}
 
       <div className="mt-5 flex flex-wrap items-center gap-2">
         <CategoryBadge category={listing.category} />
@@ -57,16 +79,32 @@ export default async function ListingDetail({
         </p>
       )}
 
-      {listing.sourceUrl && (
+      <div className="mt-8 flex flex-wrap gap-3">
+        {listing.sourceUrl && (
+          <a
+            href={listing.sourceUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-12 items-center justify-center rounded-pill bg-flag-blue-ink px-6 text-base font-bold text-white no-underline"
+          >
+            Source & current schedule →
+          </a>
+        )}
         <a
-          href={listing.sourceUrl}
+          href={mapUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-8 inline-flex min-h-12 items-center justify-center rounded-pill bg-flag-blue-ink px-6 text-base font-bold text-white no-underline"
+          className="inline-flex min-h-12 items-center justify-center rounded-pill border-2 border-flag-blue-ink px-6 text-base font-bold text-flag-blue-ink no-underline"
         >
-          Source & current schedule →
+          View on map ↗
         </a>
-      )}
+      </div>
+
+      {/* Related-listings slot — intentionally empty, filled in next phase. */}
+      <section className="mt-14 border-t border-flag-blue-tint-2 pt-6" aria-label="Related">
+        <h2 className="text-xl font-extrabold tracking-tight text-ink">You might also like</h2>
+        <p className="mt-2 text-base text-ink-muted">Coming soon.</p>
+      </section>
     </main>
   );
 }
