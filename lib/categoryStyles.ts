@@ -6,7 +6,7 @@
 type CategoryStyle = { icon: string; tint: string; ink: string };
 
 const BLUE: CategoryStyle = { icon: "", tint: "bg-flag-blue-tint", ink: "text-flag-blue-ink" };
-const RED: CategoryStyle = { icon: "", tint: "bg-star-red-tint", ink: "text-star-red" };
+const RED: CategoryStyle = { icon: "", tint: "bg-star-red-tint", ink: "text-star-red-ink" };
 
 export const CATEGORY_STYLES: Record<string, CategoryStyle> = {
   "park-district-55-programs": { ...BLUE, icon: "🌳" },

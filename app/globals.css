@@ -12,6 +12,10 @@
 
   --star-red: #e4002b;
   --star-red-tint: #fdeaee;
+  /* Darkened variant of star-red for text on star-red-tint — the bright
+     red on its own soft-pink tint measured 4.19:1, just under WCAG AA's
+     4.5:1 for 14px bold text (Lighthouse a11y audit caught this). */
+  --star-red-ink: #b3001f;
 
   --ink: #202733;
   --ink-muted: #4b5563;
@@ -29,6 +33,7 @@
   --color-flag-blue-tint-2: var(--flag-blue-tint-2);
   --color-star-red: var(--star-red);
   --color-star-red-tint: var(--star-red-tint);
+  --color-star-red-ink: var(--star-red-ink);
   --color-ink: var(--ink);
   --color-ink-muted: var(--ink-muted);
   --color-background: var(--background);
