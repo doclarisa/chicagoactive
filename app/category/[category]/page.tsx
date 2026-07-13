@@ -17,9 +17,12 @@ export async function generateMetadata({
   const { category } = await params;
   const cat = CATEGORIES.find((c) => c.slug === category);
   if (!cat) return {};
+  const description = `Free and low-cost ${cat.label.toLowerCase()} for active adults 50+ across the Chicago area.`;
   return {
-    title: `${cat.label} in Chicagoland | Active Chicagoland`,
-    description: `Free and low-cost ${cat.label.toLowerCase()} for active adults 50+ across the Chicago area.`,
+    title: `${cat.label} in Chicagoland`,
+    description,
+    alternates: { canonical: `/category/${cat.slug}` },
+    openGraph: { title: `${cat.label} in Chicagoland`, description },
   };
 }
 

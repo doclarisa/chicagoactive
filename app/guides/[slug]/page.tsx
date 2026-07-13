@@ -17,7 +17,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const guide = GUIDES.find((g) => g.slug === slug);
   if (!guide) return {};
-  return { title: `${guide.title} | Active Chicagoland`, description: guide.dek };
+  return {
+    title: guide.title,
+    description: guide.dek,
+    alternates: { canonical: `/guides/${guide.slug}` },
+    openGraph: { title: guide.title, description: guide.dek },
+  };
 }
 
 export default async function GuidePage({

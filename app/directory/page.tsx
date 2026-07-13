@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { prisma } from "@/lib/db";
 import { CATEGORIES } from "@/lib/categories";
@@ -10,6 +11,19 @@ type SearchParams = {
   category?: string;
   cost?: string;
   day?: string;
+};
+
+const DESCRIPTION =
+  "Browse free and low-cost things to do for active adults 50+ across Chicagoland — filter by county, category, cost, and day.";
+
+// Canonical points at the unfiltered page regardless of ?county/?category/
+// etc. — filter combinations are the same content, not distinct pages,
+// so this avoids duplicate-content signals from the query params.
+export const metadata: Metadata = {
+  title: "Directory",
+  description: DESCRIPTION,
+  alternates: { canonical: "/directory" },
+  openGraph: { title: "Directory | Active Chicagoland", description: DESCRIPTION },
 };
 
 const selectClass =

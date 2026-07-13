@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { prisma } from "@/lib/db";
@@ -7,6 +8,32 @@ import { CATEGORY_GUIDE_MAP } from "@/lib/categoryGuideMap";
 import { GUIDES } from "@/lib/guides";
 import CategoryBadge from "@/components/CategoryBadge";
 import CostBadge from "@/components/CostBadge";
+
+const PRICE_RANGE: Record<string, string> = {
+  FREE: "Free",
+  LOW_COST: "$",
+  PAID: "$$",
+};
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const listing = await prisma.listing.findUnique({ where: { slug } });
+  if (!listing) return {};
+
+  const place = listing.neighborhood ? `${listing.neighborhood}, ${listing.county} County` : `${listing.county} County`;
+  const title = `${listing.name} (${place})`;
+
+  return {
+    title,
+    description: listing.description,
+    alternates: { canonical: `/${listing.slug}` },
+    openGraph: { title, description: listing.description },
+  };
+}
 
 export default async function ListingDetail({
   params,
@@ -21,6 +48,23 @@ export default async function ListingDetail({
   const days = Array.isArray(listing.days) ? (listing.days as string[]) : [];
   const style = categoryStyle(listing.category);
 
+  // LocalBusiness schema, filled only with facts we actually have — no
+  // fabricated street address, phone, or opening hours.
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: listing.name,
+    description: listing.description,
+    ...(listing.sourceUrl ? { url: listing.sourceUrl } : {}),
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: listing.neighborhood ?? listing.county,
+      addressRegion: "IL",
+      addressCountry: "US",
+    },
+    priceRange: PRICE_RANGE[listing.cost],
+  };
+
   const mapQuery = encodeURIComponent(
     [listing.name, listing.neighborhood, `${listing.county} County`, "IL"]
       .filter(Boolean)
@@ -33,6 +77,11 @@ export default async function ListingDetail({
 
   return (
     <main className="mx-auto w-full max-w-2xl flex-1 px-4 py-8 sm:px-6 sm:py-12">
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Link
         href="/directory"
         className="text-base font-semibold text-flag-blue-ink no-underline hover:underline"

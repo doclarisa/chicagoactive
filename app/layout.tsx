@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const nunito = Nunito({
@@ -11,7 +12,11 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
-  title: "Active Chicagoland — Things to Do for Active Adults 50+",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Active Chicagoland — Things to Do for Active Adults 50+",
+    template: "%s | Active Chicagoland",
+  },
   description:
     "A free, joyful directory of park district programs, senior center events, library classes, walking groups, pickleball, museum days, and day trips for active adults 50+ in the Chicago area.",
 };
