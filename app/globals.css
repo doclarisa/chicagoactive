@@ -1,26 +1,73 @@
 @import "tailwindcss";
 
 :root {
+  /* Chicago flag palette, used with discipline: blue + white + red + soft
+     tints derived from those two hues only — no rainbow. */
+  --flag-blue: #41b6e6;
+  /* Darkened variant of flag-blue for text/links on white — #41b6e6 itself
+     is only ~2.4:1 contrast on white, below WCAG AA for text. */
+  --flag-blue-ink: #0b6f96;
+  --flag-blue-tint: #eaf7fd;
+  --flag-blue-tint-2: #d7f0fb;
+
+  --star-red: #e4002b;
+  --star-red-tint: #fdeaee;
+
+  --ink: #202733;
+  --ink-muted: #4b5563;
   --background: #ffffff;
-  --foreground: #171717;
+  --card: #ffffff;
+
+  --radius-card: 1.25rem;
+  --radius-pill: 999px;
 }
 
 @theme inline {
+  --color-flag-blue: var(--flag-blue);
+  --color-flag-blue-ink: var(--flag-blue-ink);
+  --color-flag-blue-tint: var(--flag-blue-tint);
+  --color-flag-blue-tint-2: var(--flag-blue-tint-2);
+  --color-star-red: var(--star-red);
+  --color-star-red-tint: var(--star-red-tint);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --font-sans: var(--font-nunito);
+  --radius-card: var(--radius-card);
+  --radius-pill: var(--radius-pill);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* The brand is a fixed light palette (white card/page background is a
+   brand rule, not a preference) — don't auto-switch on OS dark mode. */
+
+html {
+  color-scheme: light;
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--ink);
+  font-size: 1rem; /* 16px minimum body text, per brief */
+  line-height: 1.5;
+}
+
+/* Large, visible keyboard focus in brand blue — never remove outlines. */
+:focus-visible {
+  outline: 3px solid var(--flag-blue-ink);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* No autoplay/carousel motion exists on this site; this is a defensive
+   guard for any future hover/transition additions. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
