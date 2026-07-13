@@ -11,31 +11,29 @@ datasource db {
 }
 
 model Listing {
-  id          String        @id @default(cuid())
-  name        String
-  slug        String        @unique
-  description String?
+  id           String        @id @default(cuid())
+  name         String
+  slug         String        @unique
+  description  String
 
-  address     String?
-  city        String
-  county      String?
-  zip         String?
+  category     String        // one of lib/categories.ts CATEGORIES[].slug
+  neighborhood String?       // e.g. "Naperville", "Museum Campus"
+  county       String        // one of lib/counties.ts COUNTIES
 
-  phone       String?
-  website     String?
+  cost         Cost          @default(FREE)
+  days         Json?         // string[] e.g. ["Tuesday", "Thursday"]
+  time         String?       // free text, e.g. "6:30-9:30 PM"; schedules vary seasonally
 
-  categories  Json          // string[]
-  cost        Cost          @default(FREE)
-  days        Json?         // string[] e.g. ["Tuesday"]
-  enriched    Json?         // niche-specific structured data
+  sourceUrl    String?       // where this listing's info was verified
+  imageUrl     String?
 
-  tier        Tier          @default(FREE)
-  status      ListingStatus @default(PENDING)
+  status       ListingStatus @default(PUBLISHED)
 
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
 
   @@index([county])
+  @@index([category])
   @@index([status])
 }
 
@@ -43,11 +41,6 @@ enum Cost {
   FREE
   LOW_COST
   PAID
-}
-
-enum Tier {
-  FREE
-  FEATURED
 }
 
 enum ListingStatus {
