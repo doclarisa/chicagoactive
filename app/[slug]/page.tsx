@@ -3,6 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { prisma } from "@/lib/db";
 import { categoryStyle } from "@/lib/categoryStyles";
+import { CATEGORY_GUIDE_MAP } from "@/lib/categoryGuideMap";
+import { GUIDES } from "@/lib/guides";
 import CategoryBadge from "@/components/CategoryBadge";
 import CostBadge from "@/components/CostBadge";
 
@@ -25,6 +27,9 @@ export default async function ListingDetail({
       .join(", "),
   );
   const mapUrl = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`;
+
+  const guideSlug = CATEGORY_GUIDE_MAP[listing.category];
+  const relatedGuide = guideSlug ? GUIDES.find((g) => g.slug === guideSlug) : undefined;
 
   return (
     <main className="mx-auto w-full max-w-2xl flex-1 px-4 py-8 sm:px-6 sm:py-12">
@@ -100,10 +105,21 @@ export default async function ListingDetail({
         </a>
       </div>
 
-      {/* Related-listings slot — intentionally empty, filled in next phase. */}
+      {/* The exit ramp: one contextual link to affiliate content, never a
+          banner. Only shown where a relevant guide actually exists. */}
       <section className="mt-14 border-t border-flag-blue-tint-2 pt-6" aria-label="Related">
         <h2 className="text-xl font-extrabold tracking-tight text-ink">You might also like</h2>
-        <p className="mt-2 text-base text-ink-muted">Coming soon.</p>
+        {relatedGuide ? (
+          <Link
+            href={`/guides/${relatedGuide.slug}`}
+            className="mt-3 block rounded-card bg-flag-blue-tint p-4 no-underline"
+          >
+            <p className="text-base text-ink-muted">Planning something further afield?</p>
+            <p className="mt-1 text-lg font-bold text-flag-blue-ink">{relatedGuide.title} →</p>
+          </Link>
+        ) : (
+          <p className="mt-2 text-base text-ink-muted">Coming soon.</p>
+        )}
       </section>
     </main>
   );
