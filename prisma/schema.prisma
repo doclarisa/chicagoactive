@@ -27,6 +27,13 @@ model Listing {
   sourceUrl    String?       // where this listing's info was verified
   imageUrl     String?
 
+  address        String?     // full street address, when known
+  phone          String?
+  hours          String?     // free text, e.g. "Mon-Fri 8:30am-4:30pm"
+  ageEligibility String?     // free text, e.g. "55+; no residency required"
+  registration   String?     // free text, e.g. "Register online at ahpd.org"
+  accessibility  String?     // free text, e.g. "Wheelchair accessible"
+
   status       ListingStatus @default(PUBLISHED)
 
   createdAt    DateTime      @default(now())

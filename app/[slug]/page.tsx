@@ -8,12 +8,23 @@ import { CATEGORY_GUIDE_MAP } from "@/lib/categoryGuideMap";
 import { GUIDES } from "@/lib/guides";
 import CategoryBadge from "@/components/CategoryBadge";
 import CostBadge from "@/components/CostBadge";
+import ListingCard from "@/components/ListingCard";
 
 const PRICE_RANGE: Record<string, string> = {
   FREE: "Free",
   LOW_COST: "$",
   PAID: "$$",
 };
+
+// Addresses are stored as "Street, City, IL Zip" — split for structured
+// data; falls back gracefully if a future address doesn't match that shape.
+function parseAddress(address: string) {
+  const parts = address.split(", ").map((p) => p.trim());
+  if (parts.length !== 3) return { streetAddress: address };
+  const [streetAddress, addressLocality, regionZip] = parts;
+  const [addressRegion, postalCode] = regionZip.split(" ");
+  return { streetAddress, addressLocality, addressRegion, postalCode };
+}
 
 export async function generateMetadata({
   params,
@@ -50,30 +61,48 @@ export default async function ListingDetail({
 
   // LocalBusiness schema, filled only with facts we actually have — no
   // fabricated street address, phone, or opening hours.
+  const parsedAddress = listing.address ? parseAddress(listing.address) : null;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: listing.name,
     description: listing.description,
     ...(listing.sourceUrl ? { url: listing.sourceUrl } : {}),
+    ...(listing.phone ? { telephone: listing.phone } : {}),
     address: {
       "@type": "PostalAddress",
-      addressLocality: listing.neighborhood ?? listing.county,
-      addressRegion: "IL",
+      ...(parsedAddress ?? {}),
+      addressLocality: parsedAddress?.addressLocality ?? listing.neighborhood ?? listing.county,
+      addressRegion: parsedAddress?.addressRegion ?? "IL",
       addressCountry: "US",
     },
     priceRange: PRICE_RANGE[listing.cost],
   };
 
   const mapQuery = encodeURIComponent(
-    [listing.name, listing.neighborhood, `${listing.county} County`, "IL"]
-      .filter(Boolean)
-      .join(", "),
+    listing.address ??
+      [listing.name, listing.neighborhood, `${listing.county} County`, "IL"].filter(Boolean).join(", "),
   );
   const mapUrl = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`;
 
   const guideSlug = CATEGORY_GUIDE_MAP[listing.category];
   const relatedGuide = guideSlug ? GUIDES.find((g) => g.slug === guideSlug) : undefined;
+
+  // Free internal-linking block: up to 4 other listings, prioritizing same
+  // category over same county. Small dataset, so scoring in memory is fine.
+  const others = await prisma.listing.findMany({
+    where: { status: "PUBLISHED", slug: { not: listing.slug } },
+    orderBy: { name: "asc" },
+  });
+  const relatedListings = others
+    .map((o) => ({
+      listing: o,
+      score: (o.category === listing.category ? 2 : 0) + (o.county === listing.county ? 1 : 0),
+    }))
+    .filter((r) => r.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 4)
+    .map((r) => r.listing);
 
   return (
     <main className="mx-auto w-full max-w-2xl flex-1 px-4 py-8 sm:px-6 sm:py-12">
@@ -133,6 +162,56 @@ export default async function ListingDetail({
         </p>
       )}
 
+      {(listing.address ||
+        listing.phone ||
+        listing.hours ||
+        listing.ageEligibility ||
+        listing.registration ||
+        listing.accessibility) && (
+        <dl className="mt-6 space-y-2 text-base text-ink">
+          {listing.address && (
+            <div>
+              <dt className="inline font-semibold">Address: </dt>
+              <dd className="inline">{listing.address}</dd>
+            </div>
+          )}
+          {listing.phone && (
+            <div>
+              <dt className="inline font-semibold">Phone: </dt>
+              <dd className="inline">
+                <a href={`tel:${listing.phone}`} className="text-flag-blue-ink underline">
+                  {listing.phone}
+                </a>
+              </dd>
+            </div>
+          )}
+          {listing.hours && (
+            <div>
+              <dt className="inline font-semibold">Hours: </dt>
+              <dd className="inline">{listing.hours}</dd>
+            </div>
+          )}
+          {listing.ageEligibility && (
+            <div>
+              <dt className="inline font-semibold">Eligibility: </dt>
+              <dd className="inline">{listing.ageEligibility}</dd>
+            </div>
+          )}
+          {listing.registration && (
+            <div>
+              <dt className="inline font-semibold">Registration: </dt>
+              <dd className="inline">{listing.registration}</dd>
+            </div>
+          )}
+          {listing.accessibility && (
+            <div>
+              <dt className="inline font-semibold">Accessibility: </dt>
+              <dd className="inline">{listing.accessibility}</dd>
+            </div>
+          )}
+        </dl>
+      )}
+
       <div className="mt-8 flex flex-wrap gap-3">
         {listing.sourceUrl && (
           <a
@@ -154,10 +233,25 @@ export default async function ListingDetail({
         </a>
       </div>
 
+      {/* Free internal linking: same category first, then same county.
+          Leads with more free content before any affiliate nudge. */}
+      {relatedListings.length > 0 && (
+        <section className="mt-14 border-t border-flag-blue-tint-2 pt-6" aria-label="More things to do">
+          <h2 className="text-xl font-extrabold tracking-tight text-ink">More things to do</h2>
+          <ul className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {relatedListings.map((l) => (
+              <li key={l.id}>
+                <ListingCard listing={l} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       {/* The exit ramp: one contextual link to affiliate content, never a
           banner. Only shown where a relevant guide actually exists. */}
-      <section className="mt-14 border-t border-flag-blue-tint-2 pt-6" aria-label="Related">
-        <h2 className="text-xl font-extrabold tracking-tight text-ink">You might also like</h2>
+      <section className="mt-8 border-t border-flag-blue-tint-2 pt-6" aria-label="Affiliate suggestion">
+        <h2 className="text-xl font-extrabold tracking-tight text-ink">Going further</h2>
         {relatedGuide ? (
           <Link
             href={`/guides/${relatedGuide.slug}`}
