@@ -24,6 +24,24 @@
 
   --radius-card: 1.25rem;
   --radius-pill: 999px;
+
+  /* Category colors — brand chrome (header/footer/CTA) stays strictly
+     blue/white/red, but the 7 directory categories get their own distinct
+     hue so they're easy to tell apart at a glance (55+ readers benefit from
+     stronger color-coding, not just two alternating tints). Each ink is
+     dark enough to clear 4.5:1 on its own tint. */
+  --cat-green-tint: #e6f4ea;
+  --cat-green-ink: #1e7a34;
+  --cat-orange-tint: #fdeee3;
+  --cat-orange-ink: #a34e09;
+  --cat-teal-tint: #e3f4f2;
+  --cat-teal-ink: #0c6e63;
+  --cat-pink-tint: #fdecf3;
+  --cat-pink-ink: #a3115a;
+  --cat-purple-tint: #f1ecfb;
+  --cat-purple-ink: #5b3a9e;
+  --cat-amber-tint: #fdf3dc;
+  --cat-amber-ink: #7a5900;
 }
 
 @theme inline {
@@ -38,6 +56,18 @@
   --color-ink-muted: var(--ink-muted);
   --color-background: var(--background);
   --color-card: var(--card);
+  --color-cat-green-tint: var(--cat-green-tint);
+  --color-cat-green-ink: var(--cat-green-ink);
+  --color-cat-orange-tint: var(--cat-orange-tint);
+  --color-cat-orange-ink: var(--cat-orange-ink);
+  --color-cat-teal-tint: var(--cat-teal-tint);
+  --color-cat-teal-ink: var(--cat-teal-ink);
+  --color-cat-pink-tint: var(--cat-pink-tint);
+  --color-cat-pink-ink: var(--cat-pink-ink);
+  --color-cat-purple-tint: var(--cat-purple-tint);
+  --color-cat-purple-ink: var(--cat-purple-ink);
+  --color-cat-amber-tint: var(--cat-amber-tint);
+  --color-cat-amber-ink: var(--cat-amber-ink);
   --font-sans: var(--font-nunito);
   --radius-card: var(--radius-card);
   --radius-pill: var(--radius-pill);

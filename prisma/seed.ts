@@ -39,6 +39,10 @@ const listings = [
     cost: "LOW_COST" as const,
     days: Prisma.DbNull,
     time: null,
+    address: "305 Jackson Ave, Naperville, IL 60540",
+    phone: "630-848-5000",
+    hours: "Mon-Fri 8:30 a.m.-5:00 p.m. (Alfred Rubin Riverwalk Community Center)",
+    registration: "Register at napervilleparks.org/programguides or by phone",
     sourceUrl: "https://napervilleparks.org/activeadults",
   },
   {
@@ -65,6 +69,8 @@ const listings = [
     cost: "LOW_COST" as const,
     days: Prisma.DbNull,
     time: null,
+    address: "155 E. St. Charles Road, Elmhurst, IL 60126",
+    phone: "(630) 993-8193",
     sourceUrl: "https://www.epd.org/programs/seniors",
   },
   {
@@ -91,6 +97,9 @@ const listings = [
     cost: "FREE" as const,
     days: Prisma.DbNull,
     time: null,
+    address: "5215 Oakton Street, Skokie, IL 60077",
+    phone: "(847) 673-7774",
+    hours: "Mon-Fri 9am-9pm; Sat 10am-6pm; Sun 10am-6pm",
     sourceUrl: "https://www.skokielibrary.info/resources-services/adult-learners",
   },
   {
@@ -117,6 +126,8 @@ const listings = [
     cost: "LOW_COST" as const,
     days: ["Wednesday"],
     time: "6:30-9:30 PM (seasonal session — confirm current dates)",
+    address: "500 S. Naperville Rd., Wheaton, IL 60187",
+    phone: "630-690-4880",
     sourceUrl: "https://wheatonparkdistrict.com/programs/pickleball/",
   },
   {
@@ -130,6 +141,11 @@ const listings = [
     cost: "LOW_COST" as const,
     days: Prisma.DbNull,
     time: null,
+    address: "1300 S. DuSable Lake Shore Drive, Chicago, IL 60605",
+    phone: "(312) 922-7827",
+    hours: "Mon/Tue/Thu/Fri 9am-4pm; Wed 4pm-10pm; Sat-Sun 9am-4pm",
+    accessibility:
+      "Accessible entrance with automated doors; elevators to all floors; wheelchair seating in all theaters; free manual wheelchairs at box offices; closed captioning via mobile device; accessible parking",
     sourceUrl: "https://www.adlerplanetarium.org/visit/tickets/special-offers/",
   },
   {
@@ -143,6 +159,8 @@ const listings = [
     cost: "PAID" as const,
     days: Prisma.DbNull,
     time: null,
+    address: "201 Recreation Drive, Bolingbrook, IL 60440",
+    phone: "630-739-0272",
     sourceUrl: "https://bolingbrookparks.org/programs/trips/",
   },
   // --- Added to cover Lake, Kane, McHenry, and Kendall counties, and to
@@ -185,6 +203,9 @@ const listings = [
     cost: "LOW_COST" as const,
     days: Prisma.DbNull,
     time: null,
+    address: "8 North Avenue, St. Charles, IL 60174",
+    phone: "630-513-6200",
+    hours: "Building Mon-Fri 8am-9pm, Sat 8am-6pm, Sun 12pm-5pm; Office Mon-Fri 8am-5pm",
     sourceUrl: "https://www.stcparks.org/aac/",
   },
   {
@@ -198,6 +219,9 @@ const listings = [
     cost: "FREE" as const,
     days: Prisma.DbNull,
     time: null,
+    address: "1401 W. Route 176, Crystal Lake, IL",
+    phone: "(815) 459-0680 ext. 1219",
+    hours: "Mon-Fri 9am-12pm (drop-in center; closed holidays and last 2 weeks of December)",
     sourceUrl: "https://www.crystallakeparks.org/active-adults",
   },
   {
@@ -211,6 +235,8 @@ const listings = [
     cost: "PAID" as const,
     days: Prisma.DbNull,
     time: null,
+    address: "1401 W. Route 176, Crystal Lake, IL",
+    phone: "(815) 459-0680 ext. 1219",
     sourceUrl: "https://www.crystallakeparks.org/active-adults",
   },
   {
@@ -237,6 +263,9 @@ const listings = [
     cost: "FREE" as const,
     days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Sunday"],
     time: "Senior resident hours: Tue/Wed 1-3pm, Mon/Thu 7-9pm, Sun 9am-12pm",
+    address: "635 N. Aspen Drive, Vernon Hills, IL",
+    phone: "(847) 996-6800",
+    hours: "Mon-Fri 8am-9pm; Sat 9am-4pm; Sun 9am-3pm (Sullivan Community Center)",
     sourceUrl: "https://www.vhparkdistrict.org/pickleball-3/",
   },
   {
@@ -263,6 +292,9 @@ const listings = [
     cost: "FREE" as const,
     days: Prisma.DbNull,
     time: null,
+    address: "270 North Grove Avenue, Elgin, IL 60120",
+    phone: "847-742-2411",
+    hours: "Mon-Thu 9am-9pm; Fri 9am-6pm; Sat 9am-5pm; Sun 12pm-5pm (Main Library)",
     sourceUrl: "https://gailborden.info/older-adult-services",
   },
   {
@@ -276,6 +308,8 @@ const listings = [
     cost: "LOW_COST" as const,
     days: Prisma.DbNull,
     time: null,
+    address: "1200 Regent Dr, Mundelein, IL 60060",
+    phone: "(847) 566-4790",
     sourceUrl: "https://www.mundeleinparks.org/programs/active-adults/",
   },
   // --- Added to further fill out Will and Kendall, the two thinnest counties ---
@@ -414,6 +448,9 @@ const listings = [
     cost: "FREE" as const,
     days: ["Friday"],
     time: "Drop-in board games Fridays 9:30 a.m.-12:30 p.m.",
+    address: "1050 Curtiss Street, Downers Grove, IL 60515",
+    phone: "630-960-1200",
+    hours: "Mon-Fri 9am-9pm; Sat 9am-5pm; Sun 1pm-5pm",
     qualityNote: "Named one of the top 10 U.S. libraries in its budget bracket (Library Journal 'star' rating).",
     sourceUrl: "https://dglibrary.org/just-for-seniors/",
   },
