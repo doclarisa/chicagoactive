@@ -153,6 +153,12 @@ export default async function ListingDetail({
         {listing.county} County
       </p>
 
+      {listing.qualityNote && (
+        <p className="mt-4 rounded-card bg-flag-blue-tint px-4 py-3 text-base font-semibold text-flag-blue-ink">
+          {listing.qualityNote}
+        </p>
+      )}
+
       <p className="mt-6 text-lg leading-relaxed text-ink">{listing.description}</p>
 
       {days.length > 0 && (

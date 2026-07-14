@@ -12,6 +12,7 @@ type ListingCardData = {
   county: string;
   cost: string;
   days: unknown;
+  qualityNote?: string | null;
 };
 
 export default function ListingCard({ listing }: { listing: ListingCardData }) {
@@ -30,7 +31,14 @@ export default function ListingCard({ listing }: { listing: ListingCardData }) {
         {style.icon}
       </div>
       <CategoryBadge category={listing.category} />
-      <h2 className="text-lg font-bold leading-snug text-ink">{listing.name}</h2>
+      <h2 className="text-lg font-bold leading-snug text-ink">
+        {listing.name}
+        {listing.qualityNote && (
+          <span title={listing.qualityNote} aria-label="Notable recognition" className="ml-1.5 text-flag-blue-ink">
+            ★
+          </span>
+        )}
+      </h2>
       <p className="text-base text-ink-muted">
         {listing.neighborhood ? `${listing.neighborhood}, ` : ""}
         {listing.county} County

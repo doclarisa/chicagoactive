@@ -33,6 +33,10 @@ model Listing {
   ageEligibility String?     // free text, e.g. "55+; no residency required"
   registration   String?     // free text, e.g. "Register online at ahpd.org"
   accessibility  String?     // free text, e.g. "Wheelchair accessible"
+  // A short, sourced reputation signal — e.g. a named award or a real
+  // review-site citation. Never a fabricated number; null when we don't
+  // have a genuine one, same discipline as everything else in this file.
+  qualityNote    String?
 
   status       ListingStatus @default(PUBLISHED)
 
