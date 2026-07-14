@@ -65,7 +65,12 @@ export default async function DirectoryPage({
         method="get"
         className="mt-6 flex flex-wrap gap-3 rounded-card bg-flag-blue-tint p-4"
       >
-        <select name="county" defaultValue={county ?? ""} className={selectClass}>
+        <select
+          name="county"
+          aria-label="Filter by county"
+          defaultValue={county ?? ""}
+          className={selectClass}
+        >
           <option value="">All counties</option>
           {COUNTIES.map((c) => (
             <option key={c} value={c}>
@@ -74,7 +79,12 @@ export default async function DirectoryPage({
           ))}
         </select>
 
-        <select name="category" defaultValue={category ?? ""} className={selectClass}>
+        <select
+          name="category"
+          aria-label="Filter by category"
+          defaultValue={category ?? ""}
+          className={selectClass}
+        >
           <option value="">All categories</option>
           {CATEGORIES.map((c) => (
             <option key={c.slug} value={c.slug}>
@@ -83,14 +93,24 @@ export default async function DirectoryPage({
           ))}
         </select>
 
-        <select name="cost" defaultValue={cost ?? ""} className={selectClass}>
+        <select
+          name="cost"
+          aria-label="Filter by cost"
+          defaultValue={cost ?? ""}
+          className={selectClass}
+        >
           <option value="">Any cost</option>
           <option value="FREE">Free</option>
           <option value="LOW_COST">$</option>
           <option value="PAID">$$</option>
         </select>
 
-        <select name="day" defaultValue={day ?? ""} className={selectClass}>
+        <select
+          name="day"
+          aria-label="Filter by day"
+          defaultValue={day ?? ""}
+          className={selectClass}
+        >
           <option value="">Any day</option>
           {DAYS.map((d) => (
             <option key={d} value={d}>
