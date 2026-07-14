@@ -278,6 +278,33 @@ const listings = [
     time: null,
     sourceUrl: "https://www.mundeleinparks.org/programs/active-adults/",
   },
+  // --- Added to further fill out Will and Kendall, the two thinnest counties ---
+  {
+    name: "Plainfield Township Senior Services",
+    slug: "plainfield-township-senior-services",
+    description:
+      "Active Adult programs at the Plainfield Township Community Center, plus a Senior Shuttle bus service for residents. Call ahead for the current activity schedule.",
+    category: "senior-center-events",
+    neighborhood: "Plainfield",
+    county: "Will",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    time: null,
+    sourceUrl: "https://plainfield-township.com/senior-services/",
+  },
+  {
+    name: "Yorkville Senior Services & Programs",
+    slug: "yorkville-senior-services-programs",
+    description:
+      "Weekday classes and activities for older adults at the Beecher Center, run through the City's partnership with Senior Services Associates — recreation, education, exercise, screenings, and outings, including a free Fit & Strong exercise class.",
+    category: "senior-center-events",
+    neighborhood: "Yorkville",
+    county: "Kendall",
+    cost: "FREE" as const,
+    days: ["Monday", "Thursday"],
+    time: "Fit & Strong class meets Mondays and Thursdays; other classes run weekdays",
+    sourceUrl: "https://www.yorkville.il.us/244/Senior-Services-Programs",
+  },
 ];
 
 async function main() {
