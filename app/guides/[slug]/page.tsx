@@ -67,7 +67,7 @@ export default async function GuidePage({
               <div className="mt-4">
                 {/* One red CTA per screen — the anchor offer only. */}
                 <AffiliateLink href={affiliate.url} variant={i === 0 ? "primary" : "secondary"}>
-                  {i === 0 ? "Browse trips →" : `Visit ${affiliate.label} →`}
+                  Visit {affiliate.label} →
                 </AffiliateLink>
               </div>
             </div>

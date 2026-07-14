@@ -163,7 +163,7 @@ export default async function ListingDetail({
             href={`/guides/${relatedGuide.slug}`}
             className="mt-3 block rounded-card bg-flag-blue-tint p-4 no-underline"
           >
-            <p className="text-base text-ink-muted">Planning something further afield?</p>
+            <p className="text-base text-ink-muted">{relatedGuide.exitRampPrompt}</p>
             <p className="mt-1 text-lg font-bold text-flag-blue-ink">{relatedGuide.title} →</p>
           </Link>
         ) : (
