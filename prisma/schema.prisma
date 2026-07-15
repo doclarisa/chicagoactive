@@ -83,3 +83,33 @@ enum ListingStatus {
   PUBLISHED
   PENDING
 }
+
+// Stage 1a/1b working table — NOT published, never rendered on the site.
+// A roster row is a lead, not a listing: it becomes a real Listing only
+// after 1b confirms an evergreen 55+ program on the org's own site.
+model Candidate {
+  id           String          @id @default(cuid())
+  orgName      String
+  city         String?
+  county       String          // one of lib/counties.ts COUNTIES
+  officialUrl  String?         // best-effort at enumeration time; 1b confirms/corrects
+  rosterSource String          // which of the 4 authoritative rosters this came from
+  category     String?         // best-guess lib/categories.ts slug from the roster type, if inferable
+
+  status       CandidateStatus @default(UNVERIFIED)
+  reviewNote   String?         // why it's needs-review, or why no-program
+
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+
+  @@unique([orgName, county])
+  @@index([county])
+  @@index([status])
+}
+
+enum CandidateStatus {
+  UNVERIFIED
+  NO_PROGRAM
+  NEEDS_REVIEW
+  PROMOTED // became a real Listing
+}
