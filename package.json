@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "postinstall": "prisma generate",
-    "seed": "tsx prisma/seed.ts"
+    "seed": "tsx prisma/seed.ts",
+    "verify:links": "tsx scripts/verify-links.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",

@@ -5,6 +5,7 @@
 import "dotenv/config";
 import { PrismaClient, Prisma } from "../app/generated/prisma/client";
 import { PrismaNeon } from "@prisma/adapter-neon";
+import { slugify } from "../lib/slug";
 
 const adapter = new PrismaNeon({
   connectionString: process.env.POSTGRES_URL_NON_POOLING!,
@@ -537,13 +538,117 @@ const listings = [
     time: "Chair yoga Thursdays 10:15 a.m.",
     sourceUrl: "https://www.yorkville.lib.il.us/adult-recurring-programs/",
   },
+  // --- Stage 1 batch 1: Cook County (per the county-by-county order) ---
+  {
+    name: "Skokie Park District Active Adults",
+    slug: "skokie-park-district-active-adults",
+    description:
+      "Drop-in programs, exercise classes, Monday movies, card clubs, seasonal parties, health and wellness fairs, and shopping/lunch/dinner day trips for ages 60+, based at the Oakton Community Center.",
+    category: "park-district-55-programs",
+    neighborhood: "Skokie",
+    county: "Cook",
+    cost: "LOW_COST" as const,
+    days: Prisma.DbNull,
+    time: null,
+    address: "4701 Oakton St, Skokie, IL 60076",
+    ageMinimum: 60,
+    dropIn: true,
+    sourceUrl: "https://www.skokieparks.org/active-adults/",
+  },
+  {
+    name: "Niles Senior Center",
+    slug: "niles-senior-center",
+    description:
+      "Village-run senior services including benefit access help, a lending closet, Medicare Part D counseling, property tax freeze assistance, SHIP counseling, and a wills program.",
+    category: "senior-center-events",
+    neighborhood: "Niles",
+    county: "Cook",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    time: null,
+    address: "999 Civic Center Drive, Niles, IL 60714",
+    phone: "847-588-8420",
+    hours: "Mon-Fri 8:30 a.m.-5 p.m.",
+    sourceUrl: "https://www.vniles.com/197/Senior-Services",
+  },
+  {
+    name: "Maine Township MaineStreamers",
+    slug: "maine-township-mainestreamers",
+    description:
+      "Free social club for Maine Township residents 55+: monthly luncheons, day/evening/weekend trips and extended travel, and educational programs (computer classes, yoga, tai chi, Zumba Gold, chair aerobics, AARP driver safety, piano, knitting, art).",
+    category: "senior-center-events",
+    neighborhood: "Park Ridge",
+    county: "Cook",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    time: null,
+    address: "1700 Ballard Road, Park Ridge, IL",
+    phone: "(847) 297-2510",
+    hours: "Mon-Fri 9 a.m.-5 p.m.",
+    ageMinimum: 55,
+    residentRequired: true,
+    registration: "Free membership, open to all Maine Township residents",
+    sourceUrl: "https://mainetown.com/departments/mainestreamers/index.php",
+  },
+  {
+    name: "Park District of Oak Park Lifelong Learning",
+    slug: "park-district-of-oak-park-lifelong-learning",
+    description:
+      "Active-adult classes and programs offered at the Dole Center under the Park District's Lifelong Learning umbrella, registered through Amilia online or by phone.",
+    category: "park-district-55-programs",
+    neighborhood: "Oak Park",
+    county: "Cook",
+    cost: "LOW_COST" as const,
+    days: Prisma.DbNull,
+    time: null,
+    address: "255 Augusta St, Oak Park, IL 60302",
+    phone: "(708) 725-2715",
+    registrationRequired: true,
+    registrationUrl: "https://pdop.org/programs/lifelong-learning/",
+    sourceUrl: "https://pdop.org/programs/lifelong-learning/",
+  },
+  {
+    name: "Senior Citizens' Center of Oak Park and River Forest",
+    slug: "senior-citizens-center-oak-park-river-forest",
+    description:
+      "Independent nonprofit senior center (not a park district or township program) serving Oak Park and River Forest residents with classes, an art studio, and social programming.",
+    category: "senior-center-events",
+    neighborhood: "Oak Park",
+    county: "Cook",
+    cost: "LOW_COST" as const,
+    days: Prisma.DbNull,
+    time: null,
+    address: "414 S. Oak Park Ave, Oak Park, IL 60302",
+    phone: "708-848-5251",
+    sourceUrl: "https://www.sccoprf.com/",
+  },
 ];
 
+// city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
+// `neighborhood` for single-site listings (already a real place name);
+// overridden for the handful of citywide/countywide programs so we never
+// fabricate a specific city they don't actually belong to. "Countywide"
+// deliberately isn't a real city — Stage 2's city-page generator skips it.
+const CITY_OVERRIDES: Record<string, string> = {
+  "chicago-park-district-senior-programs": "Chicago",
+  "chicago-regional-senior-centers": "Chicago",
+  "cpl-seniors-circle": "Chicago",
+};
+
+// Set the day this backfill pass actually re-checked every sourceUrl (see
+// `npm run verify:links`) — not simply "whenever seed happens to run".
+const LAST_VERIFIED = new Date("2026-07-15");
+
+const listingsWithCity = listings.map((l) => {
+  const city = CITY_OVERRIDES[l.slug] ?? l.neighborhood ?? l.county;
+  return { ...l, city, citySlug: slugify(city), lastVerified: LAST_VERIFIED };
+});
+
 async function main() {
-  for (const l of listings) {
+  for (const l of listingsWithCity) {
     await db.listing.upsert({ where: { slug: l.slug }, update: l, create: l });
   }
-  console.log(`Seeded ${listings.length} listing(s)`);
+  console.log(`Seeded ${listingsWithCity.length} listing(s)`);
 }
 
 main()

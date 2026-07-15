@@ -17,22 +17,46 @@ model Listing {
   description  String
 
   category     String        // one of lib/categories.ts CATEGORIES[].slug
-  neighborhood String?       // e.g. "Naperville", "Museum Campus"
+  neighborhood String?       // human-readable area, e.g. "Naperville", "Museum Campus", "Countywide"
   county       String        // one of lib/counties.ts COUNTIES
+
+  // city/citySlug are for Stage 2's /city/[citySlug] pages — a stricter,
+  // groupable field than neighborhood. For genuinely county-wide programs
+  // with no single city, this is literally "Countywide" (never a fabricated
+  // specific city) and Stage 2's city-page generator skips that value.
+  city         String        @default("")
+  citySlug     String        @default("")
 
   cost         Cost          @default(FREE)
   days         Json?         // string[] e.g. ["Tuesday", "Thursday"]
   time         String?       // free text, e.g. "6:30-9:30 PM"; schedules vary seasonally
 
-  sourceUrl    String?       // where this listing's info was verified
+  sourceUrl    String        @default("")  // required going forward; every claim must be traceable
+  lastVerified DateTime      @default(now())
   imageUrl     String?
 
   address        String?     // full street address, when known
   phone          String?
   hours          String?     // free text, e.g. "Mon-Fri 8:30am-4:30pm"
   ageEligibility String?     // free text, e.g. "55+; no residency required"
+  ageMinimum     Int?        // 50/55/60/62/65 — the real minimum, when stated
   registration   String?     // free text, e.g. "Register online at ahpd.org"
   accessibility  String?     // free text, e.g. "Wheelchair accessible"
+
+  dropIn               Boolean? // can you just show up, or must you register?
+  registrationRequired Boolean?
+  registrationUrl      String?
+  residentRequired     Boolean? // must you live in the district?
+  residentPrice        String?
+  nonResidentPrice     String?
+  parkingNotes         String?
+  accessibilityNotes   String? // structured counterpart to `accessibility`'s free text
+  transitNotes         String? // nearest CTA/Metra/Pace, where relevant
+  beginnerFriendly     Boolean?
+
+  lat Float?
+  lng Float?
+
   // A short, sourced reputation signal — e.g. a named award or a real
   // review-site citation. Never a fabricated number; null when we don't
   // have a genuine one, same discipline as everything else in this file.
@@ -46,6 +70,7 @@ model Listing {
   @@index([county])
   @@index([category])
   @@index([status])
+  @@index([citySlug])
 }
 
 enum Cost {
