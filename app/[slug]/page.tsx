@@ -9,6 +9,9 @@ import { GUIDES } from "@/lib/guides";
 import CategoryBadge from "@/components/CategoryBadge";
 import CostBadge from "@/components/CostBadge";
 import ListingCard from "@/components/ListingCard";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import { categoryLabel } from "@/lib/categories";
+import { listingSchemaType } from "@/lib/schema";
 
 const PRICE_RANGE: Record<string, string> = {
   FREE: "Free",
@@ -64,7 +67,7 @@ export default async function ListingDetail({
   const parsedAddress = listing.address ? parseAddress(listing.address) : null;
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": listingSchemaType(listing.category),
     name: listing.name,
     description: listing.description,
     ...(listing.sourceUrl ? { url: listing.sourceUrl } : {}),
@@ -77,6 +80,7 @@ export default async function ListingDetail({
       addressCountry: "US",
     },
     priceRange: PRICE_RANGE[listing.cost],
+    isAccessibleForFree: listing.cost === "FREE",
   };
 
   const mapQuery = encodeURIComponent(
@@ -111,12 +115,14 @@ export default async function ListingDetail({
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Link
-        href="/directory"
-        className="text-base font-semibold text-flag-blue-ink no-underline hover:underline"
-      >
-        ← Back to directory
-      </Link>
+      <Breadcrumbs
+        crumbs={[
+          { name: "Home", path: "/" },
+          { name: "Directory", path: "/directory" },
+          { name: categoryLabel(listing.category), path: `/category/${listing.category}` },
+          { name: listing.name, path: `/${listing.slug}` },
+        ]}
+      />
 
       {/* No real photo sourced yet for this listing — tinted category icon
           is a fixed-size placeholder (no layout shift). Swap to next/image

@@ -1,9 +1,10 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/db";
 import { CATEGORIES } from "@/lib/categories";
 import { categoryStyle } from "@/lib/categoryStyles";
 import ListingCard from "@/components/ListingCard";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import { itemListSchema } from "@/lib/schema";
 
 export function generateStaticParams() {
   return CATEGORIES.map((c) => ({ category: c.slug }));
@@ -44,12 +45,24 @@ export default async function CategoryPage({
 
   return (
     <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8 sm:px-6 sm:py-12">
-      <Link
-        href="/directory"
-        className="text-base font-semibold text-flag-blue-ink no-underline hover:underline"
-      >
-        ← All categories
-      </Link>
+      {listings.length > 0 && (
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              itemListSchema(listings.map((l) => ({ name: l.name, path: `/${l.slug}` }))),
+            ),
+          }}
+        />
+      )}
+      <Breadcrumbs
+        crumbs={[
+          { name: "Home", path: "/" },
+          { name: "Directory", path: "/directory" },
+          { name: cat.label, path: `/category/${cat.slug}` },
+        ]}
+      />
 
       <div className="mt-4 flex items-center gap-3">
         <span

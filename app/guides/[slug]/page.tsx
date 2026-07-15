@@ -22,6 +22,10 @@ export async function generateMetadata({
     description: guide.dek,
     alternates: { canonical: `/guides/${guide.slug}` },
     openGraph: { title: guide.title, description: guide.dek },
+    // Thin placeholder content (real affiliate IDs not wired in yet) —
+    // stay out of the index until Stage 5 rebuilds these with real
+    // recommendations, per the SEO skill's trust-first sequencing.
+    robots: { index: false, follow: true },
   };
 }
 

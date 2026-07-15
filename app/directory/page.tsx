@@ -5,6 +5,8 @@ import { CATEGORIES } from "@/lib/categories";
 import { COUNTIES } from "@/lib/counties";
 import { DAYS } from "@/lib/days";
 import ListingCard from "@/components/ListingCard";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import { itemListSchema } from "@/lib/schema";
 
 type SearchParams = {
   county?: string;
@@ -56,7 +58,19 @@ export default async function DirectoryPage({
 
   return (
     <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8 sm:px-6 sm:py-12">
-      <h1 className="text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">Directory</h1>
+      {listings.length > 0 && (
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              itemListSchema(listings.map((l) => ({ name: l.name, path: `/${l.slug}` }))),
+            ),
+          }}
+        />
+      )}
+      <Breadcrumbs crumbs={[{ name: "Home", path: "/" }, { name: "Directory", path: "/directory" }]} />
+      <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">Directory</h1>
       <p className="mt-2 text-lg text-ink-muted">
         Free and low-cost things to do, all across Chicagoland.
       </p>
