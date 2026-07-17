@@ -18,6 +18,15 @@ model Listing {
 
   category     String        // one of lib/categories.ts CATEGORIES[].slug
   neighborhood String?       // human-readable area, e.g. "Naperville", "Museum Campus", "Countywide"
+
+  // Chicago-specific: Chicago is 77 community areas, not one city page.
+  // Populated for Chicago listings tied to a specific community area
+  // (e.g. "Pilsen" -> "pilsen"); left "" for genuinely citywide programs,
+  // same convention as citySlug's "Countywide" skip rule below. Suburbs
+  // don't use this field — they use city/citySlug instead. Stage 2 will
+  // add /neighborhood/[slug] pages built on this field.
+  neighborhoodSlug String    @default("")
+
   county       String        // one of lib/counties.ts COUNTIES
 
   // city/citySlug are for Stage 2's /city/[citySlug] pages — a stricter,
@@ -71,6 +80,7 @@ model Listing {
   @@index([category])
   @@index([status])
   @@index([citySlug])
+  @@index([neighborhoodSlug])
 }
 
 enum Cost {
