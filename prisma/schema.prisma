@@ -16,7 +16,17 @@ model Listing {
   slug         String        @unique
   description  String
 
-  category     String        // one of lib/categories.ts CATEGORIES[].slug
+  category     String        // one of lib/categories.ts CATEGORIES[].slug — kept as a
+                              // fallback alongside operatorType/activities below; not
+                              // dropped until Stage 2 ships on the new taxonomy.
+
+  // Stage 1c split: operatorType is WHO runs it (a facet, never a landing page).
+  // activities is WHAT you actually do there (many-to-many; this is what earns
+  // URLs). Only ever set an activity when a fetched sourceUrl documents it for
+  // this audience — never inferred because the operator type "probably" has it.
+  operatorType String?       // one of lib/operatorTypes.ts OPERATOR_TYPES[].slug
+  activities   Json?         // string[] of lib/activities.ts ACTIVITIES[].slug
+
   neighborhood String?       // human-readable area, e.g. "Naperville", "Museum Campus", "Countywide"
 
   // Chicago-specific: Chicago is 77 community areas, not one city page.
@@ -81,6 +91,7 @@ model Listing {
   @@index([status])
   @@index([citySlug])
   @@index([neighborhoodSlug])
+  @@index([operatorType])
 }
 
 enum Cost {
