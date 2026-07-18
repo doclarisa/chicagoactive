@@ -19,21 +19,21 @@ export const CITIES: CityDef[] = [
     slug: "wheaton",
     county: "DuPage",
     intro:
-      "Wheaton's senior offerings include a discounted 65+ membership to Cantigny Park's gardens and museums, plus open pickleball nights and a beginner-friendly hybrid class through the Wheaton Park District at Central Athletic Complex.",
+      "Cantigny Park sells a discounted 65+ membership ($50 single/$90 dual) to its gardens and museums, and the Wheaton Park District runs open pickleball nights plus a beginner-friendly hybrid class at Central Athletic Complex.",
   },
   {
     name: "Yorkville",
     slug: "yorkville",
     county: "Kendall",
     intro:
-      "Yorkville pairs a free weekday senior-services program at the Beecher Center — including a Fit & Strong exercise class — with a genuinely active public library offering chair yoga, computer classes, one-on-one tech help, a walking club, and tabletop gaming for adults.",
+      "The Beecher Center runs a free weekday senior-services program that includes a Fit & Strong exercise class, and Yorkville Public Library runs chair yoga, computer classes, one-on-one tech help, a walking club, and tabletop-gaming nights (Dungeons & Dragons, Magic: The Gathering) alongside its book clubs.",
   },
   {
     name: "Park Ridge",
     slug: "park-ridge",
     county: "Cook",
     intro:
-      "Park Ridge has two deep senior programs: Maine Township's MaineStreamers (yoga, Zumba Gold, bingo nights, and day trips out of the Feldman Center) and the Park District's S.T.A.R. program at the Centennial Activity Center, with everything from Sound Bath relaxation to Mah Jongg and tap dance.",
+      "Maine Township's MaineStreamers runs yoga, Zumba Gold, bingo nights, and day trips out of the Feldman Center, and the Park District's S.T.A.R. program at the Centennial Activity Center runs Sound Bath relaxation sessions, two levels of Mah Jongg, and tap dance alongside line dancing.",
   },
   {
     name: "Geneva",
@@ -47,14 +47,14 @@ export const CITIES: CityDef[] = [
     slug: "oswego",
     county: "Kendall",
     intro:
-      "Oswego's senior options include the Oswego Senior & Community Center's free computer and international cooking classes, and a public library with a Dungeons & Dragons group, a Magic: The Gathering meetup, and a Thursday-evening knitting circle.",
+      "The Oswego Senior & Community Center runs free computer and international cooking classes, and Oswego Public Library hosts a Dungeons & Dragons group, a Magic: The Gathering meetup, and a Thursday-evening knitting circle at its Montgomery campus.",
   },
   {
     name: "Plainfield",
     slug: "plainfield",
     county: "Will",
     intro:
-      "Plainfield Township runs Active Adult programs and a senior shuttle bus out of its Community Center, and Plainfield Area Public Library sets aside priority morning hours for seniors three days a week alongside quarterly tech classes and home delivery for homebound patrons.",
+      "Plainfield Township runs a Senior Shuttle bus for residents out of its Community Center, and Plainfield Area Public Library sets aside priority hours for seniors Monday, Wednesday, and Friday mornings, with quarterly tech classes and home book/audiobook delivery arranged through its Outreach Services Coordinator.",
   },
   {
     name: "Zion",
@@ -89,7 +89,7 @@ export const CITIES: CityDef[] = [
     slug: "franklin-park",
     county: "Cook",
     intro:
-      "Leyden Township runs senior luncheons, arts & crafts days, and day trips from its Franklin Park office, and the Village's weekday senior lunch program at the Centre at North Park pairs a hot meal with daily bingo and monthly health fairs.",
+      "Leyden Township's Leyden United Senior Club runs luncheons, movie days, and arts & crafts days out of its Franklin Park office, and the Village's weekday senior lunch program at the Centre at North Park gives you a free first lunch and pairs the meal with daily bingo and monthly health fairs.",
   },
   {
     name: "Skokie",
@@ -138,7 +138,7 @@ export const CITIES: CityDef[] = [
     slug: "mundelein",
     county: "Lake",
     intro:
-      "Mundelein Park & Recreation District runs weekday social and wellness activities for ages 50-61 at the Regent Center, and Fremont Public Library cardholders get free access to GetSetUp, an online class platform built specifically for adults 55 and up.",
+      "The Regent Center, run by Mundelein Park & Recreation District, charges a $30 resident/$45 nonresident membership for adults 50-61 to join its weekday programs, and Fremont Public Library cardholders get free access to GetSetUp, an online live-class platform built specifically for adults 55 and up.",
   },
   {
     name: "Arlington Heights",
@@ -173,14 +173,14 @@ export const CITIES: CityDef[] = [
     slug: "forest-park",
     county: "Cook",
     intro:
-      "Howard Mohr Community Center runs weekly day trips, twice-weekly shopping trips, and a Senior Citizens Club with bingo, and the Park District of Forest Park offers a free hospital-sponsored Zumba Gold class along with in-person and virtual yoga.",
+      "Howard Mohr Community Center runs Monday/Thursday shopping trips for anyone 55 and up alongside weekly day trips and a Senior Citizens Club with bingo, and the Park District of Forest Park offers a free hospital-sponsored Zumba Gold class along with in-person and virtual yoga.",
   },
   {
     name: "Lombard",
     slug: "lombard",
     county: "DuPage",
     intro:
-      "Helen Plum Library runs monthly Senior Socials and hands-on Technology Classes plus a makerspace with sewing and Cricut projects, and York Township's Senior Activity Center pairs a packed dance and fitness schedule with an on-site hair salon and free Tuesday movie afternoons.",
+      "Helen Plum Library runs monthly Senior Socials and hands-on Technology Classes, plus sewing, laser-cutting, and Cricut drop-in hours at Studio 411, its makerspace, and York Township's Senior Activity Center pairs a packed dance and fitness schedule with an on-site hair salon and free Tuesday movie afternoons.",
   },
   {
     name: "Elgin",
