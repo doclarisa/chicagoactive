@@ -3,6 +3,7 @@ import { prisma } from "@/lib/db";
 import { CATEGORIES } from "@/lib/categories";
 import { GUIDES } from "@/lib/guides";
 import { CITIES } from "@/lib/cities";
+import { ACTIVITY_PAGES } from "@/lib/activityPages";
 import { SITE_URL } from "@/lib/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -15,10 +16,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE_URL}/`, changeFrequency: "weekly", priority: 1 },
     { url: `${SITE_URL}/directory`, changeFrequency: "daily", priority: 0.9 },
     { url: `${SITE_URL}/chicago`, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE_URL}/classes-for-seniors`, changeFrequency: "weekly", priority: 0.7 },
   ];
 
   const cityRoutes: MetadataRoute.Sitemap = CITIES.map((c) => ({
     url: `${SITE_URL}/city/${c.slug}`,
+    changeFrequency: "weekly",
+    priority: 0.8,
+  }));
+
+  const activityRoutes: MetadataRoute.Sitemap = ACTIVITY_PAGES.map((a) => ({
+    url: `${SITE_URL}/activities/${a.slug}`,
     changeFrequency: "weekly",
     priority: 0.8,
   }));
@@ -42,5 +50,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.5,
   }));
 
-  return [...staticRoutes, ...cityRoutes, ...categoryRoutes, ...listingRoutes, ...guideRoutes];
+  return [
+    ...staticRoutes,
+    ...cityRoutes,
+    ...activityRoutes,
+    ...categoryRoutes,
+    ...listingRoutes,
+    ...guideRoutes,
+  ];
 }
