@@ -75,6 +75,11 @@ model Listing {
 
   lat Float?
   lng Float?
+  // "exact" = geocoded from a real street address. "approximate" = the address
+  // didn't resolve to rooftop precision (or there was no single address at all —
+  // countywide/citywide programs), so lat/lng is a city or county centroid.
+  // Distance UI must never print false precision ("3.2 mi") for "approximate" rows.
+  geoPrecision String?
 
   // A short, sourced reputation signal — e.g. a named award or a real
   // review-site citation. Never a fabricated number; null when we don't

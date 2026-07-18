@@ -12,6 +12,7 @@ import ListingCard from "@/components/ListingCard";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { categoryLabel } from "@/lib/categories";
 import { listingSchemaType } from "@/lib/schema";
+import { cityBySlug } from "@/lib/cities";
 
 const PRICE_RANGE: Record<string, string> = {
   FREE: "Free",
@@ -92,6 +93,15 @@ export default async function ListingDetail({
   const guideSlug = CATEGORY_GUIDE_MAP[listing.category];
   const relatedGuide = guideSlug ? GUIDES.find((g) => g.slug === guideSlug) : undefined;
 
+  // No-orphans mesh: link up to this listing's city page, when it has one.
+  // Chicago listings get the single /chicago hub instead of a /city page.
+  const cityLink =
+    listing.citySlug === "chicago"
+      ? { href: "/chicago", label: "Chicago" }
+      : cityBySlug(listing.citySlug)
+        ? { href: `/city/${listing.citySlug}`, label: listing.city }
+        : null;
+
   // Free internal-linking block: up to 4 other listings, prioritizing same
   // category over same county. Small dataset, so scoring in memory is fine.
   const others = await prisma.listing.findMany({
@@ -157,6 +167,23 @@ export default async function ListingDetail({
       <p className="mt-2 text-lg text-ink-muted">
         {listing.neighborhood ? `${listing.neighborhood}, ` : ""}
         {listing.county} County
+        {cityLink && (
+          <>
+            {" · "}
+            <Link href={cityLink.href} className="text-flag-blue-ink no-underline hover:underline">
+              More in {cityLink.label} →
+            </Link>
+          </>
+        )}
+      </p>
+
+      <p className="mt-1 text-sm text-ink-muted">
+        Verified{" "}
+        {listing.lastVerified.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })}
       </p>
 
       {listing.qualityNote && (

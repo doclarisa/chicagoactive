@@ -10,6 +10,7 @@
     "postinstall": "prisma generate",
     "seed": "tsx prisma/seed.ts",
     "verify:links": "tsx scripts/verify-links.ts",
+    "verify:stale": "tsx scripts/verify-stale.ts",
     "ingest:candidates": "tsx scripts/ingest-candidates.ts"
   },
   "dependencies": {
