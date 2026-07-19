@@ -1,7 +1,9 @@
+import Link from "next/link";
 import { prisma } from "@/lib/db";
 import ListingCard from "@/components/ListingCard";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { itemListSchema } from "@/lib/schema";
+import { CHICAGO_CELLS } from "@/lib/activityCounties";
 
 const DESCRIPTION =
   "Free and low-cost senior programs across Chicago — the city's 20 DFSS neighborhood senior centers plus citywide Park District, library, and museum programs for adults 50+.";
@@ -61,6 +63,34 @@ export default async function ChicagoHub() {
         Library&apos;s Seniors&apos; Circle, CJE SeniorLife&apos;s My Go-To Place resource, and
         discounted senior admission at the Art Institute of Chicago.
       </p>
+
+      {CHICAGO_CELLS.length > 0 && (
+        <section className="mt-8">
+          <h2 className="text-xl font-extrabold tracking-tight text-ink">Browse by activity</h2>
+          <ul className="mt-4 flex flex-wrap gap-2">
+            {CHICAGO_CELLS.map((c) => (
+              <li key={c.tag}>
+                <Link
+                  href={`/chicago/${c.tag}`}
+                  className="inline-flex min-h-10 items-center rounded-pill border border-flag-blue-tint-2 bg-white px-4 text-base font-semibold text-flag-blue-ink no-underline hover:bg-flag-blue-tint"
+                >
+                  {c.h1.replace(" in Chicago", "").replace(" from Chicago", "")}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          {/* Day trips and dance don't get their own cell: DFSS's own source
+              names only a generic "Life Enrichment Activities" category for
+              both, with no named trip brand or dance program to distinguish
+              them from every other Chicago activity page. Named here
+              instead of turned into a duplicate page. */}
+          <p className="mt-3 text-base text-ink-muted">
+            Day trips and dance classes run out of the same Regional and Satellite Centers
+            listed below, folded into each center&apos;s Life Enrichment Activities rather than
+            run as their own named citywide program.
+          </p>
+        </section>
+      )}
 
       {neighborhoodCenters.length > 0 && (
         <section className="mt-10">

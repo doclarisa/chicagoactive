@@ -4,6 +4,7 @@ import { CATEGORIES } from "@/lib/categories";
 import { GUIDES } from "@/lib/guides";
 import { CITIES } from "@/lib/cities";
 import { ACTIVITY_PAGES } from "@/lib/activityPages";
+import { COUNTY_CELLS, CHICAGO_CELLS } from "@/lib/activityCounties";
 import { SITE_URL } from "@/lib/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -31,6 +32,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
+  const countyCellRoutes: MetadataRoute.Sitemap = COUNTY_CELLS.map((c) => ({
+    url: `${SITE_URL}/activities/${c.activitySlug}/${c.countySlug}`,
+    changeFrequency: "weekly",
+    priority: 0.7,
+  }));
+
+  const chicagoCellRoutes: MetadataRoute.Sitemap = CHICAGO_CELLS.map((c) => ({
+    url: `${SITE_URL}/chicago/${c.tag}`,
+    changeFrequency: "weekly",
+    priority: 0.7,
+  }));
+
   const categoryRoutes: MetadataRoute.Sitemap = CATEGORIES.map((c) => ({
     url: `${SITE_URL}/category/${c.slug}`,
     changeFrequency: "weekly",
@@ -54,6 +67,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...staticRoutes,
     ...cityRoutes,
     ...activityRoutes,
+    ...countyCellRoutes,
+    ...chicagoCellRoutes,
     ...categoryRoutes,
     ...listingRoutes,
     ...guideRoutes,

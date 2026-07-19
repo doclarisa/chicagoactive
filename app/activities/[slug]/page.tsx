@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { prisma } from "@/lib/db";
 import { ACTIVITY_PAGES, activityPageBySlug } from "@/lib/activityPages";
+import { chicagoCellByTag, countyCellBySlugs } from "@/lib/activityCounties";
 import ListingCard from "@/components/ListingCard";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { itemListSchema } from "@/lib/schema";
@@ -65,6 +66,8 @@ export default async function ActivityPage({
   }
   const countyGroups = [...byCounty.entries()].sort((a, b) => b[1].length - a[1].length);
 
+  const chicagoCell = chicagoCellByTag(page.tag);
+
   return (
     <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8 sm:px-6 sm:py-12">
       {tagged.length > 0 && (
@@ -94,14 +97,16 @@ export default async function ActivityPage({
 
       {dfssCount > 0 && (
         <Link
-          href="/chicago"
+          href={chicagoCell ? `/chicago/${page.tag}` : "/chicago"}
           className="mt-6 flex items-center justify-between gap-3 rounded-card bg-flag-blue-tint px-4 py-3 no-underline"
         >
           <span className="text-base font-semibold text-ink">
             Chicago — {dfssCount} DFSS neighborhood senior centers offer this as part of their
             standard program
           </span>
-          <span className="shrink-0 text-sm font-bold text-flag-blue-ink">See the Chicago hub →</span>
+          <span className="shrink-0 text-sm font-bold text-flag-blue-ink">
+            {chicagoCell ? "See Chicago's own page →" : "See the Chicago hub →"}
+          </span>
         </Link>
       )}
 
@@ -121,6 +126,7 @@ export default async function ActivityPage({
       {countyGroups.map(([county, group]) => {
         const shown = group.slice(0, GROUP_CAP);
         const remaining = group.length - shown.length;
+        const cell = countyCellBySlugs(page.slug, county.toLowerCase());
         return (
           <section key={county} className="mt-10">
             <h2 className="text-xl font-extrabold tracking-tight text-ink">
@@ -136,11 +142,19 @@ export default async function ActivityPage({
                 </li>
               ))}
             </ul>
-            {remaining > 0 && (
-              <p className="mt-3 text-base text-ink-muted">
-                +{remaining} more in {county} County.
-              </p>
-            )}
+            {remaining > 0 &&
+              (cell ? (
+                <Link
+                  href={`/activities/${cell.activitySlug}/${cell.countySlug}`}
+                  className="mt-3 inline-block text-base font-semibold text-flag-blue-ink no-underline hover:underline"
+                >
+                  See all {remaining + shown.length} in {county} County →
+                </Link>
+              ) : (
+                <p className="mt-3 text-base text-ink-muted">
+                  +{remaining} more in {county} County.
+                </p>
+              ))}
           </section>
         );
       })}
