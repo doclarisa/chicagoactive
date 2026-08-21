@@ -6716,6 +6716,30 @@ const listings = [
     lng: -88.2064863,
     geoPrecision: "approximate",
   },
+  {
+    name: "Enjoying the Good Life in Bridgeview",
+    slug: "enjoying-the-good-life-in-bridgeview",
+    description:
+      "Enjoying the Good Life in Bridgeview, established by Mayor Steve Landek, is a free Village-run program for residents 55+ with recreational events — food, music, and dancing — including a Valentine's Day luncheon. Distinct from the Bridgeview Park District's separate 55 and Better program.",
+    category: "senior-center-events",
+    operatorType: "city-agency",
+    activities: ["dance", "social-clubs"],
+    neighborhood: "Bridgeview",
+    county: "Cook",
+    city: "Bridgeview",
+    citySlug: "bridgeview",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    sourceUrl: "https://bridgeview-il.gov/for-bridgeview-seniors/",
+    lastVerified: new Date("2026-08-26"),
+    address: "7500 S Oketo Ave, Bridgeview, IL 60455",
+    phone: "708-594-2525",
+    ageEligibility: "55+",
+    registration: "Register with Village Customer Service at 708-594-2525 or in person at Village Hall",
+    lat: 41.7548818,
+    lng: -87.8052888,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
