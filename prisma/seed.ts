@@ -6668,6 +6668,29 @@ const listings = [
     lng: -87.7577212,
     geoPrecision: "exact",
   },
+  {
+    name: "Seniors Assistance Center",
+    slug: "seniors-assistance-center-norridge",
+    description:
+      "Seniors Assistance Center (now part of Aging Care Connections) serves older adults and individuals with disabilities in Norridge, Harwood Heights, and unincorporated Norwood Park Township with home-delivered and dine-in meals, caregiver support groups and Memory Café sessions, and enrichment activities for learning and fitness.",
+    category: "senior-center-events",
+    operatorType: "nonprofit",
+    activities: Prisma.DbNull,
+    neighborhood: "Norridge",
+    county: "Cook",
+    city: "Norridge",
+    citySlug: "norridge",
+    cost: "LOW_COST" as const,
+    days: Prisma.DbNull,
+    sourceUrl: "https://www.agingcareconnections.org/sac-welcome/",
+    lastVerified: new Date("2026-08-26"),
+    address: "7774 W Irving Park Road, Norridge, IL 60706",
+    phone: "708-456-7979",
+    registration: "Verify — costs/eligibility not stated on official page; call to confirm",
+    lat: 41.9526758,
+    lng: -87.8214123,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from

@@ -413,6 +413,34 @@ export const CITIES: CityDef[] = [
     intro:
       "The Grayslake Senior Activity Center runs Bingocize, ceramics classes, and lifelong-learning talks with free membership for the 60030 zip code, and the Grayslake Park District hosts a monthly Nifty Fifty+ Bingo social for $5 at the door.",
   },
+  {
+    name: "Orland Park",
+    slug: "orland-park",
+    county: "Cook",
+    intro:
+      "Orland Township Senior Services runs a full activity center with trips, luncheons, and dinner dances for residents 55+, and Orland Park Public Library runs a Memory Café for people with dementia and their care partners, a caregiver support group, book clubs, and tech classes.",
+  },
+  {
+    name: "Wheeling",
+    slug: "wheeling",
+    county: "Cook",
+    intro:
+      "The Village of Wheeling runs a Senior Congregate Dining Program with a nutritious weekday lunch, and the Wheeling Park District's Active Adults program adds drop-in games and crafts, classes, and organized day trips for residents 55+.",
+  },
+  {
+    name: "Glencoe",
+    slug: "glencoe",
+    county: "Cook",
+    intro:
+      "The Village of Glencoe's Older Adult Services program runs wellbeing checks and a House Watch program alongside Family Service of Glencoe's older-adult consultations and Vibrant Living discussion group, and the Chicago Botanic Garden — just inside Glencoe — offers a discounted Senior Tuesday.",
+  },
+  {
+    name: "Norridge",
+    slug: "norridge",
+    county: "Cook",
+    intro:
+      "The Norridge Park District runs senior-specific classes and social groups including Bingo, brunches, and Pinochle, and the Seniors Assistance Center (now part of Aging Care Connections) adds home-delivered and dine-in meals plus caregiver support groups and a Memory Café.",
+  },
 ];
 
 export function cityBySlug(slug: string): CityDef | undefined {
