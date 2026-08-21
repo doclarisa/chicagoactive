@@ -6597,6 +6597,30 @@ const listings = [
     lng: -87.7807908,
     geoPrecision: "exact",
   },
+  {
+    name: "Orland Park Public Library — Seniors and Home Delivery Services",
+    slug: "orland-park-public-library-seniors-home-delivery",
+    description:
+      "Orland Park Public Library runs a Memory Café for people living with dementia and their care partners (in partnership with Pathlight Senior Services), a Dementia Caregiver Support Group, book clubs, and technology classes, plus Home Delivery for cardholders confined to their residence due to illness or disability.",
+    category: "library-classes",
+    operatorType: "library",
+    activities: ["book-clubs", "tech-help"],
+    neighborhood: "Orland Park",
+    county: "Cook",
+    city: "Orland Park",
+    citySlug: "orland-park",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    sourceUrl: "https://www.orlandparklibrary.org/seniors-and-home-delivery-services/",
+    lastVerified: new Date("2026-08-26"),
+    address: "14921 Ravinia Avenue, Orland Park, IL 60462",
+    phone: "708-428-5100",
+    registration: "Contact Outreach Services at 708-428-5114 or outreach@orlandparklibrary.org for Home Delivery",
+    qualityNote: "orlandparklibrary.org blocked automated verification (403); sourced from consistent search-result summaries of the library's own program pages, not a direct fetch.",
+    lat: 41.6188632,
+    lng: -87.8564049,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
