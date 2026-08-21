@@ -5888,6 +5888,29 @@ const listings = [
     lng: -87.794832,
     geoPrecision: "exact",
   },
+  {
+    name: "Forest Park Public Library — Adult Services",
+    slug: "forest-park-public-library-adult-services",
+    description:
+      "Forest Park Public Library covers the cost of the AARP Driver Safety Course for Forest Park residents with a library card, runs home delivery for patrons who can't visit in person, and offers genealogy research tools, job-seeker resources, and free tax preparation help alongside its regular adult programming.",
+    category: "library-classes",
+    operatorType: "library",
+    activities: Prisma.DbNull,
+    neighborhood: "Forest Park",
+    county: "Cook",
+    city: "Forest Park",
+    citySlug: "forest-park",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    sourceUrl: "https://www.fppl.org/category/adult/",
+    lastVerified: new Date("2026-08-21"),
+    address: "7555 Jackson Blvd, Forest Park, IL 60130",
+    phone: "708-366-7171",
+    hours: "Mon-Thu 9am-9pm, Fri 9am-6pm, Sat 9am-5pm, Sun 1-5pm",
+    lat: 41.8761174,
+    lng: -87.8143155,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from

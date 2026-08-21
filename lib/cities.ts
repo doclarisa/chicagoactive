@@ -50,6 +50,13 @@ export const CITIES: CityDef[] = [
       "Mallinckrodt is Wilmette Park District's community center for adults 50+, with drop-in Humanities Discussion, Canasta, and Mah Jongg groups plus day trips and Sunday concerts in the park. Wilmette Public Library delivers books to homebound patrons and keeps a hearing loop and other assistive technology on hand, Wilmette History Museum is free to visit, and the Wilmette Police Department runs a free daily wellness call-in program for independent seniors.",
   },
   {
+    name: "Des Plaines",
+    slug: "des-plaines",
+    county: "Cook",
+    intro:
+      "GENCenter (formerly Frisbie Senior Center) runs more than 65 ongoing programs for older adults out of a 20,000-square-foot activity center open to everyone, resident or not, and Center of Concern runs case management, a Senior Companion Program, and a Memory Café for the wider Maine Township area. Des Plaines Public Library offers home delivery and technology classes, Des Plaines History Center is free to visit with guided tours of the 1907 Kinder House Museum, and the Park District's Prairie Lakes Fitness gives residents 55+ free access to its indoor walking track.",
+  },
+  {
     name: "Rolling Meadows",
     slug: "rolling-meadows",
     county: "Cook",
@@ -131,7 +138,7 @@ export const CITIES: CityDef[] = [
     slug: "schaumburg",
     county: "Cook",
     intro:
-      "Schaumburg Park District's Senior Center runs daily drop-in games (bocce, billiards, canasta, bridge), weekly pickleball, a 50+ indoor softball league, and a 55+ golf league, and the township library hosts a monthly Memory Café for people living with dementia and their caregivers.",
+      "Schaumburg Park District's Senior Center runs daily drop-in games (bocce, billiards, canasta, bridge), weekly pickleball, a 50+ indoor softball league, and a 55+ golf league, and the township library hosts a monthly Memory Café for people living with dementia and their caregivers. Schaumburg Township District Library runs well over a thousand adult programs a year, and the Village of Schaumburg's Senior Center — The Barn — serves daily meals and activities for seniors from Schaumburg and nearby communities.",
   },
   {
     name: "Franklin Park",
@@ -180,7 +187,7 @@ export const CITIES: CityDef[] = [
     slug: "berwyn",
     county: "Cook",
     intro:
-      "North Berwyn Park District's Club 55 runs weekly tai chi, chair yoga, and a bingo/movie night out of its Community Center, and the Berwyn Park District's broader Active Adult program spans fitness, arts, and game days across Proksa Park and the Liberty Cultural Center.",
+      "North Berwyn Park District's Club 55 runs weekly tai chi, chair yoga, and a bingo/movie night out of its Community Center, and the Berwyn Park District's broader Active Adult program spans fitness, arts, and game days across Proksa Park and the Liberty Cultural Center. Berwyn Public Library runs a free weekly Senior Yoga class and lends tablets to residents 60+, and the Berwyn Historical Society Museum is a free monthly stop for local history.",
   },
   {
     name: "Mundelein",
@@ -215,14 +222,14 @@ export const CITIES: CityDef[] = [
     slug: "barrington",
     county: "Cook",
     intro:
-      "The Barrington Area Council on Aging (BACOA) runs a Monday lunch-and-bingo gathering at the park district's Fitness & Recreation Center and a twice-monthly Game Club, plus a Senior Planet tech series from AARP, and the Barrington Area Library runs recurring Game-O-Rama and Senior Scrabble sessions along with home delivery for homebound patrons. Barrington itself straddles Cook and Lake counties, and these programs serve the whole area regardless of which side you're on.",
+      "The Barrington Area Council on Aging (BACOA) runs a Monday lunch-and-bingo gathering at the park district's Fitness & Recreation Center and a twice-monthly Game Club, plus a Senior Planet tech series from AARP, and the Barrington Area Library runs recurring Game-O-Rama and Senior Scrabble sessions along with home delivery for homebound patrons. Barrington itself straddles Cook and Lake counties, and these programs serve the whole area regardless of which side you're on. The Barrington Preservation Society's Town Museum, on the library's lower level, is a free Wednesday-morning stop for local history.",
   },
   {
     name: "Forest Park",
     slug: "forest-park",
     county: "Cook",
     intro:
-      "Howard Mohr Community Center runs Monday/Thursday shopping trips for anyone 55 and up alongside weekly day trips and a Senior Citizens Club with bingo, and the Park District of Forest Park offers a free hospital-sponsored Zumba Gold class along with in-person and virtual yoga.",
+      "Howard Mohr Community Center runs Monday/Thursday shopping trips for anyone 55 and up alongside weekly day trips and a Senior Citizens Club with bingo, and the Park District of Forest Park offers a free hospital-sponsored Zumba Gold class along with in-person and virtual yoga. Forest Park Public Library covers the cost of the AARP Driver Safety Course for residents with a library card and runs home delivery for patrons who can't visit in person.",
   },
   {
     name: "Lombard",
