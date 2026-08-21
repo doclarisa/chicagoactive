@@ -42,6 +42,8 @@
   --cat-purple-ink: #5b3a9e;
   --cat-amber-tint: #fdf3dc;
   --cat-amber-ink: #7a5900;
+  --cat-indigo-tint: #ececfd;
+  --cat-indigo-ink: #3730a3;
 }
 
 @theme inline {
@@ -68,6 +70,8 @@
   --color-cat-purple-ink: var(--cat-purple-ink);
   --color-cat-amber-tint: var(--cat-amber-tint);
   --color-cat-amber-ink: var(--cat-amber-ink);
+  --color-cat-indigo-tint: var(--cat-indigo-tint);
+  --color-cat-indigo-ink: var(--cat-indigo-ink);
   --font-sans: var(--font-nunito);
   --radius-card: var(--radius-card);
   --radius-pill: var(--radius-pill);

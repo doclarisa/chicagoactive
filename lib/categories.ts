@@ -6,6 +6,7 @@ export const CATEGORIES = [
   { slug: "pickleball-fitness", label: "Pickleball & Fitness" },
   { slug: "museum-senior-days", label: "Museum Senior Days" },
   { slug: "day-trips-near-chicago", label: "Day Trips Near Chicago" },
+  { slug: "arts-culture", label: "Arts & Culture" },
 ] as const;
 
 export type CategorySlug = (typeof CATEGORIES)[number]["slug"];

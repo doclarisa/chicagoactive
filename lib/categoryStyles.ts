@@ -14,6 +14,7 @@ const TEAL: CategoryStyle = { icon: "", tint: "bg-cat-teal-tint", ink: "text-cat
 const PINK: CategoryStyle = { icon: "", tint: "bg-cat-pink-tint", ink: "text-cat-pink-ink" };
 const PURPLE: CategoryStyle = { icon: "", tint: "bg-cat-purple-tint", ink: "text-cat-purple-ink" };
 const AMBER: CategoryStyle = { icon: "", tint: "bg-cat-amber-tint", ink: "text-cat-amber-ink" };
+const INDIGO: CategoryStyle = { icon: "", tint: "bg-cat-indigo-tint", ink: "text-cat-indigo-ink" };
 
 export const CATEGORY_STYLES: Record<string, CategoryStyle> = {
   "park-district-55-programs": { ...GREEN, icon: "🌳" },
@@ -23,6 +24,7 @@ export const CATEGORY_STYLES: Record<string, CategoryStyle> = {
   "pickleball-fitness": { ...PINK, icon: "🏓" },
   "museum-senior-days": { ...PURPLE, icon: "🏛️" },
   "day-trips-near-chicago": { ...AMBER, icon: "🚌" },
+  "arts-culture": { ...INDIGO, icon: "🎨" },
 };
 
 export function categoryStyle(slug: string): CategoryStyle {
