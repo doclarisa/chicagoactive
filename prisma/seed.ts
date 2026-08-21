@@ -6276,6 +6276,28 @@ const listings = [
     lng: -87.6658611,
     geoPrecision: "exact",
   },
+  {
+    name: "Flossmoor Public Library — Adult Services",
+    slug: "flossmoor-public-library-adult-services",
+    description:
+      "Flossmoor Public Library runs gentle yoga classes for stretching, meditation, and relaxation open to ages 18+, along with computer classes like Microsoft Excel Fundamentals and AgeOptions-backed senior programming — a broader adult-services companion to the library's own Senior Bagels & Bingo gathering.",
+    category: "library-classes",
+    operatorType: "library",
+    activities: ["yoga", "tech-help"],
+    neighborhood: "Flossmoor",
+    county: "Cook",
+    city: "Flossmoor",
+    citySlug: "flossmoor",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    sourceUrl: "https://www.flossmoorlibrary.org/programs/",
+    lastVerified: new Date("2026-08-25"),
+    address: "1000 Sterling Avenue, Flossmoor, IL 60422",
+    phone: "708-798-3600",
+    lat: 41.5441407,
+    lng: -87.6788239,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
