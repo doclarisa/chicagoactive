@@ -96,7 +96,7 @@ export const CITIES: CityDef[] = [
     slug: "skokie",
     county: "Cook",
     intro:
-      "Skokie Park District's Active Adults hub at Oakton Community Center runs water aerobics, Tai Chi Chih, Mah Jong, and a full slate of day trips, and the public library offers free one-on-one tech help along with Mango Languages access covering more than 60 languages.",
+      "Skokie Park District's Active Adults hub at Oakton Community Center runs water aerobics, Tai Chi Chih, Mah Jong, and a full slate of day trips, and the public library offers free one-on-one tech help along with Mango Languages access covering more than 60 languages. Oakton College's Emeritus Program runs weekly lectures for adults 55+, Mather's — More Than a Café serves a low-cost weekday lunch for 60+, the Village of Skokie runs free senior benefit and Medicare counseling, and Devonshire Cultural Center teaches dance, culinary, and fine arts classes for adults.",
   },
   {
     name: "Evanston",
