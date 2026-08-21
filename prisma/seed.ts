@@ -5188,6 +5188,31 @@ const listings = [
     lng: -87.7374947,
     geoPrecision: "exact",
   },
+  {
+    name: "Skokie Heritage Museum & Historic Log Cabin",
+    slug: "skokie-heritage-museum-skokie",
+    description:
+      "Skokie Heritage Museum & Historic Log Cabin is free to visit, run by the Skokie Park District and the Skokie Historical Society. It's built around a restored 1887 firehouse with a fire-history exhibit and rotating shows, plus a c. 1847 pioneer log cabin you can tour by appointment, next to a community garden. The buildings have ground-level entrances and a chair lift to the firehouse's second floor.",
+    category: "arts-culture",
+    operatorType: "museum",
+    activities: Prisma.DbNull,
+    neighborhood: "Skokie",
+    county: "Cook",
+    city: "Skokie",
+    citySlug: "skokie",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    sourceUrl: "https://www.skokieparks.org/skokie-heritage-museum/",
+    lastVerified: new Date("2026-08-21"),
+    address: "8031 Floral Ave., Skokie, IL 60077",
+    phone: "847-929-8001",
+    hours: "Tue-Thu 12-4pm; log cabin visits by appointment Mon-Fri 9am-4pm",
+    accessibility:
+      "Ground-level entrances on both buildings; button-operated chair lift to the firehouse's second floor; free street and handicap parking",
+    lat: 42.0271882,
+    lng: -87.7557382,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from

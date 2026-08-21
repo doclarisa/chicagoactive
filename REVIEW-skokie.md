@@ -6,7 +6,18 @@ process and architecture as Evanston/Oak Park — `Listing` model, no new
 routes/models. Entries added directly to `prisma/seed.ts` (learned from the
 Evanston drift — seed and production stay in sync from the start).
 
-## New listings added (4 in Skokie + 1 nearby)
+**Addendum (multi-area-wave pass):** added a 5th Skokie-native listing, Skokie
+Heritage Museum & Historic Log Cabin (see below) — found while re-checking
+Skokie against the 8-12 target from a later task doc. Total Skokie-native
+listings now 7 (2 original + 5 from this wave).
+
+## New listings added (5 in Skokie + 1 nearby)
+
+### 0. Skokie Heritage Museum & Historic Log Cabin
+- **sourceUrl:** https://www.skokieparks.org/skokie-heritage-museum/
+- Free admission, run by Skokie Park District/Skokie Historical Society — 1887 firehouse with fire-history exhibit, c. 1847 log cabin by appointment, community garden. Address, hours, and accessibility details all confirmed directly on the official page.
+- **Verify:** nothing flagged.
+- **Taxonomy:** filed under `arts-culture` per your instruction to use that category for museums/galleries (not `museum-senior-days`).
 
 ### 1. Oakton College Emeritus Program
 - **sourceUrl:** https://www.oakton.edu/academics/continuing-education/emeritus-program.php
