@@ -95,7 +95,7 @@ export default async function CityPage({
       <Breadcrumbs
         crumbs={[
           { name: "Home", path: "/" },
-          { name: "Directory", path: "/directory" },
+          { name: "Areas", path: "/areas" },
           { name: city.name, path: `/city/${city.slug}` },
         ]}
       />

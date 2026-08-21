@@ -60,6 +60,19 @@ export default async function Home() {
           <CategoryTiles />
         </div>
       </section>
+
+      <section className="mt-16 text-center">
+        <h2 className="text-2xl font-extrabold tracking-tight text-ink">Browse by area</h2>
+        <p className="mx-auto mt-3 max-w-xl text-lg text-ink-muted">
+          Find things to do city by city, from Evanston to the far suburbs.
+        </p>
+        <Link
+          href="/areas"
+          className="mt-6 inline-flex min-h-12 items-center justify-center rounded-pill border-2 border-flag-blue-ink px-6 text-base font-bold text-flag-blue-ink no-underline hover:bg-flag-blue-tint"
+        >
+          See all areas →
+        </Link>
+      </section>
     </main>
   );
 }
