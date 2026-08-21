@@ -159,7 +159,7 @@ export const CITIES: CityDef[] = [
     slug: "oak-park",
     county: "Cook",
     intro:
-      "The Park District of Oak Park's Lifelong Learning catalog at the Dole Center covers ceramics, stained glass, weaving, and language classes, run in partnership with the independent nonprofit Senior Citizens' Center of Oak Park and River Forest, while Oak Park Township runs a separate weekday dine-in lunch program and monthly Memory Café.",
+      "The Park District of Oak Park's Lifelong Learning catalog at the Dole Center covers ceramics, stained glass, weaving, and language classes, run in partnership with the independent nonprofit Senior Citizens' Center of Oak Park and River Forest, while Oak Park Township runs a separate weekday dine-in lunch program and monthly Memory Café. Oak Park Public Library runs a free weekly Chair Yoga class over Zoom and a dedicated Older Adults program, Oak Park Conservatory is a free greenhouse and garden, Oak Park River Forest Museum covers local history for a low resident admission, and West Cook YMCA's Healthy Aging Program serves members 62 and up with fitness classes and free chronic-disease-prevention programs.",
   },
   {
     name: "Barrington",
