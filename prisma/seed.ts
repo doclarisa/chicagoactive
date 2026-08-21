@@ -6858,6 +6858,29 @@ const listings = [
     lng: -87.843186,
     geoPrecision: "exact",
   },
+  {
+    name: "Hinsdale Public Library — Adult Services",
+    slug: "hinsdale-public-library-adult-services",
+    description:
+      "Hinsdale Public Library runs job-skills training, digital literacy classes, English language learning, book clubs, and cultural events for adults, plus homebound delivery for patrons who can't visit in person.",
+    category: "library-classes",
+    operatorType: "library",
+    activities: ["tech-help", "book-clubs", "languages"],
+    neighborhood: "Hinsdale",
+    county: "DuPage",
+    city: "Hinsdale",
+    citySlug: "hinsdale",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    sourceUrl: "https://www.hinsdalelibrary.info/",
+    lastVerified: new Date("2026-08-26"),
+    address: "20 E Maple Street, Hinsdale, IL 60521",
+    phone: "630-986-1976",
+    qualityNote: "Programming confirmed is general adult programming (job skills, digital literacy, book clubs), not exclusively senior-targeted — the library's own site didn't surface age-specific senior programs beyond homebound delivery on the pages that could be fetched.",
+    lat: 41.8044059,
+    lng: -87.928718,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
