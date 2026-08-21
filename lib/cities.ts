@@ -127,6 +127,41 @@ export const CITIES: CityDef[] = [
       "Oak Lawn Park District runs senior programming alongside the Village's own Oak Lawn Senior Center at the Memorial Activity Center, which offers exercise classes, arts & crafts, and a monthly box lunch. Oak Lawn Public Library rounds it out with Tech Help sessions and AgeOptions-funded Chromebook lending for adults 60 and up.",
   },
   {
+    name: "Tinley Park",
+    slug: "tinley-park",
+    county: "Cook",
+    intro:
+      "The STARS Senior Drop-In Center gives Tinley Park's older adults a dedicated recreation space, and Tinley Park Public Library runs a monthly Memory Café plus a Memory Care Collection for people with dementia and their caregivers. Tinley Park Historical Society opens its Landmark Chapel and Schoolhouse Museums, free, out of an 1884 church building.",
+  },
+  {
+    name: "Palos Heights",
+    slug: "palos-heights",
+    county: "Cook",
+    intro:
+      "Palos Heights Senior & Adult Programs runs the city's recreational offerings for older residents, and Palos Heights Public Library adds a Vinyl Record Listening Club and Museum Adventure Pass access to the mix.",
+  },
+  {
+    name: "Riverside",
+    slug: "riverside",
+    county: "Cook",
+    intro:
+      "Riverside Township Senior Citizens Society runs free exercise classes for older residents, and the free Riverside Historical Museum, run by the Village's Historical Commission, covers Frederick Law Olmsted and Calvert Vaux's 1868 landscape design for the village — a National Historic Landmark.",
+  },
+  {
+    name: "Brookfield",
+    slug: "brookfield",
+    county: "Cook",
+    intro:
+      "Brookfield Zoo Chicago offers senior admission discounts and free days, and the Linda Sokol Francis Brookfield Library runs senior fitness classes, Medicare workshops, and home delivery for residents who can't get to the library in person.",
+  },
+  {
+    name: "Homewood",
+    slug: "homewood",
+    county: "Cook",
+    intro:
+      "Homewood-Flossmoor Park District's Adult & Senior (VIP) Programs anchor the recreation side, and the Village of Homewood's Senior Services connects residents with service and care coordinators for assessments and referrals. Homewood Public Library rounds it out with home delivery, tech classes, and genealogy and mahjong groups.",
+  },
+  {
     name: "Geneva",
     slug: "geneva",
     county: "Kane",
