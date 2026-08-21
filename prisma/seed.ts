@@ -6645,6 +6645,29 @@ const listings = [
     lng: -87.9240613,
     geoPrecision: "exact",
   },
+  {
+    name: "Village of Glencoe — Older Adult Services",
+    slug: "village-of-glencoe-older-adult-services",
+    description:
+      "The Village of Glencoe's Public Safety Older Adult Services program provides wellbeing checks, home safety surveys, and a House Watch program for residents away from home, alongside Family Service of Glencoe's older-adult consultations, a Vibrant Living discussion group, and 'Assistance for Seniors' property-tax and rent grants.",
+    category: "senior-center-events",
+    operatorType: "city-agency",
+    activities: Prisma.DbNull,
+    neighborhood: "Glencoe",
+    county: "Cook",
+    city: "Glencoe",
+    citySlug: "glencoe",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    sourceUrl: "https://www.villageofglencoe.org/government/departments/public_safety/older_adult_services.php",
+    lastVerified: new Date("2026-08-26"),
+    address: "675 Village Court, Glencoe, IL 60022",
+    phone: "847-835-5111",
+    ageEligibility: "Primarily targeted at residents 65+",
+    lat: 42.1338005,
+    lng: -87.7577212,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
