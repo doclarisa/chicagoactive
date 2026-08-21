@@ -6621,6 +6621,30 @@ const listings = [
     lng: -87.8564049,
     geoPrecision: "exact",
   },
+  {
+    name: "Wheeling Park District — Active Adults",
+    slug: "wheeling-park-district-active-adults",
+    description:
+      "Wheeling Park District's Active Adults program offers drop-in games, crafts, and social events for residents 55+, classes, organized day trips around Chicagoland, and a lunch program held in partnership with the Village of Wheeling.",
+    category: "park-district-55-programs",
+    operatorType: "park-district",
+    activities: ["cards-games", "day-trips", "congregate-meals"],
+    neighborhood: "Wheeling",
+    county: "Cook",
+    city: "Wheeling",
+    citySlug: "wheeling",
+    cost: "LOW_COST" as const,
+    days: Prisma.DbNull,
+    sourceUrl: "https://www.wheelingparkdistrict.com/active-adults/",
+    lastVerified: new Date("2026-08-26"),
+    address: "100 Community Boulevard, Wheeling, IL 60090",
+    phone: "847-465-3333",
+    registration: "Verify — see official site for current schedule and costs (site blocked automated verification)",
+    qualityNote: "wheelingparkdistrict.com blocked automated verification (403); sourced from consistent search-result summaries of the district's own Active Adults page, not a direct fetch.",
+    lat: 42.1375843,
+    lng: -87.9240613,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
