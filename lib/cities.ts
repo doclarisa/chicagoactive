@@ -462,6 +462,41 @@ export const CITIES: CityDef[] = [
     intro:
       "Thornton Township's Calumet City Senior Center runs a full slate of senior services, and Calumet Memorial Park District — a separate organization — runs its own Senior Programs and Senior Fitness classes through its registration catalog.",
   },
+  {
+    name: "Naperville",
+    slug: "naperville",
+    county: "DuPage",
+    intro:
+      "Naperville Park District's Active Adults program runs alongside Naperville Public Library's Senior Tech Club (cloud storage to AI) and a full slate of adult book clubs across its three branches.",
+  },
+  {
+    name: "Elmhurst",
+    slug: "elmhurst",
+    county: "DuPage",
+    intro:
+      "Elmhurst Park District's Senior Program runs alongside Elmhurst YMCA's Chair Yoga and senior fitness classes, and Elmhurst Public Library adds Homebound Delivery and a Caregiver's Corner collection.",
+  },
+  {
+    name: "Deerfield",
+    slug: "deerfield",
+    county: "Lake",
+    intro:
+      "Deerfield Park District's Patty Turner Senior Center runs a full activity slate, and West Deerfield Township's Senior Services adds a Hospital Taxi program, daily Senior Call check-ins, and medical transportation for homebound residents.",
+  },
+  {
+    name: "Hinsdale",
+    slug: "hinsdale",
+    county: "DuPage",
+    intro:
+      "The Community House's Active Adults program runs alongside Hinsdale Public Library's job-skills training, digital literacy classes, and book clubs.",
+  },
+  {
+    name: "Lake Forest",
+    slug: "lake-forest",
+    county: "Lake",
+    intro:
+      "Dickinson Hall Senior Center anchors the city's senior programming, and Lake Forest Library adds GetSetUp — a free online learning platform for adults 55+ — plus One-on-One Tech Help and Homebound Delivery.",
+  },
 ];
 
 export function cityBySlug(slug: string): CityDef | undefined {

@@ -6881,6 +6881,29 @@ const listings = [
     lng: -87.928718,
     geoPrecision: "exact",
   },
+  {
+    name: "Lake Forest Library — Services for Older Adults",
+    slug: "lake-forest-library-services-older-adults",
+    description:
+      "Lake Forest Library offers GetSetUp, a free online learning platform for adults 55+ with live and on-demand classes, plus One-on-One Tech Help, Homebound Delivery for patrons who can't visit in person, and adult book discussion groups.",
+    category: "library-classes",
+    operatorType: "library",
+    activities: ["tech-help", "book-clubs", "lifelong-learning"],
+    neighborhood: "Lake Forest",
+    county: "Lake",
+    city: "Lake Forest",
+    citySlug: "lake-forest",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    sourceUrl: "https://www.lakeforestlibrary.org/",
+    lastVerified: new Date("2026-08-26"),
+    address: "360 E Deerpath Rd, Lake Forest, IL 60045",
+    phone: "847-234-0636",
+    hours: "Mon-Thu 9am-9pm, Fri 9am-6pm, Sat 9am-5pm, Sun 1-5pm",
+    lat: 42.2522657,
+    lng: -87.8381274,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
