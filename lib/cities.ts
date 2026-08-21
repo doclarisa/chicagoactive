@@ -33,7 +33,21 @@ export const CITIES: CityDef[] = [
     slug: "park-ridge",
     county: "Cook",
     intro:
-      "Maine Township's MaineStreamers runs yoga, Zumba Gold, bingo nights, and day trips out of the Feldman Center, and the Park District's S.T.A.R. program at the Centennial Activity Center runs Sound Bath relaxation sessions, two levels of Mah Jongg, and tap dance alongside line dancing.",
+      "Maine Township's MaineStreamers runs yoga, Zumba Gold, bingo nights, and day trips out of the Feldman Center, and the Park District's S.T.A.R. program at the Centennial Activity Center runs Sound Bath relaxation sessions, two levels of Mah Jongg, and tap dance alongside line dancing. Park Ridge Public Library runs Doorstep Delivery and a Museum Pass program, and the Park Ridge History Center opens its 1908 Solomon Cottage location on the 2nd and 4th Saturday of the month for local-history exhibits.",
+  },
+  {
+    name: "Niles",
+    slug: "niles",
+    county: "Cook",
+    intro:
+      "Niles Senior Center runs luncheons, exercise and dance classes, computer training, and clubs for adults 55+ out of its Civic Center Drive facility, Niles-Maine District Library offers homebound delivery and Chair Yoga for Adults alongside its Museum Adventure Pass program, and the Niles Historical and Cultural Center is a free stop for local history in the village's former police station.",
+  },
+  {
+    name: "Wilmette",
+    slug: "wilmette",
+    county: "Cook",
+    intro:
+      "Mallinckrodt is Wilmette Park District's community center for adults 50+, with drop-in Humanities Discussion, Canasta, and Mah Jongg groups plus day trips and Sunday concerts in the park. Wilmette Public Library delivers books to homebound patrons and keeps a hearing loop and other assistive technology on hand, Wilmette History Museum is free to visit, and the Wilmette Police Department runs a free daily wellness call-in program for independent seniors.",
   },
   {
     name: "Geneva",
