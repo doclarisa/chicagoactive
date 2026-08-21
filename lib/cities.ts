@@ -92,6 +92,41 @@ export const CITIES: CityDef[] = [
       "Hoffman Estates Park District's 50+ Active Adults Center at the Triphahn Center runs a daily hot lunch, bingo, and craft classes for about $5 a month, and the Palatine Library District's North Hoffman Branch serves the area's north side alongside Schaumburg Township's Disability & Senior Services.",
   },
   {
+    name: "Northbrook",
+    slug: "northbrook",
+    county: "Cook",
+    intro:
+      "North Suburban YMCA's Active Older Adults program runs Chair Yoga, Balance for Walking, and Parkinson's Exercise Plus, and Northbrook Park District's Senior Center rounds out the recreation side. Northbrook Public Library runs a dedicated Senior Services and Outreach program with home delivery and tech help, and Northbrook Historical Society Museum is a free first-Sunday stop for local history.",
+  },
+  {
+    name: "Northfield",
+    slug: "northfield",
+    county: "Cook",
+    intro:
+      "North Shore Senior Center, headquartered in Northfield, is open to everyone with no age or residency requirement — Lifelong Learning classes, fitness, caregiver support, and counseling all run from its campus. The Northfield Branch of the Winnetka-Northfield Public Library District has partnered with NSSC on book clubs and book donations for more than 17 years.",
+  },
+  {
+    name: "Glenview",
+    slug: "glenview",
+    county: "Cook",
+    intro:
+      "The East Wing Glenview Senior Center anchors the Park District's senior programming, and the Village's Senior Services office, working with North Shore Senior Center, runs a free medical equipment loan closet and Medicare guidance. Glenview Public Library delivers materials to homebound residents and lends dementia-care Memory Kits, and The Grove National Historic Landmark is a free 150-acre nature preserve with docent-led weekend tours.",
+  },
+  {
+    name: "River Forest",
+    slug: "river-forest",
+    county: "Cook",
+    intro:
+      "River Forest Public Library runs Coffee Monday, Craft and Chat, and a Celebrating Seniors program, and the Park District's Adult Variety Programs cover Bridge, Improv, and DSLR photography. Trailside Museum of Natural History, run by the Forest Preserves of Cook County, is free to visit with live native animals and nearly 5 miles of trails through Thatcher Woods.",
+  },
+  {
+    name: "Oak Lawn",
+    slug: "oak-lawn",
+    county: "Cook",
+    intro:
+      "Oak Lawn Park District runs senior programming alongside the Village's own Oak Lawn Senior Center at the Memorial Activity Center, which offers exercise classes, arts & crafts, and a monthly box lunch. Oak Lawn Public Library rounds it out with Tech Help sessions and AgeOptions-funded Chromebook lending for adults 60 and up.",
+  },
+  {
     name: "Geneva",
     slug: "geneva",
     county: "Kane",
