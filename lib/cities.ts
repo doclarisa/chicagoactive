@@ -190,6 +190,41 @@ export const CITIES: CityDef[] = [
       "Community Park District's Prime Time Club and Pinochle Club serve residents 55+, and La Grange Park Public Library adds book clubs, free Mango Languages access, and museum passes covering 17 area attractions including Brookfield Zoo and Cantigny.",
   },
   {
+    name: "Hillside",
+    slug: "hillside",
+    county: "Cook",
+    intro:
+      "Proviso Township's Senior Services runs a free Senior Ride Program, congregate meals, and a Handyman Service for Hillside residents, the Memorial Park District Senior Club adds recreation, and Hillside Public Library rounds it out with Friday Chair and Floor Yoga plus a monthly book discussion.",
+  },
+  {
+    name: "La Grange",
+    slug: "la-grange",
+    county: "Cook",
+    intro:
+      "Park District of La Grange runs weekly Pinochle and monthly Senior Socials for residents 55+, La Grange Public Library adds streaming, language, and career resources, and the La Grange Area Historical Society opens the free Vial House Museum out of an 1874 home.",
+  },
+  {
+    name: "Western Springs",
+    slug: "western-springs",
+    county: "Cook",
+    intro:
+      "The Western Springs Senior Center runs mahjong, scrabble, canasta, and Tai Chi for members 55+, Thomas Ford Memorial Library adds Mah Jongg meetups and a Village-partnered Social Worker at the Library, and the free Water Tower Museum covers local history inside the 1892 village water tower.",
+  },
+  {
+    name: "Palos Park",
+    slug: "palos-park",
+    county: "Cook",
+    intro:
+      "The Village's Ages 55 & Better Club meets monthly with a packaged lunch and entertainment, and Palos Historical Society preserves local history by appointment for Palos Township residents.",
+  },
+  {
+    name: "Morton Grove",
+    slug: "morton-grove",
+    county: "Cook",
+    intro:
+      "Morton Grove Senior Center (Family and Senior Services) anchors the village's senior programming, and Morton Grove Public Library adds homebound delivery, Healthy Living programs, and museum passes.",
+  },
+  {
     name: "Geneva",
     slug: "geneva",
     county: "Kane",

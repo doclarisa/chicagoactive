@@ -6574,6 +6574,29 @@ const listings = [
     lng: -87.839935,
     geoPrecision: "exact",
   },
+  {
+    name: "Morton Grove Public Library — Adult Services",
+    slug: "morton-grove-public-library-adult-services",
+    description:
+      "Morton Grove Public Library runs homebound delivery for residents who can't visit in person, plus Healthy Living programs, career resources, museum passes, and adult events like Crafting for Charity and book discussions.",
+    category: "library-classes",
+    operatorType: "library",
+    activities: ["book-clubs"],
+    neighborhood: "Morton Grove",
+    county: "Cook",
+    city: "Morton Grove",
+    citySlug: "morton-grove",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    sourceUrl: "https://www.mgpl.org/",
+    lastVerified: new Date("2026-08-25"),
+    address: "6140 Lincoln Avenue, Morton Grove, IL 60053",
+    phone: "847-965-4220",
+    hours: "Mon-Thu 9am-9pm, Fri 9am-6pm, Sat 9am-5pm, Sun 1-5pm",
+    lat: 42.0356338,
+    lng: -87.7807908,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
