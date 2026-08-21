@@ -5820,6 +5820,29 @@ const listings = [
     lng: -88.1131939,
     geoPrecision: "approximate",
   },
+  {
+    name: "Barrington Preservation Society Museum (Town Museum)",
+    slug: "barrington-preservation-society-town-museum",
+    description:
+      "The Barrington Preservation Society's Town Museum, tucked into the lower level of Barrington Area Library, is free to visit with changing exhibits plus a research library of town records dating back to the 1700s. Regular hours are limited to Wednesday mornings, though the Society will schedule other visits by appointment.",
+    category: "arts-culture",
+    operatorType: "nonprofit",
+    activities: Prisma.DbNull,
+    neighborhood: "Barrington",
+    county: "Cook",
+    city: "Barrington",
+    citySlug: "barrington",
+    cost: "FREE" as const,
+    days: ["Wednesday"],
+    time: "10am-noon",
+    sourceUrl: "https://barringtonpreservation.org/museum/",
+    lastVerified: new Date("2026-08-21"),
+    address: "505 North Northwest Highway, Barrington, IL 60010",
+    registration: "By appointment outside regular Wednesday hours; email info@barringtonpreservation.org",
+    lat: 42.159407,
+    lng: -88.1276033,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
