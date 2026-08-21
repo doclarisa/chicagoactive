@@ -6435,6 +6435,28 @@ const listings = [
     lng: -87.8696921,
     geoPrecision: "exact",
   },
+  {
+    name: "Hillside Public Library — Adult Services",
+    slug: "hillside-public-library-adult-services",
+    description:
+      "Hillside Public Library runs Chair and Floor Yoga every Friday, a monthly Adult Book Discussion group, and the Mixed Stitchers knitting/crochet club, plus computer assistance and job-search database access through AtoZ Databases.",
+    category: "library-classes",
+    operatorType: "library",
+    activities: ["yoga", "book-clubs"],
+    neighborhood: "Hillside",
+    county: "Cook",
+    city: "Hillside",
+    citySlug: "hillside",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    sourceUrl: "https://hillsidelibrary.org/adults/",
+    lastVerified: new Date("2026-08-25"),
+    address: "405 N Hillside Ave, Hillside, IL 60162",
+    phone: "708-449-7510",
+    lat: 41.8770152,
+    lng: -87.908039,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
