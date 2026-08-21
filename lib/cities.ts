@@ -103,7 +103,7 @@ export const CITIES: CityDef[] = [
     slug: "evanston",
     county: "Cook",
     intro:
-      "Evanston's Levy Senior Center runs cultural arts classes and a weekday congregate lunch, the public library hosts a weekly Language Café and free one-on-one Tech Trainer sessions in English or Spanish, and Ridgeville Park District offers a seated-friendly Zoom yoga class for those who'd rather join from home.",
+      "Evanston's Levy Senior Center runs cultural arts classes and a weekday congregate lunch, the public library hosts a weekly Language Café and free one-on-one Tech Trainer sessions in English or Spanish, and Ridgeville Park District offers a seated-friendly Zoom yoga class for those who'd rather join from home. Evanston Art Center teaches adult studio classes across seven departments with financial aid available, the Block Museum of Art at Northwestern is free every day it's open, and McGaw YMCA runs open pickleball on six indoor courts for members.",
   },
   {
     name: "Bolingbrook",
