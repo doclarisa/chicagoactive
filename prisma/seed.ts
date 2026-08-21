@@ -6691,6 +6691,31 @@ const listings = [
     lng: -87.8214123,
     geoPrecision: "exact",
   },
+  {
+    name: "Hanover Township Senior Center",
+    slug: "hanover-township-senior-center",
+    description:
+      "Hanover Township's Senior Center serves Bartlett, Elgin, Hanover Park, Hoffman Estates, Schaumburg, and Streamwood with enrichment programming for residents 55+: arts and crafts, exercise and fitness classes, local day trips, technology classes, cultural and historical presentations, a computer lab, a medical-equipment lending closet, cards, and Bingo.",
+    category: "senior-center-events",
+    operatorType: "city-agency",
+    activities: ["fitness-classes", "day-trips", "computer-classes", "cards-games", "bingo"],
+    neighborhood: "Hanover Park",
+    county: "Cook",
+    city: "Hanover Park",
+    citySlug: "hanover-park",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    hours: "Mon/Wed/Fri 8:30am-4:30pm; Tue/Thu 8:30am-8pm; Sat 8:30am-12:30pm",
+    sourceUrl: "https://www.hanover-township.org/departments/aging-services/life-enrichment",
+    lastVerified: new Date("2026-08-26"),
+    address: "240 S IL Route 59, Bartlett, IL 60103",
+    phone: "630-483-5600",
+    ageEligibility: "55+",
+    qualityNote: "hanover-township.org blocked automated verification (403); sourced from consistent search-result summaries of the township's own Aging Services pages, not a direct fetch. Address is the township's true Senior Center location in Bartlett, listed by the Village of Hanover Park itself as the resource for its residents (hanoverparkillinois.org/1203/Hanover-Township-Older-Adult-Resources).",
+    lat: 41.9668474,
+    lng: -88.2064863,
+    geoPrecision: "approximate",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
