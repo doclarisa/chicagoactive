@@ -6764,6 +6764,30 @@ const listings = [
     lng: -87.5654449,
     geoPrecision: "exact",
   },
+  {
+    name: "Naperville Public Library — Senior Tech Club",
+    slug: "naperville-public-library-senior-tech-club",
+    description:
+      "Naperville Public Library's Senior Tech Club covers topics from cloud storage to AI for older adults, alongside adult book clubs (Criminal Spines mystery/thriller club, Great Decisions foreign-policy discussions, Readers' Rendezvous daytime club) and lecture series across its three branches (Nichols, Naper Blvd., 95th Street).",
+    category: "library-classes",
+    operatorType: "library",
+    activities: ["tech-help", "book-clubs", "lifelong-learning"],
+    neighborhood: "Naperville",
+    county: "DuPage",
+    city: "Naperville",
+    citySlug: "naperville",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    sourceUrl: "https://www.naperville-lib.org/185/Book-Clubs",
+    lastVerified: new Date("2026-08-26"),
+    address: "200 W Jefferson Ave, Naperville, IL 60540",
+    phone: "630-637-6322",
+    hours: "Mon-Fri 9am-9pm, Sat 9am-5pm, Sun 1-9pm (Sept-May) / 1-5pm (Jun-Aug)",
+    qualityNote: "Naperville Senior Center (napervilleseniorcenter.com) was researched and deliberately excluded: it's a paid adult day-care/memory-care program ($155/day), not a free/low-cost drop-in activity center — out of scope for this directory, same call made on Young 60 Plus Club (Matteson) and Cantata Adult Life Services (Brookfield).",
+    lat: 41.7723825,
+    lng: -88.1519209,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
