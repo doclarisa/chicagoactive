@@ -50,6 +50,41 @@ export const CITIES: CityDef[] = [
       "Mallinckrodt is Wilmette Park District's community center for adults 50+, with drop-in Humanities Discussion, Canasta, and Mah Jongg groups plus day trips and Sunday concerts in the park. Wilmette Public Library delivers books to homebound patrons and keeps a hearing loop and other assistive technology on hand, Wilmette History Museum is free to visit, and the Wilmette Police Department runs a free daily wellness call-in program for independent seniors.",
   },
   {
+    name: "Rolling Meadows",
+    slug: "rolling-meadows",
+    county: "Cook",
+    intro:
+      "Rolling Meadows Park District's Adult Activity Center runs day trips, a woodshop, and a hobby room, with a discounted membership rate for members 90+, Rolling Meadows Library offers Technology Help sessions and a Museum Adventure Pass, the city's Aging and Disability Services team provides free case management for older residents, and the Rolling Meadows Historical Museum is a free Sunday-only stop inside a replica 1950s ranch home.",
+  },
+  {
+    name: "Mount Prospect",
+    slug: "mt-prospect",
+    county: "Cook",
+    intro:
+      "Mount Prospect Park District runs a $1 Bingo Bonanza, free senior walking, and a ballet class for older adults, the Village's Human Services Department runs a Senior Hub, free seated exercise classes, and home-safety assessments, Mount Prospect Public Library offers home delivery and museum passes, and the Mount Prospect Historical Society gives free weekly tours of the 1906 Dietrich Friedrichs House.",
+  },
+  {
+    name: "Palatine",
+    slug: "palatine",
+    county: "Cook",
+    intro:
+      "Palatine Township Senior Citizens Council, one of three state-accredited senior centers in Illinois, runs a full slate of recreation, fitness, and social programs for members 50+, Palatine Library District offers Chair Yoga and museum-pass access, and Clayson House Museum gives free tours of an 1890s home furnished with more than 1,000 pieces of Palatine history.",
+  },
+  {
+    name: "Prospect Heights",
+    slug: "prospect-heights",
+    county: "Cook",
+    intro:
+      "Prospect Heights Park District's Active Adults program runs day trips out of its Camp McDonald Road center, and Prospect Heights Public Library runs book clubs and tech classes plus homebound delivery.",
+  },
+  {
+    name: "Hoffman Estates",
+    slug: "hoffman-estates",
+    county: "Cook",
+    intro:
+      "Hoffman Estates Park District's 50+ Active Adults Center at the Triphahn Center runs a daily hot lunch, bingo, and craft classes for about $5 a month, and the Palatine Library District's North Hoffman Branch serves the area's north side alongside Schaumburg Township's Disability & Senior Services.",
+  },
+  {
     name: "Geneva",
     slug: "geneva",
     county: "Kane",
