@@ -5,6 +5,8 @@
 2. Fixed a real bug: Evanston Art Center's and McGaw YMCA's `activities` field had been written as a JSON string instead of a native array, which silently excluded both from their `/activities/[slug]` tag pages (`Array.isArray()` was false). Both now appear correctly on `/activities/art-classes-for-seniors` and `/activities/pickleball-for-seniors`.
 3. Reconciled `prisma/seed.ts` with the live production DB — it was missing 160 of 198 live listings (drift that predates this wave, not something the Evanston work caused). All 198 are now in seed.ts with their real production field values, including the 4 Evanston venues. `scripts/add-evanston-wave.ts` was deleted since its data is now captured in seed.ts. One pre-existing loose end found during reconciliation, not fixed: `chicago-regional-senior-centers` still exists in seed.ts (referenced by `CITY_OVERRIDES`) but has no matching live DB row — unrelated to this wave, flagging for awareness.
 
+**Correction (2026-08-24):** the original Evanston wave created a duplicate — "North Shore Senior Center" already existed in the DB from the original Stage 1 seed (slug `north-shore-senior-center`) under a name I didn't check for before creating a second row (`north-shore-senior-center-northfield`). Found and merged into the original during a later wave; the duplicate slug is deleted. If anything elsewhere references `north-shore-senior-center-northfield`, it's gone — the canonical slug is `north-shore-senior-center`.
+
 Context: Evanston already had a live `/city/evanston` page (Stage 2 Wave 1) with
 3 listings. Rather than building a separate `/areas/evanston` section on a new
 data model (as the original task doc proposed), this wave adds 4 new venues to
