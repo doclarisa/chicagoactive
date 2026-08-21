@@ -6550,6 +6550,30 @@ const listings = [
     lng: -87.9009195,
     geoPrecision: "exact",
   },
+  {
+    name: "Ages 55 & Better Club",
+    slug: "ages-55-better-club-palos-park",
+    description:
+      "The Village of Palos Park's Ages 55 & Better Club meets the second Monday of most months at the Kaptur Administrative Center, with a packaged lunch and entertainment included. January and July are skipped.",
+    category: "senior-center-events",
+    operatorType: "city-agency",
+    activities: Prisma.DbNull,
+    neighborhood: "Palos Park",
+    county: "Cook",
+    city: "Palos Park",
+    citySlug: "palos-park",
+    cost: "FREE" as const,
+    days: ["Monday"],
+    time: "2nd Monday of the month (except Jan/Jul)",
+    sourceUrl: "https://www.palospark.org/469/Ages-55-Better-Club",
+    lastVerified: new Date("2026-08-25"),
+    address: "8999 West 123rd Street, Palos Park, IL 60464",
+    phone: "708-671-3760",
+    registration: "Register online through the Recreation & Parks portal or call 708-671-3760",
+    lat: 41.667048,
+    lng: -87.839935,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
