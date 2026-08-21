@@ -33,9 +33,10 @@ other city.
 - Membership cost itself also isn't published — flagged as `cost: PAID` with no dollar figure.
 
 ### 4. North Shore Senior Center (Northfield, IL — not Evanston)
-- **sourceUrl:** https://www.nssc.org/respite-for-the-caregiver
+- **sourceUrl:** https://www.nssc.org/lifelong-learning-programs/membership/ (updated 2026-08-21 — was previously the narrower caregiver/respite page)
 - This is a Northfield-based nonprofit, ~4.6 miles from Evanston's listing centroid, so it surfaces on `/city/evanston` under "Nearby" rather than as an Evanston-native listing (`citySlug: "northfield"` — honest per the site's no-fabricated-city rule).
-- **Verify:** Their own site confirms Evanston residents are eligible for caregiver/respite services specifically. I did NOT find first-party confirmation that *all* NSSC programs (classes, fitness, lifelong learning) are open to Evanston residents — eligibility is noted as varying by program in the listing copy, and `ageEligibility`/`registration` are marked "Verify — see official site." Worth a call to confirm the general-program eligibility before promoting this copy further.
+- **Resolved:** the original listing hedged on eligibility ("varies by program, Verify — see official site"). Re-checked directly on NSSC's own membership page, which states plainly: "There are no age or residency requirements to become a member. All are welcome!" — $90/year individual, $170/year couple. Description and `ageEligibility`/`registration` fields updated accordingly; no longer needs verification.
+- **Bug fixed:** `activities` had the same string-not-array bug as McGaw/Evanston Art Center below, missed in the first fix pass. Now corrected.
 
 ## Dropped from this wave (not added)
 
