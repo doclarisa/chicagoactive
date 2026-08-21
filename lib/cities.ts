@@ -441,6 +441,27 @@ export const CITIES: CityDef[] = [
     intro:
       "The Norridge Park District runs senior-specific classes and social groups including Bingo, brunches, and Pinochle, and the Seniors Assistance Center (now part of Aging Care Connections) adds home-delivered and dine-in meals plus caregiver support groups and a Memory Café.",
   },
+  {
+    name: "Hanover Park",
+    slug: "hanover-park",
+    county: "Cook",
+    intro:
+      "Hanover Park Park District runs adult and senior art and music lessons, and Hanover Township's Senior Center in nearby Bartlett — the township-wide resource for Hanover Park's older residents — adds fitness classes, day trips, tech classes, cards, and Bingo.",
+  },
+  {
+    name: "Bridgeview",
+    slug: "bridgeview",
+    county: "Cook",
+    intro:
+      "Bridgeview Park District's 55 and Better program runs alongside the Village's own Enjoying the Good Life in Bridgeview, a free 55+ series of recreational events with food, music, and dancing established by Mayor Steve Landek.",
+  },
+  {
+    name: "Calumet City",
+    slug: "calumet-city",
+    county: "Cook",
+    intro:
+      "Thornton Township's Calumet City Senior Center runs a full slate of senior services, and Calumet Memorial Park District — a separate organization — runs its own Senior Programs and Senior Fitness classes through its registration catalog.",
+  },
 ];
 
 export function cityBySlug(slug: string): CityDef | undefined {

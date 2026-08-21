@@ -6740,6 +6740,30 @@ const listings = [
     lng: -87.8052888,
     geoPrecision: "exact",
   },
+  {
+    name: "Calumet Memorial Park District — Senior Programs",
+    slug: "calumet-memorial-park-district-senior-programs",
+    description:
+      "Calumet Memorial Park District (a separate organization from Thornton Township's senior services) runs a Senior Programs track through its registration catalog, including Senior Fitness classes.",
+    category: "park-district-55-programs",
+    operatorType: "park-district",
+    activities: ["fitness-classes"],
+    neighborhood: "Calumet City",
+    county: "Cook",
+    city: "Calumet City",
+    citySlug: "calumet-city",
+    cost: "LOW_COST" as const,
+    days: Prisma.DbNull,
+    sourceUrl: "https://www.mycmpd.com/",
+    lastVerified: new Date("2026-08-26"),
+    address: "600 Oglesby Avenue, Calumet City, IL 60409",
+    phone: "708-868-2530",
+    registration: "Verify — see the district's REC1 registration catalog for current class names, days, and costs",
+    qualityNote: "Specific class names, schedule, and costs could not be confirmed directly — the district's program pages returned only navigation, not content, on every fetch attempt. Existence of a standing 'Senior Programs' / 'Senior Fitness' category is confirmed via the district's own public REC1 registration catalog (secure.rec1.com/IL/calumet-memorial-park-district-il), not assumed. Worth re-verifying against the current program guide before treating specifics as settled.",
+    lat: 41.6182879,
+    lng: -87.5654449,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
