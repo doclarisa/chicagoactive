@@ -162,6 +162,34 @@ export const CITIES: CityDef[] = [
       "Homewood-Flossmoor Park District's Adult & Senior (VIP) Programs anchor the recreation side, and the Village of Homewood's Senior Services connects residents with service and care coordinators for assessments and referrals. Homewood Public Library rounds it out with home delivery, tech classes, and genealogy and mahjong groups.",
   },
   {
+    name: "Flossmoor",
+    slug: "flossmoor",
+    county: "Cook",
+    intro:
+      "Flossmoor Public Library runs Senior Bagels & Bingo alongside gentle yoga and computer classes for adults, and the Homewood-Flossmoor Park District's Adult & Senior (VIP) Programs give Flossmoor residents the same shared recreation access as their Homewood neighbors.",
+  },
+  {
+    name: "Palos Hills",
+    slug: "palos-hills",
+    county: "Cook",
+    intro:
+      "The 39ers Club and Horizons Club at Palos Hills Community Center run bingo-and-lunch gatherings for residents 55+ and 60+, and Green Hills Public Library District adds Doorside Delivery and a Career Online High School program for adults.",
+  },
+  {
+    name: "Evergreen Park",
+    slug: "evergreen-park",
+    county: "Cook",
+    intro:
+      "The Evergreen Park Office of Citizens' Services runs the village's senior center, and Evergreen Park Public Library connects residents 60+ to the 24-hour Friendship Line and free Telephone Topics calls on Medicare fraud prevention and falls prevention.",
+  },
+  {
+    name: "La Grange Park",
+    slug: "la-grange-park",
+    county: "Cook",
+    intro:
+      "Community Park District's Prime Time Club and Pinochle Club serve residents 55+, and La Grange Park Public Library adds book clubs, free Mango Languages access, and museum passes covering 17 area attractions including Brookfield Zoo and Cantigny.",
+  },
+  {
     name: "Geneva",
     slug: "geneva",
     county: "Kane",
