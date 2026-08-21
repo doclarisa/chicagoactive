@@ -6344,6 +6344,29 @@ const listings = [
     lng: -87.8381999,
     geoPrecision: "exact",
   },
+  {
+    name: "Evergreen Park Public Library — Resources for Seniors",
+    slug: "evergreen-park-public-library-resources-for-seniors",
+    description:
+      "Evergreen Park Public Library connects seniors 60+ to the Friendship Line, a 24-hour crisis and support line through the Institute on Aging, and runs free Telephone Topics educational calls covering Medicare fraud prevention, benefits access, and falls prevention.",
+    category: "library-classes",
+    operatorType: "library",
+    activities: Prisma.DbNull,
+    neighborhood: "Evergreen Park",
+    county: "Cook",
+    city: "Evergreen Park",
+    citySlug: "evergreen-park",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    sourceUrl: "https://www.evergreenparklibrary.org/resources-for-seniors",
+    lastVerified: new Date("2026-08-25"),
+    address: "9400 S. Troy Avenue, Evergreen Park, IL 60805",
+    phone: "708-422-8522",
+    hours: "Mon-Thu 9am-9pm, Fri-Sat 9am-5pm; closed Sun",
+    lat: 41.7221639,
+    lng: -87.701,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
