@@ -6835,6 +6835,29 @@ const listings = [
     lng: -87.9444297,
     geoPrecision: "exact",
   },
+  {
+    name: "West Deerfield Township Senior Services",
+    slug: "west-deerfield-township-senior-services",
+    description:
+      "West Deerfield Township's Senior Services runs a Hospital Taxi program with $4.25 coupons for one-way trips to Highland Park Hospital, a daily Senior Call check-in for homebound residents, Going Places medical transportation, and free Affordable Care Act enrollment counseling.",
+    category: "senior-center-events",
+    operatorType: "city-agency",
+    activities: Prisma.DbNull,
+    neighborhood: "Deerfield",
+    county: "Lake",
+    city: "Deerfield",
+    citySlug: "deerfield",
+    cost: "LOW_COST" as const,
+    days: Prisma.DbNull,
+    sourceUrl: "https://westdeerfieldtownship.org/senior-health-services/",
+    lastVerified: new Date("2026-08-26"),
+    address: "601 Deerfield Road, Deerfield, IL 60015",
+    phone: "847-945-0614",
+    registration: "Call the Township office for eligibility and current coupon/program details",
+    lat: 42.1672,
+    lng: -87.843186,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
