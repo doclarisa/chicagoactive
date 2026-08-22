@@ -7231,6 +7231,30 @@ const listings = [
     lng: -88.089727,
     geoPrecision: "exact",
   },
+  {
+    name: "Villa Park Public Library — Adult Services",
+    slug: "villa-park-public-library-adult-services",
+    description:
+      "Villa Park Public Library offers home delivery every other Wednesday for cardholders with long-term or temporary physical limitations, a Community Resources Guide covering case management and home-delivered meal programs, and access to the Illinois Talking Book Outreach Center for patrons unable to read print.",
+    category: "library-classes",
+    operatorType: "library",
+    activities: Prisma.DbNull,
+    neighborhood: "Villa Park",
+    county: "DuPage",
+    city: "Villa Park",
+    citySlug: "villa-park",
+    cost: "FREE" as const,
+    days: ["Wednesday"],
+    time: "Home delivery every other Wednesday",
+    sourceUrl: "https://www.vppl.info/library-services/general-services/",
+    lastVerified: new Date("2026-08-22"),
+    address: "305 S Ardmore Ave, Villa Park, IL 60181",
+    phone: "630-834-1164",
+    hours: "Mon-Thu 9:30am-9pm, Fri-Sat 9:30am-5pm, Sun 1-5pm",
+    lat: 41.8846929,
+    lng: -87.9785202,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
