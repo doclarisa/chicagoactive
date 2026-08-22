@@ -88,3 +88,27 @@ export function touristAttractionSchema(trip: {
     },
   };
 }
+
+// LocalBusiness markup for a gym entry — only verified fields (name,
+// address if we have it, source URL). No fabricated rating or hours.
+export function localBusinessSchema(gym: {
+  name: string;
+  address?: string;
+  sourceUrl: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ExerciseGym",
+    name: gym.name,
+    url: gym.sourceUrl,
+    ...(gym.address
+      ? {
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: gym.address,
+            addressCountry: "US",
+          },
+        }
+      : {}),
+  };
+}

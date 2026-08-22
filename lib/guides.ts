@@ -64,4 +64,17 @@ export const GUIDES: Guide[] = [
     ],
     exitRampPrompt: "Need the right gear for it?",
   },
+  {
+    // Rendered by a dedicated static route (app/guides/medicare-fitness-gyms/page.tsx),
+    // not the generic [slug] template — same pattern as day-trips-from-chicago.
+    // No affiliate offers on this page (gyms rarely have affiliate programs),
+    // so offers is intentionally empty; dek/intro below are unused fallback data.
+    slug: "medicare-fitness-gyms",
+    title: "Chicagoland Gyms That Accept Your Medicare Fitness Benefit",
+    dek: "SilverSneakers, Renew Active, and Silver&Fit — which local gyms actually take them, verified where we could confirm it.",
+    intro:
+      "Millions of older adults have a free gym benefit through their Medicare Advantage plan, but the official program finders don't show the local detail that actually matters — senior classes, a warm pool, which programs a gym takes. This page compiles that.",
+    offers: [],
+    exitRampPrompt: "Have a Medicare Advantage plan with a fitness benefit?",
+  },
 ];
