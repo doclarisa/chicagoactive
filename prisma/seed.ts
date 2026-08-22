@@ -6999,6 +6999,30 @@ const listings = [
     lng: -87.9556155,
     geoPrecision: "exact",
   },
+  {
+    name: "Cook Memorial Public Library — Aspen Drive Library",
+    slug: "cook-memorial-public-library-aspen-drive-library",
+    description:
+      "Aspen Drive Library, Cook Memorial Public Library District's Vernon Hills branch, offers book clubs, one-on-one tech help, ESL classes, and job-skills training, plus an Outreach Department that brings library services to area senior centers and homebound patrons.",
+    category: "library-classes",
+    operatorType: "library",
+    activities: ["tech-help", "book-clubs", "languages"],
+    neighborhood: "Vernon Hills",
+    county: "Lake",
+    city: "Vernon Hills",
+    citySlug: "vernon-hills",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    sourceUrl: "https://www.cooklib.org/about/who-we-are/locations-hours/",
+    lastVerified: new Date("2026-08-26"),
+    address: "701 Aspen Dr, Vernon Hills, IL 60061",
+    phone: "847-362-2330",
+    hours: "Mon-Thu 9am-9pm, Fri 9am-6pm, Sat 9am-5pm, Sun 12-5pm",
+    qualityNote: "A genuinely distinct building/address from Cook Park Library (413 N Milwaukee Ave, Libertyville), added this same wave as that city's own listing — same library district, two separate physical branches serving two different cities, not a duplicate.",
+    lat: 42.2390886,
+    lng: -87.9688307,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from

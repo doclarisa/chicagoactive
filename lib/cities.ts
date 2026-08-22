@@ -497,6 +497,41 @@ export const CITIES: CityDef[] = [
     intro:
       "Dickinson Hall Senior Center anchors the city's senior programming, and Lake Forest Library adds GetSetUp — a free online learning platform for adults 55+ — plus One-on-One Tech Help and Homebound Delivery.",
   },
+  {
+    name: "Aurora",
+    slug: "aurora",
+    county: "Kane",
+    intro:
+      "Fox Valley Park District's Active Adults program at Prisco Community Center runs alongside Aurora Public Library's Huayun Aurora Seniors, a cultural, wellness, and lifelong-learning meetup for adults 55+.",
+  },
+  {
+    name: "St. Charles",
+    slug: "st-charles",
+    county: "Kane",
+    intro:
+      "St. Charles Park District's Adult Activity Center runs a full slate of trips, fitness, and card games, and St. Charles Public Library adds computer classes, book clubs, and a weekly American Mahjong open-play session.",
+  },
+  {
+    name: "Batavia",
+    slug: "batavia",
+    county: "Kane",
+    intro:
+      "Batavia Park District's Senior & Adult Variety Programs run alongside Batavia Public Library's Home Delivery and technology support.",
+  },
+  {
+    name: "Libertyville",
+    slug: "libertyville",
+    county: "Lake",
+    intro:
+      "Libertyville Senior Center anchors the city's senior programming, and Cook Memorial Public Library's downtown Cook Park Library branch adds book clubs, ESL classes, one-on-one tech help, and outreach to area senior centers and homebound patrons.",
+  },
+  {
+    name: "Vernon Hills",
+    slug: "vernon-hills",
+    county: "Lake",
+    intro:
+      "Vernon Hills Park District's Pickleball program runs alongside Cook Memorial Public Library's Aspen Drive branch, which adds book clubs, tech help, ESL classes, and outreach to area senior centers and homebound patrons.",
+  },
 ];
 
 export function cityBySlug(slug: string): CityDef | undefined {
