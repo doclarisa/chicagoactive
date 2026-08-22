@@ -7023,6 +7023,28 @@ const listings = [
     lng: -87.9688307,
     geoPrecision: "exact",
   },
+  {
+    name: "Clarendon Hills Public Library — Adult Programs",
+    slug: "clarendon-hills-public-library-adult-programs",
+    description:
+      "Clarendon Hills Public Library runs American Mahjong instruction, a Google Suite technology class, nature walks, and civic/history talks for adults.",
+    category: "library-classes",
+    operatorType: "library",
+    activities: ["cards-games", "tech-help", "hiking"],
+    neighborhood: "Clarendon Hills",
+    county: "DuPage",
+    city: "Clarendon Hills",
+    citySlug: "clarendon-hills",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    sourceUrl: "https://clarendonhillslibrary.org/adults/programs",
+    lastVerified: new Date("2026-08-22"),
+    address: "7 N Prospect Ave, Clarendon Hills, IL 60514",
+    phone: "630-323-8188",
+    lat: 41.7982623,
+    lng: -87.9544971,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
