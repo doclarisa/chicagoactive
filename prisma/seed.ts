@@ -6975,6 +6975,30 @@ const listings = [
     lng: -88.3112904,
     geoPrecision: "exact",
   },
+  {
+    name: "Cook Memorial Public Library — Cook Park Library",
+    slug: "cook-memorial-public-library-cook-park-library",
+    description:
+      "Cook Memorial Public Library District's downtown Libertyville location (Cook Park Library) runs an active Outreach Department that brings library services to area senior centers and homebound patrons, alongside book clubs, ESL classes, one-on-one tech help, and job-skills training.",
+    category: "library-classes",
+    operatorType: "library",
+    activities: ["tech-help", "book-clubs", "languages"],
+    neighborhood: "Libertyville",
+    county: "Lake",
+    city: "Libertyville",
+    citySlug: "libertyville",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    sourceUrl: "https://www.cooklib.org/",
+    lastVerified: new Date("2026-08-26"),
+    address: "413 N Milwaukee Ave, Libertyville, IL 60048",
+    phone: "847-362-2330",
+    hours: "Mon-Thu 9am-9pm, Fri 9am-6pm, Sat 9am-5pm, Sun 12-5pm",
+    qualityNote: "Cook Memorial Public Library District also runs a separate branch (Aspen Drive Library) physically located in Vernon Hills, added this same wave as that city's own listing — not a duplicate of this one, a genuinely distinct building/address within the same library district.",
+    lat: 42.287209,
+    lng: -87.9556155,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
