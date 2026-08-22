@@ -588,6 +588,27 @@ export const CITIES: CityDef[] = [
     intro:
       "Homer Township Public Library's Adults & Seniors programs run alongside Homer Township Senior Services' Founders Activity Center, which hosts a monthly Bingo game — two separately run organizations that share the Homer Township name.",
   },
+  {
+    name: "Glendale Heights",
+    slug: "glendale-heights",
+    county: "DuPage",
+    intro:
+      "The Linda Jackson Center for Senior Citizens runs Glendale Heights' senior programming, and Glenside Public Library adds a heavy slate of adult programming, including job-skills training, digital literacy, and book clubs.",
+  },
+  {
+    name: "Villa Park",
+    slug: "villa-park",
+    county: "DuPage",
+    intro:
+      "The Villa Park Recreation Center's Adults & Seniors (60+) program runs alongside Villa Park Public Library, which offers home delivery every other Wednesday and access to the Illinois Talking Book Outreach Center.",
+  },
+  {
+    name: "Bloomingdale",
+    slug: "bloomingdale",
+    county: "DuPage",
+    intro:
+      "The Michael A. Miliotti Senior Center (Bloomingdale Township) anchors the village's senior programming, and Bloomingdale Public Library adds job-skills training, digital literacy classes, and book clubs.",
+  },
 ];
 
 export function cityBySlug(slug: string): CityDef | undefined {

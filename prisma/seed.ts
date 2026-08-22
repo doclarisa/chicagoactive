@@ -7255,6 +7255,29 @@ const listings = [
     lng: -87.9785202,
     geoPrecision: "exact",
   },
+  {
+    name: "Bloomingdale Public Library — Adult Services",
+    slug: "bloomingdale-public-library-adult-services",
+    description:
+      "Bloomingdale Public Library runs job-skills training, digital literacy classes, English language learning, book clubs, and cultural events for adults.",
+    category: "library-classes",
+    operatorType: "library",
+    activities: ["tech-help", "book-clubs", "languages"],
+    neighborhood: "Bloomingdale",
+    county: "DuPage",
+    city: "Bloomingdale",
+    citySlug: "bloomingdale",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    sourceUrl: "https://www.mybpl.org/",
+    lastVerified: new Date("2026-08-22"),
+    address: "101 Fairfield Way, Bloomingdale, IL 60108",
+    phone: "630-529-3120",
+    hours: "Mon-Thu 9am-9pm, Fri-Sat 9am-5pm, Sun 1-5pm",
+    lat: 41.9489406,
+    lng: -88.0791914,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
