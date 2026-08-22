@@ -1,8 +1,119 @@
 # Day Trips from Chicago — review checklist
 
-Live page: `/guides/day-trips-from-chicago` (canonical; `/category/day-trips-near-chicago` now 301/308-redirects here)
+## 2026-08-22, v4: hub-and-spoke categorization (final page map)
+
+Pure restructure — no new research, every organizer/sourceUrl/cost/Verify
+flag carried over unchanged from the v3 data. Split the single 80-organizer
+page into a hub plus 5 spokes, per the categorization logic: geographic
+organizers (park districts, townships) sliced **by county**; commercial
+tour companies are not geographic and get their **own single page**.
+
+### Final page map
+
+| Page | URL | Contents |
+|---|---|---|
+| Hub | `/guides/day-trips-from-chicago` | Landing page: intro, 2 choice cards, county-card row (counts), tour-companies card, self-guided section (13, direction-grouped) |
+| Cook County spoke | `/day-trips/cook-county` | 32 organizers (16 Park Districts, 16 Townships & Senior Centers) |
+| DuPage County spoke | `/day-trips/dupage-county` | 16 organizers (12 Park Districts, 4 Townships & Senior Centers) |
+| Lake County spoke | `/day-trips/lake-county` | 14 organizers (7 Park Districts, 7 Townships & Senior Centers) |
+| Other Chicagoland Areas spoke | `/day-trips/other-areas` | 13 organizers (10 Park Districts, 3 Townships & Senior Centers) — Will (5) + Kane (5) + Kendall (1) + McHenry (2) folded together |
+| Commercial tour companies | `/day-trips/tour-companies` | 5 companies (Road Scholar, Jones Travel, Cardinal Buses, Mayflower Tours, Diamond Tours), not county-sliced |
+
+**80 organizers total** (32+16+14+13+5), verified by direct count against
+the data file after adding the `county` field — matches the pre-existing
+total exactly, confirming nothing was lost or duplicated in the split.
+
+### Why Will/Kane/Kendall/McHenry were folded together
+
+Each is under the ~8-organizer threshold on its own (5, 5, 1, 2
+respectively) — a standalone page for any of them would read as
+near-empty. Rather than force each into a different "nearest" county
+(which would scatter them inconsistently and confuse the geography), all
+four were combined into one "Other Chicagoland Areas" spoke, still
+sub-headed by type (Park Districts / Townships & Senior Centers) same as
+the other three spokes, so the page reads coherently rather than as a
+grab-bag.
+
+### County assignment — how it was determined, and confidence level
+
+- **58 of the 75 geographic organizers already existed as DB Listing
+  rows** (from earlier area-research waves) — their county came directly
+  from that row's own `county` field, queried fresh, not guessed or
+  recalled from memory.
+- **The remaining 17** (newly researched in the prior v3 pass, no existing
+  DB listing) had their county assigned from the city already established
+  during that research (e.g., Elmhurst Park District → Elmhurst → DuPage).
+  None were uncertain enough to flag — every one of the 17 has an
+  unambiguous single-county city.
+- **No organizer's county assignment is flagged as uncertain.** The one
+  county with genuine geographic complexity — Aurora, home to Fox Valley
+  Park District, which spans Kane/DuPage/Will/Kendall counties — was
+  assigned to Kane County (Aurora's largest/primary county and where the
+  park district is headquartered), consistent with how the site has
+  already been treating Aurora elsewhere (`lib/cities.ts` files it under
+  Kane).
+
+### Technical notes
+
+- Added `County` type and `county?: County` field to `OrganizedTripProvider`
+  (`lib/organizedTrips.ts`) — populated for all 75 geographic entries via
+  a one-time script (58 from DB lookup) plus 17 manual edits (already-known
+  cities); intentionally `undefined` for the 5 tour-company entries, which
+  aren't geographic.
+- Added `COUNTY_SPOKES` config (4 spokes, each listing which `County`
+  values fold into it) plus `countySpokeSlugForCounty()` and
+  `countySpokeBySlug()` helpers — single source of truth used by the hub's
+  county cards, the spoke page itself, the sitemap, and every `/city` hub's
+  cross-link.
+- New dynamic route `app/day-trips/[spoke]/page.tsx` (4 static params) plus
+  a separate static route `app/day-trips/tour-companies/page.tsx` — two
+  different page shapes because the task explicitly wants the commercial
+  page to read as a different kind of option, not a 5th spoke.
+- Extracted `components/OrganizedTripProviderCard.tsx` from the hub's old
+  inline `ProviderCard` function so all 5 pages that render an organizer
+  card (4 spokes + commercial) share one implementation.
+- `app/city/[citySlug]/page.tsx`'s day-trips cross-link now resolves each
+  city's own `county` field through `countySpokeSlugForCounty()` — a
+  Naperville (DuPage) reader lands on the DuPage spoke, a Grayslake (Lake)
+  reader lands on the Lake spoke, a St. Charles (Kane) or Yorkville
+  (Kendall) reader lands on Other Chicagoland Areas. Verified live for one
+  city in each of the 4 buckets.
+- `app/sitemap.ts` now includes all 5 new URLs (4 spokes + commercial),
+  reusing `COUNTY_SPOKES` so it can't drift out of sync with the actual
+  page set.
+- No orphan pages: every spoke is linked from the hub (county-card row)
+  and from its sibling spokes ("Nearby areas" row); the commercial page is
+  linked from the hub and from every spoke's "Nearby areas" row.
+- No duplicate keyword targeting: confirmed the pre-existing, unrelated
+  `/activities/senior-day-trips/[county]` route (an activity-tag×county
+  cell for filtering the free directory by the "day-trips" activity tag)
+  is a different feature with different intent from the new
+  `/day-trips/[county]` organizer-directory spokes — different URL
+  namespace, no collision, not something this pass touched.
+
+### How to review (~15 min)
+
+1. Visit `/guides/day-trips-from-chicago` — confirm 4 county cards with
+   correct counts (32/16/14/13), a visually separate tour-companies card
+   (5), and the self-guided section still works.
+2. Visit each of the 4 spoke pages — confirm sub-group counts sum to the
+   page total, and "Nearby areas" links to the other 3 + tour companies.
+3. Visit `/day-trips/tour-companies` — confirm all 5 companies render,
+   Road Scholar's affiliate CTA still works, the others link plainly.
+4. Visit a `/city/*` page in each of the 4 county buckets (e.g. Naperville,
+   Grayslake, St. Charles, Yorkville) — confirm each links to the right
+   spoke.
+5. Check `/sitemap.xml` for all 5 new URLs.
+
+---
 
 ## 2026-08-22, v3: consolidate + restructure + deep re-research
+
+Live page (at the time): `/guides/day-trips-from-chicago` was the sole
+canonical page; `/category/day-trips-near-chicago` 301/308-redirects here
+(the redirect is unchanged by v4 above).
+
+Three phases, each committed separately on `day-trips-v3`:
 
 Three phases, each committed separately on `day-trips-v3`:
 
