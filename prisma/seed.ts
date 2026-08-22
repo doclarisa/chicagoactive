@@ -7068,6 +7068,30 @@ const listings = [
     lng: -87.9761697,
     geoPrecision: "exact",
   },
+  {
+    name: "Woodstock Public Library — Community Hub",
+    slug: "woodstock-public-library-community-hub",
+    description:
+      "Woodstock Public Library's Community Hub is a monthly resource fair (2nd Wednesday, 1:30-3:30pm) with drop-in tech assistance for smartphones, laptops, and tablets, plus free blood pressure and BMI screenings from the McHenry County Department of Health.",
+    category: "library-classes",
+    operatorType: "library",
+    activities: ["tech-help"],
+    neighborhood: "Woodstock",
+    county: "McHenry",
+    city: "Woodstock",
+    citySlug: "woodstock",
+    cost: "FREE" as const,
+    days: ["Wednesday"],
+    time: "1:30-3:30pm, 2nd Wednesday of the month",
+    sourceUrl: "https://www.woodstockpubliclibrary.org/676/Services",
+    lastVerified: new Date("2026-08-22"),
+    address: "414 W Judd St, Woodstock, IL 60098",
+    phone: "815-338-4300",
+    qualityNote: "Community Hub schedule/details confirmed via the library's own event-calendar search-result summary; the general Services page fetched directly only listed service names (AARP Tax Assistance, homebound delivery, curbside) without descriptions.",
+    lat: 42.3159369,
+    lng: -88.45226,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from

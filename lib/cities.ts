@@ -532,6 +532,27 @@ export const CITIES: CityDef[] = [
     intro:
       "Vernon Hills Park District's Pickleball program runs alongside Cook Memorial Public Library's Aspen Drive branch, which adds book clubs, tech help, ESL classes, and outreach to area senior centers and homebound patrons.",
   },
+  {
+    name: "Clarendon Hills",
+    slug: "clarendon-hills",
+    county: "DuPage",
+    intro:
+      "Clarendon Hills Park District's 60+ Social Club runs alongside Clarendon Hills Public Library's American Mahjong instruction, Google Suite classes, and nature walks.",
+  },
+  {
+    name: "Westmont",
+    slug: "westmont",
+    county: "DuPage",
+    intro:
+      "Westmont Park District's Senior Programs run alongside Westmont Public Library's monthly homebound delivery and dementia-friendly presentations for people with dementia and their caregivers.",
+  },
+  {
+    name: "Woodstock",
+    slug: "woodstock",
+    county: "McHenry",
+    intro:
+      "SOAR@Dorr (Serving Older Active Residents) runs Woodstock's senior programming, and Woodstock Public Library's monthly Community Hub adds drop-in tech help and free health screenings.",
+  },
 ];
 
 export function cityBySlug(slug: string): CityDef | undefined {
