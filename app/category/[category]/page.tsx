@@ -1,7 +1,10 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { prisma } from "@/lib/db";
 import { CATEGORIES } from "@/lib/categories";
 import { categoryStyle } from "@/lib/categoryStyles";
+import { CATEGORY_GUIDE_MAP } from "@/lib/categoryGuideMap";
+import { GUIDES } from "@/lib/guides";
 import ListingCard from "@/components/ListingCard";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { itemListSchema } from "@/lib/schema";
@@ -42,6 +45,9 @@ export default async function CategoryPage({
   });
 
   const style = categoryStyle(category);
+
+  const guideSlug = CATEGORY_GUIDE_MAP[category];
+  const relatedGuide = guideSlug ? GUIDES.find((g) => g.slug === guideSlug) : undefined;
 
   return (
     <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8 sm:px-6 sm:py-12">
@@ -91,6 +97,20 @@ export default async function CategoryPage({
             </li>
           ))}
         </ul>
+      )}
+
+      {/* Same exit-ramp pattern as the individual listing pages — only
+          shown where a relevant guide actually exists. */}
+      {relatedGuide && (
+        <section className="mt-14 border-t border-flag-blue-tint-2 pt-6" aria-label="Related guide">
+          <Link
+            href={`/guides/${relatedGuide.slug}`}
+            className="block rounded-card bg-flag-blue-tint p-4 no-underline"
+          >
+            <p className="text-base text-ink-muted">{relatedGuide.exitRampPrompt}</p>
+            <p className="mt-1 text-lg font-bold text-flag-blue-ink">{relatedGuide.title} →</p>
+          </Link>
+        </section>
       )}
     </main>
   );
