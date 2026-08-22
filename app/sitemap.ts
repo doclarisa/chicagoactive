@@ -46,7 +46,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  const categoryRoutes: MetadataRoute.Sitemap = CATEGORIES.map((c) => ({
+  // day-trips-near-chicago 301s to the Day Trips guide (next.config.ts) —
+  // don't offer it as a second indexable URL.
+  const categoryRoutes: MetadataRoute.Sitemap = CATEGORIES.filter(
+    (c) => c.slug !== "day-trips-near-chicago",
+  ).map((c) => ({
     url: `${SITE_URL}/category/${c.slug}`,
     changeFrequency: "weekly",
     priority: 0.8,

@@ -7,6 +7,17 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.join(__dirname),
   },
+  async redirects() {
+    return [
+      // Consolidate to one canonical Day Trips page — the old category
+      // index only ever had 2 listings and duplicated the real guide.
+      {
+        source: "/category/day-trips-near-chicago",
+        destination: "/guides/day-trips-from-chicago",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

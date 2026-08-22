@@ -10,7 +10,9 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import { itemListSchema } from "@/lib/schema";
 
 export function generateStaticParams() {
-  return CATEGORIES.map((c) => ({ category: c.slug }));
+  // day-trips-near-chicago is permanently redirected to the Day Trips
+  // guide (next.config.ts) — don't generate dead static output for it.
+  return CATEGORIES.filter((c) => c.slug !== "day-trips-near-chicago").map((c) => ({ category: c.slug }));
 }
 
 export async function generateMetadata({
