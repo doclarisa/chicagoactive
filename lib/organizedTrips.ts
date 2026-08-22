@@ -17,10 +17,14 @@
 // enough volume to justify it. Do not build filter UI against this yet.
 import { AFFILIATES } from "./affiliates";
 
+export type County = "Cook" | "DuPage" | "Lake" | "Will" | "Kane" | "Kendall" | "McHenry";
+
 export type OrganizedTripProvider = {
   slug: string;
   name: string;
   group: "park-district" | "township-senior-center" | "tour-company";
+  // Undefined only for tour-company entries — they aren't geographic.
+  county?: County;
   existingListingSlug?: string;
   sourceUrl: string;
   blurb: string;
@@ -39,6 +43,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bolingbrook-park-district",
     name: "Bolingbrook Park District — Adult Trips",
     group: "park-district",
+    county: "Will",
     existingListingSlug: "bolingbrook-park-district-adult-trips",
     sourceUrl: "https://bolingbrookparks.org/programs/trips/",
     blurb:
@@ -54,6 +59,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "crystal-lake-park-district",
     name: "Crystal Lake Park District — Day Trips",
     group: "park-district",
+    county: "McHenry",
     existingListingSlug: "crystal-lake-park-district-day-trips",
     sourceUrl: "https://www.crystallakeparks.org/active-adults",
     blurb:
@@ -69,6 +75,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "wood-dale-park-district",
     name: "Wood Dale Park District — Adult & Senior Trips",
     group: "park-district",
+    county: "DuPage",
     existingListingSlug: "wood-dale-park-district-senior-programs-trips",
     sourceUrl: "https://www.wdparks.org/programs/adult-senior-trips/",
     blurb: "Day trips plus occasional overnight trips to restaurants, performances, and special events.",
@@ -82,6 +89,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "rolling-meadows-park-district",
     name: "Rolling Meadows Park District — Adult Activity Center",
     group: "park-district",
+    county: "Cook",
     existingListingSlug: "adult-activity-center-rolling-meadows-park-district",
     sourceUrl: "https://rmparks.org/adult-activity-center",
     blurb: "A membership-based senior center whose membership includes discounts on day trips and overnight trips.",
@@ -96,6 +104,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "st-charles-park-district",
     name: "St. Charles Park District — Active Adult Center",
     group: "park-district",
+    county: "Kane",
     existingListingSlug: "st-charles-park-district-active-adult-center",
     sourceUrl: "https://www.stcparks.org/aac/",
     blurb:
@@ -112,6 +121,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "forest-park-howard-mohr",
     name: "Howard Mohr Community Center — Senior Citizens Club (Forest Park)",
     group: "township-senior-center",
+    county: "Cook",
     existingListingSlug: "howard-mohr-community-center-senior-citizens-club",
     sourceUrl: "https://www.forestpark.net/dfp/departments/community-center/",
     blurb: "Weekly day trips scheduled out of the Center, plus dedicated Monday and Thursday shopping trips for residents 55+.",
@@ -126,6 +136,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "maine-township-mainestreamers",
     name: "Maine Township — MaineStreamers",
     group: "township-senior-center",
+    county: "Cook",
     existingListingSlug: "maine-township-mainestreamers",
     sourceUrl: "https://mainetown.com/departments/mainestreamers/",
     blurb: "A social and enrichment group for residents 55+ combining fitness classes, workshops, and organized day trips.",
@@ -139,6 +150,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "orland-township-senior-services",
     name: "Orland Township — Senior Trips",
     group: "township-senior-center",
+    county: "Cook",
     existingListingSlug: "orland-township-senior-services",
     sourceUrl: "https://orlandtownship.org/senior-trips/",
     blurb: "Day and overnight trips via reserved-seat deluxe motor coach, tickets sold first-come-first-served when they go on sale.",
@@ -153,6 +165,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "hanover-township-senior-center",
     name: "Hanover Township — Senior Center",
     group: "township-senior-center",
+    county: "Cook",
     existingListingSlug: "hanover-township-senior-center",
     sourceUrl: "https://www.hanover-township.org/departments/aging-services/life-enrichment",
     blurb: "Enrichment programming that includes local day trips alongside fitness classes, tech classes, and cultural presentations.",
@@ -169,6 +182,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "elmhurst-park-district",
     name: "Elmhurst Park District — Trips",
     group: "park-district",
+    county: "DuPage",
     sourceUrl: "https://www.epd.org/programs/trips",
     blurb: "Motor coach day trips — a past example included a Lake Geneva cruise with a sit-down lunch and shopping time downtown.",
     departure: "Mary E. Kies Recreation Center, 155 E. St. Charles Rd., Elmhurst, unless a trip states otherwise",
@@ -181,6 +195,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "downers-grove-park-district",
     name: "Downers Grove Park District — Scarlett Bloomers",
     group: "park-district",
+    county: "DuPage",
     sourceUrl: "https://www.dgparks.org/lincoln-center-active-adults",
     blurb: "A 55+ social group running monthly themed luncheons, luncheon trips, weekly game clubs, and occasional overnight parties.",
     departure: "Lincoln Center — meetings held the 3rd Monday of each month, 1-3pm",
@@ -193,6 +208,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "wheaton-park-district",
     name: "Wheaton Park District — Day Trips",
     group: "park-district",
+    county: "DuPage",
     sourceUrl: "https://wheatonparkdistrict.com/day-trips/",
     blurb: "Motor-coach day trips where \"the district does all the planning\" — the coach picks riders up and nothing else is required of participants.",
     departure: "Mary Lubko Center, in downtown Wheaton's Memorial Park",
@@ -205,6 +221,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "schaumburg-park-district",
     name: "Schaumburg Park District — Senior Trips",
     group: "park-district",
+    county: "Cook",
     sourceUrl: "https://www.parkfun.com/programs-events/seniors",
     blurb: "Day excursions to destinations like Wrigley Field, casinos, and theater shows — a genuinely distinct organization from Schaumburg Township's senior services.",
     cost: "Varies — see current schedule",
@@ -217,6 +234,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "elk-grove-park-district",
     name: "Elk Grove Park District — Trips and Outings",
     group: "park-district",
+    county: "Cook",
     sourceUrl: "https://elkgroveparks.org/trips",
     blurb: "Outings open to adults 18+ (21+ for gambling trips); Senior Center members get the resident rate on all trips.",
     departure: "South Pavilion Parking Lot, 1000 Wellington Ave., Elk Grove Village",
@@ -229,6 +247,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "park-district-of-oak-park",
     name: "Park District of Oak Park — Lifelong Learning",
     group: "park-district",
+    county: "Cook",
     sourceUrl: "https://pdop.org/programs/lifelong-learning/",
     blurb: "Trips and educational programming for adults 50+, run in partnership with the Senior Citizens' Center of Oak Park and River Forest.",
     cost: "Varies — see current schedule",
@@ -240,6 +259,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "oak-lawn-park-district",
     name: "Oak Lawn Park District — Trips",
     group: "park-district",
+    county: "Cook",
     sourceUrl: "https://www.olparks.com/programs/trips",
     blurb: "Senior day trips including guided hikes (Starved Rock), factory/museum tours, and city excursions to Museum Campus.",
     cost: "Varies — see current schedule",
@@ -251,6 +271,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "homewood-flossmoor-park-district",
     name: "Homewood-Flossmoor Park District — Adult & Senior Programs",
     group: "park-district",
+    county: "Cook",
     sourceUrl: "https://hfparks.com/vipprograms/",
     blurb: "Adult and senior programming out of the Irwin Community Center, serving Homewood and Flossmoor.",
     departure: "Irwin Community Center, 18120 S. Highland Ave., Homewood",
@@ -264,6 +285,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "glen-ellyn-park-district",
     name: "Glen Ellyn Park District — Trips",
     group: "park-district",
+    county: "DuPage",
     sourceUrl: "https://gepark.org/adults-seniors/",
     blurb: "Trips throughout the year including city breaks and casino visits, serving Glen Ellyn, Wheaton, Carol Stream, Lombard, and Glendale Heights residents.",
     cost: "Varies — see current schedule; registration is first-come, first-served",
@@ -275,6 +297,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "lombard-park-district",
     name: "Lombard Park District — Active Adults",
     group: "park-district",
+    county: "DuPage",
     sourceUrl: "https://lombardparks.com/activeadults/",
     blurb: "Day trips and several week-long trips alongside senior clubs, fitness classes, and educational workshops.",
     cost: "Varies — see current schedule",
@@ -286,6 +309,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "joliet-park-district",
     name: "Joliet Park District — Office of Citizens Services",
     group: "park-district",
+    county: "Will",
     sourceUrl: "https://jolietpark.org/trips",
     blurb: "Full-day guided tours (a past example: Indiana Amish Country) plus shorter local outings, run through the Office of Citizens Services.",
     departure: "Departs from the Community Center for local trips",
@@ -298,6 +322,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "plainfield-park-district",
     name: "Plainfield Park District — Active Adults",
     group: "park-district",
+    county: "Will",
     sourceUrl: "https://www.plfdparks.org/programs-events/active-adults/",
     blurb: "Day trips to regional attractions plus seasonal lunch events, fitness/yoga classes, and games; sometimes co-sponsored with neighboring park districts.",
     cost: "Varies — see current schedule",
@@ -309,6 +334,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "fox-valley-park-district",
     name: "Fox Valley Park District (Aurora) — Tours, Visits & Shows",
     group: "park-district",
+    county: "Kane",
     sourceUrl: "https://www.foxvalleyparkdistrict.org/programs-events/tours-visits-shows/",
     blurb: "Trips in a 25-passenger bus with an onboard restroom, to lake/river cruises, casinos, theatre, sporting events, gardens, festivals, wineries, and shopping.",
     cost: "Varies — described as convenient and affordable, exact pricing not published generally",
@@ -320,6 +346,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "batavia-park-district",
     name: "Batavia Park District — Trips",
     group: "park-district",
+    county: "Kane",
     sourceUrl: "https://bataviaparks.org/program/trips/",
     blurb: "Rotating seasonal trips (culinary, history, sightseeing, theater, and more) rated by walking difficulty from Easy to Challenging, often run in cooperation with neighboring park districts.",
     departure: "Eastside Community Center parking lot; arrive at least 15 minutes before departure",
@@ -332,6 +359,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "waukegan-park-district",
     name: "Waukegan Park District — Trips",
     group: "park-district",
+    county: "Lake",
     sourceUrl: "https://www.waukeganparks.org/",
     blurb: "Trips are part of the district's broader year-round programming for all ages, alongside athletics, fitness, and special events.",
     cost: "Varies — see current schedule",
@@ -346,6 +374,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "tinley-park-senior-center",
     name: "Tinley Park Senior Center",
     group: "township-senior-center",
+    county: "Cook",
     sourceUrl: "https://www.tinleypark.org/residents/senior_information.php",
     blurb: "Bus excursions by deluxe motor coach (past example: a Four Winds Casino trip, $60/person including a slot and food credit); details run in the monthly newsletter.",
     departure: "Tinley Park Senior Center, 17355 S. 68th Court, Tinley Park",
@@ -358,6 +387,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "waukegan-township-patricia-jones-center",
     name: "Waukegan Township — Patricia A. Jones Center",
     group: "township-senior-center",
+    county: "Lake",
     sourceUrl: "https://www.waukegantownship.com/165/Patricia-A-Jones-Center",
     blurb: "Trips and events for adults 55+ alongside health, fitness, and transportation services; open to any adult, with children welcome on some excursions.",
     cost: "Varies — see current schedule",
@@ -452,6 +482,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-highland-park-senior-center-city-of-highland-park-division-of-senior-services",
     name: "Highland Park Senior Center (City of Highland Park Division of Senior Services)",
     group: "township-senior-center",
+    county: "Lake",
     existingListingSlug: "highland-park-senior-center-city-division-senior-services",
     sourceUrl: "https://www.cityhpil.com/resident/senior_center/index.php",
     blurb:
@@ -466,6 +497,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-crystal-lake-park-district-grand-oaks-active-senior-center",
     name: "Crystal Lake Park District Grand Oaks Active Senior Center",
     group: "park-district",
+    county: "McHenry",
     existingListingSlug: "crystal-lake-grand-oaks-active-senior-center",
     sourceUrl: "https://www.crystallakeparks.org/active-adults",
     blurb:
@@ -479,6 +511,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-oswego-senior-community-center",
     name: "Oswego Senior & Community Center",
     group: "township-senior-center",
+    county: "Kendall",
     existingListingSlug: "oswego-senior-community-center",
     sourceUrl: "https://oswegoseniorcenter.org/",
     blurb:
@@ -492,6 +525,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-calumet-township-senior-service-center",
     name: "Calumet Township Senior Service Center",
     group: "township-senior-center",
+    county: "Cook",
     existingListingSlug: "calumet-township-senior-service-center",
     sourceUrl: "https://calumettownshipil.com/services/",
     blurb:
@@ -505,6 +539,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-itasca-senior-club",
     name: "Itasca Senior Club",
     group: "township-senior-center",
+    county: "DuPage",
     existingListingSlug: "itasca-senior-club",
     sourceUrl: "https://www.itascaparkdistrict.com/236/Adults-Senior-Happenings",
     blurb:
@@ -518,6 +553,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-naperville-park-district-active-adults",
     name: "Naperville Park District Active Adults",
     group: "park-district",
+    county: "DuPage",
     existingListingSlug: "naperville-park-district-active-adults",
     sourceUrl: "https://napervilleparks.org/activeadults",
     blurb:
@@ -531,6 +567,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-park-district-of-la-grange-senior-programs",
     name: "Park District of La Grange — Senior Programs",
     group: "park-district",
+    county: "Cook",
     existingListingSlug: "park-district-of-la-grange-senior-programs",
     sourceUrl: "https://pdlg.org/our-programs/senior-programs",
     blurb:
@@ -545,6 +582,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-active-adult-activities-age-55-park-ridge-park-district",
     name: "Active Adult Activities (Age 55+) — Park Ridge Park District",
     group: "park-district",
+    county: "Cook",
     existingListingSlug: "active-adult-activities-age-55-plus-park-ridge-park-district",
     sourceUrl: "https://www.prparks.org/Activities/General-Interest/Active-Adult-Activities-Age-55-",
     blurb:
@@ -559,6 +597,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-addison-park-district-active-adults-senior-club",
     name: "Addison Park District Active Adults & Senior Club",
     group: "park-district",
+    county: "DuPage",
     existingListingSlug: "addison-park-district-active-adults-senior-club",
     sourceUrl: "https://addisonparks.org/active-adults-club/",
     blurb:
@@ -573,6 +612,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-clarendon-hills-park-district-60-social-club",
     name: "Clarendon Hills Park District 60+ Social Club",
     group: "park-district",
+    county: "DuPage",
     existingListingSlug: "clarendon-hills-park-district-60-plus-social-club",
     sourceUrl: "https://www.clarendonhillsparkdistrict.org/60-plus-social-club/",
     blurb:
@@ -586,6 +626,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-leyden-township-senior-services",
     name: "Leyden Township Senior Services",
     group: "township-senior-center",
+    county: "Cook",
     existingListingSlug: "leyden-township-senior-services",
     sourceUrl: "https://www.leydentownship.com/223/Senior-Services",
     blurb:
@@ -599,6 +640,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-wheeling-park-district-active-adults",
     name: "Wheeling Park District — Active Adults",
     group: "park-district",
+    county: "Cook",
     existingListingSlug: "wheeling-park-district-active-adults",
     sourceUrl: "https://www.wheelingparkdistrict.com/active-adults/",
     blurb:
@@ -613,6 +655,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-active-adults-prospect-heights-park-district",
     name: "Active Adults — Prospect Heights Park District",
     group: "park-district",
+    county: "Cook",
     existingListingSlug: "active-adults-prospect-heights-park-district",
     sourceUrl: "https://phparks.org/active-adults/",
     blurb:
@@ -626,6 +669,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-olympia-fields-park-district-senior-programs",
     name: "Olympia Fields Park District Senior Programs",
     group: "park-district",
+    county: "Cook",
     existingListingSlug: "olympia-fields-park-district-senior-programs",
     sourceUrl: "https://www.ofparks.org/mahjongg-scrabble",
     blurb:
@@ -640,6 +684,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-arlington-heights-park-district-active-adult-program",
     name: "Arlington Heights Park District Active Adult Program",
     group: "park-district",
+    county: "Cook",
     existingListingSlug: "arlington-heights-park-district-active-adults",
     sourceUrl: "https://www.ahpd.org/programs/seniors/",
     blurb:
@@ -653,6 +698,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-levy-senior-center",
     name: "Levy Senior Center",
     group: "township-senior-center",
+    county: "Cook",
     existingListingSlug: "levy-senior-center-evanston",
     sourceUrl: "https://www.cityofevanston.org/departments/prcs/facilities/levy_senior_center/programs_info.php",
     blurb:
@@ -667,6 +713,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-round-lake-area-park-district-senior-activities-50",
     name: "Round Lake Area Park District Senior Activities (50+)",
     group: "park-district",
+    county: "Lake",
     existingListingSlug: "round-lake-area-park-district-senior-activities-50-plus",
     sourceUrl: "https://www.rlapd.org/senior-center",
     blurb:
@@ -681,6 +728,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-mundelein-park-recreation-district-active-adults",
     name: "Mundelein Park & Recreation District Active Adults",
     group: "park-district",
+    county: "Lake",
     existingListingSlug: "mundelein-park-district-active-adults",
     sourceUrl: "https://www.mundeleinparks.org/programs/active-adults/",
     blurb:
@@ -694,6 +742,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-prime-time-club-pinochle-club-55-community-park-district",
     name: "Prime Time Club & Pinochle Club 55+ (Community Park District)",
     group: "park-district",
+    county: "Cook",
     existingListingSlug: "prime-time-club-pinochle-club-55-plus-community-park-district",
     sourceUrl: "https://www.communityparkdistrict.org/programs/adults/senior-programming",
     blurb:
@@ -708,6 +757,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-veterans-park-district-active-adults-seniors",
     name: "Veterans Park District Active Adults & Seniors",
     group: "park-district",
+    county: "Cook",
     existingListingSlug: "veterans-park-district-active-adults-seniors",
     sourceUrl: "https://vpdpark.org/active-adults/",
     blurb:
@@ -721,6 +771,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-antioch-township-senior-services-antioch-senior-center",
     name: "Antioch Township Senior Services (Antioch Senior Center)",
     group: "township-senior-center",
+    county: "Lake",
     existingListingSlug: "antioch-township-senior-services-antioch-senior-center",
     sourceUrl: "https://www.antiochtownshipil.gov/senior_services/index.php",
     blurb:
@@ -735,6 +786,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-dickinson-hall-senior-center",
     name: "Dickinson Hall Senior Center",
     group: "township-senior-center",
+    county: "Lake",
     existingListingSlug: "dickinson-hall-senior-center",
     sourceUrl: "https://www.cityoflakeforest.com/departments/dickinson_hall/programs.php",
     blurb:
@@ -749,6 +801,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-north-shore-senior-center",
     name: "North Shore Senior Center",
     group: "township-senior-center",
+    county: "Cook",
     existingListingSlug: "north-shore-senior-center",
     sourceUrl: "https://www.nssc.org/lifelong-learning-programs/membership/",
     blurb:
@@ -763,6 +816,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-skokie-park-district-active-adults",
     name: "Skokie Park District Active Adults",
     group: "park-district",
+    county: "Cook",
     existingListingSlug: "skokie-park-district-active-adults",
     sourceUrl: "https://www.skokieparks.org/active-adults/",
     blurb:
@@ -776,6 +830,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-ela-50-adult-senior-programs",
     name: "Ela 50+ Adult & Senior Programs",
     group: "township-senior-center",
+    county: "Lake",
     existingListingSlug: "ela-50-plus-adult-senior-programs",
     sourceUrl: "https://elatownship.gov/departments/seniors/",
     blurb:
@@ -789,6 +844,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-westmont-park-district-senior-programs",
     name: "Westmont Park District Senior Programs",
     group: "park-district",
+    county: "DuPage",
     existingListingSlug: "westmont-park-district-senior-programs",
     sourceUrl: "https://www.westmontparks.org/programs/senior-programs/",
     blurb:
@@ -803,6 +859,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-patty-turner-senior-center",
     name: "Patty Turner Senior Center",
     group: "township-senior-center",
+    county: "Lake",
     existingListingSlug: "patty-turner-senior-center",
     sourceUrl: "https://www.deerfieldparks.org/202/Patty-Turner-Center",
     blurb:
@@ -817,6 +874,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-active-adults-55-hampshire-township-park-district",
     name: "Active Adults 55+ — Hampshire Township Park District",
     group: "park-district",
+    county: "Kane",
     existingListingSlug: "active-adults-55-hampshire-township-park-district",
     sourceUrl: "https://www.hampshireparkdistrict.org/programs-and-events/active-adults-55/",
     blurb:
@@ -830,6 +888,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-zion-park-district-55-programs",
     name: "Zion Park District 55+ Programs",
     group: "park-district",
+    county: "Lake",
     existingListingSlug: "zion-park-district-55-plus-programs",
     sourceUrl: "https://zionparkdistrict.com/wp-content/uploads/2026/04/Summer26SeniorPages.pdf",
     blurb:
@@ -843,6 +902,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-niles-senior-center",
     name: "Niles Senior Center",
     group: "township-senior-center",
+    county: "Cook",
     existingListingSlug: "niles-senior-center",
     sourceUrl: "https://www.vniles.com/197/Senior-Services",
     blurb:
@@ -856,6 +916,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-oak-brook-park-district-pioneer-programs-60",
     name: "Oak Brook Park District Pioneer Programs (60+)",
     group: "park-district",
+    county: "DuPage",
     existingListingSlug: "oak-brook-park-district-pioneer-programs-60-plus",
     sourceUrl: "https://www.obparks.org/programs/recreation/pioneer-programs-age-60",
     blurb:
@@ -869,6 +930,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-west-chicago-park-district-adult-senior-programs-50",
     name: "West Chicago Park District Adult & Senior Programs (50+)",
     group: "park-district",
+    county: "DuPage",
     existingListingSlug: "west-chicago-park-district-adult-senior-programs-50-plus",
     sourceUrl: "https://www.we-goparks.org/adult-programs",
     blurb:
@@ -882,6 +944,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-palos-heights-senior-adult-programs",
     name: "Palos Heights Senior & Adult Programs",
     group: "township-senior-center",
+    county: "Cook",
     existingListingSlug: "palos-heights-senior-adult-programs",
     sourceUrl: "https://palosheights.org/277/Adult-Programs",
     blurb:
@@ -895,6 +958,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-troy-township-senior-program",
     name: "Troy Township Senior Program",
     group: "township-senior-center",
+    county: "Will",
     existingListingSlug: "troy-township-senior-program",
     sourceUrl: "https://troytownship.com/senior-activities/",
     blurb:
@@ -908,6 +972,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-grayslake-senior-activity-center",
     name: "Grayslake Senior Activity Center",
     group: "township-senior-center",
+    county: "Lake",
     existingListingSlug: "grayslake-senior-activity-center",
     sourceUrl: "https://www.villageofgrayslake.com/859/Senior-Activity-Center",
     blurb:
@@ -922,6 +987,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-western-springs-senior-center",
     name: "Western Springs Senior Center",
     group: "township-senior-center",
+    county: "Cook",
     existingListingSlug: "western-springs-senior-center",
     sourceUrl: "https://www.wsprings.com/682/Senior-Center",
     blurb:
@@ -935,6 +1001,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-grayslake-park-district-active-adults",
     name: "Grayslake Park District Active Adults",
     group: "park-district",
+    county: "Lake",
     existingListingSlug: "grayslake-park-district-active-adults",
     sourceUrl: "https://www.glpd.com/active-adults/",
     blurb:
@@ -949,6 +1016,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-social-seniors-program-worth-park-district",
     name: "Social Seniors Program — Worth Park District",
     group: "park-district",
+    county: "Cook",
     existingListingSlug: "social-seniors-program-worth-park-district",
     sourceUrl: "https://www.worthparkdistrict.org/adults",
     blurb:
@@ -963,6 +1031,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-the-east-wing-glenview-senior-center",
     name: "The East Wing Glenview Senior Center",
     group: "township-senior-center",
+    county: "Cook",
     existingListingSlug: "east-wing-glenview-senior-center",
     sourceUrl: "https://glenviewparks.org/facilities/the-east-wing-glenview-senior-center/",
     blurb:
@@ -977,6 +1046,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-mallinckrodt-community-center",
     name: "Mallinckrodt Community Center",
     group: "township-senior-center",
+    county: "Cook",
     existingListingSlug: "mallinckrodt-community-center",
     sourceUrl: "https://wilmettepark.org/mallinckrodt-center/mallinckrodt-membership/",
     blurb:
@@ -991,6 +1061,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-the-levy-senior-center-dupage-township",
     name: "The Levy Senior Center (DuPage Township)",
     group: "township-senior-center",
+    county: "Will",
     existingListingSlug: "levy-senior-center-dupage-township",
     sourceUrl: "https://dupagetownship.com/seniors/",
     blurb:
@@ -1004,6 +1075,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-highland-park-park-district-55-monthly-meetings",
     name: "Highland Park Park District 55+ Monthly Meetings",
     group: "park-district",
+    county: "Lake",
     existingListingSlug: "highland-park-park-district-55-plus-monthly-meetings",
     sourceUrl: "https://highlandparks.org/programs/",
     blurb:
@@ -1017,6 +1089,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-linda-jackson-center-for-senior-citizens-glendale-heights",
     name: "Linda Jackson Center for Senior Citizens (Glendale Heights)",
     group: "township-senior-center",
+    county: "DuPage",
     existingListingSlug: "linda-jackson-center-for-senior-citizens-glendale-heights",
     sourceUrl: "https://www.glendaleheights.org/170/Linda-Jackson-Center-for-Senior-Citizens",
     blurb:
@@ -1030,6 +1103,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-rakow-center-adult-activity-center-dundee-township-park-district",
     name: "Rakow Center Adult Activity Center — Dundee Township Park District",
     group: "park-district",
+    county: "Kane",
     existingListingSlug: "rakow-center-adult-activity-center-dundee-township-park-district",
     sourceUrl: "https://www.dtpd.org/adult-50-programs",
     blurb:
@@ -1043,6 +1117,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-the-community-house-active-adults-hinsdale",
     name: "The Community House Active Adults (Hinsdale)",
     group: "township-senior-center",
+    county: "DuPage",
     existingListingSlug: "the-community-house-active-adults-hinsdale",
     sourceUrl: "https://thecommunityhouse.org/programs/",
     blurb:
@@ -1056,6 +1131,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-wayne-township-senior-center",
     name: "Wayne Township Senior Center",
     group: "township-senior-center",
+    county: "DuPage",
     existingListingSlug: "wayne-township-senior-center",
     sourceUrl: "https://www.waynetwp-il.org/seniors/",
     blurb:
@@ -1069,6 +1145,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-franklin-park-senior-lunch-program",
     name: "Franklin Park Senior Lunch Program",
     group: "township-senior-center",
+    county: "Cook",
     existingListingSlug: "franklin-park-senior-lunch-program",
     sourceUrl: "https://www.villageoffranklinpark.com/departments/health/lunch_for_seniors/",
     blurb:
@@ -1082,6 +1159,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-wauconda-park-district-active-seniors-55",
     name: "Wauconda Park District Active Seniors (55+)",
     group: "park-district",
+    county: "Lake",
     existingListingSlug: "wauconda-park-district-active-seniors-55-plus",
     sourceUrl: "https://www.waucondaparks.com/programs/active-adults/",
     blurb:
@@ -1096,6 +1174,7 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     slug: "bulk-schaumburg-township-disability-senior-services",
     name: "Schaumburg Township Disability & Senior Services",
     group: "township-senior-center",
+    county: "Cook",
     existingListingSlug: "schaumburg-township-disability-senior-services",
     sourceUrl: "https://schaumburgtownship.org/services/disability-senior-services/",
     blurb:
