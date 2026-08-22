@@ -1,8 +1,167 @@
 # Day Trips from Chicago — review checklist
 
-Live page: `/guides/day-trips-from-chicago`
+Live page: `/guides/day-trips-from-chicago` (canonical; `/category/day-trips-near-chicago` now 301/308-redirects here)
 
-## 2026-08-22, full rebuild: organized group trips now lead
+## 2026-08-22, v3: consolidate + restructure + deep re-research
+
+Three phases, each committed separately on `day-trips-v3`:
+
+### Phase A — Consolidated to one canonical page
+
+`/category/day-trips-near-chicago` (only ever had 2 listings) now permanently
+redirects (`next.config.ts`, 308) to `/guides/day-trips-from-chicago`. Removed
+from `generateStaticParams` in `app/category/[category]/page.tsx` and from
+`app/sitemap.ts` so it's never offered as a second indexable URL. Main-nav
+"Day Trips" already pointed to the guide from an earlier pass. Verified live:
+redirect returns `308 Permanent Redirect` with the correct `Location` header.
+
+### Phase B — Restructured for clarity
+
+Added two prominent choice cards immediately after the intro (🚌 "Let someone
+else drive" / 🚗 "Drive yourself"), each anchor-linking down to its section
+(`#organized`, `#self-guided`) instead of presenting a wall of text first.
+Every group heading ("Park District senior trips (45)") and region heading
+now computes its count live from `.length` on the data array — verified in
+rendered output, not hardcoded.
+
+### Phase C — Deep re-research: 9 → 80 organizers
+
+Systematic sweep of Cook, DuPage, Lake, Will, McHenry, and Kane counties.
+
+**Final counts:**
+| Group | Count |
+|---|---|
+| Park District senior trips | 45 |
+| Township & senior center trips | 30 |
+| Guided tour companies | 5 |
+| **Total organizers** | **80** |
+| Self-guided destinations (unchanged) | 13 |
+
+This exceeds the brief's "roughly 40-70" target. Rather than trim verified,
+real entries to land inside that range, all 80 were kept — every one traces
+to an official source or an already-verified DB Listing (see dedup below),
+so the overage reflects genuine coverage, not padding. No organizer was
+included on a passing mention alone; the DB-sourced bulk entries were only
+pulled from listings where `activities` explicitly includes `"day-trips"` or
+category is `day-trips-near-chicago`, tags applied during area-research waves
+specifically because trip programming was confirmed at the time.
+
+**Where research came from:**
+- **9 richly-detailed originals** (kept from the prior pass): Bolingbrook,
+  Crystal Lake, Wood Dale, Rolling Meadows, St. Charles Park Districts;
+  Forest Park (Howard Mohr), Maine Township, Orland Township, Hanover
+  Township.
+- **17 newly-researched this pass**, each with fresh WebSearch/WebFetch
+  verification and full enrichment: Elmhurst, Downers Grove, Wheaton,
+  Schaumburg, Elk Grove, Park District of Oak Park, Oak Lawn,
+  Homewood-Flossmoor, Glen Ellyn, Lombard Park Districts; Joliet, Plainfield
+  Park Districts; Fox Valley Park District (Aurora), Batavia Park District;
+  Waukegan Park District, Waukegan Township (Patricia A. Jones Center);
+  Tinley Park Senior Center.
+- **49 bulk-imported from the DB**, generated directly from already-verified
+  `Listing` rows built up across this session's 15 earlier area-research
+  waves (name, sourceUrl, phone, residency requirement all trace to that
+  row). This is the majority of the growth — see "Dedup" below.
+- **5 tour companies** (up from 3): Road Scholar, Jones Travel, Cardinal
+  Buses (unchanged from prior pass) plus **Mayflower Tours** and **Diamond
+  Tours** (new, both hedged — see Verify flags).
+
+**Counties where coverage is genuinely thin** (confirmed after actively
+searching, not just where research stopped early):
+- **Kendall County: 1 organizer** (Oswego Senior & Community Center). Fresh
+  searches for Yorkville- and Oswego-area park district trip programs didn't
+  turn up additional confirmed programs beyond what was already in the DB.
+- **McHenry County: 2 organizers** (both Crystal Lake Park District
+  listings). Searches for Woodstock (SOAR@Dorr — already in the DB, not
+  duplicated), Cary, Algonquin, and Huntley didn't surface additional
+  confirmed trip-specific programs.
+- **Will and Kane Counties: 5 organizers each** — moderate, not thin, but
+  smaller than Cook/DuPage/Lake. Genuine new finds in both (Joliet,
+  Plainfield, Batavia, Fox Valley/Aurora) suggest more exist; this reflects
+  time spent, not an exhausted county.
+
+### Dedup — how it was applied at this scale
+
+Every one of the 75 local (non-tour-company) organizers was checked against
+the DB before being written. The 49 "bulk" entries **are** DB Listings — they
+were pulled directly from rows already created during 15 earlier
+area-research waves this session, each carrying `existingListingSlug` back
+to that row. The 9 originals and 17 newly-researched entries were checked by
+name against the DB; all 9 originals already existed (cross-linked, as
+before). Of the 17 new, **none were already in the DB** — confirmed via
+name search before writing — so all 17 are genuinely new standalone entries
+with no existing listing to cross-link.
+
+### Cost — the "never default to Free" rule
+
+Every bulk-imported entry's `cost` field is deliberately `"Varies — see
+current schedule"`, regardless of what the source Listing's `cost` enum says
+(often `FREE`, since that describes general membership, not a specific
+trip's fee). This was a deliberate choice, not an oversight — see the code
+comment in `lib/organizedTrips.ts` above the bulk-entries block. No entry
+anywhere in the file has `cost: "Free"`.
+
+### Every "Verify" flag (all `verifyNotes` in the data)
+
+- **Schaumburg Park District**: whether trips use the district's own bus or
+  a charter service wasn't confirmed.
+- **Homewood-Flossmoor Park District**: day-trip specifics weren't itemized
+  on official pages beyond general adult/senior programming.
+- **Waukegan Park District**: senior-specific trip details weren't itemized;
+  trips exist as part of broader all-ages programming.
+- **Mayflower Tours**: their branding centers on multi-day "Motorcoach
+  Holiday" tours — did not confirm whether any single-day Chicago-area
+  excursions are currently offered.
+- **Diamond Tours**: confirmed they tour *to* Chicago as a destination for
+  national groups; did not confirm they run Chicago-*departure* day trips
+  for local seniors specifically — likely more relevant as a national
+  option than a local one.
+- Plus all `verifyNotes` carried over unchanged from the 9 original entries
+  (Bolingbrook cost/departure, Wood Dale departure, Rolling Meadows 2022
+  pricing, Forest Park membership fee/departure, MaineStreamers departure,
+  Orland Township non-resident eligibility, Hanover Township costs).
+
+### Affiliate-swap placeholders
+
+Only **Road Scholar** carries a `bookingUrl` / `AffiliateLink` CTA — it's
+the only one of the 5 tour companies with an existing placeholder in
+`lib/affiliates.ts` (`AFFILIATES.roadScholar.url`, tagged `// AFFILIATE:
+replace with Road Scholar link`). Jones Travel, Cardinal Buses, Mayflower
+Tours, and Diamond Tours have no known affiliate program, so per the brief
+("never hide a good option because it doesn't pay us") they're listed in
+full with a plain link to their own site — no CTA styling difference, no
+affiliate tag. Park district and township trips are correctly never
+affiliate-tagged.
+
+### Technical notes
+
+- `app/guides/day-trips-from-chicago/page.tsx` unchanged in overall
+  structure from the prior pass (still the static route that wins over
+  `/guides/[slug]`) — only the intro/choice-card markup and dynamic count
+  expressions changed.
+- `lib/organizedTrips.ts` grew from ~200 to ~1,300 lines. All 80 entries
+  live in a single `ORGANIZED_TRIP_PROVIDERS` array — the page's existing
+  `.filter(p => p.group === group)` logic groups them for rendering, so
+  array order doesn't affect the rendered grouping.
+- Self-guided destinations (`lib/dayTrips.ts`, 13 entries) were **not**
+  touched this pass — Section 2 is unchanged from the prior version.
+
+### How to review (~20 min given the scale)
+
+1. Spot-check 5-10 of the 49 bulk entries in `lib/organizedTrips.ts` against
+   their `existingListingSlug` — confirm the cross-linked page's own
+   `sourceUrl`/`phone` match what was pulled.
+2. Visit `/guides/day-trips-from-chicago` after deploy — confirm both choice
+   cards scroll to the right section, all group/region counts render, and a
+   sample of "See full listing on our site" links resolve (200, not 404).
+3. Visit `/category/day-trips-near-chicago` directly — confirm it redirects
+   to the guide (not a 404 or a stale cached page).
+4. When ready to monetize for real: search `AFFILIATE:` across the repo —
+   only Road Scholar has a swap-ready placeholder.
+
+---
+
+## 2026-08-22, prior pass: full rebuild — organized group trips now lead
 
 This is a structural rebuild per explicit direction: the page previously mixed
 free/paid/self-guided content together. It's now split by visitor intent —
