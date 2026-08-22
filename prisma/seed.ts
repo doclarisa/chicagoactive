@@ -6952,6 +6952,29 @@ const listings = [
     lng: -88.3078405,
     geoPrecision: "exact",
   },
+  {
+    name: "Batavia Public Library — Adult Services",
+    slug: "batavia-public-library-adult-services",
+    description:
+      "Batavia Public Library runs Home Delivery for patrons who can't visit in person, plus technology support and notary services.",
+    category: "library-classes",
+    operatorType: "library",
+    activities: ["tech-help"],
+    neighborhood: "Batavia",
+    county: "Kane",
+    city: "Batavia",
+    citySlug: "batavia",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    sourceUrl: "https://www.bataviapl.org/community-information",
+    lastVerified: new Date("2026-08-26"),
+    address: "10 S Batavia Ave, Batavia, IL 60510",
+    phone: "630-879-1393",
+    qualityNote: "This is the thinnest listing in the wave — the fetched page confirmed Home Delivery and general Technology support, but no senior-specific book clubs or classes could be confirmed beyond that. Batavia Township's Senior Services Associates referral (Community Care Program, Ride In Kane transportation) was also considered but is more of a referral hub than a standing program of its own.",
+    lat: 41.8494397,
+    lng: -88.3112904,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
