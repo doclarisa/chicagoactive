@@ -2,183 +2,141 @@
 
 Live page: `/guides/day-trips-from-chicago`
 
-## 2026-08-22 update: restructured to lead with organized group trips
+## 2026-08-22, full rebuild: organized group trips now lead
 
-The first version of this page led with self-guided destinations. Corrected
-per feedback: the actual ask was organized group day trips — who runs them,
-how to join, typical cost, residency/membership requirements, and where to
-book — as "the high-value, low-effort-for-the-traveler, monetizable core."
-The page now leads with that. What changed:
+This is a structural rebuild per explicit direction: the page previously mixed
+free/paid/self-guided content together. It's now split by visitor intent —
+Section 1 for "drive me" (organized group trips, first because it's the
+priority/revenue section), Section 2 for "I'll drive myself" (self-guided
+destinations, kept from the prior version, not discarded).
 
-- **New "Organized group day trips" section, now first on the page**, with
-  two tiers:
-  1. **Motorcoach tour companies** (`lib/dayTripOperators.ts`) — Jones
-     Travel and Cardinal Buses, both verified as real, senior-focused
-     operators serving the Chicago region. **Road Scholar was NOT added
-     here** — direct research confirmed their Chicago-area programs are
-     multi-day only (5-6 day itineraries with lodging), not single-day
-     excursions, despite the brief's example. Kept in its own "Guided
-     multi-day trips" section further down with corrected, honest copy
-     ("this one is multi-day only, not a day-trip provider like the
-     companies above") rather than misrepresenting it as a day-trip option.
-  2. **Local park districts & senior centers (57 organizations)** — pulled
-     **live from the Listing table** via a Prisma query in the page itself
-     (`activities` contains `"day-trips"` OR `category ===
-     "day-trips-near-chicago"`), not hand-copied into a static file. This
-     was a deliberate architecture choice: 78 raw matches turned up across
-     15 waves of area-building this session, and re-typing all of them into
-     a static array would immediately drift out of sync as new areas ship.
-     Querying live means this list updates automatically. Each card shows
-     what the existing Listing data actually captures — operator type, cost
-     tier (FREE/LOW_COST/PAID), residency requirement when known
-     (`residentRequired` is `null` for many, so nothing is asserted when
-     it's not been verified) — and links to that org's own program page as
-     "Current schedule," never a specific dated departure.
-  3. Chicago's 16 DFSS Regional/Satellite Senior Centers are **excluded
-     from the individual list and folded into one combined line** instead
-     ("find your neighborhood center →") — they share one generic "Life
-     Enrichment Activities" description with no distinguishing per-center
-     trip program, the same judgment call already made for the `/chicago`
-     hub page earlier in this project (see `lib/activityCounties.ts`'s
-     `day-trips×Chicago` non-page decision).
-- The original 13-destination self-guided guide is **kept**, not deleted —
-  it's still genuinely useful, verified content — but demoted to a "Prefer
-  to plan it yourself?" section after the organized-trips content.
-- Evergreen discipline applied throughout: no specific trip dates anywhere
-  (an "October casino run" would go stale) — every entry points to the
-  organizer's own live schedule/calendar instead.
+## Section 1 — Organized group trips (`lib/organizedTrips.ts`)
 
-## What this replaces (original build)
+Three sub-groups, ordered by who runs them, per the brief:
 
-`/guides/day-trips-from-chicago` already existed before this task, as a thin,
-deliberately deindexed 2-link affiliate stub (Viator + Road Scholar), with a
-code comment saying it should "stay out of the index until Stage 5 rebuilds
-these with real recommendations." This task **is** that rebuild — the URL is
-unchanged, but it's now a static route (`app/guides/day-trips-from-chicago/page.tsx`)
-that takes precedence over the generic `/guides/[slug]` template, with real
-content and `robots: index: true`. The `lib/guides.ts` entry for this slug is
-kept (with an updated `title`) only because `app/[slug]/page.tsx`'s
-category-page exit ramp (`CATEGORY_GUIDE_MAP["day-trips-near-chicago"]`) reads
-`title`/`exitRampPrompt` from it — that cross-link still needs a title to show.
+### Park District senior trips (5)
 
-## 13 destinations, every sourceUrl
+| Organizer | Cross-links to existing listing | sourceUrl |
+|---|---|---|
+| Bolingbrook Park District — Adult Trips | `/bolingbrook-park-district-adult-trips` | bolingbrookparks.org/programs/trips/ |
+| Crystal Lake Park District — Day Trips | `/crystal-lake-park-district-day-trips` | crystallakeparks.org/active-adults |
+| Wood Dale Park District — Adult & Senior Trips | `/wood-dale-park-district-senior-programs-trips` | wdparks.org/programs/adult-senior-trips/ |
+| Rolling Meadows Park District — Adult Activity Center | `/adult-activity-center-rolling-meadows-park-district` | rmparks.org/adult-activity-center |
+| St. Charles Park District — Active Adult Center | `/st-charles-park-district-active-adult-center` | stcparks.org/aac/ |
 
-| Destination | sourceUrl |
-|---|---|
-| Starved Rock State Park | https://dnr.illinois.gov/parks/park.starvedrock.html |
-| Milwaukee | https://amtrakhiawatha.com/ |
-| Galena | https://www.visitgalena.org/ |
-| Lake Geneva | https://www.cruiselakegeneva.com/ |
-| Indiana Dunes National Park | https://www.nps.gov/indu/ |
-| The Morton Arboretum | https://mortonarb.org/visit-the-arboretum/ |
-| Chicago Botanic Garden | https://www.chicagobotanic.org/ |
-| Long Grove | https://www.longgrove.org/ |
-| Geneva & St. Charles | https://www.geneva.il.us/894/Geneva-Attractions |
-| Racine | https://racinedowntown.com/ |
-| Kenosha | https://www.visitkenosha.com/things-to-do/attractions/harborpark/ |
-| Naper Settlement & the Naperville Riverwalk | https://www.napersettlement.org/8/Visit |
-| Volo Auto Museum | https://volocars.com/ |
+### Township & senior center trips (4)
 
-Every field (driving time/miles, train line + trip time, cost, senior discount,
-walking/accessibility, best time, food) was sourced from the official site
-above, a state/city tourism site, or Metra/Amtrak directly — see
-`lib/dayTrips.ts` for the exact wording per field. Nothing was estimated.
+| Organizer | Cross-links to existing listing | sourceUrl |
+|---|---|---|
+| Howard Mohr Community Center — Senior Citizens Club (**Forest Park, the seed**) | `/howard-mohr-community-center-senior-citizens-club` | forestpark.net/dfp/departments/community-center/ |
+| Maine Township — MaineStreamers | `/maine-township-mainestreamers` | mainetown.com/departments/mainestreamers/ |
+| Orland Township — Senior Trips | `/orland-township-senior-services` | orlandtownship.org/senior-trips/ |
+| Hanover Township — Senior Center | `/hanover-township-senior-center` | hanover-township.org/departments/aging-services/life-enrichment |
 
-## Every "Verify" flag
+### Guided tour companies (3)
 
-- **Starved Rock**: 2026 trail-improvement construction may limit access to
-  some canyon trails — check dnr.illinois.gov before visiting.
-- **Galena**: Ulysses S. Grant Home State Historic Site admission cost wasn't
-  confirmed on official pages.
-- **Lake Geneva**: exact current cruise ticket price wasn't confirmed —
-  cruiselakegeneva.com states a senior discount applies but not the base fare.
-- **The Morton Arboretum**: exact adult general-admission ticket price wasn't
-  confirmed — search results referenced group-rate and "$2 off online"
-  pricing but not the individual walk-up adult rate.
-- **Kenosha**: Kenosha Public Museum / Civil War Museum admission costs
-  weren't confirmed on official pages (Wisconsin public museums are
-  frequently free, but this wasn't verified for these two specifically —
-  don't assume free without checking).
-- **Volo Auto Museum**: no on-site restaurant — the nearest confirmed option
-  (Fox Lake Family Restaurant) is about 5 miles away, not walkable.
+| Operator | New or existing? | sourceUrl |
+|---|---|---|
+| Road Scholar | New (national, no local DB listing) | roadscholar.org |
+| Jones Travel | New (regional, no local DB listing) | jonestravel.com/senior-travel.html |
+| Cardinal Buses | New (regional, no local DB listing) | cardinalbuses.com |
 
-## Candidates from the brief that were NOT dropped, with a caveat
+**Total: 12 organized-trip providers**, within the 8-15 target.
 
-- **Galena's drive time (2h49m) exceeds "roughly 2 hours."** Kept because the
-  brief explicitly named it as a strong candidate and it's a genuinely
-  popular, real destination — but this is flagged directly in the trip's own
-  blurb and cost/time fields ("the longest drive on this list"), not hidden.
+### DEDUP — how it was applied
 
-Nothing else from the brief's candidate list was dropped — all 12 named
-candidates made it in (Geneva and St. Charles combined into one entry per
-the brief's own grouping), plus Kenosha added as a 13th for variety
-alongside Racine.
+All 9 local organizers (park districts + townships/senior centers) were
+checked against the DB by name **before** writing anything. All 9 already
+existed as Listing rows from earlier area-research waves this session — so
+**zero new standalone local entries were created**. Each provider card links
+to its existing listing ("See full listing on our site →", verified live —
+all 9 return 200) in addition to the organization's own trip-program page.
+Only the 3 tour companies are wholly new content, since they're
+national/regional operators with no local DB presence to begin with.
 
-## Every affiliate-link-swap spot
+### Road Scholar — verified, not assumed
 
-All marked with `// AFFILIATE: replace with Viator/GetYourGuide link once
-signed up` in `lib/dayTrips.ts` (via each trip's `bookingUrl` field) and
-`app/guides/day-trips-from-chicago/page.tsx` (where `bookingUrl` renders):
+The brief named Road Scholar as an example "day/short excursion" company.
+Direct research (roadscholar.org, travelstride.com) confirmed their
+programs — including Chicago-area ones — are **multi-day only**, shortest
+around 3 days with lodging included. This is stated plainly in their card
+rather than misrepresenting them as a day-trip operator. They're still
+included, correctly framed, since they're a legitimate, well-known
+affiliate opportunity for this audience.
 
-1. Milwaukee → currently links to `mam.org/visit/` (Milwaukee Art Museum's
-   own ticket page)
-2. Lake Geneva → currently links to `cruiselakegeneva.com/public-tours/`
-   (Cruise Lake Geneva's own booking page)
-3. The Morton Arboretum → currently links to `tickets.mortonarb.org/admission`
-   (the Arboretum's own ticket page)
-4. Naper Settlement → currently links to `napersettlement.org/8/Visit`
-   (Naper Settlement's own visit page)
-5. Volo Auto Museum → currently links to `volocars.com/plan-your-visit`
-   (the museum's own visit-planning page)
+### Every "Verify" flag in Section 1
 
-Plus one more, in the "Guided & multi-day trips" section at the bottom of
-the page:
+- **Bolingbrook Park District**: exact per-trip cost and departure point weren't published generally.
+- **Wood Dale Park District**: departure point not stated; cost examples found are from past trips.
+- **Rolling Meadows Park District**: membership pricing found dates to 2022 — confirm current rates.
+- **Howard Mohr Community Center (Forest Park)**: membership fee and exact departure point not confirmed.
+- **Maine Township MaineStreamers**: per-trip departure location not stated.
+- **Orland Township**: some trips appear resident-priced based on past examples — confirm non-resident eligibility.
+- **Hanover Township**: trip costs and eligibility not confirmed on official pages — call ahead.
+- **Road Scholar**: confirmed NOT a day-trip provider (see above) — flagged explicitly rather than silently included as one.
 
-6. **Road Scholar** block — reuses the existing `AFFILIATES.roadScholar`
-   placeholder from `lib/affiliates.ts` (already marked as a placeholder URL
-   with a comment; not modified by this task beyond reuse).
+### Affiliate note
 
-No real affiliate IDs, tracking codes, or commission terms were invented
-anywhere — every link above goes to the destination's own official site for
-now, exactly as instructed.
+Road Scholar's card includes a "Explore trips →" CTA using
+`AFFILIATES.roadScholar.url` (the existing placeholder from
+`lib/affiliates.ts`), tagged `// AFFILIATE: replace with Road Scholar link`.
+Jones Travel and Cardinal Buses are **not** wired as affiliate CTAs — no
+known affiliate program for either, so their cards link straight to their
+own sites. Park district and township trips are correctly **not**
+affiliate-tagged at all, per the brief ("free value that builds trust").
 
-## Technical notes for whoever reviews the diff
+## Section 2 — Self-guided destinations (`lib/dayTrips.ts`)
 
-- New file: `lib/dayTrips.ts` (the `DayTrip` type + all 13 entries).
-- New file: `app/guides/day-trips-from-chicago/page.tsx` — a **static**
-  route, which Next.js resolves ahead of the sibling dynamic
-  `app/guides/[slug]/page.tsx` for this exact path. Confirmed at build time:
-  only one HTML file was emitted for this path
-  (`.next/server/app/guides/day-trips-from-chicago.html`), and it contains
-  the new rich content, not the old generic template. The other two guides
-  (`online-learning-after-60`, `hobby-fitness-gear-for-active-seniors`)
-  still render through the generic `[slug]` template unchanged.
-- Edited: `lib/schema.ts` — added `touristAttractionSchema()`, a minimal
-  `TouristAttraction` JSON-LD helper using only verified fields (name,
-  description, source URL, state). One `<script>` block per destination,
-  plus one `BreadcrumbList` for the page itself.
-- Edited: `lib/guides.ts` — updated the `title`/`exitRampPrompt` on the
-  existing `day-trips-from-chicago` entry so the category-page exit ramp
-  (`app/[slug]/page.tsx`, via `CATEGORY_GUIDE_MAP`) shows accurate copy. The
-  entry's `offers`/`intro` fields are now dead data (unused now that the
-  static route owns rendering) but kept so the `Guide` type stays valid.
-- Edited: `components/Header.tsx` — added a "Day Trips" nav link.
-- Edited: `app/page.tsx` — added a homepage section linking to the guide.
-- Edited: `app/city/[citySlug]/page.tsx` — added a "See day trips from
-  Chicago" cross-link on every city hub page (applies to all cities, not
-  just Naperville — the brief's Naperville mention read as illustrative,
-  not exclusive).
-- Sitemap: no manual edit needed — `app/sitemap.ts` already loops over the
-  `GUIDES` array, and the entry was kept (see above), so
-  `/guides/day-trips-from-chicago` is included automatically.
+All 13 destinations kept from the prior build, re-grouped by direction
+instead of a flat list, per the brief:
+
+- **North — Wisconsin & the North Shore (7)**: Milwaukee, Lake Geneva,
+  Racine, Kenosha, Chicago Botanic Garden, Long Grove, Volo Auto Museum
+- **West — Fox Valley & Galena (4)**: Galena, Geneva & St. Charles, The
+  Morton Arboretum, Naper Settlement & the Naperville Riverwalk
+- **South — Indiana Dunes & Starved Rock (2)**: Starved Rock State Park,
+  Indiana Dunes National Park
+
+All original sourcing, verify flags, and affiliate booking-link placeholders
+(Milwaukee, Lake Geneva, Morton Arboretum, Naper Settlement, Volo Auto
+Museum → all still `// AFFILIATE: replace with Viator/GetYourGuide link
+once signed up`) are unchanged from the previous version — see git history
+for the original per-destination research if needed.
+
+## Interest tags — deferred, per the brief
+
+Both `DayTrip` (`lib/dayTrips.ts`) and `OrganizedTripProvider`
+(`lib/organizedTrips.ts`) now have a `tags?: string[] | null` field,
+intentionally left `null`/unset everywhere. **No filter UI was built** —
+there isn't enough volume yet to avoid near-empty buckets, per the brief.
+This is the hook for a future theme-filter pass once more organizers and
+destinations are added.
+
+## Technical notes
+
+- `app/guides/day-trips-from-chicago/page.tsx` remains a **static route**
+  that takes precedence over the generic `/guides/[slug]` template (used
+  by the other two thin affiliate guides, untouched). Confirmed at build
+  time: only one HTML file is emitted for this path.
+- The page went back to a synchronous Server Component — the previous
+  version added a live Prisma query for a flat 57-org list, which this
+  rebuild replaces with the curated, fully-enriched 9-org cross-link
+  approach above. No DB query needed for this version.
+- `lib/dayTripOperators.ts` (from the prior iteration) was deleted — Jones
+  Travel and Cardinal Buses now live in `lib/organizedTrips.ts` alongside
+  Road Scholar and the local organizers.
+- Nav, homepage section, and every `/city` hub cross-link from the prior
+  build are untouched and reverified working.
+- `/category/day-trips-near-chicago`'s exit-ramp link (added in a prior
+  session) is untouched and still points here correctly.
 
 ## How to review (~15 min)
 
-1. Skim `lib/dayTrips.ts` against the sourceUrl table above.
-2. Visit `/guides/day-trips-from-chicago` after deploy — check all 13 cards
-   render, the 6 "Book a tour" buttons open the right official pages, and
-   the Road Scholar block at the bottom works.
-3. Confirm the nav "Day Trips" link, the homepage section, and a couple of
-   `/city/*` pages all link through correctly.
-4. When ready to monetize for real: search `AFFILIATE:` across the repo to
-   find every spot that needs a real tracking link swapped in.
+1. Check the Section 1 provider table above against `lib/organizedTrips.ts`.
+2. Visit `/guides/day-trips-from-chicago` after deploy — confirm both
+   sections render, the 9 "See full listing on our site" links resolve,
+   and the Road Scholar CTA opens correctly.
+3. Confirm a couple of Section 2 destination cards still render correctly
+   under their new North/West/South headings.
+4. When ready to monetize for real: search `AFFILIATE:` across the repo
+   for every spot needing a real tracking link.

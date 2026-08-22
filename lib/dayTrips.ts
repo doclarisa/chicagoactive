@@ -9,6 +9,10 @@ export type DayTrip = {
   slug: string;
   name: string;
   state: string;
+  // Grouped by direction/distance from Chicago, not theme — how this
+  // audience actually decides ("how far and which way"), per the rebuild
+  // brief. See app/guides/day-trips-from-chicago/page.tsx for the grouping.
+  region: "North" | "West" | "South";
   sourceUrl: string;
   lastVerified: string; // YYYY-MM-DD
   blurb: string; // 1-2 sentences, why it's good for active 55+
@@ -25,6 +29,10 @@ export type DayTrip = {
   food: { name: string; note: string };
   bookingUrl?: string; // official site's own tour/ticket page, for now
   verifyNotes?: string[]; // things flagged, not asserted as fact
+  // Reserved for a future interest-based filter (Nature/Food/Beach/etc.)
+  // once there's enough volume to justify one — intentionally unpopulated
+  // and not surfaced in any UI yet.
+  tags?: string[] | null;
 };
 
 export const DAY_TRIPS: DayTrip[] = [
@@ -32,6 +40,7 @@ export const DAY_TRIPS: DayTrip[] = [
     slug: "starved-rock-state-park",
     name: "Starved Rock State Park",
     state: "Illinois",
+    region: "South",
     sourceUrl: "https://dnr.illinois.gov/parks/park.starvedrock.html",
     lastVerified: "2026-08-22",
     blurb:
@@ -55,6 +64,7 @@ export const DAY_TRIPS: DayTrip[] = [
     slug: "milwaukee",
     name: "Milwaukee",
     state: "Wisconsin",
+    region: "North",
     sourceUrl: "https://amtrakhiawatha.com/",
     lastVerified: "2026-08-22",
     blurb:
@@ -81,6 +91,7 @@ export const DAY_TRIPS: DayTrip[] = [
     slug: "galena",
     name: "Galena",
     state: "Illinois",
+    region: "West",
     sourceUrl: "https://www.visitgalena.org/",
     lastVerified: "2026-08-22",
     blurb:
@@ -104,6 +115,7 @@ export const DAY_TRIPS: DayTrip[] = [
     slug: "lake-geneva",
     name: "Lake Geneva",
     state: "Wisconsin",
+    region: "North",
     sourceUrl: "https://www.cruiselakegeneva.com/",
     lastVerified: "2026-08-22",
     blurb:
@@ -122,6 +134,7 @@ export const DAY_TRIPS: DayTrip[] = [
     slug: "indiana-dunes",
     name: "Indiana Dunes National Park",
     state: "Indiana",
+    region: "South",
     sourceUrl: "https://www.nps.gov/indu/",
     lastVerified: "2026-08-22",
     blurb:
@@ -143,6 +156,7 @@ export const DAY_TRIPS: DayTrip[] = [
     slug: "morton-arboretum",
     name: "The Morton Arboretum",
     state: "Illinois (Lisle)",
+    region: "West",
     sourceUrl: "https://mortonarb.org/visit-the-arboretum/",
     lastVerified: "2026-08-22",
     blurb:
@@ -162,6 +176,7 @@ export const DAY_TRIPS: DayTrip[] = [
     slug: "chicago-botanic-garden",
     name: "Chicago Botanic Garden",
     state: "Illinois (Glencoe)",
+    region: "North",
     sourceUrl: "https://www.chicagobotanic.org/",
     lastVerified: "2026-08-22",
     blurb:
@@ -183,6 +198,7 @@ export const DAY_TRIPS: DayTrip[] = [
     slug: "long-grove",
     name: "Long Grove",
     state: "Illinois",
+    region: "North",
     sourceUrl: "https://www.longgrove.org/",
     lastVerified: "2026-08-22",
     blurb:
@@ -199,6 +215,7 @@ export const DAY_TRIPS: DayTrip[] = [
     slug: "geneva-st-charles",
     name: "Geneva & St. Charles",
     state: "Illinois",
+    region: "West",
     sourceUrl: "https://www.geneva.il.us/894/Geneva-Attractions",
     lastVerified: "2026-08-22",
     blurb:
@@ -219,6 +236,7 @@ export const DAY_TRIPS: DayTrip[] = [
     slug: "racine",
     name: "Racine",
     state: "Wisconsin",
+    region: "North",
     sourceUrl: "https://racinedowntown.com/",
     lastVerified: "2026-08-22",
     blurb:
@@ -235,6 +253,7 @@ export const DAY_TRIPS: DayTrip[] = [
     slug: "kenosha",
     name: "Kenosha",
     state: "Wisconsin",
+    region: "North",
     sourceUrl: "https://www.visitkenosha.com/things-to-do/attractions/harborpark/",
     lastVerified: "2026-08-22",
     blurb:
@@ -256,6 +275,7 @@ export const DAY_TRIPS: DayTrip[] = [
     slug: "naper-settlement-riverwalk",
     name: "Naper Settlement & the Naperville Riverwalk",
     state: "Illinois",
+    region: "West",
     sourceUrl: "https://www.napersettlement.org/8/Visit",
     lastVerified: "2026-08-22",
     blurb:
@@ -278,6 +298,7 @@ export const DAY_TRIPS: DayTrip[] = [
     slug: "volo-auto-museum",
     name: "Volo Auto Museum",
     state: "Illinois",
+    region: "North",
     sourceUrl: "https://volocars.com/",
     lastVerified: "2026-08-22",
     blurb:
