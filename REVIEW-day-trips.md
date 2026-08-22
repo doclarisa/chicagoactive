@@ -2,7 +2,53 @@
 
 Live page: `/guides/day-trips-from-chicago`
 
-## What this replaces
+## 2026-08-22 update: restructured to lead with organized group trips
+
+The first version of this page led with self-guided destinations. Corrected
+per feedback: the actual ask was organized group day trips — who runs them,
+how to join, typical cost, residency/membership requirements, and where to
+book — as "the high-value, low-effort-for-the-traveler, monetizable core."
+The page now leads with that. What changed:
+
+- **New "Organized group day trips" section, now first on the page**, with
+  two tiers:
+  1. **Motorcoach tour companies** (`lib/dayTripOperators.ts`) — Jones
+     Travel and Cardinal Buses, both verified as real, senior-focused
+     operators serving the Chicago region. **Road Scholar was NOT added
+     here** — direct research confirmed their Chicago-area programs are
+     multi-day only (5-6 day itineraries with lodging), not single-day
+     excursions, despite the brief's example. Kept in its own "Guided
+     multi-day trips" section further down with corrected, honest copy
+     ("this one is multi-day only, not a day-trip provider like the
+     companies above") rather than misrepresenting it as a day-trip option.
+  2. **Local park districts & senior centers (57 organizations)** — pulled
+     **live from the Listing table** via a Prisma query in the page itself
+     (`activities` contains `"day-trips"` OR `category ===
+     "day-trips-near-chicago"`), not hand-copied into a static file. This
+     was a deliberate architecture choice: 78 raw matches turned up across
+     15 waves of area-building this session, and re-typing all of them into
+     a static array would immediately drift out of sync as new areas ship.
+     Querying live means this list updates automatically. Each card shows
+     what the existing Listing data actually captures — operator type, cost
+     tier (FREE/LOW_COST/PAID), residency requirement when known
+     (`residentRequired` is `null` for many, so nothing is asserted when
+     it's not been verified) — and links to that org's own program page as
+     "Current schedule," never a specific dated departure.
+  3. Chicago's 16 DFSS Regional/Satellite Senior Centers are **excluded
+     from the individual list and folded into one combined line** instead
+     ("find your neighborhood center →") — they share one generic "Life
+     Enrichment Activities" description with no distinguishing per-center
+     trip program, the same judgment call already made for the `/chicago`
+     hub page earlier in this project (see `lib/activityCounties.ts`'s
+     `day-trips×Chicago` non-page decision).
+- The original 13-destination self-guided guide is **kept**, not deleted —
+  it's still genuinely useful, verified content — but demoted to a "Prefer
+  to plan it yourself?" section after the organized-trips content.
+- Evergreen discipline applied throughout: no specific trip dates anywhere
+  (an "October casino run" would go stale) — every entry points to the
+  organizer's own live schedule/calendar instead.
+
+## What this replaces (original build)
 
 `/guides/day-trips-from-chicago` already existed before this task, as a thin,
 deliberately deindexed 2-link affiliate stub (Viator + Road Scholar), with a
