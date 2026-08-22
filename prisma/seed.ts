@@ -7208,6 +7208,29 @@ const listings = [
     lng: -87.9328528,
     geoPrecision: "exact",
   },
+  {
+    name: "Glenside Public Library — Adult Programs",
+    slug: "glenside-public-library-adult-programs",
+    description:
+      "Glenside Public Library District runs a heavy slate of adult programming — job-skills training, digital literacy classes, English language learning, book clubs, and cultural events — averaging far more community programs per year than a typical Illinois public library.",
+    category: "library-classes",
+    operatorType: "library",
+    activities: ["tech-help", "book-clubs", "languages"],
+    neighborhood: "Glendale Heights",
+    county: "DuPage",
+    city: "Glendale Heights",
+    citySlug: "glendale-heights",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    sourceUrl: "https://www.glensidepld.org/",
+    lastVerified: new Date("2026-08-22"),
+    address: "25 E Fullerton Ave, Glendale Heights, IL 60139",
+    phone: "630-260-1550",
+    hours: "Mon-Thu 9am-9pm, Fri 9am-7pm, Sat 9am-5pm, Sun 1-5pm",
+    lat: 41.9167925,
+    lng: -88.089727,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
