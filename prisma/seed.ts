@@ -7092,6 +7092,29 @@ const listings = [
     lng: -88.45226,
     geoPrecision: "exact",
   },
+  {
+    name: "Warren-Newport Public Library — Senior Community Outreach",
+    slug: "warren-newport-public-library-senior-community-outreach",
+    description:
+      "Warren-Newport Public Library's outreach program brings monthly 'Lobby Stops' to retirement, assisted living, and memory care communities in its district, where residents can get library cards and browse materials, plus a monthly staff-led book discussion and a rotating Deposit Collection of library items.",
+    category: "library-classes",
+    operatorType: "library",
+    activities: ["book-clubs"],
+    neighborhood: "Gurnee",
+    county: "Lake",
+    city: "Gurnee",
+    citySlug: "gurnee",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    sourceUrl: "https://www.wnpl.info/senior-services/",
+    lastVerified: new Date("2026-08-22"),
+    address: "224 N O'Plaine Rd, Gurnee, IL 60031",
+    phone: "847-244-5150",
+    registration: "Communities can request service via Outreach Services at 847-244-5150 ext. 3074",
+    lat: 42.3632167,
+    lng: -87.9153064,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
