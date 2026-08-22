@@ -155,6 +155,16 @@ export default async function CityPage({
           </ul>
         </section>
       )}
+
+      <section className="mt-14 border-t border-flag-blue-tint-2 pt-6">
+        <Link
+          href="/guides/day-trips-from-chicago"
+          className="block rounded-card bg-flag-blue-tint p-4 no-underline"
+        >
+          <p className="text-base text-ink-muted">Planning something further afield?</p>
+          <p className="mt-1 text-lg font-bold text-flag-blue-ink">See day trips from Chicago →</p>
+        </Link>
+      </section>
     </main>
   );
 }

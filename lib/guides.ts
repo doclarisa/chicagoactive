@@ -17,16 +17,20 @@ export type Guide = {
 // reader might use for a trip further afield.
 export const GUIDES: Guide[] = [
   {
+    // Rendered by a dedicated static route (app/guides/day-trips-from-chicago/page.tsx),
+    // not the generic [slug] template — this entry exists only so the
+    // exit-ramp on category pages (CATEGORY_GUIDE_MAP) has a title and
+    // prompt to show. dek/intro/offers below are unused dead fallback data.
     slug: "day-trips-from-chicago",
-    title: "Day Trips From Chicago for Active Seniors",
-    dek: "For when you want someone else to drive.",
+    title: "Day Trips from Chicago for Active Adults 55+",
+    dek: "13 verified trips, honest walking difficulty, and how to get there without driving when you can.",
     intro:
       "Chicagoland's own park districts run great local day-trip programs — see the free directory for those. For longer or farther-flung trips (national parks, festival weekends, multi-day tours), these are the national booking programs built for active older travelers.",
     offers: [
       { affiliate: "viator", note: "Browse day tours and experiences near Chicago and at your destination." },
       { affiliate: "roadScholar", note: "Multi-day educational tours designed for lifelong learners 50+." },
     ],
-    exitRampPrompt: "Planning something further afield?",
+    exitRampPrompt: "Planning a day out further afield?",
   },
   {
     slug: "online-learning-after-60",

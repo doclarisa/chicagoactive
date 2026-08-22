@@ -73,6 +73,20 @@ export default async function Home() {
           See all areas →
         </Link>
       </section>
+
+      <section className="mt-16 text-center">
+        <h2 className="text-2xl font-extrabold tracking-tight text-ink">Want to go further afield?</h2>
+        <p className="mx-auto mt-3 max-w-xl text-lg text-ink-muted">
+          13 verified day trips from Chicago — driving and train times, honest walking difficulty, and
+          senior discounts, all in one guide.
+        </p>
+        <Link
+          href="/guides/day-trips-from-chicago"
+          className="mt-6 inline-flex min-h-12 items-center justify-center rounded-pill border-2 border-flag-blue-ink px-6 text-base font-bold text-flag-blue-ink no-underline hover:bg-flag-blue-tint"
+        >
+          See day trips from Chicago →
+        </Link>
+      </section>
     </main>
   );
 }

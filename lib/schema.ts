@@ -65,3 +65,26 @@ export function listingSchemaType(category: string): string {
   if (category === "library-classes") return "Library";
   return "LocalBusiness";
 }
+
+// TouristAttraction markup for a day-trip destination — only fields we
+// actually verified (name, description, address region, source URL). No
+// fabricated price, rating, or opening-hours data.
+export function touristAttractionSchema(trip: {
+  name: string;
+  state: string;
+  blurb: string;
+  sourceUrl: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "TouristAttraction",
+    name: trip.name,
+    description: trip.blurb,
+    url: trip.sourceUrl,
+    address: {
+      "@type": "PostalAddress",
+      addressRegion: trip.state,
+      addressCountry: "US",
+    },
+  };
+}

@@ -30,6 +30,12 @@ export default function Header() {
           >
             Directory
           </Link>
+          <Link
+            href="/guides/day-trips-from-chicago"
+            className="min-h-11 rounded-pill px-3 py-2 text-base font-semibold text-ink no-underline hover:bg-flag-blue-tint"
+          >
+            Day Trips
+          </Link>
         </nav>
       </div>
       <FlagMotif className="mx-auto max-w-5xl px-4 pb-3 sm:px-6" />
