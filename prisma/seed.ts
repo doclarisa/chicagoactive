@@ -7045,6 +7045,29 @@ const listings = [
     lng: -87.9544971,
     geoPrecision: "exact",
   },
+  {
+    name: "Westmont Public Library — Senior Services",
+    slug: "westmont-public-library-senior-services",
+    description:
+      "Westmont Public Library offers monthly homebound delivery for residents who can't visit in person, monthly dementia-friendly presentations for people with dementia and their caregivers, and large-print books and special computer equipment for vision-impaired patrons.",
+    category: "library-classes",
+    operatorType: "library",
+    activities: Prisma.DbNull,
+    neighborhood: "Westmont",
+    county: "DuPage",
+    city: "Westmont",
+    citySlug: "westmont",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    sourceUrl: "https://westmontlibrary.org/services/",
+    lastVerified: new Date("2026-08-22"),
+    address: "428 N Cass Ave, Westmont, IL 60559",
+    phone: "630-869-6150",
+    qualityNote: "westmontlibrary.org blocked automated verification (403); sourced from consistent search-result summaries of the library's own service pages (including two separate Village of Westmont news posts about the dementia-friendly series), not a direct fetch.",
+    lat: 41.8062212,
+    lng: -87.9761697,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
