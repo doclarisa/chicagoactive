@@ -9,7 +9,7 @@ import AffiliateLink from "@/components/AffiliateLink";
 
 const TITLE = "Day Trips from Chicago for Active Adults 55+";
 const DESCRIPTION =
-  "Two ways to take a day trip from Chicago: organized group trips run by park districts, senior centers, and tour companies, or 13 verified destinations to plan yourself — driving/train times, honest accessibility, and cost.";
+  "Two ways to take a day trip from Chicago: 80 organized group trips run by park districts, senior centers, and tour companies, or 13 verified destinations to plan yourself — driving/train times, honest accessibility, and cost.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -135,21 +135,47 @@ export default function DayTripsPage() {
       <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">{TITLE}</h1>
 
       <p className="mt-4 text-lg leading-relaxed text-ink">
-        There are two ways to take a day trip from Chicago. Join an organized group trip and let someone
-        else drive, plan the stops, and handle the parking — a park district, senior center, or tour
-        company runs the whole thing and you just show up. Or set your own pace and drive yourself to one
-        of 13 verified destinations, on your own schedule. Both are below, organized trips first since
-        that&apos;s where most of this audience starts.
+        There are two ways to take a day trip from Chicago: join an organized group trip and let someone
+        else drive, or set your own pace and drive yourself. Pick one below.
       </p>
+
+      {/* The choice, up front — not a wall of text first. */}
+      <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <a
+          href="#organized"
+          className="flex flex-col gap-1 rounded-card bg-flag-blue-tint p-5 no-underline ring-1 ring-black/5 transition-shadow hover:shadow-md"
+        >
+          <span className="text-2xl" aria-hidden="true">
+            🚌
+          </span>
+          <span className="text-lg font-bold text-ink">Let someone else drive</span>
+          <span className="text-base text-ink-muted">
+            {ORGANIZED_TRIP_PROVIDERS.length} organized group trips — park districts, senior centers, and
+            tour companies
+          </span>
+        </a>
+        <a
+          href="#self-guided"
+          className="flex flex-col gap-1 rounded-card bg-flag-blue-tint p-5 no-underline ring-1 ring-black/5 transition-shadow hover:shadow-md"
+        >
+          <span className="text-2xl" aria-hidden="true">
+            🚗
+          </span>
+          <span className="text-lg font-bold text-ink">Drive yourself</span>
+          <span className="text-base text-ink-muted">
+            {DAY_TRIPS.length} self-guided destinations, grouped by direction from Chicago
+          </span>
+        </a>
+      </div>
 
       <div className="mt-4">
         <AffiliateDisclosure />
       </div>
 
       {/* ================= SECTION 1: Organized group trips ================= */}
-      <section className="mt-10">
+      <section id="organized" className="mt-10 scroll-mt-6">
         <h2 className="text-2xl font-extrabold tracking-tight text-ink">
-          Let someone else drive: organized group trips
+          🚌 Let someone else drive: organized group trips
         </h2>
         <p className="mt-3 text-lg leading-relaxed text-ink">
           Trip dates go stale fast — a specific October casino run won&apos;t mean anything by November —
@@ -162,7 +188,9 @@ export default function DayTripsPage() {
           if (providers.length === 0) return null;
           return (
             <div key={group} className="mt-10">
-              <h3 className="text-xl font-bold text-ink">{GROUP_LABELS[group]}</h3>
+              <h3 className="text-xl font-bold text-ink">
+                {GROUP_LABELS[group]} ({providers.length})
+              </h3>
               <div className="mt-4 flex flex-col gap-4">
                 {providers.map((provider) => (
                   <ProviderCard key={provider.slug} provider={provider} />
@@ -174,13 +202,14 @@ export default function DayTripsPage() {
       </section>
 
       {/* ================= SECTION 2: Self-guided destinations ================= */}
-      <section className="mt-16 border-t border-flag-blue-tint-2 pt-8">
+      <section id="self-guided" className="mt-16 scroll-mt-6 border-t border-flag-blue-tint-2 pt-8">
         <h2 className="text-2xl font-extrabold tracking-tight text-ink">
-          Drive yourself: best day-trip destinations
+          🚗 Drive yourself: best day-trip destinations
         </h2>
         <p className="mt-3 text-lg leading-relaxed text-ink">
-          13 destinations within about a day&apos;s reach, grouped by direction from Chicago — each with
-          real driving and train times, honest walking difficulty, cost, and where to eat.
+          {DAY_TRIPS.length} destinations within about a day&apos;s reach, grouped by direction from
+          Chicago — each with real driving and train times, honest walking difficulty, cost, and where to
+          eat.
         </p>
 
         {REGION_ORDER.map((region) => {
@@ -188,7 +217,9 @@ export default function DayTripsPage() {
           if (trips.length === 0) return null;
           return (
             <div key={region} className="mt-10">
-              <h3 className="text-xl font-bold text-ink">{REGION_LABELS[region]}</h3>
+              <h3 className="text-xl font-bold text-ink">
+                {REGION_LABELS[region]} ({trips.length})
+              </h3>
               <div className="mt-6 flex flex-col gap-8">
                 {trips.map((trip) => (
                   <article
