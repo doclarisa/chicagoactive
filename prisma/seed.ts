@@ -6904,6 +6904,30 @@ const listings = [
     lng: -87.8381274,
     geoPrecision: "exact",
   },
+  {
+    name: "Aurora Public Library — Huayun Aurora Seniors",
+    slug: "aurora-public-library-huayun-aurora-seniors",
+    description:
+      "Aurora Public Library's Huayun Aurora Seniors is a cultural, educational, wellness, and recreational meetup for adults 55+ and the wider multicultural community, alongside the library's Outreach Services that bring mobile library visits to senior living facilities and homebound residents across Aurora's three branches.",
+    category: "library-classes",
+    operatorType: "library",
+    activities: ["social-clubs", "lifelong-learning"],
+    neighborhood: "Aurora",
+    county: "Kane",
+    city: "Aurora",
+    citySlug: "aurora",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    ageEligibility: "55+",
+    sourceUrl: "https://www.aurorapubliclibrary.org/CommunityResources-13285",
+    lastVerified: new Date("2026-08-26"),
+    address: "101 S River St, Aurora, IL 60506",
+    phone: "630-264-4117",
+    hours: "Mon-Thu 9am-9pm, Fri-Sat 9am-5pm, Sun 1-5pm",
+    lat: 41.7570798,
+    lng: -88.3200764,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
