@@ -6928,6 +6928,30 @@ const listings = [
     lng: -88.3200764,
     geoPrecision: "exact",
   },
+  {
+    name: "St. Charles Public Library — Adult Services",
+    slug: "st-charles-public-library-adult-services",
+    description:
+      "St. Charles Public Library runs book discussion clubs, computer classes, an Accessibility Collection, home delivery for patrons who can't visit in person, and a weekly American Mahjong open-play session on Tuesdays.",
+    category: "library-classes",
+    operatorType: "library",
+    activities: ["computer-classes", "book-clubs", "cards-games"],
+    neighborhood: "St. Charles",
+    county: "Kane",
+    city: "St. Charles",
+    citySlug: "st-charles",
+    cost: "FREE" as const,
+    days: ["Tuesday"],
+    time: "1-4pm (Mahjong open play)",
+    sourceUrl: "https://www.scpld.org/",
+    lastVerified: new Date("2026-08-26"),
+    address: "1 S 6th Ave, St. Charles, IL 60174",
+    phone: "630-584-0076",
+    hours: "Mon-Thu 9am-9pm, Fri 9am-8pm, Sat 9am-5pm, Sun 12-5pm",
+    lat: 41.9141461,
+    lng: -88.3078405,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
