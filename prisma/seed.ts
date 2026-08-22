@@ -7115,6 +7115,28 @@ const listings = [
     lng: -87.9153064,
     geoPrecision: "exact",
   },
+  {
+    name: "Addison Public Library — Adult Services",
+    slug: "addison-public-library-adult-services",
+    description:
+      "Addison Public Library's Adult Services include a Genealogy Club, one-on-one appointments with a dedicated Social Services Librarian, notary services, exam proctoring, and Career Online High School access.",
+    category: "library-classes",
+    operatorType: "library",
+    activities: ["tech-help"],
+    neighborhood: "Addison",
+    county: "DuPage",
+    city: "Addison",
+    citySlug: "addison",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    sourceUrl: "https://www.addisonlibrary.org/services/adults",
+    lastVerified: new Date("2026-08-22"),
+    address: "4 Friendship Plaza, Addison, IL 60101",
+    phone: "630-543-3617",
+    lat: 41.9322935,
+    lng: -87.9935861,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
