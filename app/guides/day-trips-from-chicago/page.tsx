@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { DAY_TRIPS, type DayTrip } from "@/lib/dayTrips";
-import { ORGANIZED_TRIP_PROVIDERS, type OrganizedTripProvider } from "@/lib/organizedTrips";
+import { ORGANIZED_TRIP_PROVIDERS, COUNTY_SPOKES } from "@/lib/organizedTrips";
 import { breadcrumbSchema, touristAttractionSchema } from "@/lib/schema";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import AffiliateDisclosure from "@/components/AffiliateDisclosure";
 import AffiliateLink from "@/components/AffiliateLink";
 
-const TITLE = "Day Trips from Chicago for Active Adults 55+";
+const TITLE = "Day Trips from Chicago for Seniors";
 const DESCRIPTION =
-  "Two ways to take a day trip from Chicago: 80 organized group trips run by park districts, senior centers, and tour companies, or 13 verified destinations to plan yourself — driving/train times, honest accessibility, and cost.";
+  "Two ways to take a day trip from Chicago: organized group trips run by park districts, senior centers, and tour companies (browse by county), or verified destinations to plan yourself.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -22,13 +22,6 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-const GROUP_LABELS: Record<OrganizedTripProvider["group"], string> = {
-  "park-district": "Park District senior trips",
-  "township-senior-center": "Township & senior center trips",
-  "tour-company": "Guided tour companies",
-};
-const GROUP_ORDER: OrganizedTripProvider["group"][] = ["park-district", "township-senior-center", "tour-company"];
-
 const REGION_LABELS: Record<DayTrip["region"], string> = {
   North: "North — Wisconsin & the North Shore",
   West: "West — Fox Valley & Galena",
@@ -36,74 +29,14 @@ const REGION_LABELS: Record<DayTrip["region"], string> = {
 };
 const REGION_ORDER: DayTrip["region"][] = ["North", "West", "South"];
 
-function ProviderCard({ provider }: { provider: OrganizedTripProvider }) {
-  return (
-    <div className="rounded-card bg-card p-5 shadow-sm ring-1 ring-black/5">
-      <h4 className="text-lg font-bold text-ink">{provider.name}</h4>
-      <p className="mt-1 text-base text-ink-muted">{provider.blurb}</p>
-
-      <dl className="mt-4 space-y-2 text-base text-ink">
-        {provider.departure && (
-          <div>
-            <dt className="inline font-semibold">Where trips depart: </dt>
-            <dd className="inline text-ink-muted">{provider.departure}</dd>
-          </div>
-        )}
-        <div>
-          <dt className="inline font-semibold">Typical cost: </dt>
-          <dd className="inline text-ink-muted">{provider.cost}</dd>
-        </div>
-        <div>
-          <dt className="inline font-semibold">Who can join: </dt>
-          <dd className="inline text-ink-muted">{provider.whoCanJoin}</dd>
-        </div>
-        <div>
-          <dt className="inline font-semibold">How to sign up: </dt>
-          <dd className="inline text-ink-muted">{provider.howToSignUp}</dd>
-        </div>
-      </dl>
-
-      {provider.verifyNotes && provider.verifyNotes.length > 0 && (
-        <div className="mt-3 rounded-card bg-flag-blue-tint px-4 py-3 text-sm text-flag-blue-ink">
-          {provider.verifyNotes.map((note) => (
-            <p key={note}>Verify — {note}</p>
-          ))}
-        </div>
-      )}
-
-      <div className="mt-4 flex flex-wrap gap-3">
-        {provider.existingListingSlug ? (
-          <Link
-            href={`/${provider.existingListingSlug}`}
-            className="inline-flex min-h-11 items-center justify-center rounded-pill bg-flag-blue-ink px-5 text-base font-bold text-white no-underline"
-          >
-            See full listing on our site →
-          </Link>
-        ) : null}
-        <a
-          href={provider.sourceUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex min-h-11 items-center justify-center rounded-pill border-2 border-flag-blue-ink px-5 text-base font-bold text-flag-blue-ink no-underline"
-        >
-          Current trips &amp; schedule →
-        </a>
-        {provider.bookingUrl && (
-          // AFFILIATE: replace with Road Scholar link
-          <AffiliateLink href={provider.bookingUrl} variant="secondary">
-            Explore trips →
-          </AffiliateLink>
-        )}
-      </div>
-    </div>
-  );
-}
-
 export default function DayTripsPage() {
   const crumbs = [
     { name: "Home", path: "/" },
     { name: "Day Trips", path: "/guides/day-trips-from-chicago" },
   ];
+
+  const organizedCount = ORGANIZED_TRIP_PROVIDERS.length;
+  const tourCompanyCount = ORGANIZED_TRIP_PROVIDERS.filter((p) => p.group === "tour-company").length;
 
   return (
     <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-8 sm:px-6 sm:py-12">
@@ -150,8 +83,7 @@ export default function DayTripsPage() {
           </span>
           <span className="text-lg font-bold text-ink">Let someone else drive</span>
           <span className="text-base text-ink-muted">
-            {ORGANIZED_TRIP_PROVIDERS.length} organized group trips — park districts, senior centers, and
-            tour companies
+            {organizedCount} organized group trips — park districts, senior centers, and tour companies
           </span>
         </a>
         <a
@@ -172,33 +104,51 @@ export default function DayTripsPage() {
         <AffiliateDisclosure />
       </div>
 
-      {/* ================= SECTION 1: Organized group trips ================= */}
+      {/* ================= SECTION 1: Organized group trips — landing, not the full list ================= */}
       <section id="organized" className="mt-10 scroll-mt-6">
         <h2 className="text-2xl font-extrabold tracking-tight text-ink">
           🚌 Let someone else drive: organized group trips
         </h2>
         <p className="mt-3 text-lg leading-relaxed text-ink">
-          Trip dates go stale fast — a specific October casino run won&apos;t mean anything by November —
-          so every organizer below is described by the trip <em>program</em> they run, with a link to their
-          own live schedule rather than a dated departure.
+          {organizedCount} organizers across the Chicago area, park districts and townships first — browse
+          by where you live.
         </p>
 
-        {GROUP_ORDER.map((group) => {
-          const providers = ORGANIZED_TRIP_PROVIDERS.filter((p) => p.group === group);
-          if (providers.length === 0) return null;
-          return (
-            <div key={group} className="mt-10">
-              <h3 className="text-xl font-bold text-ink">
-                {GROUP_LABELS[group]} ({providers.length})
-              </h3>
-              <div className="mt-4 flex flex-col gap-4">
-                {providers.map((provider) => (
-                  <ProviderCard key={provider.slug} provider={provider} />
-                ))}
-              </div>
-            </div>
-          );
-        })}
+        <h3 className="mt-8 text-xl font-bold text-ink">Organized trips by area</h3>
+        <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {COUNTY_SPOKES.map((spoke) => {
+            const count = ORGANIZED_TRIP_PROVIDERS.filter(
+              (p) => p.county && spoke.counties.includes(p.county),
+            ).length;
+            return (
+              <Link
+                key={spoke.slug}
+                href={`/day-trips/${spoke.slug}`}
+                className="flex flex-col gap-1 rounded-card bg-card p-5 no-underline shadow-sm ring-1 ring-black/5 transition-shadow hover:shadow-md"
+              >
+                <span className="text-lg font-bold text-ink">{spoke.label}</span>
+                <span className="text-base text-ink-muted">
+                  {count} organizer{count === 1 ? "" : "s"}
+                </span>
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* Visually distinct from the county cards — a different kind of option. */}
+        <h3 className="mt-10 text-xl font-bold text-ink">Not tied to one area</h3>
+        <Link
+          href="/day-trips/tour-companies"
+          className="mt-4 flex flex-col gap-1 rounded-card border-2 border-flag-blue-ink bg-white p-5 no-underline transition-shadow hover:shadow-md sm:max-w-sm"
+        >
+          <span className="text-2xl" aria-hidden="true">
+            🚌
+          </span>
+          <span className="text-lg font-bold text-ink">Guided tour companies</span>
+          <span className="text-base text-ink-muted">
+            {tourCompanyCount} motorcoach &amp; educational tour operators serving the whole Chicago area
+          </span>
+        </Link>
       </section>
 
       {/* ================= SECTION 2: Self-guided destinations ================= */}

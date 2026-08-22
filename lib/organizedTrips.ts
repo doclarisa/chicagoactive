@@ -1185,3 +1185,30 @@ export const ORGANIZED_TRIP_PROVIDERS: OrganizedTripProvider[] = [
     tags: null,
   },
 ];
+
+// County spoke pages — Cook/DuPage/Lake are large enough for their own
+// page; Will, Kane, Kendall, and McHenry each have too few organizers
+// (5, 5, 1, 2) to stand alone without reading as a near-empty page, so
+// they're folded into one combined "Other Chicagoland Areas" spoke,
+// still sub-headed by county within that page for clarity.
+export type CountySpokeSlug = "cook-county" | "dupage-county" | "lake-county" | "other-areas";
+
+export const COUNTY_SPOKES: { slug: CountySpokeSlug; label: string; metaTitle: string; counties: County[] }[] = [
+  { slug: "cook-county", label: "Cook County", metaTitle: "Cook County Senior Day Trips", counties: ["Cook"] },
+  { slug: "dupage-county", label: "DuPage County", metaTitle: "DuPage County Senior Day Trips", counties: ["DuPage"] },
+  { slug: "lake-county", label: "Lake County", metaTitle: "Lake County Senior Day Trips", counties: ["Lake"] },
+  {
+    slug: "other-areas",
+    label: "Other Chicagoland Areas",
+    metaTitle: "Will, Kane, Kendall & McHenry County Senior Day Trips",
+    counties: ["Will", "Kane", "Kendall", "McHenry"],
+  },
+];
+
+export function countySpokeSlugForCounty(county: County): CountySpokeSlug {
+  return COUNTY_SPOKES.find((s) => s.counties.includes(county))?.slug ?? "other-areas";
+}
+
+export function countySpokeBySlug(slug: string) {
+  return COUNTY_SPOKES.find((s) => s.slug === slug);
+}

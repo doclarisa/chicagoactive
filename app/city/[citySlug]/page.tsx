@@ -7,6 +7,7 @@ import NearbyListingRow from "@/components/NearbyListingRow";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { itemListSchema } from "@/lib/schema";
 import { haversineMiles, centroid, formatDistance, type GeoPoint } from "@/lib/geo";
+import { countySpokeSlugForCounty, countySpokeBySlug, type County } from "@/lib/organizedTrips";
 
 const RADIUS_MILES = 6;
 const NEARBY_CAP = 12;
@@ -158,11 +159,13 @@ export default async function CityPage({
 
       <section className="mt-14 border-t border-flag-blue-tint-2 pt-6">
         <Link
-          href="/guides/day-trips-from-chicago"
+          href={`/day-trips/${countySpokeSlugForCounty(city.county as County)}`}
           className="block rounded-card bg-flag-blue-tint p-4 no-underline"
         >
           <p className="text-base text-ink-muted">Planning something further afield?</p>
-          <p className="mt-1 text-lg font-bold text-flag-blue-ink">See day trips from Chicago →</p>
+          <p className="mt-1 text-lg font-bold text-flag-blue-ink">
+            See {countySpokeBySlug(countySpokeSlugForCounty(city.county as County))?.label} day trips →
+          </p>
         </Link>
       </section>
     </main>

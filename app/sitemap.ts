@@ -5,6 +5,7 @@ import { GUIDES } from "@/lib/guides";
 import { CITIES } from "@/lib/cities";
 import { ACTIVITY_PAGES } from "@/lib/activityPages";
 import { COUNTY_CELLS, CHICAGO_CELLS } from "@/lib/activityCounties";
+import { COUNTY_SPOKES } from "@/lib/organizedTrips";
 import { SITE_URL } from "@/lib/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -69,6 +70,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.5,
   }));
 
+  // Day Trips county spokes + the commercial tour-companies page.
+  const dayTripSpokeRoutes: MetadataRoute.Sitemap = COUNTY_SPOKES.map((s) => ({
+    url: `${SITE_URL}/day-trips/${s.slug}`,
+    changeFrequency: "weekly",
+    priority: 0.7,
+  }));
+  const dayTripCompanyRoute: MetadataRoute.Sitemap = [
+    { url: `${SITE_URL}/day-trips/tour-companies`, changeFrequency: "monthly", priority: 0.6 },
+  ];
+
   return [
     ...staticRoutes,
     ...cityRoutes,
@@ -78,5 +89,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...categoryRoutes,
     ...listingRoutes,
     ...guideRoutes,
+    ...dayTripSpokeRoutes,
+    ...dayTripCompanyRoute,
   ];
 }
