@@ -7159,6 +7159,31 @@ const listings = [
     lng: -87.9554,
     geoPrecision: "exact",
   },
+  {
+    name: "New Lenox Public Library — Senior Center",
+    slug: "new-lenox-public-library-senior-center",
+    description:
+      "New Lenox Public Library's Adult Services Department hosts a Senior Center on its second floor, where adults 55+ gather for coffee, tea, and treats on the first Thursday of every other month, with board games and reading available any time.",
+    category: "library-classes",
+    operatorType: "library",
+    activities: ["cards-games", "social-clubs"],
+    neighborhood: "New Lenox",
+    county: "Will",
+    city: "New Lenox",
+    citySlug: "new-lenox",
+    cost: "FREE" as const,
+    days: ["Thursday"],
+    time: "1st Thursday of every other month",
+    ageEligibility: "55+",
+    sourceUrl: "https://www.newlenoxlibrary.org/community-resources",
+    lastVerified: new Date("2026-08-22"),
+    address: "120 Veterans Pkwy, New Lenox, IL 60451",
+    phone: "815-485-2605",
+    hours: "Sun 12-4pm, Mon-Thu 9am-8pm, Fri-Sat 9am-4pm",
+    lat: 41.5136922,
+    lng: -87.9786864,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
