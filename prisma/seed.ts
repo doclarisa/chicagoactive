@@ -7137,6 +7137,28 @@ const listings = [
     lng: -87.9935861,
     geoPrecision: "exact",
   },
+  {
+    name: "Indian Prairie Public Library — Adult Services",
+    slug: "indian-prairie-public-library-adult-services",
+    description:
+      "Indian Prairie Public Library runs three monthly book clubs — Nonfiction at Night (1st Thursday), Crime Readers (2nd Thursday), and Novel Idea (3rd Monday) — plus homebound delivery, ESL instruction, citizenship preparation, and genealogy research databases.",
+    category: "library-classes",
+    operatorType: "library",
+    activities: ["book-clubs", "languages"],
+    neighborhood: "Darien",
+    county: "DuPage",
+    city: "Darien",
+    citySlug: "darien",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    sourceUrl: "https://ippl.info/community/social-services",
+    lastVerified: new Date("2026-08-22"),
+    address: "401 Plainfield Rd, Darien, IL 60561",
+    phone: "630-887-8760",
+    lat: 41.7562324,
+    lng: -87.9554,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
