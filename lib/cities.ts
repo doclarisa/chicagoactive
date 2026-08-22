@@ -553,6 +553,41 @@ export const CITIES: CityDef[] = [
     intro:
       "SOAR@Dorr (Serving Older Active Residents) runs Woodstock's senior programming, and Woodstock Public Library's monthly Community Hub adds drop-in tech help and free health screenings.",
   },
+  {
+    name: "Gurnee",
+    slug: "gurnee",
+    county: "Lake",
+    intro:
+      "Gurnee Park District's Monthly Mixer (55+) runs alongside Warren-Newport Public Library's outreach to retirement, assisted living, and memory care communities, with monthly Lobby Stops and staff-led book discussions.",
+  },
+  {
+    name: "Addison",
+    slug: "addison",
+    county: "DuPage",
+    intro:
+      "Addison Park District's Active Adults & Senior Club runs alongside Addison Public Library's Adult Services, including a Genealogy Club and one-on-one appointments with a dedicated Social Services Librarian.",
+  },
+  {
+    name: "Darien",
+    slug: "darien",
+    county: "DuPage",
+    intro:
+      "Darien Park District's Senior Programs run alongside Indian Prairie Public Library's three monthly book clubs (Nonfiction at Night, Crime Readers, Novel Idea), homebound delivery, and ESL instruction.",
+  },
+  {
+    name: "New Lenox",
+    slug: "new-lenox",
+    county: "Will",
+    intro:
+      "New Lenox Community Park District's Active Adult Exercise Classes run alongside a Senior Center inside New Lenox Public Library's Adult Services Department, with a coffee-and-treats meetup every other month.",
+  },
+  {
+    name: "Homer Glen",
+    slug: "homer-glen",
+    county: "Will",
+    intro:
+      "Homer Township Public Library's Adults & Seniors programs run alongside Homer Township Senior Services' Founders Activity Center, which hosts a monthly Bingo game — two separately run organizations that share the Homer Township name.",
+  },
 ];
 
 export function cityBySlug(slug: string): CityDef | undefined {

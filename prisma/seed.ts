@@ -7184,6 +7184,30 @@ const listings = [
     lng: -87.9786864,
     geoPrecision: "exact",
   },
+  {
+    name: "Homer Township Senior Services — Founders Activity Center",
+    slug: "homer-township-senior-services-founders-activity-center",
+    description:
+      "Homer Township's Founders Activity Center runs Bingo on the 2nd Tuesday of the month at noon (doors open 11:45am), plus other senior services and activities. This is a separate government entity from Homer Township Public Library District, which shares the Homer Township name but is independently run.",
+    category: "senior-center-events",
+    operatorType: "city-agency",
+    activities: ["bingo"],
+    neighborhood: "Homer Glen",
+    county: "Will",
+    city: "Homer Glen",
+    citySlug: "homer-glen",
+    cost: "FREE" as const,
+    days: ["Tuesday"],
+    time: "2nd Tuesday of the month, doors 11:45am, Bingo at noon",
+    sourceUrl: "https://homertownship.com/senior-services/",
+    lastVerified: new Date("2026-08-22"),
+    address: "14718 S Founders Circle, Homer Glen, IL 60491",
+    phone: "708-301-0522",
+    qualityNote: "homertownship.com blocked automated verification (403); Bingo schedule confirmed via consistent search-result summaries of the township's own senior-events page. Full activity/class list beyond Bingo could not be confirmed — worth a follow-up call before treating this as a complete picture.",
+    lat: 41.621534,
+    lng: -87.9328528,
+    geoPrecision: "exact",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
