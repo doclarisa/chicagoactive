@@ -7,6 +7,7 @@ import { CATEGORY_GUIDE_MAP } from "@/lib/categoryGuideMap";
 import { GUIDES } from "@/lib/guides";
 import ListingCard from "@/components/ListingCard";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import FitnessLobby from "@/components/FitnessLobby";
 import { itemListSchema } from "@/lib/schema";
 
 export function generateStaticParams() {
@@ -23,7 +24,12 @@ export async function generateMetadata({
   const { category } = await params;
   const cat = CATEGORIES.find((c) => c.slug === category);
   if (!cat) return {};
-  const description = `Free and low-cost ${cat.label.toLowerCase()} for active adults 50+ across the Chicago area.`;
+  // pickleball-fitness is a lobby/router page, not a listing page — its own
+  // description reflects that instead of the generic category copy.
+  const description =
+    cat.slug === "pickleball-fitness"
+      ? "Medicare fitness benefit gyms, indoor pickleball, gentle yoga, and water aerobics for active adults 50+ across the Chicago area."
+      : `Free and low-cost ${cat.label.toLowerCase()} for active adults 50+ across the Chicago area.`;
   return {
     title: `${cat.label} in Chicagoland`,
     description,
@@ -40,6 +46,11 @@ export default async function CategoryPage({
   const { category } = await params;
   const cat = CATEGORIES.find((c) => c.slug === category);
   if (!cat) notFound();
+
+  // Fitness's job is to ROUTE to a collection, not list ~7 listings
+  // directly — see components/FitnessLobby.tsx. The underlying listings
+  // stay reachable via /directory?category=pickleball-fitness.
+  if (cat.slug === "pickleball-fitness") return <FitnessLobby />;
 
   const listings = await prisma.listing.findMany({
     where: { status: "PUBLISHED", category },

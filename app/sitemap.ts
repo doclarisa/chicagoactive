@@ -6,6 +6,7 @@ import { CITIES } from "@/lib/cities";
 import { ACTIVITY_PAGES } from "@/lib/activityPages";
 import { COUNTY_CELLS, CHICAGO_CELLS } from "@/lib/activityCounties";
 import { COUNTY_SPOKES } from "@/lib/organizedTrips";
+import { GYM_SPOKES } from "@/lib/medicareGyms";
 import { SITE_URL } from "@/lib/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -80,6 +81,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE_URL}/day-trips/tour-companies`, changeFrequency: "monthly", priority: 0.6 },
   ];
 
+  const gymSpokeRoutes: MetadataRoute.Sitemap = GYM_SPOKES.map((s) => ({
+    url: `${SITE_URL}/gyms/${s.slug}`,
+    changeFrequency: "weekly",
+    priority: 0.7,
+  }));
+
   return [
     ...staticRoutes,
     ...cityRoutes,
@@ -91,5 +98,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...guideRoutes,
     ...dayTripSpokeRoutes,
     ...dayTripCompanyRoute,
+    ...gymSpokeRoutes,
   ];
 }

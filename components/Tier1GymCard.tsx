@@ -1,7 +1,7 @@
 import Link from "next/link";
-import type { MedicareGym, ProgramStatus } from "@/lib/medicareGyms";
+import type { Tier1Gym, ProgramStatus } from "@/lib/medicareGyms";
 
-const PROGRAM_LABELS: Record<keyof MedicareGym["programs"], string> = {
+const PROGRAM_LABELS: Record<keyof Tier1Gym["programs"], string> = {
   silverSneakers: "SilverSneakers",
   renewActive: "Renew Active",
   silverAndFit: "Silver&Fit",
@@ -22,10 +22,15 @@ function ProgramBadge({ program, status }: { program: string; status: ProgramSta
   );
 }
 
-export default function MedicareGymCard({ gym }: { gym: MedicareGym }) {
+export default function Tier1GymCard({ gym }: { gym: Tier1Gym }) {
   return (
     <div className="rounded-card bg-card p-5 shadow-sm ring-1 ring-black/5">
-      <h4 className="text-lg font-bold text-ink">{gym.name}</h4>
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="inline-flex items-center rounded-pill bg-flag-blue-ink px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
+          Verified
+        </span>
+        <h4 className="text-lg font-bold text-ink">{gym.name}</h4>
+      </div>
       <p className="mt-1 text-base text-ink-muted">
         {gym.area}
         {gym.address ? ` — ${gym.address}` : ""}
@@ -33,7 +38,7 @@ export default function MedicareGymCard({ gym }: { gym: MedicareGym }) {
       </p>
 
       <div className="mt-3 flex flex-wrap gap-2">
-        {(Object.keys(PROGRAM_LABELS) as (keyof MedicareGym["programs"])[]).map((key) => (
+        {(Object.keys(PROGRAM_LABELS) as (keyof Tier1Gym["programs"])[]).map((key) => (
           <ProgramBadge key={key} program={PROGRAM_LABELS[key]} status={gym.programs[key]} />
         ))}
       </div>
