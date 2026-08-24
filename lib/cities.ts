@@ -665,6 +665,34 @@ export const CITIES: CityDef[] = [
     intro:
       "Troy Township Senior Program runs a twice-weekly drop-in center with card games and a Friday bridge group, and the newly opened Village of Shorewood YMCA adds an Active Older Adults fitness class with a waived joiner's fee for residents.",
   },
+  {
+    name: "Wauconda",
+    slug: "wauconda",
+    county: "Lake",
+    intro:
+      "Wauconda Park District's Active Seniors (55+) program runs a biweekly Coffee, Cards and More morning and a free Senior Walking Club, and Wauconda Township adds a free weekly Cards and Game Players Club plus a Zumba Gold class out of Township Hall.",
+  },
+  {
+    name: "Bensenville",
+    slug: "bensenville",
+    county: "DuPage",
+    intro:
+      "The Village of Bensenville's Heritage Center runs daily drop-in activities from chair yoga to bingo, the Park District's Young at Heart program adds trips and an Oak Room social lounge at Deer Grove Leisure Center, and Bensenville Community Public Library's WITS Workout covers brain-health programming for older adults.",
+  },
+  {
+    name: "Country Club Hills",
+    slug: "country-club-hills",
+    county: "Cook",
+    intro:
+      "The OAK senior program runs a full weekly lineup of cards, line dancing, and crochet out of City Hall, and the City's own Fitness Center adds a discounted self-directed gym membership for residents 55 and older.",
+  },
+  {
+    name: "Hazel Crest",
+    slug: "hazel-crest",
+    county: "Cook",
+    intro:
+      "The Village of Hazel Crest runs a senior room with Bid Whist, Keno, and Chess afternoons, the Hazel Crest Park District adds its own Seniors (60+) program and a discounted Fitness Center membership, and the South Suburban Genealogical & Historical Society offers free genealogy research assistance and classes.",
+  },
 ];
 
 export function cityBySlug(slug: string): CityDef | undefined {
