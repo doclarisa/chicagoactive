@@ -2,7 +2,7 @@ import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 const DESCRIPTION =
-  "A routing hub for lifelong-learning programs for seniors across Chicagoland — art classes, computer classes, and book clubs, plus ceramics and language classes woven into the same venues.";
+  "A routing hub for lifelong-learning programs for seniors across Chicagoland — art classes, computer classes, book clubs, and language classes, plus ceramics woven into the same venues.";
 
 export const metadata = {
   title: "Classes for Seniors in Chicagoland",
@@ -12,11 +12,11 @@ export const metadata = {
 };
 
 // A hub earns its URL by routing, not by re-listing — no ItemList here.
-// 68% of lifelong-learning-tagged listings already live on one of these
-// three child pages, so duplicating that content here would just compete
-// with them. Ceramics (5) and languages (6) never cleared the 10+ metro
-// gate, so they don't have their own page to route to — they're named
-// here instead of turned into a dead link.
+// Most lifelong-learning-tagged listings already live on one of these four
+// child pages, so duplicating that content here would just compete with
+// them. Languages cleared the 10+ metro gate in Phase 3 (grew from 6 to 14)
+// and got its own page; ceramics (5) still hasn't, so it stays named in
+// prose below instead of turned into a dead link.
 const CHILDREN = [
   {
     href: "/art-classes-for-seniors",
@@ -28,13 +28,19 @@ const CHILDREN = [
     href: "/computer-classes-for-seniors",
     label: "Computer Classes for Seniors",
     blurb:
-      "Including Plainfield Area Public Library's quarterly technology-class rotation and Chicago's six DFSS Regional Senior Centers.",
+      "Including Plainfield Public Library's quarterly technology-class rotation and Chicago's six DFSS Regional Senior Centers.",
   },
   {
     href: "/book-clubs-for-seniors",
     label: "Book Clubs for Seniors",
     blurb:
       "Including Downers Grove Public Library's three distinct senior discussion groups.",
+  },
+  {
+    href: "/language-classes-for-seniors",
+    label: "Language Classes for Seniors",
+    blurb:
+      "Including Skokie Public Library's Mango Languages access and Indian Prairie Public Library's ESL instruction.",
   },
 ];
 
@@ -55,10 +61,9 @@ export default function ClassesForSeniorsHub() {
 
       <p className="mt-4 text-lg leading-relaxed text-ink">
         This is a routing page, not another listing dump — most of Chicagoland&apos;s
-        lifelong-learning programs already live on one of the pages below. Language classes
-        (Skokie Public Library&apos;s Mango Languages access covering 60+ languages) and ceramics
-        classes (Park District of Oak Park&apos;s Dole Center) show up woven into the same venues
-        as the categories below, without a dedicated page of their own yet.
+        lifelong-learning programs already live on one of the pages below. Ceramics classes
+        (Park District of Oak Park&apos;s Dole Center) show up woven into the same venues as the
+        categories below, without a dedicated page of their own yet.
       </p>
 
       <ul className="mt-8 space-y-4">

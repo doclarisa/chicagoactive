@@ -16,6 +16,10 @@
 // "the same DFSS centers that answer every other Chicago activity" — not a
 // distinct page, a duplicate wearing a different H1. Both are folded into
 // the /chicago hub as plain, unlinked rows instead (see app/chicago/page.tsx).
+//
+// Phase 3 added 5 more cells once new content pushed them over the 8+
+// gate: book-clubs×Cook (18), book-clubs×DuPage (10), book-clubs×Lake (9),
+// tech-help×Cook (17), tech-help×DuPage (13).
 export type CountyCellDef = {
   activitySlug: string; // matches ActivityPageDef.slug in lib/activityPages.ts
   tag: string;
@@ -229,6 +233,51 @@ export const COUNTY_CELLS: CountyCellDef[] = [
     h1: "Senior Lunch Programs in Lake County",
     intro:
       "Antioch Township Senior Services runs its own luncheons alongside card and board games and a singing group at the old village-run center, and Zion Park District pairs Bingo and Lunch several times each summer — two of 8 senior-lunch listings across Lake County.",
+  },
+  {
+    activitySlug: "book-clubs-for-seniors",
+    tag: "book-clubs",
+    countySlug: "cook",
+    county: "Cook",
+    h1: "Book Clubs for Seniors in Cook County",
+    intro:
+      "The East Wing Glenview Senior Center runs separate Men's and Women's Book Clubs as part of its 100+ weekly activities, and Park Ridge Public Library's Reader Services desk runs book clubs and a writers group alongside its Doorstep Delivery service — two of 18 book-club listings across suburban Cook County.",
+  },
+  {
+    activitySlug: "tech-help-for-seniors",
+    tag: "tech-help",
+    countySlug: "cook",
+    county: "Cook",
+    h1: "Tech Help for Seniors in Cook County",
+    intro:
+      "Oak Lawn Public Library's AgeOptions-funded program lends Chromebooks and runs technology training aimed at reducing social isolation for adults 60+, and Northbrook Public Library runs tech-help appointments and monthly technology classes through its dedicated Senior Services and Outreach program — two of 17 tech-help listings across suburban Cook County.",
+  },
+  {
+    activitySlug: "tech-help-for-seniors",
+    tag: "tech-help",
+    countySlug: "dupage",
+    county: "DuPage",
+    h1: "Tech Help for Seniors in DuPage County",
+    intro:
+      "Naperville Public Library's Senior Tech Club covers topics from cloud storage to AI for older adults, and Itasca Community Library runs an iPad Basics introductory tech class through its Adult Services department — two of 13 tech-help listings across DuPage County.",
+  },
+  {
+    activitySlug: "book-clubs-for-seniors",
+    tag: "book-clubs",
+    countySlug: "dupage",
+    county: "DuPage",
+    h1: "Book Clubs for Seniors in DuPage County",
+    intro:
+      "Downers Grove Public Library runs four separate book discussion series, including a daytime nonfiction group and an outdoor walking book discussion with the DG Park District, and Indian Prairie Public Library in Darien runs three monthly clubs — Nonfiction at Night, Crime Readers, and Novel Idea — two of 10 book-club listings across DuPage County.",
+  },
+  {
+    activitySlug: "book-clubs-for-seniors",
+    tag: "book-clubs",
+    countySlug: "lake",
+    county: "Lake",
+    h1: "Book Clubs for Seniors in Lake County",
+    intro:
+      "Round Lake Area Park District's Senior Activities program runs a monthly book club led by a librarian on the first Thursday, and Highland Park's Division of Senior Services pairs its own Book Club with a separate Current Events discussion group — two of 9 book-club listings across Lake County.",
   },
 ];
 
