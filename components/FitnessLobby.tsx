@@ -22,11 +22,15 @@ const CARDS: LobbyCard[] = [
     icon: "🏓",
     title: "Indoor Pickleball & Courts",
     value: "Drop-in courts, leagues, and lessons across Chicagoland",
+    href: "/activities/pickleball-for-seniors",
+    count: "13 listings",
   },
   {
     icon: "🧘",
     title: "Gentle Yoga & Tai Chi",
     value: "Low-impact classes built for balance and flexibility",
+    href: "/activities/yoga-for-seniors",
+    count: "45 listings",
   },
   {
     icon: "🏊",
