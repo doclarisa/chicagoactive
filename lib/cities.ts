@@ -609,6 +609,41 @@ export const CITIES: CityDef[] = [
     intro:
       "The Michael A. Miliotti Senior Center (Bloomingdale Township) anchors the village's senior programming, and Bloomingdale Public Library adds job-skills training, digital literacy classes, and book clubs.",
   },
+  {
+    name: "Oak Brook",
+    slug: "oak-brook",
+    county: "DuPage",
+    intro:
+      "Oak Brook Park District's Pioneer Programs (60+) anchors the village's senior calendar with luncheons, trips, and classes, and Oak Brook Public Library adds book clubs and tech help. Graue Mill and Museum, a free 1852 water-powered gristmill run by the Forest Preserve District of DuPage County, is a short trip from the village center.",
+  },
+  {
+    name: "Itasca",
+    slug: "itasca",
+    county: "DuPage",
+    intro:
+      "Itasca Senior Club, run by the Itasca Park District, hosts a monthly luncheon plus organized trips, and Itasca Community Library's Adult Services runs a crafting group, tech classes, and a chess club. The Itasca Historical Depot Museum, a restored 1873 train depot, is a free local-history stop.",
+  },
+  {
+    name: "Wood Dale",
+    slug: "wood-dale",
+    county: "DuPage",
+    intro:
+      "Wood Dale Park District's Senior Programs & Trips runs a rotating seasonal menu — Sip & Stroll, Strong & Steady, and more — and Wood Dale Public Library adds a Thursday Mix drop-in social for adults 55+. Yesterday's Farm Museum, run by the Wood Dale Historical Society, is a free local-history stop on a restored 1800s farm.",
+  },
+  {
+    name: "Antioch",
+    slug: "antioch",
+    county: "Lake",
+    intro:
+      "Antioch Township Senior Services runs the village's senior center for $7 a day including breakfast and lunch, and the Lakes Region Historical Society's Schoolhouse Museum is a free local-history stop in an 1892 schoolhouse. Antioch Public Library District runs a free monthly Fireside Fridays social hour.",
+  },
+  {
+    name: "Johnsburg",
+    slug: "johnsburg",
+    county: "McHenry",
+    intro:
+      "McHenry Township Senior Center, physically located in Johnsburg, runs case management, transportation, and computer classes, and Johnsburg Public Library District adds chair yoga, a book club, and a photography club.",
+  },
 ];
 
 export function cityBySlug(slug: string): CityDef | undefined {
