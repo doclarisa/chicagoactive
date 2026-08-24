@@ -13,6 +13,9 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import { categoryLabel } from "@/lib/categories";
 import { listingSchemaType } from "@/lib/schema";
 import { cityBySlug } from "@/lib/cities";
+import { activityPageByTag } from "@/lib/activityPages";
+import { countyCellBySlugs } from "@/lib/activityCounties";
+import { parseOpeningHours } from "@/lib/openingHours";
 
 const PRICE_RANGE: Record<string, string> = {
   FREE: "Free",
@@ -66,6 +69,10 @@ export default async function ListingDetail({
   // LocalBusiness schema, filled only with facts we actually have — no
   // fabricated street address, phone, or opening hours.
   const parsedAddress = listing.address ? parseAddress(listing.address) : null;
+  // Only emit geo for a real, address-derived coordinate — "approximate"
+  // rows are a city/county centroid, and presenting that as the venue's
+  // location would misrepresent it to search engines.
+  const openingHours = listing.hours ? parseOpeningHours(listing.hours) : null;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": listingSchemaType(listing.category),
@@ -80,9 +87,30 @@ export default async function ListingDetail({
       addressRegion: parsedAddress?.addressRegion ?? "IL",
       addressCountry: "US",
     },
+    ...(listing.geoPrecision === "exact" && listing.lat != null && listing.lng != null
+      ? { geo: { "@type": "GeoCoordinates", latitude: listing.lat, longitude: listing.lng } }
+      : {}),
+    ...(openingHours ? { openingHours } : {}),
     priceRange: PRICE_RANGE[listing.cost],
     isAccessibleForFree: listing.cost === "FREE",
   };
+
+  // Activity tag chips — always link to the metro-wide activity page;
+  // additionally link to the county cell when this listing's county has
+  // one built, else fall through to the metro page only.
+  const activityTags = Array.isArray(listing.activities) ? (listing.activities as string[]) : [];
+  const activityChips = activityTags
+    .map((tag) => {
+      const page = activityPageByTag(tag);
+      if (!page) return null;
+      const cell = countyCellBySlugs(page.slug, listing.county.toLowerCase());
+      return {
+        tag,
+        label: page.h1.replace(/ (in|from) Chicagoland$/, "").replace(/ for Seniors$/, ""),
+        href: cell ? `/activities/${cell.activitySlug}/${cell.countySlug}` : `/activities/${page.slug}`,
+      };
+    })
+    .filter((c): c is { tag: string; label: string; href: string } => c !== null);
 
   const mapQuery = encodeURIComponent(
     listing.address ??
@@ -201,12 +229,34 @@ export default async function ListingDetail({
         </p>
       )}
 
+      {activityChips.length > 0 && (
+        <div className="mt-4 flex flex-wrap gap-2">
+          {activityChips.map((chip) => (
+            <Link
+              key={chip.tag}
+              href={chip.href}
+              className="inline-flex items-center rounded-pill bg-flag-blue-tint px-3 py-1 text-sm font-semibold text-flag-blue-ink no-underline hover:bg-flag-blue-tint-2"
+            >
+              {chip.label}
+            </Link>
+          ))}
+        </div>
+      )}
+
       {(listing.address ||
         listing.phone ||
         listing.hours ||
         listing.ageEligibility ||
         listing.registration ||
-        listing.accessibility) && (
+        listing.registrationUrl ||
+        listing.accessibility ||
+        listing.accessibilityNotes ||
+        listing.parkingNotes ||
+        listing.transitNotes ||
+        listing.residentPrice ||
+        listing.nonResidentPrice ||
+        listing.beginnerFriendly ||
+        listing.dropIn) && (
         <dl className="mt-6 space-y-2 text-base text-ink">
           {listing.address && (
             <div>
@@ -236,16 +286,71 @@ export default async function ListingDetail({
               <dd className="inline">{listing.ageEligibility}</dd>
             </div>
           )}
+          {(listing.residentPrice || listing.nonResidentPrice) && (
+            <div>
+              <dt className="inline font-semibold">Price: </dt>
+              <dd className="inline">
+                {listing.residentPrice && listing.nonResidentPrice
+                  ? `${listing.residentPrice} resident / ${listing.nonResidentPrice} non-resident`
+                  : (listing.residentPrice ?? listing.nonResidentPrice)}
+              </dd>
+            </div>
+          )}
+          {listing.dropIn && (
+            <div>
+              <dt className="inline font-semibold">Drop-in: </dt>
+              <dd className="inline">Just show up — no registration needed</dd>
+            </div>
+          )}
           {listing.registration && (
             <div>
               <dt className="inline font-semibold">Registration: </dt>
               <dd className="inline">{listing.registration}</dd>
             </div>
           )}
+          {listing.registrationUrl && (
+            <div>
+              <dt className="inline font-semibold">Register: </dt>
+              <dd className="inline">
+                <a
+                  href={listing.registrationUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-flag-blue-ink underline"
+                >
+                  Sign up online →
+                </a>
+              </dd>
+            </div>
+          )}
           {listing.accessibility && (
             <div>
               <dt className="inline font-semibold">Accessibility: </dt>
               <dd className="inline">{listing.accessibility}</dd>
+            </div>
+          )}
+          {listing.accessibilityNotes && (
+            <div>
+              <dt className="inline font-semibold">Accessibility notes: </dt>
+              <dd className="inline">{listing.accessibilityNotes}</dd>
+            </div>
+          )}
+          {listing.parkingNotes && (
+            <div>
+              <dt className="inline font-semibold">Parking: </dt>
+              <dd className="inline">{listing.parkingNotes}</dd>
+            </div>
+          )}
+          {listing.transitNotes && (
+            <div>
+              <dt className="inline font-semibold">Transit: </dt>
+              <dd className="inline">{listing.transitNotes}</dd>
+            </div>
+          )}
+          {listing.beginnerFriendly && (
+            <div>
+              <dt className="inline font-semibold">Good for beginners: </dt>
+              <dd className="inline">Yes</dd>
             </div>
           )}
         </dl>

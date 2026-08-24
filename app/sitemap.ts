@@ -65,11 +65,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  const guideRoutes: MetadataRoute.Sitemap = GUIDES.map((g) => ({
-    url: `${SITE_URL}/guides/${g.slug}`,
-    changeFrequency: "monthly",
-    priority: 0.5,
-  }));
+  // Only guides with a dedicated static route (real content, own schema,
+  // indexed) belong in the sitemap. The rest render through the generic
+  // app/guides/[slug]/page.tsx placeholder template, which is deliberately
+  // `robots: { index: false }` until real content ships — don't submit a
+  // noindexed URL to crawlers.
+  const INDEXED_GUIDE_SLUGS = new Set(["day-trips-from-chicago", "medicare-fitness-gyms"]);
+  const guideRoutes: MetadataRoute.Sitemap = GUIDES.filter((g) => INDEXED_GUIDE_SLUGS.has(g.slug)).map(
+    (g) => ({
+      url: `${SITE_URL}/guides/${g.slug}`,
+      changeFrequency: "monthly",
+      priority: 0.5,
+    }),
+  );
 
   // Day Trips county spokes + the commercial tour-companies page.
   const dayTripSpokeRoutes: MetadataRoute.Sitemap = COUNTY_SPOKES.map((s) => ({

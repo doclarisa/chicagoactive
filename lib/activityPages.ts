@@ -139,3 +139,9 @@ export const ACTIVITY_PAGES: ActivityPageDef[] = [
 export function activityPageBySlug(slug: string): ActivityPageDef | undefined {
   return ACTIVITY_PAGES.find((a) => a.slug === slug);
 }
+
+// Reverse lookup — a Listing's `activities` field stores the internal tag
+// (e.g. "tech-help"), not the public page slug ("tech-help-for-seniors").
+export function activityPageByTag(tag: string): ActivityPageDef | undefined {
+  return ACTIVITY_PAGES.find((a) => a.tag === tag);
+}
