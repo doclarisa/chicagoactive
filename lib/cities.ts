@@ -644,6 +644,27 @@ export const CITIES: CityDef[] = [
     intro:
       "McHenry Township Senior Center, physically located in Johnsburg, runs case management, transportation, and computer classes, and Johnsburg Public Library District adds chair yoga, a book club, and a photography club.",
   },
+  {
+    name: "Alsip",
+    slug: "alsip",
+    county: "Cook",
+    intro:
+      "Worth Township Senior Center is a busy weekday drop-in hub for card games, chair exercise, and bingo, the Alsip Park District runs its own Senior Club bingo-and-social gathering out of the Apollo Recreation Center, and the Alsip-Merrionette Park Public Library adds an AARP Smart Driver course, SilverSneakers-certified chair yoga, and AgeOptions benefits enrollment.",
+  },
+  {
+    name: "Warrenville",
+    slug: "warrenville",
+    county: "DuPage",
+    intro:
+      "Warrenville Public Library runs Book-a-Librarian tech help alongside book clubs, ESL, and a genealogy club, and the Warrenville Park District's PrimeTimers (50+) program adds Mahjong Mondays, a Tuesday Lunch Bunch, day trips, and pickleball.",
+  },
+  {
+    name: "Shorewood",
+    slug: "shorewood",
+    county: "Will",
+    intro:
+      "Troy Township Senior Program runs a twice-weekly drop-in center with card games and a Friday bridge group, and the newly opened Village of Shorewood YMCA adds an Active Older Adults fitness class with a waived joiner's fee for residents.",
+  },
 ];
 
 export function cityBySlug(slug: string): CityDef | undefined {
