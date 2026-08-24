@@ -19,25 +19,25 @@ export const metadata = {
 // prose below instead of turned into a dead link.
 const CHILDREN = [
   {
-    href: "/art-classes-for-seniors",
+    href: "/activities/art-classes-for-seniors",
     label: "Art Classes for Seniors",
     blurb:
       "Including the Park District of Oak Park's ceramics, stained glass, and weaving classes at the Dole Center.",
   },
   {
-    href: "/computer-classes-for-seniors",
+    href: "/activities/computer-classes-for-seniors",
     label: "Computer Classes for Seniors",
     blurb:
       "Including Plainfield Public Library's quarterly technology-class rotation and Chicago's six DFSS Regional Senior Centers.",
   },
   {
-    href: "/book-clubs-for-seniors",
+    href: "/activities/book-clubs-for-seniors",
     label: "Book Clubs for Seniors",
     blurb:
       "Including Downers Grove Public Library's three distinct senior discussion groups.",
   },
   {
-    href: "/language-classes-for-seniors",
+    href: "/activities/language-classes-for-seniors",
     label: "Language Classes for Seniors",
     blurb:
       "Including Skokie Public Library's Mango Languages access and Indian Prairie Public Library's ESL instruction.",
