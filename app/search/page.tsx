@@ -12,6 +12,25 @@ const MAX_RESULTS = 100;
 // Group results once there are enough to make browsing a flat list awkward.
 const GROUP_THRESHOLD = 8;
 
+// Words that carry no matching signal and, under strict AND-of-tokens
+// matching, can turn a real hit into a false miss just because a listing's
+// text happens not to contain that exact filler word (e.g. "the").
+const STOPWORDS = new Set([
+  "the", "a", "an", "of", "in", "at", "for", "and", "or", "near", "me", "to", "on",
+]);
+
+// Split on anything that isn't a letter/digit -- not just whitespace -- so a
+// hyphenated query ("shirley-green") tokenizes the same as a spaced one
+// ("shirley green"), and drop stopwords so one filler word can't sink an
+// otherwise-real match.
+function tokenize(input: string): string[] {
+  const all = input.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+  const meaningful = all.filter((t) => !STOPWORDS.has(t));
+  // If the query was entirely stopwords (unlikely, but don't return zero
+  // results for it), fall back to matching on the unfiltered tokens.
+  return meaningful.length > 0 ? meaningful : all;
+}
+
 export async function generateMetadata({
   searchParams,
 }: {
@@ -60,9 +79,10 @@ export default async function SearchPage({
   });
 
   // Every listing's field is required to appear somewhere across a combined
-  // haystack, not as one contiguous substring -- so "Shirley Green" still
-  // matches a listing named "...(Shirley J. Green Senior Center)".
-  const tokens = query.toLowerCase().split(/\s+/).filter(Boolean);
+  // haystack, not as one contiguous substring -- so "the shirley-green
+  // center" still matches a listing named "...(Shirley J. Green Senior
+  // Center)".
+  const tokens = tokenize(query);
 
   const matches = all.filter((l) => {
     const activityLabels = Array.isArray(l.activities)
