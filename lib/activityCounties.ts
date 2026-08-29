@@ -279,6 +279,46 @@ export const COUNTY_CELLS: CountyCellDef[] = [
     intro:
       "Round Lake Area Park District's Senior Activities program runs a monthly book club led by a librarian on the first Thursday, and Highland Park's Division of Senior Services pairs its own Book Club with a separate Current Events discussion group — two of 9 book-club listings across Lake County.",
   },
+  // Phase 4 (2026-08-29): a pickleball- and water-aerobics-focused research
+  // pass pushed 4 more cells over the 8+ gate. Most of these are honestly
+  // general-adult programming, not senior-restricted -- the intros here
+  // stay factual rather than implying an age gate that isn't real.
+  {
+    activitySlug: "pickleball-for-seniors",
+    tag: "pickleball",
+    countySlug: "cook",
+    county: "Cook",
+    h1: "Pickleball for Seniors in Cook County",
+    intro:
+      "Skokie Park District runs a genuinely senior-tied Women's 50+ Pickleball League with round-robin doubles play, and Oak Lawn Park District's older-adult programming includes pickleball alongside chair yoga, water aerobics, and senior-only tennis — two of 22 pickleball listings across Cook County, most run as general-adult programming.",
+  },
+  {
+    activitySlug: "pickleball-for-seniors",
+    tag: "pickleball",
+    countySlug: "lake",
+    county: "Lake",
+    h1: "Pickleball for Seniors in Lake County",
+    intro:
+      "Libertyville Senior Center lists pickleball among its member activities, and Vernon Hills Park District runs it as a named standalone program — two of 10 pickleball listings across Lake County, most run as general-adult programming rather than age-restricted classes.",
+  },
+  {
+    activitySlug: "pickleball-for-seniors",
+    tag: "pickleball",
+    countySlug: "dupage",
+    county: "DuPage",
+    h1: "Pickleball for Seniors in DuPage County",
+    intro:
+      "Wheaton Park District runs weekly rotating pickleball sessions at Central Athletic Complex and accepts Silver Sneakers, and Naperville Park District offers adult classes, leagues, and private instruction — two of 9 pickleball listings across DuPage County, most run as general-adult programming.",
+  },
+  {
+    activitySlug: "water-aerobics-for-seniors",
+    tag: "water-aerobics",
+    countySlug: "cook",
+    county: "Cook",
+    h1: "Water Aerobics for Seniors in Cook County",
+    intro:
+      "Arlington Heights Park District runs weekly Aqua Fitness classes, and Northbrook Park District's Meadowhill Aquatic Center offers water aerobics alongside its swim lessons — two of 13 water aerobics listings across Cook County, most run as general-adult classes rather than age-restricted programs.",
+  },
 ];
 
 // Chicago's 20 satellite/regional DFSS centers really do share a uniform
