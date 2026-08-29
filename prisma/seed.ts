@@ -38,7 +38,7 @@ const listings = [
     description:
       "Programming for active adults and seniors including a Game Room (billiards, ping pong, cards) for ages 50+, fitness and enrichment classes, and a 20% program discount for ages 60+.",
     category: "park-district-55-programs",
-    activities: ["pickleball"],
+    activities: ["pickleball", "water-aerobics"],
     neighborhood: "Naperville",
     county: "DuPage",
     cost: "LOW_COST" as const,
@@ -50,7 +50,7 @@ const listings = [
     registration: "Register at napervilleparks.org/programguides or by phone",
     sourceUrl: "https://napervilleparks.org/activeadults",
     qualityNote:
-      "Naperville Park District runs adult pickleball classes, leagues, and private instruction (napervilleparks.org/pickleball) -- not mentioned on the Active Adults page itself, and no age restriction stated.",
+      "Naperville Park District runs adult pickleball classes, leagues, and private instruction (napervilleparks.org/pickleball) -- not mentioned on the Active Adults page itself, and no age restriction stated. It also runs seasonal Aqua Fitness at Centennial Beach (napervilleparks.org/aquatics) -- outdoor/seasonal, no age restriction stated.",
   },
   {
     name: "Chicago Regional Senior Centers",
@@ -322,7 +322,7 @@ const listings = [
     description:
       "Social, health, and wellness activities for ages 50-61 at the Regent Center, Monday through Friday. Membership $30 residents / $45 nonresidents.",
     category: "park-district-55-programs",
-    activities: ["pickleball"],
+    activities: ["pickleball", "water-aerobics", "swimming"],
     neighborhood: "Mundelein",
     county: "Lake",
     cost: "LOW_COST" as const,
@@ -332,7 +332,7 @@ const listings = [
     phone: "(847) 566-4790",
     sourceUrl: "https://www.mundeleinparks.org/programs/active-adults/",
     qualityNote:
-      "Mundelein Park District rents pickleball courts ($25/hour) under general Adult Athletics (mundeleinparks.org/programs/adult-athletics/pickleball/) -- not part of the Active Adults program, no age restriction stated.",
+      "Mundelein Park District rents pickleball courts ($25/hour) under general Adult Athletics (mundeleinparks.org/programs/adult-athletics/pickleball/) -- not part of the Active Adults program, no age restriction stated. Its indoor pool at the Community Center offers lap swim and aquatic fitness classes (mundeleinparks.org/aquatics/) -- not tied to the Active Adults 50-61 program specifically.",
   },
   // --- Added to further fill out Will and Kendall, the two thinnest counties ---
   {
@@ -771,7 +771,7 @@ const listings = [
     description: "Park Ridge's S.T.A.R. program at the Centennial Activity Center runs an unusually deep class list — chair and mat yoga, Sound Bath relaxation sessions, Boxing for Balance, FUNctional Fitness, and beginner-through-advanced tap dance alongside line dancing. There's also two levels of Mah Jongg, poker tournaments, bingo, acrylic art workshops and origami, plus catered lunch outings, movie afternoons, and the AARP Driver Safety course.",
     category: "park-district-55-programs",
     operatorType: "park-district",
-    activities: ["yoga","fitness-classes","strength-training","dance","cards-games","bingo","art-classes","day-trips","lifelong-learning","pickleball"],
+    activities: ["yoga","fitness-classes","strength-training","dance","cards-games","bingo","art-classes","day-trips","lifelong-learning","pickleball","swimming"],
     neighborhood: "Park Ridge",
     county: "Cook",
     city: "Park Ridge",
@@ -792,7 +792,7 @@ const listings = [
     lng: -87.8286643,
     geoPrecision: "exact",
     qualityNote:
-      "Park Ridge Park District offers Adult Pickleball Clinics and Lessons (prparks.org/Activities/Sports-Fitness/Tennis-Pickleball) -- not on the Active Adult (55+) page itself, and no age restriction stated.",
+      "Park Ridge Park District offers Adult Pickleball Clinics and Lessons (prparks.org/Activities/Sports-Fitness/Tennis-Pickleball) -- not on the Active Adult (55+) page itself, and no age restriction stated. Its Indoor Pool offers open lap/leisure swim (prparks.org/Facilities/Centennial-Fitness-Center/Open-Gym-Swim-Schedules) -- open swim only, restricted to 16+ when unguarded, no water-aerobics class found; not tied to the Active Adult program.",
   },
   {
     name: "Active Adult Exercise Classes (New Lenox Community Park District)",
@@ -943,9 +943,9 @@ const listings = [
     description: "H-F Park District runs its Adult & Senior program out of the Irwin Community Center, with a varied lineup of activities happening most days of the week covering fitness, games and social time. There's no membership fee to participate, and the district frames it as open to all \"active adults\" in the community.",
     category: "park-district-55-programs",
     operatorType: "park-district",
-    activities: ["pickleball"],
+    activities: ["pickleball", "water-aerobics"],
     qualityNote:
-      "The H-F Racquet & Fitness Club (Homewood-Flossmoor Park District) has indoor tennis and pickleball courts (hfparks.com/tennis-pickleball/) -- not tied to the VIP senior program specifically, and no age restriction stated.",
+      "The H-F Racquet & Fitness Club (Homewood-Flossmoor Park District) has indoor tennis and pickleball courts (hfparks.com/tennis-pickleball/) -- not tied to the VIP senior program specifically, and no age restriction stated. It also runs Aqua Aerobics and Aqua Zumba at Lions Club Pool (hfparks.com/aqua-fitness/), \"swim experience is not necessary,\" no age restriction stated.",
     neighborhood: "Homewood",
     county: "Cook",
     city: "Homewood",
@@ -2331,7 +2331,7 @@ const listings = [
     description: "The park district partners with A&A Music & Art Academy to offer adult/senior watercolor, drawing, and clay lessons, plus private piano and guitar lessons, in small classes (max 8 for art). These run as seasonal 4-week sessions, similar to most park district program offerings, so specific dates rotate.",
     category: "park-district-55-programs",
     operatorType: "park-district",
-    activities: ["art-classes","ceramics","music-chorus","pickleball"],
+    activities: ["art-classes","ceramics","music-chorus","pickleball","swimming"],
     neighborhood: "Hanover Park",
     county: "Cook",
     city: "Hanover Park",
@@ -2352,7 +2352,7 @@ const listings = [
     lng: -88.1450735,
     geoPrecision: "approximate",
     qualityNote:
-      "Hanover Park Park District's Centre Court Athletic Club advertises \"the largest indoor tennis & pickleball courts in the area\" (hpparks.org/ccac) -- a general facility, not part of the Art and Music Lessons program, no age restriction stated.",
+      "Hanover Park Park District's Centre Court Athletic Club advertises \"the largest indoor tennis & pickleball courts in the area\" (hpparks.org/ccac) -- a general facility, not part of the Art and Music Lessons program, no age restriction stated. It also runs an Open Swim program \"for all ages and skill levels\" (hpparks.org/aquatic-center) -- lap swim and general pool access, not a dedicated water-aerobics class.",
   },
   {
     name: "Harvard Community Senior Center",
@@ -3089,7 +3089,7 @@ const listings = [
     description: "RecPlex hosts a mix of drop-in and registered senior activities: $1 Bingo Bonanza on select Wednesday afternoons, free senior walking in the gym on Tuesday mornings, and a gentle 'Variations' ballet class for seniors on Thursdays that needs no prior dance experience.",
     category: "park-district-55-programs",
     operatorType: "park-district",
-    activities: ["bingo","walking-groups","dance","pickleball"],
+    activities: ["bingo","walking-groups","dance","pickleball","water-aerobics"],
     neighborhood: "Mt. Prospect",
     county: "Cook",
     city: "Mt. Prospect",
@@ -3110,7 +3110,7 @@ const listings = [
     lng: -87.949549,
     geoPrecision: "exact",
     qualityNote:
-      "Mt. Prospect Park District runs Pickleball Classes, Leagues & Outdoor Courts (mppd.org/pickleball/), linked from the senior page's \"More to Explore\" section but not itself senior-specific.",
+      "Mt. Prospect Park District runs Pickleball Classes, Leagues & Outdoor Courts (mppd.org/pickleball/), linked from the senior page's \"More to Explore\" section but not itself senior-specific. It also runs AquaFit, including a Low Intensity \"Arthritis\" class (mppd.org/aqua-fitness/), also linked from the senior page's \"More to Explore\" section but not itself senior-restricted.",
   },
   {
     name: "My Go-To Place — CJE SeniorLife",
@@ -3172,7 +3172,7 @@ const listings = [
     description: "Northbrook Park District's Senior Center packs a lot into its weekly drop-in schedule: duplicate bridge, canasta, poker, mahjong, and Rummikub for card players, plus drop-in pickleball both indoors and outdoors. On the class side there's chair yoga, tai chi, a choir, Move It & Shake It, and Dance Fit, along with instructional Beginning Mahjong. Membership unlocks these free drop-ins and discounts, and they mix in special events like seasonal bingo bashes and ice cream socials.",
     category: "senior-center-events",
     operatorType: "park-district",
-    activities: ["cards-games","pickleball","music-chorus","tai-chi","yoga","dance","bingo","fitness-classes"],
+    activities: ["cards-games","pickleball","music-chorus","tai-chi","yoga","dance","bingo","fitness-classes","water-aerobics"],
     neighborhood: "Northbrook",
     county: "Cook",
     city: "Northbrook",
@@ -3198,6 +3198,8 @@ const listings = [
     lat: 42.1268759,
     lng: -87.8615867,
     geoPrecision: "exact",
+    qualityNote:
+      "Northbrook Park District's Meadowhill Aquatic Center (nbparks.org/location/meadowhill/) offers water aerobics alongside swim lessons for all ages -- not tied to the Senior Center's own program listing, no age restriction stated.",
   },
   {
     name: "Northeast (Levy) Regional Senior Center",
@@ -3312,7 +3314,7 @@ const listings = [
     description: "Oak Brook Park District's dedicated 60+ program offering luncheons, trips, and a range of classes (from driving instruction to bingo and health topics), plus a Travel Club for ages 21+ and a print newsletter, \"The Pioneer Post.\" A good option for someone seeking an established, ongoing older-adult social calendar.",
     category: "park-district-55-programs",
     operatorType: "park-district",
-    activities: ["day-trips","bingo","social-clubs","congregate-meals","pickleball"],
+    activities: ["day-trips","bingo","social-clubs","congregate-meals","pickleball","water-aerobics"],
     neighborhood: "Oak Brook",
     county: "DuPage",
     city: "Oak Brook",
@@ -3330,7 +3332,7 @@ const listings = [
     lng: -87.9518335,
     geoPrecision: "exact",
     qualityNote:
-      "Oak Brook Park District has \"Central Park Pickleball\" listed under its general Parks/Fitness menu (obparks.org/pickleball) -- not included within the Pioneer Programs (60+) page content.",
+      "Oak Brook Park District has \"Central Park Pickleball\" listed under its general Parks/Fitness menu (obparks.org/pickleball) -- not included within the Pioneer Programs (60+) page content. It also reserves a lane for \"Water Aerobics or Non-Lap Exercise\" at its Family Aquatic Center (obparks.org/facilities/family-aquatic-center) -- not tied to Pioneer Programs, no age restriction stated.",
   },
   {
     name: "Oak Lawn Park District Senior Programs",
@@ -4646,7 +4648,7 @@ const listings = [
     description: "Veterans Park District runs a full weekly calendar for active adults 55 and better: chair yoga twice a week, a Monday games session, Wednesday bingo with lunch, a Friday breakfast club and monthly films, crafts & coffee once a month, restaurant outings by park district van, and a women's wellness support group (WOW). Most activities cost $2-$15 and need advance registration, though the monthly Social Club is drop-in.",
     category: "park-district-55-programs",
     operatorType: "park-district",
-    activities: ["yoga","cards-games","bingo","congregate-meals","art-classes","social-clubs","day-trips"],
+    activities: ["yoga","cards-games","bingo","congregate-meals","art-classes","social-clubs","day-trips","water-aerobics"],
     neighborhood: "Northlake",
     county: "Cook",
     city: "Northlake",
@@ -4669,6 +4671,8 @@ const listings = [
     lat: 41.9172526,
     lng: -87.8956185,
     geoPrecision: "approximate",
+    qualityNote:
+      "Veterans Park District runs Aquacize and AquaZumba adult fitness classes (vpdpark.org/aquatics/) -- not tied to the Active Adults & Seniors program specifically, no age restriction stated.",
   },
   {
     name: "Villa Park Recreation Center Adults & Seniors (60+)",
