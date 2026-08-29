@@ -22,12 +22,15 @@ const listings = [
     description:
       "120+ Senior Citizen Clubs citywide plus seasonal classes (fitness, arts, education) offered through the Park District's four program sessions. Programs for seniors only are free; other classes are free or half-price for ages 60+.",
     category: "park-district-55-programs",
+    activities: ["pickleball"],
     neighborhood: "Citywide",
     county: "Cook",
     cost: "LOW_COST" as const,
     days: Prisma.DbNull,
     time: null,
     sourceUrl: "https://www.chicagoparkdistrict.com/programs-101",
+    qualityNote:
+      "The Chicago Park District runs pickleball courts citywide (chicagoparkdistrict.com/facilities/pickleball-courts), explicitly open to \"Chicagoans of all ages\" -- not senior-specific, not mentioned on the Senior Programs page itself.",
   },
   {
     name: "Naperville Park District Active Adults",
@@ -35,6 +38,7 @@ const listings = [
     description:
       "Programming for active adults and seniors including a Game Room (billiards, ping pong, cards) for ages 50+, fitness and enrichment classes, and a 20% program discount for ages 60+.",
     category: "park-district-55-programs",
+    activities: ["pickleball"],
     neighborhood: "Naperville",
     county: "DuPage",
     cost: "LOW_COST" as const,
@@ -45,6 +49,8 @@ const listings = [
     hours: "Mon-Fri 8:30 a.m.-5:00 p.m. (Alfred Rubin Riverwalk Community Center)",
     registration: "Register at napervilleparks.org/programguides or by phone",
     sourceUrl: "https://napervilleparks.org/activeadults",
+    qualityNote:
+      "Naperville Park District runs adult pickleball classes, leagues, and private instruction (napervilleparks.org/pickleball) -- not mentioned on the Active Adults page itself, and no age restriction stated.",
   },
   {
     name: "Chicago Regional Senior Centers",
@@ -215,6 +221,7 @@ const listings = [
     description:
       "Free drop-in senior center, open to residents and non-residents, with weekly activities: cards, Bingo, Wii Bowling, guest speakers, social clubs and dinners, plus senior-specific fitness classes.",
     category: "senior-center-events",
+    activities: ["pickleball"],
     neighborhood: "Crystal Lake",
     county: "McHenry",
     cost: "FREE" as const,
@@ -224,6 +231,8 @@ const listings = [
     phone: "(815) 459-0680 ext. 1219",
     hours: "Mon-Fri 9am-12pm (drop-in center; closed holidays and last 2 weeks of December)",
     sourceUrl: "https://www.crystallakeparks.org/active-adults",
+    qualityNote:
+      "Crystal Lake Park District runs pickleball lessons/courts district-wide (crystallakeparks.org) -- not confirmed as part of the Grand Oaks senior center's own program, and no age restriction stated.",
   },
   {
     name: "Crystal Lake Park District Day Trips",
@@ -743,7 +752,7 @@ const listings = [
     description: "Park Ridge's S.T.A.R. program at the Centennial Activity Center runs an unusually deep class list — chair and mat yoga, Sound Bath relaxation sessions, Boxing for Balance, FUNctional Fitness, and beginner-through-advanced tap dance alongside line dancing. There's also two levels of Mah Jongg, poker tournaments, bingo, acrylic art workshops and origami, plus catered lunch outings, movie afternoons, and the AARP Driver Safety course.",
     category: "park-district-55-programs",
     operatorType: "park-district",
-    activities: ["yoga","fitness-classes","strength-training","dance","cards-games","bingo","art-classes","day-trips","lifelong-learning"],
+    activities: ["yoga","fitness-classes","strength-training","dance","cards-games","bingo","art-classes","day-trips","lifelong-learning","pickleball"],
     neighborhood: "Park Ridge",
     county: "Cook",
     city: "Park Ridge",
@@ -763,6 +772,8 @@ const listings = [
     lat: 42.0216005,
     lng: -87.8286643,
     geoPrecision: "exact",
+    qualityNote:
+      "Park Ridge Park District offers Adult Pickleball Clinics and Lessons (prparks.org/Activities/Sports-Fitness/Tennis-Pickleball) -- not on the Active Adult (55+) page itself, and no age restriction stated.",
   },
   {
     name: "Active Adult Exercise Classes (New Lenox Community Park District)",
@@ -846,7 +857,7 @@ const listings = [
     description: "Prospect Heights Park District's Active Adults program focuses on getting older adults out and about, with day trips and longer excursions to local and distant attractions via comfortable transportation, including door-to-door pickup for those who can't get to the park district themselves. Join the mailing list to receive the Let's Go Active Adult Newsletter with current trip offerings, including overnight and last-minute trips.",
     category: "park-district-55-programs",
     operatorType: "park-district",
-    activities: ["day-trips"],
+    activities: ["day-trips", "pickleball"],
     neighborhood: "Prospect Heights",
     county: "Cook",
     city: "Prospect Heights",
@@ -864,6 +875,8 @@ const listings = [
     lat: 42.095359,
     lng: -87.9393527,
     geoPrecision: "exact",
+    qualityNote:
+      "Prospect Heights Park District runs Adult Open Play Pickleball at the GMRC Gym, \"Age 18 & up\" (phparks.org/adult-athletics-basketball/) -- not tied to the Active Adults program, and explicitly not senior-restricted.",
   },
   {
     name: "Addison Park District Active Adults & Senior Club",
@@ -905,7 +918,9 @@ const listings = [
     description: "H-F Park District runs its Adult & Senior program out of the Irwin Community Center, with a varied lineup of activities happening most days of the week covering fitness, games and social time. There's no membership fee to participate, and the district frames it as open to all \"active adults\" in the community.",
     category: "park-district-55-programs",
     operatorType: "park-district",
-    activities: Prisma.DbNull,
+    activities: ["pickleball"],
+    qualityNote:
+      "The H-F Racquet & Fitness Club (Homewood-Flossmoor Park District) has indoor tennis and pickleball courts (hfparks.com/tennis-pickleball/) -- not tied to the VIP senior program specifically, and no age restriction stated.",
     neighborhood: "Homewood",
     county: "Cook",
     city: "Homewood",
@@ -1403,7 +1418,7 @@ const listings = [
     description: "A weekly card-game program (pinochle, bridge, duplicate bridge) open to Burr Ridge and Willowbrook residents 50/55+, run out of the Burr Ridge Community Center. Participants get a bi-monthly newsletter (\"The Scoop\") listing all activities and events. Good fit for regular card players looking for a standing weekly group.",
     category: "park-district-55-programs",
     operatorType: "park-district",
-    activities: ["cards-games"],
+    activities: ["cards-games", "pickleball"],
     neighborhood: "Burr Ridge",
     county: "DuPage",
     city: "Burr Ridge",
@@ -1424,6 +1439,8 @@ const listings = [
     lat: 41.7587999,
     lng: -87.9268647,
     geoPrecision: "exact",
+    qualityNote:
+      "Burr Ridge Park District has two lit tennis courts also lined for pickleball at Woods Park (brparks.org/copy-of-whittaker-park) -- not part of the card-game Active Adult Program page, and no age restriction stated.",
   },
   {
     name: "Calumet Township Senior Service Center",
@@ -1612,7 +1629,7 @@ const listings = [
     description: "A flexible, no-membership-fee social club for adults 60+ offering a menu of activities — walking club, yoga, balance & coordination, strength training, crafts, bingo, speaker presentations, day trips, movies, culinary classes, and brunches — that participants pick and choose from rather than a single fixed schedule.",
     category: "park-district-55-programs",
     operatorType: "park-district",
-    activities: ["walking-groups","yoga","strength-training","bingo","day-trips","social-clubs","congregate-meals"],
+    activities: ["walking-groups","yoga","strength-training","bingo","day-trips","social-clubs","congregate-meals","pickleball"],
     neighborhood: "Clarendon Hills",
     county: "DuPage",
     city: "Clarendon Hills",
@@ -1629,6 +1646,8 @@ const listings = [
     lat: 41.7961237,
     lng: -87.9551429,
     geoPrecision: "approximate",
+    qualityNote:
+      "Clarendon Hills Park District lists pickleball among its general adult-interests offerings (clarendonhillsparkdistrict.org/adult-interests/) -- not on the 60+ Social Club page itself, and no age restriction stated.",
   },
   {
     name: "Club 55 (North Berwyn Park District)",
@@ -1692,7 +1711,7 @@ const listings = [
     description: "Darien Park District runs general senior fitness and social programming plus dedicated \"Senior Walking Times\" at the Sportsplex, and partners with the Village of Willowbrook to extend resident-rate senior programming. Specific class schedules weren't available on the page fetched — call ahead for current offerings.",
     category: "park-district-55-programs",
     operatorType: "park-district",
-    activities: Prisma.DbNull,
+    activities: ["pickleball"],
     neighborhood: "Darien",
     county: "DuPage",
     city: "Darien",
@@ -1707,6 +1726,8 @@ const listings = [
     lat: 41.7487488,
     lng: -87.9931831,
     geoPrecision: "exact",
+    qualityNote:
+      "\"Open pickleball play for adults 18+\" appears on Darien Park District's own senior-programs page (darienparks.com/programs/senior/), but it's explicitly 18+, not age-restricted to seniors.",
   },
   {
     name: "Dickinson Hall Senior Center",
@@ -2242,7 +2263,7 @@ const listings = [
     description: "Gurnee Park District's Monthly Mixer for 55+ pairs a catered lunch with live entertainment, dancing, and a round of music bingo — past themes have ranged from a Hawaiian beach party to Oktoberfest to holiday parties. It meets at Viking Park Dance Hall most of the year, usually Tuesdays 11:30am-1pm, moving to Gurnee Community Church for the June-July dates. Register ahead since they need a lunch headcount.",
     category: "park-district-55-programs",
     operatorType: "park-district",
-    activities: ["dance","bingo","congregate-meals","social-clubs"],
+    activities: ["dance","bingo","congregate-meals","social-clubs","pickleball"],
     neighborhood: "Gurnee",
     county: "Lake",
     city: "Gurnee",
@@ -2264,6 +2285,8 @@ const listings = [
     lat: 42.371039,
     lng: -87.910722,
     geoPrecision: "exact",
+    qualityNote:
+      "Gurnee Park District runs pickleball as a general adult/youth program (gurneeparkdistrict.com/pickleball) -- not mentioned on the 55+ Monthly Mixer page itself, and no age restriction stated.",
   },
   {
     name: "Hanover Park Park District Adult & Senior Art and Music Lessons",
@@ -2697,7 +2720,9 @@ const listings = [
     description: "Lindenhurst Park District runs an \"Active Adult\" program for residents 50 and up, offering seasonal trips, drop-in activities, and special events, published each season as an \"Out and About Active Adults\" guide. Specific class names and costs weren't available on a readable page, so it's worth calling ahead or checking their online registration system for the current lineup.",
     category: "park-district-55-programs",
     operatorType: "park-district",
-    activities: Prisma.DbNull,
+    activities: ["pickleball"],
+    qualityNote:
+      "Lindenhurst Park District runs pickleball tournaments and a league (lindenhurstparks.org) -- not confirmed as part of the 50+ Active Adult program specifically, and no age restriction stated.",
     neighborhood: "Lindenhurst",
     county: "Lake",
     city: "Lindenhurst",
@@ -2811,7 +2836,7 @@ const listings = [
     description: "Marengo Park District's Rec Center offers a discounted senior membership for adults 62 and older with valid ID, giving unlimited use of the fitness center and locker rooms during staffed hours, or 24/7 access with a refundable key-fob deposit. It's a self-directed gym membership rather than a class.",
     category: "park-district-55-programs",
     operatorType: "park-district",
-    activities: ["strength-training"],
+    activities: ["strength-training", "pickleball"],
     neighborhood: "Marengo",
     county: "McHenry",
     city: "Marengo",
@@ -2835,6 +2860,8 @@ const listings = [
     lat: 42.2406609,
     lng: -88.6218774,
     geoPrecision: "exact",
+    qualityNote:
+      "Marengo Park District runs Pickleball Adult Evening Leagues and an Adult Intro to Pickleball class at Indian Oaks Park (themarengoparkdistrict.com/adult/) -- general adult programming, not tied to the senior fitness membership specifically.",
   },
   {
     name: "McGaw YMCA",
@@ -3318,7 +3345,7 @@ const listings = [
     description: "Burbank Park District runs two free monthly get-togethers for adults 55 and up at the Fusion Recplex. Better With Age Bingo meets the 1st and 3rd Tuesday of each month with games, prizes, and refreshments, and a Senior Movie afternoon runs on the 2nd Tuesday with current and classic films plus light snacks. Both are social, drop-in-style events but do require calling ahead to reserve a spot.",
     category: "park-district-55-programs",
     operatorType: "park-district",
-    activities: ["bingo"],
+    activities: ["bingo", "pickleball"],
     neighborhood: "Burbank",
     county: "Cook",
     city: "Burbank",
@@ -3338,6 +3365,8 @@ const listings = [
     lat: 41.741406,
     lng: -87.7686078,
     geoPrecision: "approximate",
+    qualityNote:
+      "Burbank Park District runs \"pickleball in the parks\" and has courts lined for it at Rice Park (burbankparkdistrict.org/parkfitness/) -- not tied to the Older Adult Programs (Bingo/Movie) specifically, and no age restriction stated.",
   },
   {
     name: "Older Adults Programs at Ela Area Public Library",
@@ -3371,7 +3400,7 @@ const listings = [
     description: "Olympia Fields Park District hosts free drop-in Mah Jongg on Thursdays and Scrabble on Tuesdays, both noon to 3:45 pm, open to all skill levels including beginners. The district also runs paid senior van trips (roughly $25-$30 plus any admission) to nearby restaurants and attractions, plus a paid Tai Chi/Qigong class — call the office for current fees and start dates on those.",
     category: "park-district-55-programs",
     operatorType: "park-district",
-    activities: ["cards-games","tai-chi","day-trips"],
+    activities: ["cards-games","tai-chi","day-trips","pickleball"],
     neighborhood: "Olympia Fields",
     county: "Cook",
     city: "Olympia Fields",
@@ -3391,6 +3420,8 @@ const listings = [
     lat: 41.5111986,
     lng: -87.6743729,
     geoPrecision: "exact",
+    qualityNote:
+      "Olympia Fields Park District has new tennis & pickleball courts at Sgt. Means Park (ofparks.org/parks) -- facility only, no program/league details or age restriction found, not part of the Mah Jongg/Scrabble senior programming.",
   },
   {
     name: "Orland Township Senior Services",
@@ -5776,7 +5807,9 @@ const listings = [
       "Des Plaines Park District's Prairie Lakes Fitness gives residents 55+ free access to its indoor walking track with an active membership card, alongside a full cardio/strength floor, cycle studio, and group fitness classes at a member discount. General annual memberships start at $345 for residents.",
     category: "pickleball-fitness",
     operatorType: "park-district",
-    activities: ["fitness-classes"],
+    activities: ["fitness-classes", "pickleball"],
+    qualityNote:
+      "Des Plaines Park District runs Tennis and Pickle Ball Courts and a Pickle Palooza tournament (dpparks.org/tennis-and-pickle-ball-courts/), \"Ages 18+\" -- not tied to the 55+ Prairie Lakes Fitness membership specifically.",
     neighborhood: "Des Plaines",
     county: "Cook",
     city: "Des Plaines",
@@ -6074,7 +6107,9 @@ const listings = [
       "River Forest Park District's Adult Variety Programs include Bridge at three skill levels, Improv for Adults, and Basic Photography for DSLR Cameras. Exact costs and current schedules are in the district's Fun Guide and registration portal rather than on the program page itself.",
     category: "senior-center-events",
     operatorType: "park-district",
-    activities: ["cards-games", "art-classes"],
+    activities: ["cards-games", "art-classes", "pickleball"],
+    qualityNote:
+      "River Forest Park District runs an Adult Coed Pickleball League (rfparks.com/adult-sports-leagues) and has courts lined for pickleball -- not part of the Adult Variety Programs page itself, and no age restriction stated.",
     neighborhood: "River Forest",
     county: "Cook",
     city: "River Forest",
