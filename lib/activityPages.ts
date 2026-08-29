@@ -128,7 +128,21 @@ export const ACTIVITY_PAGES: ActivityPageDef[] = [
     tag: "pickleball",
     h1: "Pickleball for Seniors in Chicagoland",
     intro:
-      "Northbrook Park District's Senior Center runs drop-in pickleball both indoors and outdoors alongside its card-game rotation, and Schaumburg Park District's Senior Center adds weekly pickleball sessions to its daily drop-in games — two of 12 pickleball listings across the region, still a small but growing category.",
+      "Skokie Park District runs a genuinely senior-tied Women's 50+ Pickleball League with round-robin doubles play, and Northbrook Park District's Senior Center runs drop-in pickleball both indoors and outdoors alongside its card-game rotation — two of 56 pickleball listings across the region, most run as general-adult programming rather than age-restricted senior offerings.",
+  },
+  {
+    slug: "water-aerobics-for-seniors",
+    tag: "water-aerobics",
+    h1: "Water Aerobics for Seniors in Chicagoland",
+    intro:
+      "Homewood-Flossmoor Park District's Aqua Aerobics and Aqua Zumba classes at Lions Club Pool don't require any swim experience, and Mt. Prospect Park District's AquaFit includes a Low Intensity class built for arthritis — two of 24 water aerobics listings across the region, most run as general-adult classes rather than age-restricted senior programs.",
+  },
+  {
+    slug: "swimming-for-seniors",
+    tag: "swimming",
+    h1: "Swimming for Seniors in Chicagoland",
+    intro:
+      "Wood Dale Park District's Dip & Dine pairs a private aquatics session at Beach Waterpark with brunch and transportation, and Chicago Park District runs a citywide Senior Swim for ages 60 and up — two of 14 swimming listings across the region, though most are general-adult lap-swim access rather than age-restricted programs.",
   },
   {
     slug: "choirs-and-music-for-seniors",

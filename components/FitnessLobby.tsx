@@ -23,7 +23,7 @@ const CARDS: LobbyCard[] = [
     title: "Indoor Pickleball & Courts",
     value: "Drop-in courts, leagues, and lessons across Chicagoland",
     href: "/activities/pickleball-for-seniors",
-    count: "13 listings",
+    count: "56 listings",
   },
   {
     icon: "🧘",
@@ -36,6 +36,8 @@ const CARDS: LobbyCard[] = [
     icon: "🏊",
     title: "Water Aerobics & Senior Swim",
     value: "Warm-water classes and open senior swim hours",
+    href: "/activities/water-aerobics-for-seniors",
+    count: "32 listings",
   },
 ];
 
