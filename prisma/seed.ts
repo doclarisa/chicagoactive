@@ -131,7 +131,7 @@ const listings = [
     description:
       "Weekly rotating pickleball sessions at Central Athletic Complex for players with basic experience; Silver Sneakers accepted. Session dates are seasonal — confirm the current session at the source link.",
     category: "pickleball-fitness",
-    activities: ["swimming"],
+    activities: ["pickleball", "swimming"],
     neighborhood: "Wheaton",
     county: "DuPage",
     cost: "LOW_COST" as const,
