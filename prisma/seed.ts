@@ -22,7 +22,7 @@ const listings = [
     description:
       "120+ Senior Citizen Clubs citywide plus seasonal classes (fitness, arts, education) offered through the Park District's four program sessions. Programs for seniors only are free; other classes are free or half-price for ages 60+.",
     category: "park-district-55-programs",
-    activities: ["pickleball"],
+    activities: ["pickleball", "swimming", "water-aerobics"],
     neighborhood: "Citywide",
     county: "Cook",
     cost: "LOW_COST" as const,
@@ -30,7 +30,7 @@ const listings = [
     time: null,
     sourceUrl: "https://www.chicagoparkdistrict.com/programs-101",
     qualityNote:
-      "The Chicago Park District runs pickleball courts citywide (chicagoparkdistrict.com/facilities/pickleball-courts), explicitly open to \"Chicagoans of all ages\" -- not senior-specific, not mentioned on the Senior Programs page itself.",
+      "The Chicago Park District runs pickleball courts citywide (chicagoparkdistrict.com/facilities/pickleball-courts), explicitly open to \"Chicagoans of all ages\" -- not senior-specific, not mentioned on the Senior Programs page itself. It also runs a genuinely senior-tied Senior Swim, Age 60+ (chicagoparkdistrict.com/aquatics-programs-open-swims), plus general-adult Aquatic Exercise classes (Age 18+) at chicagoparkdistrict.com/aquatics-programs-fitness-classes.",
   },
   {
     name: "Naperville Park District Active Adults",
@@ -71,6 +71,7 @@ const listings = [
     description:
       "Weekly drop-in activities (pinochle, quilting club, duplicate bridge) plus monthly themed luncheons, Bingo, Trivia, and enrichment programs like Memoir Writing, based at Mary E. Kies Recreation Center.",
     category: "senior-center-events",
+    activities: ["water-aerobics"],
     neighborhood: "Elmhurst",
     county: "DuPage",
     cost: "LOW_COST" as const,
@@ -79,6 +80,8 @@ const listings = [
     address: "155 E. St. Charles Road, Elmhurst, IL 60126",
     phone: "(630) 993-8193",
     sourceUrl: "https://www.epd.org/programs/seniors",
+    qualityNote:
+      "Elmhurst Park District runs Water Fitness at East End Pool (epd.org/programs/aquatics), Mon-Thu 7:45-8:45am -- not tied to the Senior Program specifically, and no age restriction stated.",
   },
   {
     name: "Chicago Public Library Seniors' Circle",
@@ -161,7 +164,7 @@ const listings = [
     description:
       "Bus trips and extended tours for active adults — day outings and longer trips (e.g. Smoky Mountains, Pigeon Forge). Itineraries and pricing change seasonally; check the current trip calendar at the source link.",
     category: "day-trips-near-chicago",
-    activities: ["pickleball"],
+    activities: ["pickleball", "water-aerobics"],
     neighborhood: "Bolingbrook",
     county: "Will",
     cost: "PAID" as const,
@@ -171,7 +174,7 @@ const listings = [
     phone: "630-739-0272",
     sourceUrl: "https://bolingbrookparks.org/programs/trips/",
     qualityNote:
-      "Bolingbrook Park District runs drop-in pickleball schedules and classes (bolingbrookparks.org/dropin_schedule/pickleball/) -- general adult programming, not tied to the Adult Trips program, and no age restriction stated.",
+      "Bolingbrook Park District runs drop-in pickleball schedules and classes (bolingbrookparks.org/dropin_schedule/pickleball/) -- general adult programming, not tied to the Adult Trips program, and no age restriction stated. It also has a Water Aerobics program page at Pelican Harbor Indoor/Outdoor Aquatic Park (bolingbrookparks.org/programs/swimming/water-aerobics/) -- confirmed via the page's own URL/title, described elsewhere as \"for all ages and abilities.\"",
   },
   // --- Added to cover Lake, Kane, McHenry, and Kendall counties, and to
   // fill out the thinner categories (walking/hiking, senior centers,
@@ -378,6 +381,9 @@ const listings = [
     registration: "Register online at ahpd.org or in person; financial assistance available",
     accessibility: "Located inside the accessible Arlington Heights Senior Center",
     sourceUrl: "https://www.ahpd.org/programs/seniors/",
+    activities: ["water-aerobics"],
+    qualityNote:
+      "Arlington Heights Park District runs weekly Aqua Fitness Classes, \"Ages 16 years and older\" (ahpd.org/programs/aquatics/) -- not tied to the Active Adult Program specifically.",
   },
   {
     name: "Arlington Heights Senior Center",
@@ -1174,7 +1180,7 @@ const listings = [
     description: "Every Monday, the Barrington Area Council on Aging (BACOA) hosts a lunch-and-bingo gathering at the park district's Fitness & Recreation Center for adults 50 and up. Come just for bingo ($3) or stay for a catered lunch plus bingo ($12) — reserve your lunch spot a week ahead. No one is turned away for inability to pay.",
     category: "park-district-55-programs",
     operatorType: "park-district",
-    activities: ["bingo","congregate-meals","social-clubs","lifelong-learning","pickleball"],
+    activities: ["bingo","congregate-meals","social-clubs","lifelong-learning","pickleball","water-aerobics"],
     neighborhood: "Barrington",
     county: "Lake",
     city: "Barrington",
@@ -1197,7 +1203,7 @@ const listings = [
     lng: -88.1361888,
     geoPrecision: "approximate",
     qualityNote:
-      "Barrington Park District runs real pickleball programming (tournaments, 7 courts) under its general Athletics/Adult Sports offerings, not the BACOA senior program itself -- not age-restricted, open to any adult.",
+      "Barrington Park District runs real pickleball programming (tournaments, 7 courts) under its general Athletics/Adult Sports offerings, not the BACOA senior program itself -- not age-restricted, open to any adult. It also runs water fitness classes (Hydro Boost Training, Aqua Combat, Power Splash, Hydro Hike) at barringtonparkdistrict.org/aquatics/ -- 60+ gets discounted pool-pass pricing, but the classes themselves aren't age-restricted.",
   },
   {
     name: "Barrington Area Council on Aging (BACOA) — Game Club & Active Aging Programs",
@@ -1257,7 +1263,7 @@ const listings = [
     description: "Batavia's senior variety slate includes named fitness classes Easy B-Fit and Cardio Silver for 50+, alongside the weekly Coffee's On gathering ($1, Mondays at the Civic Center), Pinochle (Thursdays at Callahan), Mahjong (Thursday mornings, $5), and Bunco (Wednesdays, $5). Batavia Senior Citizens Club members get free indoor walking Monday afternoons, a discounted monthly luncheon at Shannon Hall, and a newsletter listing everything else on the calendar.",
     category: "senior-center-events",
     operatorType: "park-district",
-    activities: ["cards-games","fitness-classes","walking-groups","congregate-meals","social-clubs","pickleball"],
+    activities: ["cards-games","fitness-classes","walking-groups","congregate-meals","social-clubs","pickleball","swimming"],
     neighborhood: "Batavia",
     county: "Kane",
     city: "Batavia",
@@ -1281,7 +1287,7 @@ const listings = [
     lng: -88.312692,
     geoPrecision: "exact",
     qualityNote:
-      "Batavia Park District has pickleball courts as a general park amenity (bataviaparks.org) -- not part of the senior/adult variety program lineup itself.",
+      "Batavia Park District has pickleball courts as a general park amenity (bataviaparks.org) -- not part of the senior/adult variety program lineup itself. It also runs Summer Adult Lap Swim, \"For ages 18 and up\" (bataviaparks.org/program/swim-lessons/) -- lap swim, not a water-aerobics class, and not senior-specific.",
   },
   {
     name: "Bensenville Heritage Center Senior Programs",
@@ -1501,7 +1507,7 @@ const listings = [
     description: "Cary Park District's senior hub at the Community Center runs a full weekly rotation: Chair Yoga and the Walking Club, the Cary Canaries Glee Club, a Mah Jongg Club and a $5-ante Game Club (Golf, No Sevens, Bunco, UNO), Craft Club, Book Club, Movie & TV Club, and Pay-to-Play Bingo on select Fridays. There's also 'Armchair Traveler,' a free armchair-travel series exploring a different destination each session. Most activities run in seasonal blocks (June-August) with simple advance registration, and 55+ residents get the discounted Fitness Center membership rate.",
     category: "park-district-55-programs",
     operatorType: "park-district",
-    activities: ["bingo","book-clubs","music-chorus","yoga","art-classes","cards-games","walking-groups","lifelong-learning","social-clubs"],
+    activities: ["bingo","book-clubs","music-chorus","yoga","art-classes","cards-games","walking-groups","lifelong-learning","social-clubs","water-aerobics"],
     neighborhood: "Cary",
     county: "McHenry",
     city: "Cary",
@@ -1522,6 +1528,8 @@ const listings = [
     lat: 42.206328,
     lng: -88.254147,
     geoPrecision: "exact",
+    qualityNote:
+      "Cary Park District runs Total Body Aqua, Aqua Combat, and Aqua Jog & Strength Express classes at Sunburst Bay Aquatic Center (carypark.com/rccms/aqua-fitness-2/), \"All levels welcome\" -- not tied to the Seniors Program specifically, no age restriction stated.",
   },
   {
     name: "Central West Regional Senior Center",
@@ -1654,7 +1662,7 @@ const listings = [
     description: "A flexible, no-membership-fee social club for adults 60+ offering a menu of activities — walking club, yoga, balance & coordination, strength training, crafts, bingo, speaker presentations, day trips, movies, culinary classes, and brunches — that participants pick and choose from rather than a single fixed schedule.",
     category: "park-district-55-programs",
     operatorType: "park-district",
-    activities: ["walking-groups","yoga","strength-training","bingo","day-trips","social-clubs","congregate-meals","pickleball"],
+    activities: ["walking-groups","yoga","strength-training","bingo","day-trips","social-clubs","congregate-meals","pickleball","water-aerobics"],
     neighborhood: "Clarendon Hills",
     county: "DuPage",
     city: "Clarendon Hills",
@@ -1672,7 +1680,7 @@ const listings = [
     lng: -87.9551429,
     geoPrecision: "approximate",
     qualityNote:
-      "Clarendon Hills Park District lists pickleball among its general adult-interests offerings (clarendonhillsparkdistrict.org/adult-interests/) -- not on the 60+ Social Club page itself, and no age restriction stated.",
+      "Clarendon Hills Park District lists pickleball among its general adult-interests offerings (clarendonhillsparkdistrict.org/adult-interests/) -- not on the 60+ Social Club page itself, and no age restriction stated. It also runs Fluid Running, a deep-water exercise class at Lions Park Pool (clarendonhillsparkdistrict.org/lions-park-pool-programs-events/), \"Ages 16+\" -- not senior-specific.",
   },
   {
     name: "Club 55 (North Berwyn Park District)",
@@ -2900,7 +2908,7 @@ const listings = [
     description: "McGaw YMCA runs open pickleball on six indoor courts, with beginner, intermediate, and drill areas set aside during weekday mornings plus additional open-play windows on weekday afternoons, two weeknight evenings, and weekends. Open play is for members only, with equipment provided. The Y also lists Active Older Adults programming under its Health & Fitness section, though the specific classes and schedule weren't published on their site when we checked — call ahead to ask what's currently running.",
     category: "pickleball-fitness",
     operatorType: "nonprofit",
-    activities: ["pickleball","fitness-classes"],
+    activities: ["pickleball","fitness-classes","swimming","water-aerobics"],
     neighborhood: "Evanston",
     county: "Cook",
     city: "Evanston",
@@ -2913,6 +2921,8 @@ const listings = [
     phone: "847-475-7400",
     hours: "Pickleball open play Mon-Fri 9am-3pm plus Mon/Tue 6-8pm and weekend hours; general facility hours — verify see official site",
     ageEligibility: "Verify — see official site (Active Older Adults program specifics not published as of last check)",
+    qualityNote:
+      "McGaw YMCA offers lap swim and recreational group swim in its 4-lane and 6-lane pools, plus Aqua Fitness classes (mcgawymca.org/programs/swim/) -- open to all members, not senior-specific.",
     registration: "Members only; join at mcgawymca.org or call 847-475-7400",
     residentRequired: false,
     lat: 42.0452041,
@@ -3380,7 +3390,7 @@ const listings = [
     description: "Burbank Park District runs two free monthly get-togethers for adults 55 and up at the Fusion Recplex. Better With Age Bingo meets the 1st and 3rd Tuesday of each month with games, prizes, and refreshments, and a Senior Movie afternoon runs on the 2nd Tuesday with current and classic films plus light snacks. Both are social, drop-in-style events but do require calling ahead to reserve a spot.",
     category: "park-district-55-programs",
     operatorType: "park-district",
-    activities: ["bingo", "pickleball"],
+    activities: ["bingo", "pickleball", "water-aerobics"],
     neighborhood: "Burbank",
     county: "Cook",
     city: "Burbank",
@@ -3401,7 +3411,7 @@ const listings = [
     lng: -87.7686078,
     geoPrecision: "approximate",
     qualityNote:
-      "Burbank Park District runs \"pickleball in the parks\" and has courts lined for it at Rice Park (burbankparkdistrict.org/parkfitness/) -- not tied to the Older Adult Programs (Bingo/Movie) specifically, and no age restriction stated.",
+      "Burbank Park District runs \"pickleball in the parks\" and has courts lined for it at Rice Park (burbankparkdistrict.org/parkfitness/) -- not tied to the Older Adult Programs (Bingo/Movie) specifically, and no age restriction stated. It also has a Water Aerobics program at the seasonal outdoor Burbank Water Park (burbankparkdistrict.org/burbank-water-park/) -- not senior-specific.",
   },
   {
     name: "Older Adults Programs at Ela Area Public Library",
@@ -3562,7 +3572,7 @@ const listings = [
     description: "The park district's Active Adults & Seniors lineup centers on movement classes: a free, hospital-sponsored Zumba Gold class that mixes chair-based and standing moves, plus in-person and virtual yoga sessions. Registration is required even for the free class, and yoga has a drop-in option if you don't want to commit to the full session.",
     category: "park-district-55-programs",
     operatorType: "park-district",
-    activities: ["fitness-classes","yoga","dance"],
+    activities: ["fitness-classes","yoga","dance","water-aerobics","swimming"],
     neighborhood: "Forest Park",
     county: "Cook",
     city: "Forest Park",
@@ -3584,7 +3594,7 @@ const listings = [
     lat: 41.8794989,
     lng: -87.8136997,
     geoPrecision: "approximate",
-    qualityNote: "Given officialUrl (pdofpstaff.org) is dead; the current site is pdofp.org. Sourced from the district's flipbook-hosted program guide since direct page fetches were blocked.",
+    qualityNote: "Given officialUrl (pdofpstaff.org) is dead; the current site is pdofp.org. Sourced from the district's flipbook-hosted program guide since direct page fetches were blocked. pdofp.org/aquatic-center confirms Aqua Zumba (Fri/Sun) and Adult Swim (18+) -- not part of the Active Adults & Seniors lineup itself.",
   },
   {
     name: "Patricia A. Jones Center (Waukegan Township)",
@@ -3729,7 +3739,7 @@ const listings = [
     description: "Rakow Center's Adult 50+ hub mixes standing drop-in time with a real calendar of named outings — recent examples include a Pancake Breakfast & Bingo morning, a 'Dave & Daphne Live from Nashville' show, a Mean Girls theater trip with lunch, a Hayride and Bonfire, and a guided walking tour of Chicago's Pullman neighborhood — plus arts and crafts and monthly parties. The companion Adult 50+ Softball league plays Monday mornings at Randall Oaks Recreation Center, May through October.",
     category: "senior-center-events",
     operatorType: "park-district",
-    activities: ["bingo","day-trips","art-classes","social-clubs","pickleball"],
+    activities: ["bingo","day-trips","art-classes","social-clubs","pickleball","water-aerobics"],
     neighborhood: "Carpentersville",
     county: "Kane",
     city: "Carpentersville",
@@ -3752,7 +3762,7 @@ const listings = [
     lng: -88.2578582,
     geoPrecision: "approximate",
     qualityNote:
-      "Dundee Township Park District runs Pickleball Lessons at the Rakow Center building itself (and at Randall Oaks Rec Center), but it isn't listed among the Rakow Center's dedicated 50+ program roster and no age restriction was confirmed either way.",
+      "Dundee Township Park District runs Pickleball Lessons at the Rakow Center building itself (and at Randall Oaks Rec Center), but it isn't listed among the Rakow Center's dedicated 50+ program roster and no age restriction was confirmed either way. It also runs Water Fitness (dtpd.org/water-fitness), \"12 years & Older,\" including an \"Active Aging\" class for core strengthening/balance/cardio -- senior resident pricing exists, but the class itself isn't age-restricted.",
   },
   {
     name: "Renaissance Court Regional Senior Center",
@@ -5142,7 +5152,7 @@ const listings = [
       "West Cook YMCA's Healthy Aging Program serves older adults 62 and up with group fitness classes, personal training consultations, and wellness center orientations, plus free chronic-disease-prevention programs like diabetes prevention and blood pressure monitoring. Discounted memberships are available through UnitedHealthcare and AARP for eligible members. Specific class names and the day-to-day schedule aren't posted in one place — call or stop by to ask what's currently running.",
     category: "pickleball-fitness",
     operatorType: "nonprofit",
-    activities: ["fitness-classes"],
+    activities: ["fitness-classes", "water-aerobics"],
     neighborhood: "Oak Park",
     county: "Cook",
     city: "Oak Park",
@@ -5158,6 +5168,8 @@ const listings = [
     lat: 41.8835974,
     lng: -87.8028747,
     geoPrecision: "exact",
+    qualityNote:
+      "West Cook YMCA runs water fitness classes, \"for individuals of every age and ability\" (westcookymca.org/programs/fitness/water-fitness) -- not specific to the Healthy Aging Program.",
   },
   {
     name: "Oakton College Emeritus Program",
@@ -5241,7 +5253,7 @@ const listings = [
       "North Suburban YMCA's Active Older Adults program runs a full slate of fitness classes built for this age group — Chair Yoga, Balance for Walking, Enhance Your Fitness (designed for arthritis management), Parkinson's Exercise Plus, and low-impact cardio and strength classes among them. It's a members-only program; financial assistance is available for those who qualify.",
     category: "pickleball-fitness",
     operatorType: "nonprofit",
-    activities: ["fitness-classes", "yoga"],
+    activities: ["fitness-classes", "yoga", "water-aerobics"],
     neighborhood: "Northbrook",
     county: "Cook",
     city: "Northbrook",
@@ -5256,6 +5268,8 @@ const listings = [
     lat: 42.1157555,
     lng: -87.846393,
     geoPrecision: "exact",
+    qualityNote:
+      "North Suburban YMCA offers deep and shallow water fitness classes plus swim lessons and a competitive swim team (nsymca.org/programs-classes/aquatics) -- not specific to Active Older Adults.",
   },
   {
     name: "Devonshire Cultural Center",
@@ -5850,9 +5864,9 @@ const listings = [
       "Des Plaines Park District's Prairie Lakes Fitness gives residents 55+ free access to its indoor walking track with an active membership card, alongside a full cardio/strength floor, cycle studio, and group fitness classes at a member discount. General annual memberships start at $345 for residents.",
     category: "pickleball-fitness",
     operatorType: "park-district",
-    activities: ["fitness-classes", "pickleball"],
+    activities: ["fitness-classes", "pickleball", "water-aerobics"],
     qualityNote:
-      "Des Plaines Park District runs Tennis and Pickle Ball Courts and a Pickle Palooza tournament (dpparks.org/tennis-and-pickle-ball-courts/), \"Ages 18+\" -- not tied to the 55+ Prairie Lakes Fitness membership specifically.",
+      "Des Plaines Park District runs Tennis and Pickle Ball Courts and a Pickle Palooza tournament (dpparks.org/tennis-and-pickle-ball-courts/), \"Ages 18+\" -- not tied to the 55+ Prairie Lakes Fitness membership specifically. It also runs aqua cycling, water walking, Aqua Zumba, and Deep Stretch Yoga in its Wellness Pool (dpparks.org/prairie-lakes-aquatics-center/), no age restriction stated.",
     neighborhood: "Des Plaines",
     county: "Cook",
     city: "Des Plaines",
@@ -7699,7 +7713,7 @@ const listings = [
       "A full 60,000-square-foot YMCA branch under the Greater Joliet Area YMCA umbrella, opened in Shorewood in spring 2026. Its official group-exercise schedule lists \"Active Older Adults\" among the classes offered at this location. Village of Shorewood residents get the joiner's fee (normally up to $120) waived when they join with proof of residency; no separate senior-discounted membership tier exists beyond the standard adult rate.",
     category: "pickleball-fitness",
     operatorType: "nonprofit",
-    activities: ["fitness-classes"],
+    activities: ["fitness-classes", "swimming"],
     neighborhood: "Shorewood",
     county: "Will",
     city: "Shorewood",
@@ -7715,7 +7729,7 @@ const listings = [
     lng: -88.2341324,
     geoPrecision: "exact",
     qualityNote:
-      "The printable class-schedule PDF for this specific branch wasn't retrievable — the \"Active Older Adults\" class is confirmed as offered here, but its exact day/time wasn't. Call 815-763-5900 to confirm before publishing specifics beyond what's listed here.",
+      "The printable class-schedule PDF for this specific branch wasn't retrievable — the \"Active Older Adults\" class is confirmed as offered here, but its exact day/time wasn't. Call 815-763-5900 to confirm before publishing specifics beyond what's listed here. This branch has an eight-lane lap pool with open swim available to all members (jolietymca.org) -- no water-aerobics class specifically named, and no senior tie.",
   },
   {
     name: "Wauconda Township — Senior Programs",
