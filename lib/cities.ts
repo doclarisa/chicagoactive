@@ -117,7 +117,7 @@ export const CITIES: CityDef[] = [
     slug: "river-forest",
     county: "Cook",
     intro:
-      "River Forest Public Library runs Coffee Monday, Craft and Chat, and a Celebrating Seniors program, and the Park District's Adult Variety Programs cover Bridge, Improv, and DSLR photography. Trailside Museum of Natural History, run by the Forest Preserves of Cook County, is free to visit with live native animals and nearly 5 miles of trails through Thatcher Woods.",
+      "River Forest Public Library runs Coffee Monday, Craft and Chat, and a Celebrating Seniors program, and the Park District's Adult Variety Programs cover Bridge, Improv, and DSLR photography. Senior Citizens' Center of Oak Park and River Forest (SCCOPRF) and the Park District of Oak Park jointly run a Lifelong Learning membership open to River Forest residents too, based just over the border at Oak Park's Dole Center. Trailside Museum of Natural History, run by the Forest Preserves of Cook County, is free to visit with live native animals and nearly 5 miles of trails through Thatcher Woods.",
   },
   {
     name: "Oak Lawn",
