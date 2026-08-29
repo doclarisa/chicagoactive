@@ -10,6 +10,7 @@ import CategoryBadge from "@/components/CategoryBadge";
 import CostBadge from "@/components/CostBadge";
 import ListingCard from "@/components/ListingCard";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import Linkify from "@/components/Linkify";
 import { categoryLabel } from "@/lib/categories";
 import { listingSchemaType } from "@/lib/schema";
 import { cityBySlug } from "@/lib/cities";
@@ -216,7 +217,7 @@ export default async function ListingDetail({
 
       {listing.qualityNote && (
         <p className="mt-4 rounded-card bg-flag-blue-tint px-4 py-3 text-base font-semibold text-flag-blue-ink">
-          {listing.qualityNote}
+          <Linkify text={listing.qualityNote} />
         </p>
       )}
 

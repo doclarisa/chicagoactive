@@ -177,7 +177,7 @@ const listings = [
     phone: "630-739-0272",
     sourceUrl: "https://bolingbrookparks.org/programs/trips/",
     qualityNote:
-      "Bolingbrook Park District runs drop-in pickleball schedules and classes (bolingbrookparks.org/dropin_schedule/pickleball/) -- general adult programming, not tied to the Adult Trips program, and no age restriction stated. It also has a Water Aerobics program page at Pelican Harbor Indoor/Outdoor Aquatic Park (bolingbrookparks.org/programs/swimming/water-aerobics/) -- confirmed via the page's own URL/title, described elsewhere as \"for all ages and abilities.\"",
+      "Bolingbrook Park District runs drop-in pickleball schedules and classes (bolingbrookparks.org) -- general adult programming, not tied to the Adult Trips program, and no age restriction stated. The specific drop-in-schedule URL found during research has since 404'd, likely a seasonal page; verify current pickleball times on the site directly. It also has a Water Aerobics program page at Pelican Harbor Indoor/Outdoor Aquatic Park (bolingbrookparks.org/programs/swimming/water-aerobics/) -- confirmed via the page's own URL/title, described elsewhere as \"for all ages and abilities.\"",
   },
   // --- Added to cover Lake, Kane, McHenry, and Kendall counties, and to
   // fill out the thinner categories (walking/hiking, senior centers,
@@ -3601,7 +3601,7 @@ const listings = [
     lat: 41.8794989,
     lng: -87.8136997,
     geoPrecision: "approximate",
-    qualityNote: "Given officialUrl (pdofpstaff.org) is dead; the current site is pdofp.org. Sourced from the district's flipbook-hosted program guide since direct page fetches were blocked. pdofp.org/aquatic-center confirms Aqua Zumba (Fri/Sun) and Adult Swim (18+) -- not part of the Active Adults & Seniors lineup itself.",
+    qualityNote: "The district's real site is pdofp.org (an older officialUrl on file was already dead). pdofp.org/aquatic-center confirms Aqua Zumba (Fri/Sun) and Adult Swim (18+) -- not part of the Active Adults & Seniors lineup itself.",
   },
   {
     name: "Patricia A. Jones Center (Waukegan Township)",
