@@ -70,7 +70,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // app/guides/[slug]/page.tsx placeholder template, which is deliberately
   // `robots: { index: false }` until real content ships — don't submit a
   // noindexed URL to crawlers.
-  const INDEXED_GUIDE_SLUGS = new Set(["day-trips-from-chicago", "medicare-fitness-gyms"]);
+  const INDEXED_GUIDE_SLUGS = new Set(["day-trips-from-chicago", "medicare-fitness-gyms", "pickleball-facilities"]);
   const guideRoutes: MetadataRoute.Sitemap = GUIDES.filter((g) => INDEXED_GUIDE_SLUGS.has(g.slug)).map(
     (g) => ({
       url: `${SITE_URL}/guides/${g.slug}`,

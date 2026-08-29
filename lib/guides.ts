@@ -77,4 +77,17 @@ export const GUIDES: Guide[] = [
     offers: [],
     exitRampPrompt: "Have a Medicare Advantage plan with a fitness benefit?",
   },
+  {
+    // Rendered by a dedicated static route (app/guides/pickleball-facilities/page.tsx),
+    // not the generic [slug] template — same pattern as medicare-fitness-gyms.
+    // No affiliate offers on this page, so offers is intentionally empty;
+    // dek/intro below are unused fallback data.
+    slug: "pickleball-facilities",
+    title: "Indoor Pickleball Facilities in Chicagoland",
+    dek: "Dedicated, commercial pickleball clubs near Chicago — which ones have a real senior league or hours, verified against each club's own site.",
+    intro:
+      "Park district pickleball courts are already covered in the free directory. This page is a different category: dedicated indoor pickleball businesses, most general-audience but a couple with a named senior program.",
+    offers: [],
+    exitRampPrompt: "Want a dedicated indoor pickleball club instead of a park district court?",
+  },
 ];

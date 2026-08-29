@@ -111,7 +111,14 @@ export default function FitnessLobby() {
         >
           Browse the full directory
         </Link>
-        .
+        , or see{" "}
+        <Link
+          href="/guides/pickleball-facilities"
+          className="font-semibold text-flag-blue-ink no-underline hover:underline"
+        >
+          dedicated indoor pickleball clubs
+        </Link>{" "}
+        — commercial facilities separate from park-district courts.
       </p>
     </main>
   );

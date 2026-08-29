@@ -237,6 +237,15 @@ export default function MedicareFitnessGymsPage() {
               Back to the full Fitness collection — pickleball, yoga, water aerobics, and more
             </span>
           </Link>
+          <Link
+            href="/guides/pickleball-facilities"
+            className="flex flex-col gap-1 rounded-card bg-flag-blue-tint p-5 no-underline ring-1 ring-black/5 transition-shadow hover:shadow-md"
+          >
+            <span className="text-lg font-bold text-ink">Indoor Pickleball Facilities →</span>
+            <span className="text-base text-ink-muted">
+              Dedicated commercial pickleball clubs, separate from park-district courts
+            </span>
+          </Link>
         </div>
       </section>
 
