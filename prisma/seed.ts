@@ -987,7 +987,7 @@ const listings = [
     description: "An ongoing slate of classes and social programming for older adults, including monthly luncheons and trips through the Geneva Friendly Senior program, plus adult/senior classes such as meditation, dance, arts and crafts, music, sewing, martial arts, golf, and pickleball. Best used as a rotating seasonal catalog rather than one fixed weekly class — check the current activity guide for specific dates.",
     category: "park-district-55-programs",
     operatorType: "park-district",
-    activities: Prisma.DbNull,
+    activities: ["dance", "art-classes", "music-chorus", "golf", "pickleball"],
     neighborhood: "Geneva",
     county: "Kane",
     city: "Geneva",
