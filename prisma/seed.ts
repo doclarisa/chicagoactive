@@ -1138,7 +1138,7 @@ const listings = [
     description: "Every Monday, the Barrington Area Council on Aging (BACOA) hosts a lunch-and-bingo gathering at the park district's Fitness & Recreation Center for adults 50 and up. Come just for bingo ($3) or stay for a catered lunch plus bingo ($12) — reserve your lunch spot a week ahead. No one is turned away for inability to pay.",
     category: "park-district-55-programs",
     operatorType: "park-district",
-    activities: ["bingo","congregate-meals","social-clubs","lifelong-learning"],
+    activities: ["bingo","congregate-meals","social-clubs","lifelong-learning","pickleball"],
     neighborhood: "Barrington",
     county: "Lake",
     city: "Barrington",
@@ -1160,6 +1160,8 @@ const listings = [
     lat: 42.1539141,
     lng: -88.1361888,
     geoPrecision: "approximate",
+    qualityNote:
+      "Barrington Park District runs real pickleball programming (tournaments, 7 courts) under its general Athletics/Adult Sports offerings, not the BACOA senior program itself -- not age-restricted, open to any adult.",
   },
   {
     name: "Barrington Area Council on Aging (BACOA) — Game Club & Active Aging Programs",
@@ -3659,7 +3661,7 @@ const listings = [
     description: "Rakow Center's Adult 50+ hub mixes standing drop-in time with a real calendar of named outings — recent examples include a Pancake Breakfast & Bingo morning, a 'Dave & Daphne Live from Nashville' show, a Mean Girls theater trip with lunch, a Hayride and Bonfire, and a guided walking tour of Chicago's Pullman neighborhood — plus arts and crafts and monthly parties. The companion Adult 50+ Softball league plays Monday mornings at Randall Oaks Recreation Center, May through October.",
     category: "senior-center-events",
     operatorType: "park-district",
-    activities: ["bingo","day-trips","art-classes","social-clubs"],
+    activities: ["bingo","day-trips","art-classes","social-clubs","pickleball"],
     neighborhood: "Carpentersville",
     county: "Kane",
     city: "Carpentersville",
@@ -3681,6 +3683,8 @@ const listings = [
     lat: 42.1211364,
     lng: -88.2578582,
     geoPrecision: "approximate",
+    qualityNote:
+      "Dundee Township Park District runs Pickleball Lessons at the Rakow Center building itself (and at Randall Oaks Rec Center), but it isn't listed among the Rakow Center's dedicated 50+ program roster and no age restriction was confirmed either way.",
   },
   {
     name: "Renaissance Court Regional Senior Center",
@@ -4300,7 +4304,7 @@ const listings = [
     description: "Worth Park District's Social Seniors program at the Terrace Centre covers a lot of ground: a monthly Senior Lunch & Bingo on the second Wednesday, noon-2pm ($13, includes lunch, coffee, dessert, and bingo) for 55+; guided restaurant bus trips called Senior Meet & Eat on Wednesdays, 10:30am-2pm, for 50+; a no-registration Friendship Club with snacks, games, and conversation the 1st and 3rd Tuesday at noon; and a drop-in Pinochle Club Mondays 12-2:30pm.",
     category: "park-district-55-programs",
     operatorType: "park-district",
-    activities: ["bingo","congregate-meals","day-trips","social-clubs","cards-games"],
+    activities: ["bingo","congregate-meals","day-trips","social-clubs","cards-games","pickleball"],
     neighborhood: "Worth",
     county: "Cook",
     city: "Worth",
@@ -4324,6 +4328,8 @@ const listings = [
     lat: 41.682774,
     lng: -87.804536,
     geoPrecision: "exact",
+    qualityNote:
+      "Worth Park District runs Sunday indoor pickleball (ages 15+) under general Adult Recreation, not the Social Seniors program specifically -- open to any age, not senior-restricted.",
   },
   {
     name: "South Chicago Satellite Senior Center",
@@ -4670,7 +4676,7 @@ const listings = [
     description: "Wauconda Park District's Active Seniors program (55+) centers on the Community Center with a biweekly Coffee, Cards and More morning ($3) and an 8-week Thursday Senior Walking Club that's free. They also run bigger seasonal events like Phil's Beach Senior Party and monthly \"Discover & Dine\" day trips. Everything is drop-in friendly and inexpensive.",
     category: "park-district-55-programs",
     operatorType: "park-district",
-    activities: ["cards-games","walking-groups","day-trips","social-clubs"],
+    activities: ["cards-games","walking-groups","day-trips","social-clubs","pickleball"],
     neighborhood: "Wauconda",
     county: "Lake",
     city: "Wauconda",
@@ -4694,6 +4700,8 @@ const listings = [
     lat: 42.2589122,
     lng: -88.1392474,
     geoPrecision: "approximate",
+    qualityNote:
+      "Wauconda Park District runs indoor pickleball courts/events (via LifeSport Pickleball) shown on its general events calendar, but it isn't listed on the dedicated Active Seniors (55+) program page -- not confirmed as age-restricted to seniors.",
   },
   {
     name: "Wayne Township Senior Center",
@@ -4873,7 +4881,7 @@ const listings = [
     description: "Wood Dale Park District runs a rotating menu of 55+ programs each season — Sip & Stroll (coffee plus a group walk), Strong & Steady (a strength and balance class), Dip & Dine (a private aquatics exercise session at Beach Waterpark followed by brunch, with transportation), and an Ice Cream Social & Games gathering — plus separate day trips like a matinee at Oil Lamp Theatre or an afternoon at Gillson Park beach, all at modest fees.",
     category: "park-district-55-programs",
     operatorType: "park-district",
-    activities: ["walking-groups","strength-training","water-aerobics","swimming","day-trips","social-clubs"],
+    activities: ["walking-groups","strength-training","water-aerobics","swimming","day-trips","social-clubs","pickleball"],
     neighborhood: "Wood Dale",
     county: "DuPage",
     city: "Wood Dale",
@@ -4896,6 +4904,8 @@ const listings = [
     lat: 41.9633625,
     lng: -87.9789562,
     geoPrecision: "approximate",
+    qualityNote:
+      "Wood Dale Park District runs a Beginner Pickleball Clinic explicitly listed as \"Ages: 18+\" under general Adult Programs, separate from the 55+ Senior Programs & Trips page -- open to any adult, not senior-restricted.",
   },
   {
     name: "Worth Township Senior Center",
