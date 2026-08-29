@@ -131,6 +131,7 @@ const listings = [
     description:
       "Weekly rotating pickleball sessions at Central Athletic Complex for players with basic experience; Silver Sneakers accepted. Session dates are seasonal — confirm the current session at the source link.",
     category: "pickleball-fitness",
+    activities: ["swimming"],
     neighborhood: "Wheaton",
     county: "DuPage",
     cost: "LOW_COST" as const,
@@ -139,6 +140,8 @@ const listings = [
     address: "500 S. Naperville Rd., Wheaton, IL 60187",
     phone: "630-690-4880",
     sourceUrl: "https://wheatonparkdistrict.com/programs/pickleball/",
+    qualityNote:
+      "Wheaton Park District operates Northside Family Aquatic Center and Rice Pool & Water Park with lap swimming, swim team, and lessons (wheatonparkdistrict.com/facilities/pools/) -- no water-aerobics class found, lap/open swim only.",
   },
   {
     name: "Adler Planetarium Senior Admission",
@@ -2210,7 +2213,7 @@ const listings = [
     description: "One of Streamwood's longest-running senior programs, the Golden Agers Social Club gathers every Friday at Park Place Family Recreation Center for cards, snacks, movies, walking, and general socializing in a welcoming, low-key atmosphere.",
     category: "park-district-55-programs",
     operatorType: "park-district",
-    activities: ["cards-games","walking-groups","social-clubs"],
+    activities: ["cards-games","walking-groups","social-clubs","water-aerobics"],
     neighborhood: "Streamwood",
     county: "Cook",
     city: "Streamwood",
@@ -2233,6 +2236,8 @@ const listings = [
     lat: 42.0255827,
     lng: -88.1784085,
     geoPrecision: "approximate",
+    qualityNote:
+      "Streamwood Park District runs AquaFit, a water workout \"fit for everyone, especially those with joint ailments or injuries\" (streamwoodparks.org/program/aquatics/) -- not tied to the Golden Agers program specifically, no age restriction stated.",
   },
   {
     name: "Grayslake Park District Active Adults",
