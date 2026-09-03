@@ -693,6 +693,41 @@ export const CITIES: CityDef[] = [
     intro:
       "The Village of Hazel Crest runs a senior room with Bid Whist, Keno, and Chess afternoons, the Hazel Crest Park District adds its own Seniors (60+) program and a discounted Fitness Center membership, and the South Suburban Genealogical & Historical Society offers free genealogy research assistance and classes.",
   },
+  {
+    name: "Crestwood",
+    slug: "crestwood",
+    county: "Cook",
+    intro:
+      "Andrew Biela Senior Center, run directly by the Village of Crestwood, packs fitness classes, bingo, card games, and weekly reserved lunches into a weekday-only schedule, and Crestwood Public Library adds a book club and weekly Tech Help Tuesdays drop-in sessions.",
+  },
+  {
+    name: "Northlake",
+    slug: "northlake",
+    county: "Cook",
+    intro:
+      "Veterans Park District runs a full weekly calendar for active adults 55 and better, including Aquacize and indoor open-play pickleball, and Northlake Public Library adds a recurring Senior Meetup social afternoon alongside its general adult programming.",
+  },
+  {
+    name: "Summit",
+    slug: "summit",
+    county: "Cook",
+    intro:
+      "Summit Public Library runs a virtual Senior Strength Training class over Zoom, and Summit Park District partners with Aging Care Connections on a +55 Seniors series covering Chair Yoga, line dancing, and a free drop-in Senior Walking Club.",
+  },
+  {
+    name: "Worth",
+    slug: "worth",
+    county: "Cook",
+    intro:
+      "Worth Park District's Social Seniors Program runs cards, lunches, and a Friendship Club, and Worth Public Library adds free museum admission passes and recurring programs like Bingo with Bob.",
+  },
+  {
+    name: "Berkeley",
+    slug: "berkeley",
+    county: "Cook",
+    intro:
+      "Berkeley Public Library runs senior-focused programming, the Park District's Mid Day Fitness class at Lind Park Field House rounds out the active-adult options, and the Village of Berkeley offers residents 62+ a discounted taxi-ride coupon program.",
+  },
 ];
 
 export function cityBySlug(slug: string): CityDef | undefined {
