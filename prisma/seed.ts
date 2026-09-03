@@ -8149,6 +8149,33 @@ const listings = [
     geoPrecision: "exact",
     qualityNote: "A transportation discount benefit, not a recurring in-person program -- thin but genuinely Berkeley-run and age-gated.",
   },
+  {
+    name: "Moraine Valley Community College — 50+ Ageless Learning",
+    slug: "moraine-valley-50-plus-ageless-learning",
+    description:
+      "Moraine Valley's Corporate, Community and Continuing Education division runs 50+ Ageless Learning, non-credit courses (art, computers, investing, and more) for adults \"in an environment of their peers.\" In-district residents 62+ are also reported to get half-price tuition on credit and adult-ed courses.",
+    category: "library-classes",
+    operatorType: "community-college",
+    activities: ["lifelong-learning"],
+    neighborhood: "Palos Hills",
+    county: "Cook",
+    city: "Palos Hills",
+    citySlug: "palos-hills",
+    cost: "LOW_COST" as const,
+    days: Prisma.DbNull,
+    sourceUrl: "https://www.morainevalley.edu/ccce/community-partner/personal-enrichment-and-leisure-2/",
+    lastVerified: new Date("2026-09-03"),
+    address: "9000 W. College Pkwy, Palos Hills, IL 60465",
+    phone: "708-974-5735",
+    ageEligibility: "50+ for Ageless Learning courses; 62+ in-district residents reportedly get half-price tuition",
+    ageMinimum: 50,
+    registration: "Register through Corporate, Community and Continuing Education, Building S, Room S103",
+    lat: 41.692682,
+    lng: -87.8386466,
+    geoPrecision: "exact",
+    qualityNote:
+      "Per-course fees weren't published on the fetched page (varies by course). The 62+ half-price tuition detail came from search snippets only, not confirmed on the page directly fetched -- verify before relying on it.",
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from

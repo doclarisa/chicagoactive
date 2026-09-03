@@ -173,7 +173,7 @@ export const CITIES: CityDef[] = [
     slug: "palos-hills",
     county: "Cook",
     intro:
-      "The 39ers Club and Horizons Club at Palos Hills Community Center run bingo-and-lunch gatherings for residents 55+ and 60+, and Green Hills Public Library District adds Doorside Delivery and a Career Online High School program for adults.",
+      "The 39ers Club and Horizons Club at Palos Hills Community Center run bingo-and-lunch gatherings for residents 55+ and 60+, Green Hills Public Library District adds Doorside Delivery and a Career Online High School program for adults, and Moraine Valley Community College's 50+ Ageless Learning offers non-credit courses for adults 50 and up.",
   },
   {
     name: "Evergreen Park",
