@@ -24,6 +24,30 @@ const PRICE_RANGE: Record<string, string> = {
   PAID: "$$",
 };
 
+// SEO title tags have a real display budget (~60 chars before most SERPs
+// truncate) but this directory's listing names are deliberately long and
+// specific (real org names, per the proper-noun-first copy rule) — so a
+// fixed "{name} ({place}, {county} County) | Active Chicagoland" format
+// blew the budget on 97% of listings. This builds the richest title that
+// still fits, dropping the least essential part first (county, then place,
+// then brand) rather than truncating mid-word as a last resort.
+const TITLE_BUDGET = 60;
+const BRAND_SUFFIX = " | Active Chicagoland";
+
+function buildListingTitle(name: string, place: string): string {
+  const withPlaceAndBrand = `${name} — ${place}${BRAND_SUFFIX}`;
+  if (withPlaceAndBrand.length <= TITLE_BUDGET) return withPlaceAndBrand;
+
+  const withBrandOnly = `${name}${BRAND_SUFFIX}`;
+  if (withBrandOnly.length <= TITLE_BUDGET) return withBrandOnly;
+
+  if (name.length <= TITLE_BUDGET) return name;
+
+  const cut = name.slice(0, TITLE_BUDGET - 1);
+  const lastSpace = cut.lastIndexOf(" ");
+  return (lastSpace > 30 ? cut.slice(0, lastSpace) : cut) + "…";
+}
+
 // Addresses are stored as "Street, City, IL Zip" — split for structured
 // data; falls back gracefully if a future address doesn't match that shape.
 function parseAddress(address: string) {
@@ -44,13 +68,19 @@ export async function generateMetadata({
   if (!listing) return {};
 
   const place = listing.neighborhood ? `${listing.neighborhood}, ${listing.county} County` : `${listing.county} County`;
-  const title = `${listing.name} (${place})`;
+  const seoTitle = buildListingTitle(listing.name, listing.city || listing.neighborhood || listing.county);
+  // OpenGraph previews (social shares) aren't truncated the same way SERPs
+  // are, so they get the fuller, unconstrained title.
+  const socialTitle = `${listing.name} (${place})`;
 
   return {
-    title,
+    // `absolute` bypasses the root layout's "%s | Active Chicagoland"
+    // template — needed because buildListingTitle already decides for
+    // itself whether the brand suffix fits.
+    title: { absolute: seoTitle },
     description: listing.description,
     alternates: { canonical: `/${listing.slug}` },
-    openGraph: { title, description: listing.description },
+    openGraph: { title: socialTitle, description: listing.description },
   };
 }
 
