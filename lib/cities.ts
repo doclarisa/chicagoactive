@@ -728,6 +728,41 @@ export const CITIES: CityDef[] = [
     intro:
       "Berkeley Public Library runs senior-focused programming, the Park District's Mid Day Fitness class at Lind Park Field House rounds out the active-adult options, and the Village of Berkeley offers residents 62+ a discounted taxi-ride coupon program.",
   },
+  {
+    name: "Lindenhurst",
+    slug: "lindenhurst",
+    county: "Lake",
+    intro:
+      "Lindenhurst Park District's Active Adult Programs cover fitness and pickleball, Hastings Lake YMCA adds SilverSneakers-eligible classes like Tai Chi for Arthritis and Rock Steady Boxing, and Lake Villa District Library rounds out the options with book clubs and tech help.",
+  },
+  {
+    name: "Steger",
+    slug: "steger",
+    county: "Cook",
+    intro:
+      "The Village of Steger's own Louis Sherman Community Center runs an Over 50 Club, Chair Fitness, and a Pinochle Club, and the Steger-South Chicago Heights Library adds Senior Bingo and Chair Yoga.",
+  },
+  {
+    name: "Harvard",
+    slug: "harvard",
+    county: "McHenry",
+    intro:
+      "Harvard Community Senior Center runs the area's dedicated senior programming, and Harvard Diggins Library adds general adult programs including book clubs and a monthly craft night.",
+  },
+  {
+    name: "Manhattan",
+    slug: "manhattan",
+    county: "Will",
+    intro:
+      "The Village of Manhattan's Senior Luncheons bring residents together for a co-sponsored meal, and Manhattan-Elwood Public Library adds a free weekly Senior Social Hour for coffee and conversation.",
+  },
+  {
+    name: "Marengo",
+    slug: "marengo",
+    county: "McHenry",
+    intro:
+      "Marengo Park District offers a discounted senior fitness center membership for 62+ residents, and the Marengo Society for Historic Preservation adds monthly meetings and community history events.",
+  },
 ];
 
 export function cityBySlug(slug: string): CityDef | undefined {
