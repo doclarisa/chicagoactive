@@ -31,6 +31,12 @@ export default function Header() {
           >
             Directory
           </Link>
+          <Link
+            href="/guides"
+            className="min-h-11 rounded-pill px-3 py-2 text-base font-semibold text-ink no-underline hover:bg-flag-blue-tint"
+          >
+            Blog
+          </Link>
         </nav>
         <SearchBox className="order-last w-full sm:order-none sm:w-64" />
       </div>

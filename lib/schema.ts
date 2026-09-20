@@ -89,6 +89,32 @@ export function touristAttractionSchema(trip: {
   };
 }
 
+// Article markup for an editorial/data page — only verified fields (title,
+// description, and real publish/update dates). No fabricated author bio or
+// image beyond what the page actually has.
+export function articleSchema(article: {
+  headline: string;
+  description: string;
+  path: string;
+  datePublished: string;
+  dateModified?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.headline,
+    description: article.description,
+    url: `${SITE_URL}${article.path}`,
+    datePublished: article.datePublished,
+    dateModified: article.dateModified ?? article.datePublished,
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+  };
+}
+
 // LocalBusiness markup for a gym entry — only verified fields (name,
 // address if we have it, source URL). No fabricated rating or hours.
 export function localBusinessSchema(gym: {

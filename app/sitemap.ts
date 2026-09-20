@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/db";
 import { CATEGORIES } from "@/lib/categories";
-import { GUIDES } from "@/lib/guides";
+import { GUIDES, INDEXED_GUIDE_SLUGS } from "@/lib/guides";
 import { CITIES } from "@/lib/cities";
 import { ACTIVITY_PAGES } from "@/lib/activityPages";
 import { COUNTY_CELLS, CHICAGO_CELLS } from "@/lib/activityCounties";
@@ -19,6 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE_URL}/`, changeFrequency: "weekly", priority: 1 },
     { url: `${SITE_URL}/directory`, changeFrequency: "daily", priority: 0.9 },
     { url: `${SITE_URL}/areas`, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE_URL}/guides`, changeFrequency: "weekly", priority: 0.6 },
     { url: `${SITE_URL}/chicago`, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE_URL}/classes-for-seniors`, changeFrequency: "weekly", priority: 0.7 },
     { url: `${SITE_URL}/about`, changeFrequency: "monthly", priority: 0.3 },
@@ -65,12 +66,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  // Only guides with a dedicated static route (real content, own schema,
-  // indexed) belong in the sitemap. The rest render through the generic
-  // app/guides/[slug]/page.tsx placeholder template, which is deliberately
-  // `robots: { index: false }` until real content ships — don't submit a
-  // noindexed URL to crawlers.
-  const INDEXED_GUIDE_SLUGS = new Set(["day-trips-from-chicago", "medicare-fitness-gyms", "pickleball-facilities"]);
   const guideRoutes: MetadataRoute.Sitemap = GUIDES.filter((g) => INDEXED_GUIDE_SLUGS.has(g.slug)).map(
     (g) => ({
       url: `${SITE_URL}/guides/${g.slug}`,

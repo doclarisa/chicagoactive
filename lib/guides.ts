@@ -11,6 +11,19 @@ export type Guide = {
   exitRampPrompt: string;
 };
 
+// Only guides with a dedicated static route (real content, own schema,
+// indexed) are live -- the rest render through the generic
+// app/guides/[slug]/page.tsx placeholder template, which is deliberately
+// `robots: { index: false }` until real content ships. Single source of
+// truth for both the sitemap and the /guides index page, so the two never
+// drift out of sync.
+export const INDEXED_GUIDE_SLUGS = new Set([
+  "day-trips-from-chicago",
+  "medicare-fitness-gyms",
+  "pickleball-facilities",
+  "free-senior-programs-by-chicago-suburb",
+]);
+
 // Roundups & guides — editorial content that carries affiliate links.
 // Distinct from the free directory: these never claim to be a specific
 // local organization's own program, only a national booking program a
@@ -33,9 +46,14 @@ export const GUIDES: Guide[] = [
     exitRampPrompt: "Planning a day out further afield?",
   },
   {
+    // Rendered by a dedicated static route (app/guides/online-learning-after-60/page.tsx),
+    // not the generic [slug] template — same pattern as medicare-fitness-gyms.
+    // dek/intro/offers below are unused fallback data; the real content lives
+    // in the dedicated page. Still noindex there until real affiliate IDs
+    // replace the placeholders in lib/affiliates.ts.
     slug: "online-learning-after-60",
     title: "Online Learning After 60",
-    dek: "Courses worth taking in retirement — no classroom required.",
+    dek: "The Great Courses/Wondrium vs. MasterClass for adults 50+ — which one actually fits what you want to learn.",
     intro:
       "Our library-classes listings are a great free way to learn something new down the street. But some Tuesdays the best classroom is your own couch — especially once the Chicago winter sets in. These are two well-known platforms our neighbors turn to when they want to go deeper than a library workshop allows.",
     offers: [
@@ -51,9 +69,14 @@ export const GUIDES: Guide[] = [
     exitRampPrompt: "Want to go deeper than a library workshop?",
   },
   {
+    // Rendered by a dedicated static route
+    // (app/guides/hobby-fitness-gear-for-active-seniors/page.tsx), not the
+    // generic [slug] template — same pattern as medicare-fitness-gyms.
+    // dek/intro/offers below are unused fallback data. Still noindex there
+    // until a real affiliate ID replaces the placeholder in lib/affiliates.ts.
     slug: "hobby-fitness-gear-for-active-seniors",
     title: "Hobby & Fitness Gear for Active Seniors",
-    dek: "The gear that makes it easier to keep showing up.",
+    dek: "What to look for in pickleball paddles, walking shoes, water-aerobics gear, and art supplies — buying guidance, not just a product list.",
     intro:
       "Once you've found your Tuesday pickleball group or your Saturday hiking crew in the free directory, the right gear makes it easier to keep coming back — a well-fitted pair of walking shoes, a paddle that doesn't fight you, art supplies for the class you just signed up for. One place covers most of it.",
     offers: [
@@ -63,6 +86,20 @@ export const GUIDES: Guide[] = [
       },
     ],
     exitRampPrompt: "Need the right gear for it?",
+  },
+  {
+    // Rendered by a dedicated static route
+    // (app/guides/free-senior-programs-by-chicago-suburb/page.tsx), not the
+    // generic [slug] template. Pure editorial/data content, no affiliate
+    // offers -- indexed immediately, no placeholder-ID gate to wait on.
+    // dek/intro/offers below are unused fallback data.
+    slug: "free-senior-programs-by-chicago-suburb",
+    title: "Which Chicago Suburbs Have the Most Free Senior Programs?",
+    dek: "A data breakdown of our own 338-listing directory, county by county and suburb by suburb.",
+    intro:
+      "We pulled the numbers straight from our own directory to see where the free programs actually cluster.",
+    offers: [],
+    exitRampPrompt: "Curious where the free programs cluster near you?",
   },
   {
     // Rendered by a dedicated static route (app/guides/medicare-fitness-gyms/page.tsx),

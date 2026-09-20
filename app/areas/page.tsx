@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { CITIES } from "@/lib/cities";
 import { COUNTIES } from "@/lib/counties";
 import AreaCard from "@/components/AreaCard";
@@ -41,7 +42,13 @@ export default function AreasPage() {
       </h1>
       <p className="mt-4 text-lg leading-relaxed text-ink">
         Free and low-cost things to do for active adults 50+, organized by city — pick where you
-        are and see what&apos;s nearby.
+        are and see what&apos;s nearby. Curious how areas compare?{" "}
+        <Link
+          href="/guides/free-senior-programs-by-chicago-suburb"
+          className="font-semibold text-flag-blue-ink no-underline hover:underline"
+        >
+          See which suburbs have the most free programs →
+        </Link>
       </p>
 
       {groups.map((group) => (
