@@ -23,10 +23,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "pickleball-and-food-chicagoland",
-    title: "Where to Play Pickleball and Eat Afterward in Chicagoland",
-    dek: "A national trend -- pickleball courts with a real kitchen and bar attached -- has three solid answers here, even without a Chicken N Pickle in town.",
+    title: "Where to Play Pickleball — and Actually Eat Afterward — in Chicagoland",
+    dek: "The 'eatertainment' trend -- real courts with a real kitchen and bar attached -- has three solid answers here, even without a Chicken N Pickle in town.",
     publishedDate: "2026-09-20",
     readingMinutes: 4,
-    heroImage: "",
+    heroImage: "/blog/pickleball-and-food-chicagoland-hero.png",
   },
 ];
