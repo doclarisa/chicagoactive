@@ -61,24 +61,30 @@ export default function BlogIndexPage() {
                   : "flex gap-4 border-t border-flag-blue-tint-2 pt-6"
               }
             >
-              {i === 0 ? (
-                <Image
-                  src={post.heroImage}
-                  alt=""
-                  width={1448}
-                  height={1086}
-                  className="h-auto w-full object-cover"
-                  sizes="(min-width: 672px) 672px, 100vw"
-                />
+              {post.heroImage ? (
+                i === 0 ? (
+                  <Image
+                    src={post.heroImage}
+                    alt=""
+                    width={1448}
+                    height={1086}
+                    className="h-auto w-full object-cover"
+                    sizes="(min-width: 672px) 672px, 100vw"
+                  />
+                ) : (
+                  <Image
+                    src={post.heroImage}
+                    alt=""
+                    width={1448}
+                    height={1086}
+                    className="h-20 w-20 flex-none rounded-lg object-cover sm:h-24 sm:w-24"
+                    sizes="96px"
+                  />
+                )
+              ) : i === 0 ? (
+                <div className="aspect-[4/3] w-full bg-gradient-to-br from-flag-blue-tint to-flag-blue-tint-2" />
               ) : (
-                <Image
-                  src={post.heroImage}
-                  alt=""
-                  width={1448}
-                  height={1086}
-                  className="h-20 w-20 flex-none rounded-lg object-cover sm:h-24 sm:w-24"
-                  sizes="96px"
-                />
+                <div className="h-20 w-20 flex-none rounded-lg bg-gradient-to-br from-flag-blue-tint to-flag-blue-tint-2 sm:h-24 sm:w-24" />
               )}
               <div className={i === 0 ? "p-6 sm:p-8" : "min-w-0"}>
               <p className="text-sm font-semibold text-ink-muted">

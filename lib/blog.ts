@@ -21,4 +21,12 @@ export const BLOG_POSTS: BlogPost[] = [
     readingMinutes: 6,
     heroImage: "/blog/chicago-suburbs-free-senior-programs-hero.png",
   },
+  {
+    slug: "pickleball-and-food-chicagoland",
+    title: "Where to Play Pickleball and Eat Afterward in Chicagoland",
+    dek: "A national trend -- pickleball courts with a real kitchen and bar attached -- has three solid answers here, even without a Chicken N Pickle in town.",
+    publishedDate: "2026-09-20",
+    readingMinutes: 4,
+    heroImage: "",
+  },
 ];
