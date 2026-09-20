@@ -250,6 +250,39 @@ const listings = [
     sourceUrl: "https://www.mccdistrict.org/learn___experience/discover_nature/century_hikers_club.php",
   },
   {
+    name: "Yorktown Center Heart & Sole Walking Club",
+    slug: "yorktown-center-heart-sole-walking-club",
+    description:
+      "Free indoor mall-walking club at Yorktown Center -- doors open at 6am daily for self-paced walking, plus a free guided session with a fitness instructor most Thursdays from 8:15-9:15am. About 700 members get a welcome kit and deals with mall stores; open to anyone who wants to join in.",
+    category: "walking-hiking-groups",
+    neighborhood: "Lombard",
+    county: "DuPage",
+    city: "Lombard",
+    citySlug: "lombard",
+    cost: "FREE" as const,
+    days: ["Thursday"],
+    time: "Building opens 6:00 AM daily for self-paced walking; guided session Thu 8:15-9:15 AM",
+    address: "203 Yorktown Center, Lombard, IL 60148",
+    sourceUrl: "https://yorktowncenter.com/news/yorktown-center-featured-in-mall-walking-article/",
+    qualityNote:
+      "Schedule comes from a 2019 mall feature; another source described guided walks on both Monday and Thursday -- confirm current days/times at the source link or with the mall directly.",
+  },
+  {
+    name: "Windy City Walkers",
+    slug: "windy-city-walkers",
+    description:
+      "Chicago-area walking club affiliated with the American Volkssport Association, running non-competitive group walks (usually a 10k route with shorter 5k/6k options) at rotating locations around northeastern Illinois, plus winter snowshoeing at Fullersburg Woods and a summer walk-and-concert series. $4 per event, open to the public -- no membership required.",
+    category: "walking-hiking-groups",
+    neighborhood: "Multiple locations (rotates across NE Illinois)",
+    county: "DuPage",
+    cost: "LOW_COST" as const,
+    days: Prisma.DbNull,
+    time: null,
+    sourceUrl: "https://windycitywalkers.org/",
+    qualityNote:
+      "A regional club, not tied to one county -- walks rotate among Chicago-area forest preserves and towns. Check windycitywalkers.org for the current schedule and location.",
+  },
+  {
     name: "St. Charles Park District Active Adult Center",
     slug: "st-charles-park-district-active-adult-center",
     description:
