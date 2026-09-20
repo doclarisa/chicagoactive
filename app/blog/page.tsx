@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 function formatDate(iso: string): string {
   return new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-US", {
     year: "numeric",
-    month: "long",
+    month: "short",
     day: "numeric",
     timeZone: "UTC",
   });
@@ -51,65 +51,39 @@ export default function BlogIndexPage() {
       <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">{TITLE}</h1>
       <p className="mt-4 text-lg leading-relaxed text-ink-muted">{DESCRIPTION}</p>
 
-      <div className="mt-10 flex flex-col gap-8">
-        {posts.map((post, i) => (
-          <Link key={post.slug} href={`/blog/${post.slug}`} className="group block no-underline">
-            <article
-              className={
-                i === 0
-                  ? "overflow-hidden rounded-card bg-card shadow-sm ring-1 ring-black/5 transition-shadow group-hover:shadow-md"
-                  : "flex gap-4 border-t border-flag-blue-tint-2 pt-6"
-              }
-            >
-              {post.heroImage ? (
-                i === 0 ? (
-                  <Image
-                    src={post.heroImage}
-                    alt=""
-                    width={1448}
-                    height={1086}
-                    className="h-auto w-full object-cover"
-                    sizes="(min-width: 672px) 672px, 100vw"
-                  />
-                ) : (
-                  <Image
-                    src={post.heroImage}
-                    alt=""
-                    width={1448}
-                    height={1086}
-                    className="h-20 w-20 flex-none rounded-lg object-cover sm:h-24 sm:w-24"
-                    sizes="96px"
-                  />
-                )
-              ) : i === 0 ? (
-                <div className="aspect-[4/3] w-full bg-gradient-to-br from-flag-blue-tint to-flag-blue-tint-2" />
-              ) : (
-                <div className="h-20 w-20 flex-none rounded-lg bg-gradient-to-br from-flag-blue-tint to-flag-blue-tint-2 sm:h-24 sm:w-24" />
-              )}
-              <div className={i === 0 ? "p-6 sm:p-8" : "min-w-0"}>
-              <p className="text-sm font-semibold text-ink-muted">
-                <time dateTime={post.publishedDate}>{formatDate(post.publishedDate)}</time>
-                <span aria-hidden="true"> · </span>
-                {post.readingMinutes} min read
-              </p>
-              <h2
-                className={
-                  i === 0
-                    ? "mt-2 text-2xl font-extrabold leading-tight tracking-tight text-ink group-hover:text-flag-blue-ink sm:text-3xl"
-                    : "mt-2 text-xl font-extrabold leading-tight tracking-tight text-ink group-hover:text-flag-blue-ink"
-                }
-              >
+      <div className="mt-8 flex flex-col">
+        {posts.map((post) => (
+          <Link
+            key={post.slug}
+            href={`/blog/${post.slug}`}
+            className="group flex items-center gap-4 border-b border-flag-blue-tint-2 py-4 no-underline first:border-t"
+          >
+            {post.heroImage ? (
+              <Image
+                src={post.heroImage}
+                alt=""
+                width={200}
+                height={150}
+                className="h-16 w-20 flex-none rounded-lg object-cover sm:h-20 sm:w-24"
+                sizes="96px"
+              />
+            ) : (
+              <div className="h-16 w-20 flex-none rounded-lg bg-gradient-to-br from-flag-blue-tint to-flag-blue-tint-2 sm:h-20 sm:w-24" />
+            )}
+
+            <div className="min-w-0">
+              <h2 className="truncate text-lg font-bold leading-snug text-ink group-hover:text-flag-blue-ink sm:text-xl">
                 {post.title}
               </h2>
-              <p className="mt-3 text-lg leading-relaxed text-ink-muted">{post.dek}</p>
-              <span className="mt-3 inline-block text-base font-semibold text-flag-blue-ink">Read more →</span>
-              </div>
-            </article>
+              <p className="mt-1 text-sm text-ink-muted">
+                Published · <time dateTime={post.publishedDate}>{formatDate(post.publishedDate)}</time>
+              </p>
+            </div>
           </Link>
         ))}
       </div>
 
-      <p className="mt-14 border-t border-flag-blue-tint-2 pt-6">
+      <p className="mt-10">
         <Link href="/directory" className="text-base font-semibold text-flag-blue-ink no-underline hover:underline">
           ← Back to the free directory
         </Link>
