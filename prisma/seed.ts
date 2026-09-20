@@ -209,6 +209,47 @@ const listings = [
     sourceUrl: "http://www.kaneforest.com/public-nature-programs",
   },
   {
+    name: "Forest Preserve District of DuPage County Guided Walks & Hikes",
+    slug: "dupage-forest-preserve-guided-walks",
+    description:
+      "Recurring guided Bird Walks (casual, under 2 miles) and Forest Hikes (a quicker-paced 3-5 mile guided hike) through DuPage forest preserves, open to ages 18 and up for $5 per person; locations and days rotate through the district's program calendar.",
+    category: "walking-hiking-groups",
+    neighborhood: "Countywide",
+    county: "DuPage",
+    cost: "LOW_COST" as const,
+    days: Prisma.DbNull,
+    time: null,
+    sourceUrl: "https://www.dupageforest.org/calendar-of-events",
+  },
+  {
+    name: "Forest Preserve District of Will County Trail Club",
+    slug: "will-county-trail-club",
+    description:
+      "A recurring group walking series at rotating Will County preserves -- seasonal runs (documented for winter and fall) meet weekly at a different preserve each time, with sticker rewards for attending multiple walks. Open to the public.",
+    category: "walking-hiking-groups",
+    neighborhood: "Countywide",
+    county: "Will",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    time: null,
+    sourceUrl: "https://www.reconnectwithnature.org/news-events/event-calendar",
+    qualityNote:
+      "Trail Club runs in rotating seasonal series (documented for winter and fall so far) at a different preserve each week rather than one fixed location/time -- confirm the current season's schedule at the source link.",
+  },
+  {
+    name: "McHenry County Conservation District Century Hikers Club",
+    slug: "mccd-century-hikers-club",
+    description:
+      "A self-paced hiking incentive club for ages 14+: log miles at any MCCD site toward milestone rewards (t-shirt, field guide, patch, walking stick and more), plus four staff-guided hikes a year reserved for members and a private Facebook group for arranging walks together. One-time $10 enrollment.",
+    category: "walking-hiking-groups",
+    neighborhood: "Countywide",
+    county: "McHenry",
+    cost: "LOW_COST" as const,
+    days: Prisma.DbNull,
+    time: null,
+    sourceUrl: "https://www.mccdistrict.org/learn___experience/discover_nature/century_hikers_club.php",
+  },
+  {
     name: "St. Charles Park District Active Adult Center",
     slug: "st-charles-park-district-active-adult-center",
     description:
