@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/db";
 import { CATEGORIES } from "@/lib/categories";
 import { GUIDES, INDEXED_GUIDE_SLUGS } from "@/lib/guides";
+import { BLOG_POSTS } from "@/lib/blog";
 import { CITIES } from "@/lib/cities";
 import { ACTIVITY_PAGES } from "@/lib/activityPages";
 import { COUNTY_CELLS, CHICAGO_CELLS } from "@/lib/activityCounties";
@@ -20,6 +21,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE_URL}/directory`, changeFrequency: "daily", priority: 0.9 },
     { url: `${SITE_URL}/areas`, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE_URL}/guides`, changeFrequency: "weekly", priority: 0.6 },
+    { url: `${SITE_URL}/blog`, changeFrequency: "weekly", priority: 0.6 },
     { url: `${SITE_URL}/chicago`, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE_URL}/classes-for-seniors`, changeFrequency: "weekly", priority: 0.7 },
     { url: `${SITE_URL}/about`, changeFrequency: "monthly", priority: 0.3 },
@@ -74,6 +76,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }),
   );
 
+  const blogRoutes: MetadataRoute.Sitemap = BLOG_POSTS.map((p) => ({
+    url: `${SITE_URL}/blog/${p.slug}`,
+    lastModified: p.publishedDate,
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+
   // Day Trips county spokes + the commercial tour-companies page.
   const dayTripSpokeRoutes: MetadataRoute.Sitemap = COUNTY_SPOKES.map((s) => ({
     url: `${SITE_URL}/day-trips/${s.slug}`,
@@ -99,6 +108,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...categoryRoutes,
     ...listingRoutes,
     ...guideRoutes,
+    ...blogRoutes,
     ...dayTripSpokeRoutes,
     ...dayTripCompanyRoute,
     ...gymSpokeRoutes,

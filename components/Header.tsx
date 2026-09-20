@@ -32,7 +32,7 @@ export default function Header() {
             Directory
           </Link>
           <Link
-            href="/guides"
+            href="/blog"
             className="min-h-11 rounded-pill px-3 py-2 text-base font-semibold text-ink no-underline hover:bg-flag-blue-tint"
           >
             Blog

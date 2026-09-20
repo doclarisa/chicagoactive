@@ -1,0 +1,24 @@
+export type BlogPost = {
+  slug: string;
+  title: string;
+  dek: string;
+  publishedDate: string; // ISO date, e.g. "2026-09-19"
+  readingMinutes: number;
+  heroImage: string;
+};
+
+// Real, dated, bylined articles -- distinct from lib/guides.ts, which holds
+// undated resource/reference pages (gear roundups, facility lists). Each
+// post still gets its own dedicated static route under app/blog/<slug>/,
+// same pattern as guides; this file is the shared index for /blog and the
+// sitemap so the two can't drift apart.
+export const BLOG_POSTS: BlogPost[] = [
+  {
+    slug: "chicago-suburbs-free-senior-programs",
+    title: "Which Chicago Suburbs Have the Most Free Senior Programs?",
+    dek: "We went through our own 338-listing directory to find out where free programming actually clusters -- the answer surprised us.",
+    publishedDate: "2026-09-19",
+    readingMinutes: 6,
+    heroImage: "/blog/chicago-suburbs-free-senior-programs-hero.png",
+  },
+];

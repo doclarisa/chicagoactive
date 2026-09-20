@@ -44,7 +44,7 @@ export default function AreasPage() {
         Free and low-cost things to do for active adults 50+, organized by city — pick where you
         are and see what&apos;s nearby. Curious how areas compare?{" "}
         <Link
-          href="/guides/free-senior-programs-by-chicago-suburb"
+          href="/blog/chicago-suburbs-free-senior-programs"
           className="font-semibold text-flag-blue-ink no-underline hover:underline"
         >
           See which suburbs have the most free programs →

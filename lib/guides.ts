@@ -21,7 +21,6 @@ export const INDEXED_GUIDE_SLUGS = new Set([
   "day-trips-from-chicago",
   "medicare-fitness-gyms",
   "pickleball-facilities",
-  "free-senior-programs-by-chicago-suburb",
 ]);
 
 // Roundups & guides — editorial content that carries affiliate links.
@@ -86,20 +85,6 @@ export const GUIDES: Guide[] = [
       },
     ],
     exitRampPrompt: "Need the right gear for it?",
-  },
-  {
-    // Rendered by a dedicated static route
-    // (app/guides/free-senior-programs-by-chicago-suburb/page.tsx), not the
-    // generic [slug] template. Pure editorial/data content, no affiliate
-    // offers -- indexed immediately, no placeholder-ID gate to wait on.
-    // dek/intro/offers below are unused fallback data.
-    slug: "free-senior-programs-by-chicago-suburb",
-    title: "Which Chicago Suburbs Have the Most Free Senior Programs?",
-    dek: "A data breakdown of our own 338-listing directory, county by county and suburb by suburb.",
-    intro:
-      "We pulled the numbers straight from our own directory to see where the free programs actually cluster.",
-    offers: [],
-    exitRampPrompt: "Curious where the free programs cluster near you?",
   },
   {
     // Rendered by a dedicated static route (app/guides/medicare-fitness-gyms/page.tsx),
