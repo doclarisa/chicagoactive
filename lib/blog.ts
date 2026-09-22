@@ -29,4 +29,12 @@ export const BLOG_POSTS: BlogPost[] = [
     readingMinutes: 4,
     heroImage: "/blog/pickleball-and-food-chicagoland-hero.png",
   },
+  {
+    slug: "programs-with-free-coffee-or-food",
+    title: "The Programs That Come With Free Coffee — Or Better",
+    dek: "We counted: 81 listings in our own directory bundle in a free coffee, snack, or meal -- about 1 in 4. Here's where.",
+    publishedDate: "2026-09-22",
+    readingMinutes: 5,
+    heroImage: "",
+  },
 ];
