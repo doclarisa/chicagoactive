@@ -37,4 +37,12 @@ export const BLOG_POSTS: BlogPost[] = [
     readingMinutes: 5,
     heroImage: "/blog/free-coffee-or-food-hero.png",
   },
+  {
+    slug: "quirky-senior-programs-chicagoland",
+    title: "The Hidden-Gem List: Chicagoland's Quirkiest Programs for Active Adults",
+    dek: "A drum-cardio class, D&D at the library, a 1997 ukulele band, and a library death café -- the stuff that never makes the bingo-and-pinochle roundup.",
+    publishedDate: "2026-09-22",
+    readingMinutes: 6,
+    heroImage: "",
+  },
 ];
