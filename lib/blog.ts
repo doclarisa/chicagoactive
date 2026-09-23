@@ -35,6 +35,6 @@ export const BLOG_POSTS: BlogPost[] = [
     dek: "We counted: 81 listings in our own directory bundle in a free coffee, snack, or meal -- about 1 in 4. Here's where.",
     publishedDate: "2026-09-22",
     readingMinutes: 5,
-    heroImage: "",
+    heroImage: "/blog/free-coffee-or-food-hero.png",
   },
 ];
