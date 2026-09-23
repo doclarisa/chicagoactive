@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { breadcrumbSchema, articleSchema } from "@/lib/schema";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -10,7 +11,12 @@ export const metadata: Metadata = {
   title: POST.title,
   description: POST.dek,
   alternates: { canonical: `/blog/${POST.slug}` },
-  openGraph: { title: POST.title, description: POST.dek, type: "article" },
+  openGraph: {
+    title: POST.title,
+    description: POST.dek,
+    type: "article",
+    images: [POST.heroImage],
+  },
   robots: { index: true, follow: true },
 };
 
@@ -23,85 +29,168 @@ function formatDate(iso: string): string {
   });
 }
 
-type Example = { name: string; area: string; note: string; sourceUrl: string };
+type Example = {
+  name: string;
+  area: string;
+  note: string;
+  sourceUrl: string;
+  image?: string;
+  imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+};
 
 const FROM_OUR_DIRECTORY: Example[] = [
   {
-    name: "Stix & Kix Drum Cardio — Chicago Ridge Park District",
-    area: "Chicago Ridge",
-    note: "A drum-based cardio class, part of the district's Actively Aging series alongside Music Bingo and Silver Sneakers. Not a drum circle exactly -- a full cardio workout built around a drum.",
+    name: "🥁 Stix & Kix Drum Cardio",
+    area: "Chicago Ridge Park District · Chicago Ridge",
+    note: "Forget the treadmill. This is a full cardio workout built around a drum. It's part of the district's Actively Aging series, along with Music Bingo and Silver Sneakers. It isn't a drum circle. It's a sweaty, loud, rhythm-driven workout that happens to be very fun.",
     sourceUrl: "https://chicagoridgeparks.com/seniors/",
+    image: "/blog/quirky-programs-drum-cardio.png",
+    imageAlt: "A row of seniors on exercise balls, drumsticks raised in sync, smiling mid-class",
+    imageWidth: 1448,
+    imageHeight: 1086,
   },
   {
-    name: "Dungeons & Dragons and Magic: The Gathering — Oswego Public Library",
-    area: "Oswego",
-    note: "Standing adult clubs on Saturday afternoons -- D&D at one campus, Magic: The Gathering meeting the same time and place. Open to all adults, popular with older patrons who never had the chance to play growing up.",
+    name: "🐉 Dungeons & Dragons and Magic: The Gathering",
+    area: "Oswego Public Library · Oswego",
+    note: "Yes, really. Oswego runs standing adult clubs for both games on Saturday afternoons. They're open to all adults, and they're especially popular with older patrons who never got the chance to play growing up. It's never too late to roll for initiative.",
     sourceUrl: "https://www.oswego.lib.il.us/services/adult",
+    image: "/blog/quirky-programs-dnd.png",
+    imageAlt: "An older man with a gray beard leaning over a tabletop covered in dice, character sheets, and miniatures",
+    imageWidth: 1536,
+    imageHeight: 1024,
   },
   {
-    name: "Improv for Adults — River Forest Park District",
-    area: "River Forest",
-    note: "Part of the district's Adult Variety Programs, alongside three-level Bridge and a Basic Photography for DSLR Cameras class. Exactly the kind of thing you wouldn't think to search for.",
+    name: "🎭 Improv for Adults",
+    area: "River Forest Park District · River Forest",
+    note: "It sits in the district's Adult Variety Programs next to three-level Bridge and a DSLR photography class. Improv is exactly the kind of thing you'd never think to search for, and it may be the most fun you have all month.",
     sourceUrl: "https://rfparks.com/adult-variety",
+    image: "/blog/quirky-programs-improv.png",
+    imageAlt: "Two older adults on a small stage mid-scene, one with arms flung wide, the other laughing",
+    imageWidth: 1448,
+    imageHeight: 1086,
   },
   {
-    name: "Themed Escape Room — Itasca Historical Depot Museum",
-    area: "Itasca",
-    note: "A restored 1873 train depot and 1939 Milwaukee Road caboose, with WWII memorabilia, antique dolls -- and a themed escape room built into the museum. Free, open Tuesday and Thursday.",
+    name: "🚂 A Themed Escape Room Inside a Train Depot",
+    area: "Itasca Historical Depot Museum · Itasca",
+    note: "Start with a restored 1873 train depot. Add a 1939 Milwaukee Road caboose, WWII memorabilia, and a collection of antique dolls. Then build an escape room into the middle of it. It's free and open Tuesdays and Thursdays. Bring your grandkids and see who cracks the code first.",
     sourceUrl: "https://www.itascaparkdistrict.com/171/Itasca-Historical-Depot-Museum",
+    image: "/blog/quirky-programs-escape-room.png",
+    imageAlt: "A grandparent and a teen huddled over a padlocked box with a flashlight in a wood-paneled room",
+    imageWidth: 1448,
+    imageHeight: 1086,
   },
   {
-    name: "Oak Park Society of Model Engineers discount — Park District of Oak Park",
-    area: "Oak Park",
-    note: "The district's Lifelong Learning membership (50+) includes a discounted membership to the local model-train and model-engineering society -- a genuinely deep-cut hobby perk buried in an otherwise ordinary senior program list.",
+    name: "🛤️ The Model Train Perk Nobody Knows About",
+    area: "Park District of Oak Park · Oak Park",
+    note: "This is a real deep cut. The Lifelong Learning membership (50+) comes with a discounted membership to the Oak Park Society of Model Engineers, the local model-train club. It's buried in an otherwise ordinary senior program list.",
     sourceUrl: "https://pdop.org/programs/lifelong-learning/",
+    image: "/blog/quirky-programs-model-train.png",
+    imageAlt: "An older man with magnifying glasses carefully placing a tiny tree on an elaborate model railroad layout",
+    imageWidth: 1536,
+    imageHeight: 1024,
   },
   {
-    name: "Weekend Weaving & Spinning Demonstrations — Graue Mill and Museum",
-    area: "Oak Brook",
-    note: "A restored 1852 water-powered gristmill on Salt Creek, where historical interpreters demonstrate milling, spinning, and weaving every Saturday and Sunday afternoon. Free admission.",
+    name: "🧶 Weaving & Spinning at an 1852 Gristmill",
+    area: "Graue Mill and Museum · Oak Brook",
+    note: "A water-powered gristmill still stands on Salt Creek. Every Saturday and Sunday afternoon, historical interpreters demonstrate milling, spinning, and weaving the way it was done more than 170 years ago. Admission is free, and it's a peaceful way to spend an afternoon.",
     sourceUrl: "https://www.dupageforest.org/graue-mill",
+    image: "/blog/quirky-programs-weaving.png",
+    imageAlt: "Weathered hands working a wooden spinning wheel with wool fibers visible in soft window light",
+    imageWidth: 1448,
+    imageHeight: 1086,
   },
   {
-    name: "Chess Club (Illinois Chess Association-affiliated) — Itasca Community Library",
-    area: "Itasca",
-    note: "A real, tournament-affiliated chess club, alongside \"Crafters Anonymous\" and free notary/passport services -- one of the more unexpected library adult-services lineups we've found.",
+    name: "♟️ A Chess Club With Real Credentials",
+    area: "Itasca Community Library · Itasca",
+    note: "This isn't a casual board-game night. It's a chess club affiliated with the Illinois Chess Association. The same library also hosts \"Crafters Anonymous\" and offers free notary and passport services, which makes it one of the more unexpected adult lineups we've found.",
     sourceUrl: "https://www.itascalibrary.org/services/",
+    image: "/blog/quirky-programs-chess.png",
+    imageAlt: "Two older men facing off over a chessboard, one resting his chin on his fist in concentration",
+    imageWidth: 1536,
+    imageHeight: 1024,
   },
   {
-    name: "South Suburban Genealogical & Historical Society",
-    area: "Hazel Crest",
-    note: "A volunteer-run research library with 15,000+ volumes, genealogy classes -- and a cemetery photo service. Free and open to the public, no visitor fee.",
+    name: "🔍 Genealogy, 15,000 Books, and a Cemetery Photo Service",
+    area: "South Suburban Genealogical & Historical Society · Hazel Crest",
+    note: "Volunteers run this research library of more than 15,000 volumes. They teach genealogy classes and offer a cemetery photo service. It's free and open to the public. If you've ever wondered who your great-great-grandmother really was, start here.",
     sourceUrl: "https://ssghs.org/contact/",
+    image: "/blog/quirky-programs-genealogy.png",
+    imageAlt: "A senior woman at a library table with an old family photo album open next to a laptop showing a family tree",
+    imageWidth: 1536,
+    imageHeight: 1024,
   },
 ];
 
 const WENT_LOOKING_FOR: Example[] = [
   {
-    name: "The Hix Bros Ukulele Band",
+    name: "🎶 The Hix Bros Ukulele Band",
     area: "Naperville",
-    note: "Mostly-over-65 musicians who rehearse weekly at the Musical Expressions school and have played retirement centers, libraries, festivals, and fundraisers for 15 years. Started by Peter Hix of the old Hix Bros Music store in Aurora; his brother Carl, 70, leads it now. \"None of these people knew each other before this whole thing started,\" Carl told the Sun-Times, \"and when our little class is over, you can hear them talking and talking some more.\"",
+    note: "This is the story that won us over. The band is made up mostly of musicians over 65. They rehearse weekly at the Musical Expressions school and have spent 15 years playing retirement centers, libraries, festivals, and fundraisers. Peter Hix, of the old Hix Bros Music store in Aurora, started the band. His brother Carl, 70, leads it now. Carl told the Sun-Times: \"None of these people knew each other before this whole thing started, and when our little class is over, you can hear them talking and talking some more.\" That quote sums up what this whole article is about.",
     sourceUrl: "https://chicago.suntimes.com/2024/1/27/24050672/hix-bros-ukulele-band-brings-joy-friendship-older-adults",
+    image: "/blog/quirky-programs-ukulele.png",
+    imageAlt: "A group of seniors in Hawaiian shirts strumming ukuleles in a semicircle, mid-song and laughing",
+    imageWidth: 1448,
+    imageHeight: 1086,
   },
   {
-    name: "Death Café — Evanston Public Library",
-    area: "Evanston",
-    note: "A real, recurring monthly discussion group -- third Monday of the month, 6:30-8pm at the Robert Crown Community Center, sponsored by the library and led by the Chicago Death Doula Collective. It's cake, tea, and open conversation about mortality, not a grief-support group. Schaumburg Township District Library and Plainfield Public Library run their own versions too -- this is a real regional pattern, not a one-off.",
+    name: "☕ Death Café",
+    area: "Evanston Public Library · Evanston",
+    note: "It sounds grim. It isn't. It's cake, tea, and an honest conversation about mortality, which most of us need more often than we admit. It's not a grief-support group. It's a relaxed discussion among curious people. It meets on the third Monday of each month, 6:30 to 8pm, at the Robert Crown Community Center. The library sponsors it, and the Chicago Death Doula Collective leads it. Schaumburg Township District Library and Plainfield Public Library host their own versions, so this is a regional trend, not a one-off.",
     sourceUrl: "https://evanston.libnet.info/event/8441934",
+    image: "/blog/quirky-programs-death-cafe.png",
+    imageAlt: "A small circle of older adults around a table with teacups and cake, one woman speaking while the others listen",
+    imageWidth: 1536,
+    imageHeight: 1024,
   },
   {
-    name: "Drum City Community Drum Circle — Chicago Park District",
-    area: "Multiple Chicago parks",
-    note: "A free, all-ages community drum circle run by Rhythm Evolution NFP at Chicago Park District locations like Green Briar and Maplewood Playlot Park. No experience necessary; bring your own drum or use theirs. If you want the granddaddy version, the 63rd Street Beach drum circle has met on the South Side almost every night for 40 years running.",
+    name: "🪘 Drum City Community Drum Circle",
+    area: "Chicago Park District · Multiple parks",
+    note: "Rhythm Evolution NFP runs this free, all-ages drum circle at Chicago Park District spots like Green Briar and Maplewood Playlot Park. You don't need any experience, and you can bring your own drum or borrow one of theirs. If you want the legendary version, try the 63rd Street Beach drum circle. It has met on the South Side almost every night for 40 years.",
     sourceUrl: "https://mychimyfuture.org/workshop-detail?id=205192",
+    image: "/blog/quirky-programs-drum-circle.png",
+    imageAlt: "An outdoor drum circle at sunset by the lake, with a silver-haired man front and center playing a djembe",
+    imageWidth: 1448,
+    imageHeight: 1086,
   },
   {
-    name: "Chicago Bird Alliance weekly walks + DuPage Birding Club",
+    name: "🐦 Bird Walks: Chicago Bird Alliance and DuPage Birding Club",
     area: "Regionwide",
-    note: "Chicago Bird Alliance (formerly Chicago Audubon Society) leads free Saturday-morning bird walks at Wooded Island and North Park Nature Center, beginners explicitly welcomed. DuPage Birding Club runs over 100 field trips a year plus casual \"Birding and Breakfast\" outings -- no experience required for either.",
+    note: "The Chicago Bird Alliance (formerly the Chicago Audubon Society) leads free Saturday-morning bird walks at Wooded Island and North Park Nature Center, and beginners are explicitly welcome. The DuPage Birding Club runs more than 100 field trips a year, including casual \"Birding and Breakfast\" outings. Neither group requires experience. All you need is curiosity and comfortable shoes.",
     sourceUrl: "https://chicagobirdalliance.org/bird-walks-list",
   },
 ];
+
+function ExampleCard({ e }: { e: Example }) {
+  return (
+    <div className="overflow-hidden rounded-card bg-card shadow-sm ring-1 ring-black/5">
+      {e.image && (
+        <Image
+          src={e.image}
+          alt={e.imageAlt ?? ""}
+          width={e.imageWidth ?? 1448}
+          height={e.imageHeight ?? 1086}
+          className="h-auto w-full object-cover"
+          sizes="(min-width: 672px) 672px, 100vw"
+        />
+      )}
+      <div className="p-5">
+        <h3 className="text-lg font-bold text-ink">{e.name}</h3>
+        <p className="mt-1 text-sm font-semibold text-ink-muted">{e.area}</p>
+        <p className="mt-2 text-base text-ink-muted">{e.note}</p>
+        <a
+          href={e.sourceUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-3 inline-block text-sm font-semibold text-flag-blue-ink no-underline hover:underline"
+        >
+          Source →
+        </a>
+      </div>
+    </div>
+  );
+}
 
 export default function QuirkySeniorProgramsPost() {
   const crumbs = [
@@ -147,72 +236,72 @@ export default function QuirkySeniorProgramsPost() {
           </p>
         </header>
 
+        <figure className="mt-6 -mx-4 overflow-hidden rounded-card sm:-mx-6">
+          <Image
+            src={POST.heroImage}
+            alt="A laughing woman in her 70s with silver hair playing a drum with sticks raised mid-beat in a bright community gym"
+            width={1448}
+            height={1086}
+            priority
+            className="h-auto w-full object-cover"
+            sizes="(min-width: 672px) 672px, 100vw"
+          />
+        </figure>
+
         <p className="mt-6 text-xl leading-relaxed text-ink">
-          Most of what fills a senior center calendar is, honestly, the same handful of things: bingo,
-          pinochle, chair yoga, a card room. All genuinely good -- we&apos;ve written plenty about them. But
-          buried in the same program guides, next to the bingo and the bridge, are the things nobody expects:
-          a drum-cardio class, a themed escape room in a train depot museum, a chess club affiliated with the
-          state chess association. And once we went looking specifically for the stuff that&apos;s <em>too</em>{" "}
-          niche to show up in a normal directory search -- ukulele bands, death cafés, drum circles, bird
-          walks -- Chicagoland had real answers for all of it.
+          Every senior center calendar has the same greatest hits: bingo, pinochle, chair yoga, the card
+          room. They&apos;re popular for a reason, and we&apos;ve written plenty about them.
         </p>
 
-        <h2 className="mt-10 text-2xl font-extrabold tracking-tight text-ink">Straight from our own directory</h2>
-        <p className="mt-3 text-lg leading-relaxed text-ink">
-          These are real listings already in our directory -- verified, sourced, and easy to overlook because
-          they&apos;re one line inside a much longer program list.
+        <p className="mt-5 text-lg leading-relaxed text-ink">
+          But read those program guides closely and you&apos;ll find stranger things tucked between the
+          bingo and the bridge. There&apos;s a cardio class where you beat on a drum, an escape room inside a
+          150-year-old train depot, and a chess club with real tournament credentials.
         </p>
-        <div className="mt-6 flex flex-col gap-4">
+
+        <p className="mt-5 text-lg leading-relaxed text-ink">
+          So we went looking for the stuff too niche to show up in a normal search: ukulele bands, death
+          cafés, drum circles, dawn bird walks. We wanted to know if Chicagoland had any of it.
+        </p>
+
+        <p className="mt-5 text-xl font-bold leading-relaxed text-ink">It had all of it.</p>
+
+        <h2 className="mt-10 text-2xl font-extrabold tracking-tight text-ink">Part 1: Hiding in Plain Sight</h2>
+        <p className="mt-3 text-lg leading-relaxed text-ink">
+          These are real listings already in our directory. Each one is verified and sourced, and each is
+          easy to miss because it&apos;s one line in a long program list.
+        </p>
+        <div className="mt-6 flex flex-col gap-5">
           {FROM_OUR_DIRECTORY.map((e) => (
-            <div key={e.name} className="rounded-card bg-card p-5 shadow-sm ring-1 ring-black/5">
-              <h3 className="text-lg font-bold text-ink">{e.name}</h3>
-              <p className="mt-1 text-sm font-semibold text-ink-muted">{e.area}</p>
-              <p className="mt-2 text-base text-ink-muted">{e.note}</p>
-              <a
-                href={e.sourceUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-3 inline-block text-sm font-semibold text-flag-blue-ink no-underline hover:underline"
-              >
-                Source →
-              </a>
-            </div>
+            <ExampleCard key={e.name} e={e} />
           ))}
         </div>
 
-        <h2 className="mt-10 text-2xl font-extrabold tracking-tight text-ink">The ones we went looking for</h2>
+        <h2 className="mt-10 text-2xl font-extrabold tracking-tight text-ink">Part 2: The Ones We Went Hunting For</h2>
         <p className="mt-3 text-lg leading-relaxed text-ink">
-          Ukulele circles, death cafés, drum groups, birding walks -- none of these showed up in our own
-          directory yet, so we went and checked whether Chicagoland actually has them. It does. These are
-          general-audience programs, not senior-exclusive services, but every one of them is genuinely
-          popular with -- or built specifically for -- older adults.
+          None of these were in our directory yet, so we checked whether Chicagoland really has them. It
+          does. They&apos;re open to all ages, but each is either very popular with older adults or built
+          especially for them.
         </p>
-        <div className="mt-6 flex flex-col gap-4">
+        <div className="mt-6 flex flex-col gap-5">
           {WENT_LOOKING_FOR.map((e) => (
-            <div key={e.name} className="rounded-card bg-card p-5 shadow-sm ring-1 ring-black/5">
-              <h3 className="text-lg font-bold text-ink">{e.name}</h3>
-              <p className="mt-1 text-sm font-semibold text-ink-muted">{e.area}</p>
-              <p className="mt-2 text-base text-ink-muted">{e.note}</p>
-              <a
-                href={e.sourceUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-3 inline-block text-sm font-semibold text-flag-blue-ink no-underline hover:underline"
-              >
-                Source →
-              </a>
-            </div>
+            <ExampleCard key={e.name} e={e} />
           ))}
         </div>
 
-        <h2 className="mt-10 text-2xl font-extrabold tracking-tight text-ink">One honest note</h2>
+        <h2 className="mt-10 text-2xl font-extrabold tracking-tight text-ink">One Honest Note</h2>
         <p className="mt-4 text-lg leading-relaxed text-ink">
-          The programs in the second group aren&apos;t run by senior centers, so they won&apos;t have a
-          50+ discount or an official senior program name -- you&apos;re just as welcome at 30 as at 70. That&apos;s
-          sort of the point: the hidden-gem stuff tends to live outside the senior-services system entirely,
-          in a library newsletter or a park district events page nobody thought to cross-reference. If you
-          know of a genuinely weird, wonderful program we&apos;ve missed -- in either category -- tell us.
-          That&apos;s exactly how this list grows.
+          The programs in Part 2 aren&apos;t run by senior centers. You won&apos;t get a 50+ discount or
+          find them under an official senior program name, and you&apos;re as welcome at 30 as you are at
+          70.
+        </p>
+        <p className="mt-4 text-lg leading-relaxed text-ink">
+          That&apos;s kind of the point. The best hidden gems tend to live outside the senior-services
+          world, in a library newsletter or a park district events page that nobody thought to check.
+        </p>
+        <p className="mt-4 text-lg leading-relaxed text-ink">
+          Know a weird, wonderful program we&apos;ve missed? Tell us. That&apos;s exactly how this list
+          grows.
         </p>
       </article>
 

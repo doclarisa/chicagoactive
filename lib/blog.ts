@@ -43,6 +43,6 @@ export const BLOG_POSTS: BlogPost[] = [
     dek: "A drum-cardio class, D&D at the library, a 1997 ukulele band, and a library death café -- the stuff that never makes the bingo-and-pinochle roundup.",
     publishedDate: "2026-09-22",
     readingMinutes: 6,
-    heroImage: "",
+    heroImage: "/blog/quirky-programs-hero.png",
   },
 ];
