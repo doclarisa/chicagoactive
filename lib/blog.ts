@@ -47,10 +47,10 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "senior-dating-safety-and-social-connection",
-    title: "Dating and New Relationships After 60: The Real Risk, and Where to Actually Meet People",
+    title: "Dating After 60 in Chicagoland: How to Spot a Scam, and Where to Meet Real People",
     dek: "Romance scams cost adults 60+ over half a billion dollars in 2025 alone. Here's how to spot one, what to do if it happens, and four real Chicagoland groups for meeting people the safer way.",
     publishedDate: "2026-09-23",
     readingMinutes: 7,
-    heroImage: "",
+    heroImage: "/blog/senior-dating-hero.png",
   },
 ];
