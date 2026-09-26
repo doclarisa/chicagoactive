@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { unstable_cache } from "next/cache";
 import { prisma } from "@/lib/db";
 import { CATEGORIES } from "@/lib/categories";
 import { COUNTIES } from "@/lib/counties";
@@ -31,6 +32,21 @@ export const metadata: Metadata = {
 const selectClass =
   "min-h-12 rounded-pill border border-flag-blue-tint-2 bg-white px-4 text-base font-semibold text-ink focus:border-flag-blue";
 
+// Unlike city/category pages, /directory takes filters via searchParams,
+// which forces Next to render it dynamically -- so it can't fall back to a
+// statically cached page the way the rest of the site can. Without this,
+// every single request (including every Googlebot crawl) needs a live,
+// successful DB round-trip, so a transient DB hiccup (e.g. a Neon quota
+// blip) takes this one page down while the rest of the site keeps serving
+// cached pages. Caching the underlying query -- not the page -- keeps
+// filters working live while giving crawls a stale-but-working fallback
+// instead of a 500.
+const getPublishedListings = unstable_cache(
+  async () => prisma.listing.findMany({ where: { status: "PUBLISHED" }, orderBy: { name: "asc" } }),
+  ["directory-published-listings"],
+  { revalidate: 3600, tags: ["listings"] },
+);
+
 export default async function DirectoryPage({
   searchParams,
 }: {
@@ -38,10 +54,7 @@ export default async function DirectoryPage({
 }) {
   const { county, category, cost, day } = await searchParams;
 
-  const all = await prisma.listing.findMany({
-    where: { status: "PUBLISHED" },
-    orderBy: { name: "asc" },
-  });
+  const all = await getPublishedListings();
 
   const listings = all.filter((l) => {
     if (county && l.county !== county) return false;
