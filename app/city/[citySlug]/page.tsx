@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { prisma } from "@/lib/db";
+import { getPublishedListingsSafe } from "@/lib/db";
 import { CITIES, cityBySlug } from "@/lib/cities";
 import ListingCard from "@/components/ListingCard";
 import NearbyListingRow from "@/components/NearbyListingRow";
@@ -43,10 +43,7 @@ export default async function CityPage({
   const city = cityBySlug(citySlug);
   if (!city) notFound();
 
-  const all = await prisma.listing.findMany({
-    where: { status: "PUBLISHED" },
-    orderBy: { name: "asc" },
-  });
+  const all = await getPublishedListingsSafe();
 
   const own = all.filter((l) => l.citySlug === city.slug);
 

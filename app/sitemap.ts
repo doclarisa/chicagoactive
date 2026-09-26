@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { prisma } from "@/lib/db";
+import { getPublishedListingsSafe } from "@/lib/db";
 import { CATEGORIES } from "@/lib/categories";
 import { GUIDES, INDEXED_GUIDE_SLUGS } from "@/lib/guides";
 import { BLOG_POSTS } from "@/lib/blog";
@@ -11,10 +11,7 @@ import { GYM_SPOKES } from "@/lib/medicareGyms";
 import { SITE_URL } from "@/lib/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const listings = await prisma.listing.findMany({
-    where: { status: "PUBLISHED" },
-    select: { slug: true, updatedAt: true },
-  });
+  const listings = await getPublishedListingsSafe();
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${SITE_URL}/`, changeFrequency: "weekly", priority: 1 },

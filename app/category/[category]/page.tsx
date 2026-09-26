@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { prisma } from "@/lib/db";
+import { getPublishedListingsSafe } from "@/lib/db";
 import { CATEGORIES } from "@/lib/categories";
 import { categoryStyle } from "@/lib/categoryStyles";
 import { CATEGORY_GUIDE_MAP } from "@/lib/categoryGuideMap";
@@ -52,10 +52,8 @@ export default async function CategoryPage({
   // stay reachable via /directory?category=pickleball-fitness.
   if (cat.slug === "pickleball-fitness") return <FitnessLobby />;
 
-  const listings = await prisma.listing.findMany({
-    where: { status: "PUBLISHED", category },
-    orderBy: { name: "asc" },
-  });
+  const all = await getPublishedListingsSafe();
+  const listings = all.filter((l) => l.category === category);
 
   const style = categoryStyle(category);
 

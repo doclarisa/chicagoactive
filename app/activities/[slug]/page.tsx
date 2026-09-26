@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { prisma } from "@/lib/db";
+import { getPublishedListingsSafe } from "@/lib/db";
 import { ACTIVITY_PAGES, activityPageBySlug } from "@/lib/activityPages";
 import { chicagoCellByTag, countyCellBySlugs } from "@/lib/activityCounties";
 import ListingCard from "@/components/ListingCard";
@@ -45,10 +45,7 @@ export default async function ActivityPage({
   const page = activityPageBySlug(slug);
   if (!page) notFound();
 
-  const listings = await prisma.listing.findMany({
-    where: { status: "PUBLISHED" },
-    orderBy: { name: "asc" },
-  });
+  const listings = await getPublishedListingsSafe();
 
   const tagged = listings.filter(
     (l) => Array.isArray(l.activities) && (l.activities as string[]).includes(page.tag),

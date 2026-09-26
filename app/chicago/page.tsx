@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { prisma } from "@/lib/db";
+import { getPublishedListingsSafe } from "@/lib/db";
 import ListingCard from "@/components/ListingCard";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { itemListSchema } from "@/lib/schema";
@@ -21,10 +21,8 @@ export const metadata = {
 // aggregates all Chicago-city listings: the 20 DFSS venues (grouped by
 // neighborhood) plus citywide programs that aren't tied to one center.
 export default async function ChicagoHub() {
-  const listings = await prisma.listing.findMany({
-    where: { status: "PUBLISHED", citySlug: "chicago" },
-    orderBy: { name: "asc" },
-  });
+  const all = await getPublishedListingsSafe();
+  const listings = all.filter((l) => l.citySlug === "chicago");
 
   const neighborhoodCenters = listings.filter((l) => l.neighborhoodSlug !== "");
   const citywide = listings.filter((l) => l.neighborhoodSlug === "");

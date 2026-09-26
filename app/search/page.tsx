@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { prisma } from "@/lib/db";
+import { getPublishedListingsSafe } from "@/lib/db";
 import { categoryLabel } from "@/lib/categories";
 import { activityLabel } from "@/lib/activities";
 import ListingCard from "@/components/ListingCard";
@@ -73,10 +73,7 @@ export default async function SearchPage({
     );
   }
 
-  const all = await prisma.listing.findMany({
-    where: { status: "PUBLISHED" },
-    orderBy: { name: "asc" },
-  });
+  const all = await getPublishedListingsSafe();
 
   // Every listing's field is required to appear somewhere across a combined
   // haystack, not as one contiguous substring -- so "the shirley-green

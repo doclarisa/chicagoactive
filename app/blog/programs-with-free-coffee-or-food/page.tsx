@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { prisma } from "@/lib/db";
+import { getPublishedListingsSafe } from "@/lib/db";
 import { breadcrumbSchema, articleSchema } from "@/lib/schema";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { BLOG_POSTS } from "@/lib/blog";
@@ -132,10 +132,7 @@ const FREE_LUNCH: Example[] = [
 ];
 
 export default async function FreeCoffeeOrFoodPost() {
-  const listings = await prisma.listing.findMany({
-    where: { status: "PUBLISHED" },
-    select: { description: true, cost: true },
-  });
+  const listings = await getPublishedListingsSafe();
 
   let freeCount = 0;
   let lowCostCount = 0;

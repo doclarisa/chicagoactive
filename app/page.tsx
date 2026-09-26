@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { prisma } from "@/lib/db";
+import { getPublishedListingsSafe } from "@/lib/db";
 import CategoryTiles from "@/components/CategoryTiles";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
 
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const count = await prisma.listing.count({ where: { status: "PUBLISHED" } });
+  const count = (await getPublishedListingsSafe()).length;
 
   return (
     <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-10 sm:px-6 sm:py-16">

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { prisma } from "@/lib/db";
+import { getPublishedListingsSafe } from "@/lib/db";
 import { CITIES } from "@/lib/cities";
 import { COUNTIES } from "@/lib/counties";
 import { categoryLabel } from "@/lib/categories";
@@ -35,10 +35,7 @@ function formatDate(iso: string): string {
 }
 
 export default async function ChicagoSuburbsFreeSeniorProgramsPost() {
-  const listings = await prisma.listing.findMany({
-    where: { status: "PUBLISHED" },
-    select: { citySlug: true, county: true, cost: true, category: true },
-  });
+  const listings = await getPublishedListingsSafe();
 
   const totalListings = listings.length;
   const totalFree = listings.filter((l) => l.cost === "FREE").length;
@@ -52,8 +49,8 @@ export default async function ChicagoSuburbsFreeSeniorProgramsPost() {
     if (l.cost === "FREE") e.free += 1;
   }
   const countyRows = COUNTIES.map((c) => ({ county: c, ...countyMap.get(c)! })).filter((r) => r.total > 0);
-  const cookRow = countyRows.find((r) => r.county === "Cook")!;
-  const cookPct = Math.round((100 * cookRow.free) / cookRow.total);
+  const cookRow = countyRows.find((r) => r.county === "Cook") ?? { county: "Cook", free: 0, total: 0 };
+  const cookPct = cookRow.total > 0 ? Math.round((100 * cookRow.free) / cookRow.total) : 0;
 
   const cityMap = new Map<string, { free: number; total: number }>();
   for (const l of listings) {
