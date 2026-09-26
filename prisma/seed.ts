@@ -8631,6 +8631,68 @@ const listings = [
     lastVerified: new Date("2026-09-25"),
     qualityNote: "General admission cost wasn't listed on the source page (a $10 fee is mentioned only for special events like the Cemetery Walk) -- confirm before visiting; treated as free pending confirmation.",
   },
+  // --- museum-senior-days: closing the Kane/Will/McHenry gap (was Cook/
+  // DuPage/Lake only) -- Kendall came up empty after real research, no
+  // attraction found there with a genuine senior-specific price tier ---
+  {
+    name: "Elgin Public Museum",
+    slug: "elgin-public-museum-senior-admission",
+    description:
+      "A natural history and anthropology museum inside Elgin's 108-acre Lords Park. Adult admission is $3, seniors 60+ and kids 3-12 pay $2, and members get in free -- plus a 10% senior discount on any membership level.",
+    category: "museum-senior-days",
+    operatorType: "museum",
+    activities: [],
+    neighborhood: "Elgin",
+    county: "Kane",
+    city: "Elgin",
+    citySlug: "elgin",
+    cost: "LOW_COST" as const,
+    days: ["Thursday", "Friday", "Saturday", "Sunday"],
+    hours: "Thu-Sun 12-4pm (summer hours)",
+    address: "225 Grand Blvd, Elgin, IL 60120",
+    sourceUrl: "http://elginpublicmuseum.org/visitgeninfo.htm",
+    lastVerified: new Date("2026-09-26"),
+  },
+  {
+    name: "Joliet Area Historical Museum",
+    slug: "joliet-area-historical-museum-senior-admission",
+    description:
+      "Joliet's main history museum and Route 66 Welcome Center, with access to affiliated sites including the Old Joliet Prison and the Joliet Railroad Museum. Adult admission is $8, seniors and full-time students pay $7, and members and children 3 and under are free.",
+    category: "museum-senior-days",
+    operatorType: "museum",
+    activities: [],
+    neighborhood: "Joliet",
+    county: "Will",
+    city: "Joliet",
+    citySlug: "joliet",
+    cost: "LOW_COST" as const,
+    days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    hours: "Daily 10am-4pm",
+    address: "204 N Ottawa St, Joliet, IL 60432",
+    phone: "(815) 723-5201",
+    sourceUrl: "https://www.jolietmuseum.org/",
+    lastVerified: new Date("2026-09-26"),
+  },
+  {
+    name: "McHenry County Historical Society & Museum",
+    slug: "mchenry-county-historical-society-museum-senior-admission",
+    description:
+      "The county's own history museum in Union, covering McHenry County life from its early settlement onward. Adult admission is $5, seniors 60+ pay $3, and members are free.",
+    category: "museum-senior-days",
+    operatorType: "museum",
+    activities: [],
+    neighborhood: "Union",
+    county: "McHenry",
+    city: "Union",
+    citySlug: "union",
+    cost: "LOW_COST" as const,
+    days: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    hours: "Tue-Fri 9am-4pm; Sat 10am-4pm",
+    address: "6422 Main St, Union, IL 60180",
+    phone: "(815) 923-2267",
+    sourceUrl: "https://www.mchenrycountyhistory.org/planning-your-visit/",
+    lastVerified: new Date("2026-09-26"),
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from
