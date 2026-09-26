@@ -53,4 +53,12 @@ export const BLOG_POSTS: BlogPost[] = [
     readingMinutes: 7,
     heroImage: "/blog/senior-dating-hero.png",
   },
+  {
+    slug: "chicagoland-museums-senior-discounts",
+    title: "Where Seniors Get In Cheaper: Chicagoland Museums With a Real Discount",
+    dek: "We checked every museum and attraction in our directory for a genuine senior price break -- not just \"seniors welcome.\" Here's where the discount is real money, and where you can skip it because admission's already free.",
+    publishedDate: "2026-09-26",
+    readingMinutes: 6,
+    heroImage: "",
+  },
 ];
