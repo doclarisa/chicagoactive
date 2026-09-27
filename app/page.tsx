@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { getPublishedListingsSafe } from "@/lib/db";
 import CategoryTiles from "@/components/CategoryTiles";
@@ -20,7 +21,7 @@ export default async function Home() {
   const count = (await getPublishedListingsSafe()).length;
 
   return (
-    <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-10 sm:px-6 sm:py-16">
+    <>
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
@@ -31,6 +32,24 @@ export default async function Home() {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema()) }}
       />
+
+      {/* Full-bleed photo band — a fixed responsive height rather than the
+          source's native ~3:1 ratio, which would shrink to a sliver on
+          mobile. object-position shifts the crop toward the walking group
+          on narrow screens (where there isn't width to show the full
+          frame) and centers once there's room to show everyone. */}
+      <div className="relative h-56 w-full overflow-hidden sm:h-72 md:h-80 lg:h-96">
+        <Image
+          src="/home-hero.png"
+          alt="Five active adults smiling and walking together along the Chicago lakefront, with the downtown skyline behind them"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[30%_center] sm:object-center"
+        />
+      </div>
+
+      <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-10 sm:px-6 sm:py-16">
       <div className="mx-auto max-w-2xl text-center">
         <h1 className="text-4xl font-extrabold tracking-tight text-ink sm:text-5xl">
           Find your next Tuesday.
@@ -87,6 +106,7 @@ export default async function Home() {
           See day trips from Chicago →
         </Link>
       </section>
-    </main>
+      </main>
+    </>
   );
 }
