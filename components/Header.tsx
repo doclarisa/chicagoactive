@@ -1,5 +1,4 @@
 import Link from "next/link";
-import FlagMotif from "./FlagMotif";
 import SearchBox from "./SearchBox";
 
 export default function Header() {
@@ -40,7 +39,6 @@ export default function Header() {
         </nav>
         <SearchBox className="order-last w-full sm:order-none sm:w-64" />
       </div>
-      <FlagMotif className="mx-auto max-w-5xl px-4 pb-3 sm:px-6" />
     </header>
   );
 }
