@@ -17,6 +17,19 @@ export function generateStaticParams() {
   return CITIES.map((c) => ({ citySlug: c.slug }));
 }
 
+// Google often rewrites the SERP snippet from page body text, but a generic
+// description like "free things to do in X, Y County" never helps and
+// sometimes gets used verbatim -- so it's worth spending the space on the
+// real venue names from city.intro instead. Truncated at a word boundary
+// rather than split on sentences: several intros contain abbreviations
+// with periods (e.g. "S.T.A.R.") that break naive sentence-splitting.
+function truncateAtWord(text: string, max: number): string {
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max);
+  const lastSpace = cut.lastIndexOf(" ");
+  return `${cut.slice(0, lastSpace > 0 ? lastSpace : max).trimEnd()}…`;
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -25,7 +38,7 @@ export async function generateMetadata({
   const { citySlug } = await params;
   const city = cityBySlug(citySlug);
   if (!city) return {};
-  const description = `Free and low-cost things to do for active adults 50+ in ${city.name}, ${city.county} County, plus nearby options within 6 miles.`;
+  const description = truncateAtWord(city.intro, 155);
   return {
     title: `Senior Activities in ${city.name}, IL`,
     description,
