@@ -61,4 +61,12 @@ export const BLOG_POSTS: BlogPost[] = [
     readingMinutes: 6,
     heroImage: "/blog/museum-discounts-hero.png",
   },
+  {
+    slug: "for-men-who-wont-go-to-a-senior-center",
+    title: "For Men Who Won't Go to a Senior Center",
+    dek: "Chess with real tournament credentials, a model-train club, D&D on Saturdays, a genealogy library, and a drum class that's actually a workout -- the Chicagoland programs built for men who'll never search \"senior center.\"",
+    publishedDate: "2026-10-04",
+    readingMinutes: 6,
+    heroImage: "/blog/quirky-programs-chess.png",
+  },
 ];
