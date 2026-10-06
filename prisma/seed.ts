@@ -504,7 +504,7 @@ const listings = [
     name: "Brookfield Zoo Chicago — Senior Admission & Free Days",
     slug: "brookfield-zoo-senior-admission",
     description:
-      "A 216-acre zoo with reduced admission for seniors 65+ (around $20, a few dollars off the adult rate, with an extra dollar off when you buy online). All guests get in free on select winter days (early January through late February in 2026 — check the schedule). Suburban regional library cardholders can borrow free passes through the Museum Adventure Pass program.",
+      "A 216-acre zoo with reduced admission for seniors 65+ (around $20, a few dollars off the adult rate, with an extra dollar off when you buy online). All guests get in free on select winter days (early January through late February in 2026 — check the schedule). SNAP/EBT cardholders get up to four free general-admission tickets through the Museums for All program -- present the card plus photo ID at the gate. A Senior (65+) annual membership runs $129 and includes free admission for two adults, free admission for up to two minor children or disabled household members, and free main-entrance parking. Suburban regional library cardholders can also borrow free passes through the Museum Adventure Pass program.",
     category: "museum-senior-days",
     neighborhood: "Brookfield",
     county: "Cook",
@@ -518,6 +518,9 @@ const listings = [
     registration: "Timed tickets recommended; reserve free-day tickets online",
     accessibility: "Wheelchair and scooter rentals; accessible paths",
     sourceUrl: "https://www.brookfieldzoo.org/discounts-and-free-days",
+    lastVerified: new Date("2026-10-06"),
+    qualityNote:
+      "Also runs a Senior Sundays promo (buy one senior admission, get a second free) on select Sundays, September-November 2026 -- tickets for that deal must be bought in person at the zoo, not online. Confirm current dates before visiting.",
   },
   {
     name: "Chicago Botanic Garden — Senior Tuesday Discount",
