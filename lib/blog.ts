@@ -75,6 +75,6 @@ export const BLOG_POSTS: BlogPost[] = [
     dek: "Raw counts always favor the biggest towns. We divided by population instead -- programs per 10,000 residents -- and the volume leaders don't win. A town of about 5,200 people does.",
     publishedDate: "2026-10-05",
     readingMinutes: 5,
-    heroImage: "/blog/chicago-suburbs-free-senior-programs-hero.png",
+    heroImage: "/blog/most-active-suburb-chicagoland-hero.png",
   },
 ];

@@ -106,7 +106,7 @@ export default async function MostActiveSuburbPost() {
         <figure className="mt-6 -mx-4 overflow-hidden rounded-card sm:-mx-6">
           <Image
             src={POST.heroImage}
-            alt="Active older adults walking and talking together outdoors"
+            alt="Four active older adults laughing together while walking down a tree-lined sidewalk in a suburban neighborhood"
             width={1448}
             height={1086}
             priority
