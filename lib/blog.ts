@@ -83,6 +83,6 @@ export const BLOG_POSTS: BlogPost[] = [
     dek: "A glowing pumpkin garden, a scarecrow-filled downtown, a casket race, a 55+ pickleball tournament in costume -- nine real, verified events happening across Chicagoland this month. Most are free, open to all ages, and easy to get to on foot.",
     publishedDate: "2026-10-07",
     readingMinutes: 5,
-    heroImage: "",
+    heroImage: "/blog/halloween-fall-events-chicagoland-october-2026-hero.png",
   },
 ];
