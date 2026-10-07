@@ -109,6 +109,15 @@ const OPEN_TO_ALL: Entry[] = [
     seniorNote: "A spectator event, not a walking one, so mobility isn't a barrier — but it is genuinely crowded. Arrive early for curb space if standing for a while is a concern.",
     sourceUrl: "https://www.chicagoparkdistrict.com/events/arts-dark-parade-grant",
   },
+  {
+    name: "⚰️ Forest Park Casket Races",
+    area: "Beloit Ave. between Madison & Adams · Forest Park",
+    when: "Saturday, October 24, 9:30am–12:30pm (racing starts 11am)",
+    cost: "Free to watch; $40 per team to race",
+    note: "The 14th annual edition of exactly what it sounds like: teams race homemade caskets down the street, competing for \"most frightfully funny,\" \"creepiest,\" and \"dead last.\" A kids-and-pets costume parade runs before the final heats, with food vendors from 9:30am. Easily the most purely fun entry on this list.",
+    seniorNote: "A sidewalk spectator event on a flat street — no walking required to watch, and benches/vendor seating are typically available along the route.",
+    sourceUrl: "https://www.exploreforestpark.com/event/14th-annual-forest-park-casket-races/",
+  },
 ];
 
 function EntryCard({ e }: { e: Entry }) {
