@@ -77,4 +77,12 @@ export const BLOG_POSTS: BlogPost[] = [
     readingMinutes: 5,
     heroImage: "/blog/most-active-suburb-chicagoland-hero.png",
   },
+  {
+    slug: "halloween-fall-events-chicagoland-october-2026",
+    title: "Halloween in Chicagoland: What's Actually Happening This October",
+    dek: "A glowing pumpkin garden, a scarecrow-filled downtown, a 55+ pickleball tournament in costume -- eight real, verified events happening across Chicagoland this month. Most are free, open to all ages, and easy to get to on foot.",
+    publishedDate: "2026-10-07",
+    readingMinutes: 5,
+    heroImage: "",
+  },
 ];
