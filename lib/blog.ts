@@ -85,4 +85,12 @@ export const BLOG_POSTS: BlogPost[] = [
     readingMinutes: 5,
     heroImage: "/blog/halloween-fall-events-chicagoland-october-2026-hero.png",
   },
+  {
+    slug: "brookfield-zoo-free-winter-days",
+    title: "Brookfield Zoo Is Free Every Winter — Here's How to Make the Most of It",
+    dek: "Every January and February, Brookfield Zoo Chicago opens its gates for free. The crowds are gone, the polar bears are at their best, and if you can go on a weekday, it may be the best free outing in Chicagoland.",
+    publishedDate: "2026-10-07",
+    readingMinutes: 5,
+    heroImage: "/blog/brookfield-zoo-free-winter-days-hero.png",
+  },
 ];
