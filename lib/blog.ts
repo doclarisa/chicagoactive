@@ -93,4 +93,12 @@ export const BLOG_POSTS: BlogPost[] = [
     readingMinutes: 5,
     heroImage: "/blog/brookfield-zoo-free-winter-days-hero.png",
   },
+  {
+    slug: "open-house-chicago-2026",
+    title: "Open House Chicago Is This Weekend: 200+ Buildings, All Free",
+    dek: "This Saturday and Sunday, more than 200 buildings across Chicago open their doors for free -- private clubs, theater lobbies, sacred spaces, and office towers with skyline views, many of them never open to the public any other day of the year.",
+    publishedDate: "2026-10-15",
+    readingMinutes: 6,
+    heroImage: "/blog/open-house-chicago-2026-hero.png",
+  },
 ];
