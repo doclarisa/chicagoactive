@@ -101,4 +101,12 @@ export const BLOG_POSTS: BlogPost[] = [
     readingMinutes: 6,
     heroImage: "/blog/open-house-chicago-2026-hero.png",
   },
+  {
+    slug: "caring-for-aging-parents-sandwich-generation",
+    title: "Caring for Your Parents While Staying Active Yourself",
+    dek: "Pew Research found 45% of people in their 50s are now sandwiched between an aging parent and their own kids. If that's you, here's where to actually start -- and why your own activities still matter.",
+    publishedDate: "2026-10-15",
+    readingMinutes: 6,
+    heroImage: "",
+  },
 ];
