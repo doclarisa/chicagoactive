@@ -120,6 +120,24 @@ const OPEN_TO_ALL: Entry[] = [
     seniorNote: "A sidewalk spectator event on a flat street — no walking required to watch, and benches/vendor seating are typically available along the route.",
     sourceUrl: "https://www.exploreforestpark.com/event/14th-annual-forest-park-casket-races/",
   },
+  {
+    name: "🎪 Slightly Spooky Saturday",
+    area: "Navy Pier · Streeterville, Chicago",
+    when: "Saturday, October 31, trick-or-treating from 11am; activities 1–5pm, costume contest 3–5pm",
+    cost: "Free",
+    note: "Mask-making, a dance workshop, a mechanical pumpkin, a costume contest, and free trick-or-treating around the Pier, with classic Halloween movies (Ghostbusters, the original 1978 Halloween) playing into the evening.",
+    seniorNote: "Navy Pier's wide, flat, paved walkways make this one of the easier Halloween outings on this list for anyone using a cane, walker, or wheelchair.",
+    sourceUrl: "https://navypier.org/pier-events/slightly-spooky-saturday/",
+  },
+  {
+    name: "🧟 Haunted Halsted",
+    area: "N. Halsted St. (Aldine to Brompton) · Lakeview, Chicago",
+    when: "Saturday, October 31, fest noon–10pm; parade 7–8pm (street closes to viewing at 6pm)",
+    cost: "Free to attend (costume contest entry is $5)",
+    note: "Chicago's biggest Halloween street festival, with a closed-off pedestrian stretch of Halsted all day, capped by an evening costume parade from Belmont to Brompton. One of the longest-running LGBTQ+ Halloween traditions in the city.",
+    seniorNote: "The daytime fest is a flat, pedestrian-only street, easy to wander at any pace — the evening parade draws a dense standing crowd along the sidewalks, so arrive early for curb space if that's a concern.",
+    sourceUrl: "https://northalsted.com/main-events/haunted-halsted-halloween-parade/",
+  },
 ];
 
 function EntryCard({ e }: { e: Entry }) {
