@@ -109,4 +109,12 @@ export const BLOG_POSTS: BlogPost[] = [
     readingMinutes: 6,
     heroImage: "/blog/caring-for-aging-parents-sandwich-generation-hero.png",
   },
+  {
+    slug: "halloween-safety-tips-grandparents",
+    title: "Halloween Safety Tips Every Grandparent Should Know",
+    dek: "If you're prepping a porch or walking a costumed grandkid around the block this year, a few real numbers (decorations start about 835 home fires a year) and a handful of practical fixes go a long way.",
+    publishedDate: "2026-10-24",
+    readingMinutes: 5,
+    heroImage: "",
+  },
 ];
