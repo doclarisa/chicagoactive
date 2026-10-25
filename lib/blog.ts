@@ -115,7 +115,7 @@ export const BLOG_POSTS: BlogPost[] = [
     dek: "If you're prepping a porch or walking a costumed grandkid around the block this year, a few real numbers (decorations start about 835 home fires a year) and a handful of practical fixes go a long way.",
     publishedDate: "2026-10-24",
     readingMinutes: 5,
-    heroImage: "",
+    heroImage: "/blog/halloween-safety-tips-grandparents-hero.jpg",
   },
   {
     slug: "forest-park-casket-races-2026",

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { breadcrumbSchema, articleSchema } from "@/lib/schema";
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     title: POST.title,
     description: POST.dek,
     type: "article",
+    images: [POST.heroImage],
   },
   robots: { index: true, follow: true },
 };
@@ -70,6 +72,18 @@ export default function HalloweenSafetyPost() {
             <span>Active Chicagoland</span>
           </p>
         </header>
+
+        <figure className="mt-6 -mx-4 overflow-hidden rounded-card sm:-mx-6">
+          <Image
+            src={POST.heroImage}
+            alt="A smiling woman crouched next to a child in a yellow dragon costume at a Halloween street parade"
+            width={2294}
+            height={4080}
+            priority
+            className="h-auto w-full object-cover"
+            sizes="(min-width: 672px) 672px, 100vw"
+          />
+        </figure>
 
         <p className="mt-6 text-xl leading-relaxed text-ink">
           Halloween changes shape once the grandkids are the ones in costume. You&apos;re not trick-or-
