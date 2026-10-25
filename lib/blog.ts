@@ -117,4 +117,12 @@ export const BLOG_POSTS: BlogPost[] = [
     readingMinutes: 5,
     heroImage: "",
   },
+  {
+    slug: "forest-park-casket-races-2026",
+    title: "Racing Coffins Down Beloit Avenue: Forest Park's Casket Races Never Disappoint",
+    dek: "We went to the 14th annual Forest Park Casket Races so you don't have to wonder what it's actually like. Short answer: a Star Wars crew, a mermaid shipwreck, the public library pushing Minions, and three hours of pure, free, costumed chaos.",
+    publishedDate: "2026-10-25",
+    readingMinutes: 5,
+    heroImage: "/blog/forest-park-casket-races-2026-hero.jpg",
+  },
 ];
