@@ -8,7 +8,9 @@ import { GUIDES } from "@/lib/guides";
 import ListingCard from "@/components/ListingCard";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import FitnessLobby from "@/components/FitnessLobby";
+import PageFaq from "@/components/PageFaq";
 import { itemListSchema } from "@/lib/schema";
+import { buildPageFaq, formatLastVerified } from "@/lib/pageFaq";
 
 export function generateStaticParams() {
   // day-trips-near-chicago is permanently redirected to the Day Trips
@@ -94,6 +96,8 @@ export default async function CategoryPage({
 
   const all = await getPublishedListingsSafe();
   const listings = all.filter((l) => l.category === category);
+  const faqItems = buildPageFaq(listings);
+  const lastVerified = formatLastVerified(listings);
 
   const style = categoryStyle(category);
 
@@ -133,9 +137,14 @@ export default async function CategoryPage({
         </h1>
       </div>
 
+      {"intro" in cat && cat.intro && (
+        <p className="mt-4 text-lg leading-relaxed text-ink">{cat.intro}</p>
+      )}
+
       <p className="mt-3 text-lg text-ink-muted">
         {listings.length} free and low-cost listing{listings.length === 1 ? "" : "s"} across
         Chicagoland.
+        {lastVerified && ` Most recently verified: ${lastVerified}.`}
       </p>
 
       {listings.length === 0 ? (
@@ -149,6 +158,8 @@ export default async function CategoryPage({
           ))}
         </ul>
       )}
+
+      <PageFaq items={faqItems} />
 
       {/* Same exit-ramp pattern as the individual listing pages — only
           shown where a relevant guide actually exists. */}

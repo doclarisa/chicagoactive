@@ -5,9 +5,11 @@ import { CITIES, cityBySlug } from "@/lib/cities";
 import ListingCard from "@/components/ListingCard";
 import NearbyListingRow from "@/components/NearbyListingRow";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import PageFaq from "@/components/PageFaq";
 import { itemListSchema } from "@/lib/schema";
 import { haversineMiles, centroid, formatDistance, type GeoPoint } from "@/lib/geo";
 import { countySpokeSlugForCounty, countySpokeBySlug, type County } from "@/lib/organizedTrips";
+import { buildPageFaq, formatLastVerified } from "@/lib/pageFaq";
 
 const RADIUS_MILES = 6;
 const NEARBY_CAP = 12;
@@ -76,6 +78,8 @@ export default async function CityPage({
   const all = await getPublishedListingsSafe();
 
   const own = all.filter((l) => l.citySlug === city.slug);
+  const faqItems = buildPageFaq(own);
+  const lastVerified = formatLastVerified(own);
 
   const ownPoints: GeoPoint[] = own
     .filter((l) => l.lat != null && l.lng != null)
@@ -134,6 +138,10 @@ export default async function CityPage({
 
       <p className="mt-4 text-lg leading-relaxed text-ink">{city.intro}</p>
 
+      {lastVerified && (
+        <p className="mt-2 text-sm text-ink-muted">Most recently verified: {lastVerified}</p>
+      )}
+
       <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {own.map((l) => (
           <li key={l.id}>
@@ -183,6 +191,8 @@ export default async function CityPage({
           </ul>
         </section>
       )}
+
+      <PageFaq items={faqItems} />
 
       <section className="mt-14 border-t border-flag-blue-tint-2 pt-6">
         <Link
