@@ -231,6 +231,13 @@ export default function MorningPickleballPost() {
           that this group isn&apos;t really about pickleball. It&apos;s about each other.
         </p>
 
+        <Photo
+          src={`${IMG}-halloween-group.jpg`}
+          alt="The pickleball group in Halloween costumes at Robert's Westside in Forest Park, faces blurred for privacy"
+          width={1600}
+          height={899}
+        />
+
         <h2 className={H2}>Why I&apos;d Tell Anyone Over 50 to Try It</h2>
         <ul className={UL}>
           <li>
