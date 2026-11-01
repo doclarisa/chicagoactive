@@ -124,9 +124,9 @@ export default function WinterHolidayEventsPost() {
 
         <Photo
           src={POST.heroImage}
-          alt="An older couple walking arm in arm beneath strings of glowing holiday lights"
-          width={1448}
-          height={1086}
+          alt="Four smiling older friends taking a selfie inside a glowing tunnel of holiday lights"
+          width={1536}
+          height={1024}
           priority
         />
 
@@ -320,9 +320,9 @@ export default function WinterHolidayEventsPost() {
 
         <Photo
           src={`${IMG}-tunnel.png`}
-          alt="Four smiling older friends taking a selfie inside a glowing tunnel of holiday lights"
-          width={1536}
-          height={1024}
+          alt="An older couple walking arm in arm beneath strings of glowing holiday lights"
+          width={1448}
+          height={1086}
         />
 
         <h2 className={H2}>Christmas Around the World (Hyde Park)</h2>
