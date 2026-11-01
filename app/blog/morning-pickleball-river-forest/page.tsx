@@ -171,7 +171,7 @@ export default function MorningPickleballPost() {
 
         <Photo
           src={`${IMG}-forehand.jpg`}
-          alt="A player in a turquoise sweater hitting a forehand on the River Forest courts"
+          alt="Four players pausing near the net between points on the River Forest courts"
           width={1600}
           height={1200}
         />
@@ -189,7 +189,7 @@ export default function MorningPickleballPost() {
 
         <Photo
           src={`${IMG}-between-games.jpg`}
-          alt="Players walking to switch sides between games on the outdoor courts"
+          alt="A player in a turquoise sweater hitting a forehand on the River Forest courts"
           width={1600}
           height={1200}
         />
@@ -230,17 +230,6 @@ export default function MorningPickleballPost() {
           Seeing everyone in costume, laughing just as hard as we do at 7:30 in the morning, reminded me
           that this group isn&apos;t really about pickleball. It&apos;s about each other.
         </p>
-
-        <Photo
-          src={`${IMG}-halloween-group.jpg`}
-          alt="The pickleball group in Halloween costumes at Robert's Westside in Forest Park"
-          width={1600}
-          height={899}
-        />
-        <TallPhoto
-          src={`${IMG}-halloween-trio.jpg`}
-          alt="A pirate, a fortune teller, and an artist from the group posing together at the Halloween party"
-        />
 
         <h2 className={H2}>Why I&apos;d Tell Anyone Over 50 to Try It</h2>
         <ul className={UL}>
