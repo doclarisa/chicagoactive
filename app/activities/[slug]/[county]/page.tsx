@@ -11,6 +11,8 @@ export function generateStaticParams() {
   return COUNTY_CELLS.map((c) => ({ slug: c.activitySlug, county: c.countySlug }));
 }
 
+// cell.h1 already says "X for Seniors in Y County" -- same free/count/year
+// formula as the metro-level /activities/[slug] page above it.
 export async function generateMetadata({
   params,
 }: {
@@ -19,12 +21,27 @@ export async function generateMetadata({
   const { slug, county } = await params;
   const cell = countyCellBySlugs(slug, county);
   if (!cell) return {};
+
+  const all = await getPublishedListingsSafe();
+  const tagged = all.filter(
+    (l) =>
+      l.county === cell.county &&
+      l.citySlug !== "chicago" &&
+      Array.isArray(l.activities) &&
+      (l.activities as string[]).includes(cell.tag),
+  );
+  const count = tagged.length;
+  const freeCount = tagged.filter((l) => l.cost === "FREE").length;
+  const freePrefix = count === 0 ? "" : freeCount === count ? "Free " : freeCount > 0 ? "Free & Low-Cost " : "";
+  const year = new Date().getFullYear();
+  const countSuffix = count > 0 ? ` — ${count} Listing${count === 1 ? "" : "s"}` : "";
+  const title = `${freePrefix}${cell.h1} (${year})${countSuffix}`;
   const description = `Free and low-cost ${cell.h1.toLowerCase()} — real listings, not a metro-wide sample.`;
   return {
-    title: cell.h1,
+    title,
     description,
     alternates: { canonical: `/activities/${cell.activitySlug}/${cell.countySlug}` },
-    openGraph: { title: cell.h1, description },
+    openGraph: { title, description },
   };
 }
 

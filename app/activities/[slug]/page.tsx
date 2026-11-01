@@ -13,6 +13,8 @@ export function generateStaticParams() {
   return ACTIVITY_PAGES.map((a) => ({ slug: a.slug }));
 }
 
+// page.h1 already says "X for Seniors in Chicagoland" -- same free/count/
+// year formula as /city/[citySlug], /category/[category], and /chicago.
 export async function generateMetadata({
   params,
 }: {
@@ -21,12 +23,23 @@ export async function generateMetadata({
   const { slug } = await params;
   const page = activityPageBySlug(slug);
   if (!page) return {};
+
+  const listings = await getPublishedListingsSafe();
+  const tagged = listings.filter(
+    (l) => Array.isArray(l.activities) && (l.activities as string[]).includes(page.tag),
+  );
+  const count = tagged.length;
+  const freeCount = tagged.filter((l) => l.cost === "FREE").length;
+  const freePrefix = count === 0 ? "" : freeCount === count ? "Free " : freeCount > 0 ? "Free & Low-Cost " : "";
+  const year = new Date().getFullYear();
+  const countSuffix = count > 0 ? ` — ${count} Listing${count === 1 ? "" : "s"}` : "";
+  const title = `${freePrefix}${page.h1} (${year})${countSuffix}`;
   const description = `Free and low-cost ${page.h1.toLowerCase()} — browse by county across Cook, DuPage, Will, Lake, Kane, McHenry, and Kendall.`;
   return {
-    title: page.h1,
+    title,
     description,
     alternates: { canonical: `/activities/${page.slug}` },
-    openGraph: { title: page.h1, description },
+    openGraph: { title, description },
   };
 }
 
