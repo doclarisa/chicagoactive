@@ -11,6 +11,9 @@ export function generateStaticParams() {
   return CHICAGO_CELLS.map((c) => ({ tag: c.tag }));
 }
 
+// cell.h1 already says "X for Seniors in Chicago" -- adds the real
+// free/paid mix, a live count, and the current year on top, same formula
+// as /city/[citySlug] and /category/[category].
 export async function generateMetadata({
   params,
 }: {
@@ -19,12 +22,23 @@ export async function generateMetadata({
   const { tag } = await params;
   const cell = chicagoCellByTag(tag);
   if (!cell) return {};
+
+  const all = await getPublishedListingsSafe();
+  const tagged = all.filter(
+    (l) => l.citySlug === "chicago" && Array.isArray(l.activities) && (l.activities as string[]).includes(cell.tag),
+  );
+  const count = tagged.length;
+  const freeCount = tagged.filter((l) => l.cost === "FREE").length;
+  const freePrefix = count === 0 ? "" : freeCount === count ? "Free " : freeCount > 0 ? "Free & Low-Cost " : "";
+  const year = new Date().getFullYear();
+  const countSuffix = count > 0 ? ` — ${count} Listing${count === 1 ? "" : "s"}` : "";
+  const title = `${freePrefix}${cell.h1} (${year})${countSuffix}`;
   const description = `Free and low-cost ${cell.h1.toLowerCase()} — DFSS neighborhood senior centers plus citywide programs.`;
   return {
-    title: cell.h1,
+    title,
     description,
     alternates: { canonical: `/chicago/${cell.tag}` },
-    openGraph: { title: cell.h1, description },
+    openGraph: { title, description },
   };
 }
 

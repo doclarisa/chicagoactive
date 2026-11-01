@@ -14,8 +14,12 @@ const nunito = Nunito({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  // Real search queries skew "senior activities," not the site's own brand
+  // language -- the homepage (which has no title of its own, so it inherits
+  // this default verbatim) is the single highest-traffic page missing that
+  // word entirely until this change.
   title: {
-    default: "Active Chicagoland — Things to Do for Active Adults 50+",
+    default: "Senior Activities in Chicagoland — Free Things to Do for Adults 50+",
     template: "%s | Active Chicagoland",
   },
   description:

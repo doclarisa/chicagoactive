@@ -8,12 +8,25 @@ import { CHICAGO_CELLS } from "@/lib/activityCounties";
 const DESCRIPTION =
   "Free and low-cost senior programs across Chicago — the city's 20 DFSS neighborhood senior centers plus citywide Park District, library, and museum programs for adults 50+.";
 
-export const metadata = {
-  title: "Senior Activities in Chicago",
-  description: DESCRIPTION,
-  alternates: { canonical: "/chicago" },
-  openGraph: { title: "Senior Activities in Chicago", description: DESCRIPTION },
-};
+// Same free/count/year treatment as /city/[citySlug] and /category/[category]
+// -- matches "senior activities Chicago" search phrasing better than the
+// site's own brand language, with a real live count rather than a static claim.
+export async function generateMetadata() {
+  const all = await getPublishedListingsSafe();
+  const listings = all.filter((l) => l.citySlug === "chicago");
+  const count = listings.length;
+  const freeCount = listings.filter((l) => l.cost === "FREE").length;
+  const freePrefix = count === 0 ? "" : freeCount === count ? "Free " : freeCount > 0 ? "Free & Low-Cost " : "";
+  const year = new Date().getFullYear();
+  const countSuffix = count > 0 ? ` — ${count} Program${count === 1 ? "" : "s"}` : "";
+  const title = `${freePrefix}Senior Activities in Chicago (${year})${countSuffix}`;
+  return {
+    title,
+    description: DESCRIPTION,
+    alternates: { canonical: "/chicago" },
+    openGraph: { title, description: DESCRIPTION },
+  };
+}
 
 // Chicago gets one hub page, not 20 near-identical neighborhood pages — every
 // DFSS satellite/regional center runs the same uniform citywide activity set,

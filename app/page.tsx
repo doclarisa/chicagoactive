@@ -11,7 +11,7 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Active Chicagoland — Things to Do for Active Adults 50+",
+    title: "Senior Activities in Chicagoland — Free Things to Do for Adults 50+",
     description: DESCRIPTION,
     type: "website",
   },

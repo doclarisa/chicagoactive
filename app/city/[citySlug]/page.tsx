@@ -30,6 +30,10 @@ function truncateAtWord(text: string, max: number): string {
   return `${cut.slice(0, lastSpace > 0 ? lastSpace : max).trimEnd()}…`;
 }
 
+// Real search queries skew "senior activities [town]" rather than the
+// site's own brand language ("active adults 50+") -- so the title leads
+// with that phrase, plus the real free/paid mix, a live count, and the
+// current year, rather than reusing the cleaner but less query-matched H1.
 export async function generateMetadata({
   params,
 }: {
@@ -38,12 +42,25 @@ export async function generateMetadata({
   const { citySlug } = await params;
   const city = cityBySlug(citySlug);
   if (!city) return {};
+
+  const all = await getPublishedListingsSafe();
+  const own = all.filter((l) => l.citySlug === city.slug);
+  const count = own.length;
+  const freeCount = own.filter((l) => l.cost === "FREE").length;
+  // Never claim "Free" outright unless every listing actually is -- museum
+  // senior-discount days and some park-district programs are genuinely
+  // paid, and a false "Free" in the title would be the kind of overclaim
+  // this site has deliberately avoided everywhere else.
+  const freePrefix = count === 0 ? "" : freeCount === count ? "Free " : freeCount > 0 ? "Free & Low-Cost " : "";
+  const year = new Date().getFullYear();
+  const countSuffix = count > 0 ? ` — ${count} Program${count === 1 ? "" : "s"}` : "";
+  const title = `${freePrefix}Senior Activities in ${city.name} (${year})${countSuffix}`;
   const description = truncateAtWord(city.intro, 155);
   return {
-    title: `Senior Activities in ${city.name}, IL`,
+    title,
     description,
     alternates: { canonical: `/city/${city.slug}` },
-    openGraph: { title: `Senior Activities in ${city.name}, IL`, description },
+    openGraph: { title, description },
   };
 }
 

@@ -16,6 +16,23 @@ export function generateStaticParams() {
   return CATEGORIES.filter((c) => c.slug !== "day-trips-near-chicago").map((c) => ({ category: c.slug }));
 }
 
+// Same logic as /city/[citySlug]: lead with "senior," the real free/paid
+// mix, a live count, and the current year -- matching how people actually
+// search ("senior library classes") rather than the category's clean but
+// query-light label. A few labels already say "Senior" or "55+"
+// (Park District, Senior Center Events, Museum Senior Days) and don't need
+// it doubled; the rest get it added here.
+const CATEGORY_TITLE_NOUN: Record<string, string> = {
+  "park-district-55-programs": "Park District 55+ Programs",
+  "senior-center-events": "Senior Center Events",
+  "library-classes": "Senior Library Classes",
+  "walking-hiking-groups": "Senior Walking & Hiking Groups",
+  "pickleball-fitness": "Pickleball & Senior Fitness Classes",
+  "museum-senior-days": "Museum Senior Discount Days",
+  "day-trips-near-chicago": "Senior Day Trips",
+  "arts-culture": "Senior Arts & Culture Programs",
+};
+
 export async function generateMetadata({
   params,
 }: {
@@ -24,17 +41,40 @@ export async function generateMetadata({
   const { category } = await params;
   const cat = CATEGORIES.find((c) => c.slug === category);
   if (!cat) return {};
-  // pickleball-fitness is a lobby/router page, not a listing page — its own
-  // description reflects that instead of the generic category copy.
-  const description =
-    cat.slug === "pickleball-fitness"
-      ? "Medicare fitness benefit gyms, indoor pickleball, gentle yoga, and water aerobics for active adults 50+ across the Chicago area."
-      : `Free and low-cost ${cat.label.toLowerCase()} for active adults 50+ across the Chicago area.`;
+
+  const noun = CATEGORY_TITLE_NOUN[cat.slug] ?? cat.label;
+  const year = new Date().getFullYear();
+
+  // pickleball-fitness is a lobby/router page, not a listing page — no
+  // live count to attach, and its own description reflects that instead
+  // of the generic category copy.
+  if (cat.slug === "pickleball-fitness") {
+    const title = `${noun} in Chicagoland (${year})`;
+    const description =
+      "Medicare fitness benefit gyms, indoor pickleball, gentle yoga, and water aerobics for active adults 50+ across the Chicago area.";
+    return {
+      title,
+      description,
+      alternates: { canonical: `/category/${cat.slug}` },
+      openGraph: { title, description },
+    };
+  }
+
+  const all = await getPublishedListingsSafe();
+  const listings = all.filter((l) => l.category === category);
+  const count = listings.length;
+  const freeCount = listings.filter((l) => l.cost === "FREE").length;
+  // museum-senior-days is a real example of why this can't just say "Free"
+  // unconditionally: it's paid admission with a senior discount, not free.
+  const freePrefix = count === 0 ? "" : freeCount === count ? "Free " : freeCount > 0 ? "Free & Low-Cost " : "";
+  const countSuffix = count > 0 ? ` — ${count} Listing${count === 1 ? "" : "s"}` : "";
+  const title = `${freePrefix}${noun} in Chicagoland (${year})${countSuffix}`;
+  const description = `Free and low-cost ${cat.label.toLowerCase()} for active adults 50+ across the Chicago area.`;
   return {
-    title: `${cat.label} in Chicagoland`,
+    title,
     description,
     alternates: { canonical: `/category/${cat.slug}` },
-    openGraph: { title: `${cat.label} in Chicagoland`, description },
+    openGraph: { title, description },
   };
 }
 
