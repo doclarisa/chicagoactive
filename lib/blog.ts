@@ -141,4 +141,12 @@ export const BLOG_POSTS: BlogPost[] = [
     readingMinutes: 7,
     heroImage: "/blog/winter-holiday-events-seniors-chicagoland-2026-hero.png",
   },
+  {
+    slug: "morning-pickleball-river-forest",
+    title: "7 a.m., Pickleball, and Friends: Why Our Mornings in River Forest Are the Best Part of the Day",
+    dek: "A group of mostly-senior pickleball players meets early on the River Forest Park District courts -- and moves to Oak Park's CRC when it rains. What started as a game turned into real friendship, coffee talks, and a Halloween night out in Forest Park.",
+    publishedDate: "2026-11-01",
+    readingMinutes: 5,
+    heroImage: "/blog/morning-pickleball-river-forest-hero.jpg",
+  },
 ];
