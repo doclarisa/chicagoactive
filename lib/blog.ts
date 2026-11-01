@@ -125,4 +125,12 @@ export const BLOG_POSTS: BlogPost[] = [
     readingMinutes: 5,
     heroImage: "/blog/forest-park-casket-races-2026-hero.jpg",
   },
+  {
+    slug: "indoor-mall-walking-chicagoland",
+    title: "Too Cold to Walk? Chicagoland's Best Indoor and Mall Walking Spots",
+    dek: "Ice, wind, and 4:30 sunsets don't have to end your walking routine. Here are real Chicagoland malls, indoor tracks, and walking clubs where you can keep moving all winter -- most of them free.",
+    publishedDate: "2026-11-01",
+    readingMinutes: 6,
+    heroImage: "/blog/indoor-mall-walking-chicagoland-hero.png",
+  },
 ];
