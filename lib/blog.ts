@@ -133,4 +133,12 @@ export const BLOG_POSTS: BlogPost[] = [
     readingMinutes: 6,
     heroImage: "/blog/indoor-mall-walking-chicagoland-hero.png",
   },
+  {
+    slug: "winter-holiday-events-seniors-chicagoland-2026",
+    title: "Holiday Lights, Markets, and Flower Shows: Chicagoland's Best Winter Events for Seniors (2026)",
+    dek: "A 30th-anniversary Christkindlmarket, free Monday ZooLights, poinsettia-filled conservatories, and three big light trails -- here are the real dates, prices, and senior-friendly tips for Chicagoland's 2026 holiday season.",
+    publishedDate: "2026-11-01",
+    readingMinutes: 7,
+    heroImage: "/blog/winter-holiday-events-seniors-chicagoland-2026-hero.png",
+  },
 ];
