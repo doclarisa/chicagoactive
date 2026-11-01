@@ -7,9 +7,14 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import AffiliateDisclosure from "@/components/AffiliateDisclosure";
 import AffiliateLink from "@/components/AffiliateLink";
 
-const TITLE = "Day Trips from Chicago for Seniors";
+// Title/description deliberately lead with "Senior Trips" as an adjacent
+// phrase -- GSC showed this page ranking #9-10 for "seniors trips" (32
+// impressions, 0 clicks) while the old title had "Trips" and "Seniors"
+// separated by four words, which likely cost it the exact-phrase bolding
+// in the snippet. Re-check GSC after this ships to see if CTR moves.
+const TITLE = "Senior Day Trips from Chicago";
 const DESCRIPTION =
-  "Two ways to take a day trip from Chicago: organized group trips run by park districts, senior centers, and tour companies (browse by county), or verified destinations to plan yourself.";
+  "Senior trips from Chicago, two ways: organized group day trips run by park districts and senior centers (browse by county), or verified destinations to plan and drive yourself.";
 
 export const metadata: Metadata = {
   title: TITLE,
