@@ -119,6 +119,13 @@ export default function DayTripsPage() {
           by where you live.
         </p>
 
+        <p className="mt-4 text-base text-ink-muted">
+          Prefer to browse every day-trip program in the directory as individual listings instead?{" "}
+          <Link href="/activities/senior-day-trips" className="font-semibold text-flag-blue-ink no-underline hover:underline">
+            See them all, grouped by county →
+          </Link>
+        </p>
+
         <h3 className="mt-8 text-xl font-bold text-ink">Organized trips by area</h3>
         <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
           {COUNTY_SPOKES.map((spoke) => {

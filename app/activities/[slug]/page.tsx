@@ -105,6 +105,23 @@ export default async function ActivityPage({
 
       <p className="mt-4 text-lg leading-relaxed text-ink">{page.intro}</p>
 
+      {/* Day trips is the one activity with a dedicated, deeper guide
+          (organized-tour providers + self-guided destinations with driving
+          times, cost, accessibility) -- both pages rank independently in
+          GSC, so point readers between them rather than leaving this one
+          without the cross-link the guide already has back to /directory. */}
+      {page.slug === "senior-day-trips" && (
+        <Link
+          href="/guides/day-trips-from-chicago"
+          className="mt-6 flex items-center justify-between gap-3 rounded-card bg-flag-blue-tint px-4 py-3 no-underline"
+        >
+          <span className="text-base font-semibold text-ink">
+            Want driving times, cost, and accessibility for specific destinations?
+          </span>
+          <span className="shrink-0 text-sm font-bold text-flag-blue-ink">See the full day trips guide →</span>
+        </Link>
+      )}
+
       {dfssCount > 0 && (
         <Link
           href={chicagoCell ? `/chicago/${page.tag}` : "/chicago"}
