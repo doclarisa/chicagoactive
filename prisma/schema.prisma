@@ -86,6 +86,17 @@ model Listing {
   // have a genuine one, same discipline as everything else in this file.
   qualityNote    String?
 
+  // Optional deep-content fields for the "upgraded listing" template
+  // (striking-distance pages worth the extra research pass) -- all null by
+  // default, and the detail page only renders a section when its field is
+  // present, so plain listings render exactly as before.
+  perk                    String?  // a standout freebie worth surfacing, e.g. "Free coffee and tea from 9am"
+  programHighlights       Json?    // string[] of specific programs/classes, when known beyond `description`
+  upcomingEvent           String?  // one dated one-off event worth calling out, e.g. "Growing Grateful Together Luncheon -- Thu, Nov 19, 11am-1pm"
+  faqs                    Json?    // { question: string; answer: string }[]
+  metaTitleOverride       String?  // bypasses buildListingTitle() with a hand-tuned, query-matched title tag
+  metaDescriptionOverride String?  // bypasses using `description` as the meta description
+
   status       ListingStatus @default(PUBLISHED)
 
   createdAt    DateTime      @default(now())

@@ -12,11 +12,12 @@ import ListingCard from "@/components/ListingCard";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Linkify from "@/components/Linkify";
 import { categoryLabel } from "@/lib/categories";
-import { listingSchemaType } from "@/lib/schema";
+import { listingSchemaType, type FaqItem } from "@/lib/schema";
 import { cityBySlug } from "@/lib/cities";
 import { activityPageByTag } from "@/lib/activityPages";
 import { countyCellBySlugs } from "@/lib/activityCounties";
 import { parseOpeningHours } from "@/lib/openingHours";
+import PageFaq from "@/components/PageFaq";
 
 const PRICE_RANGE: Record<string, string> = {
   FREE: "Free",
@@ -68,19 +69,20 @@ export async function generateMetadata({
   if (!listing) return {};
 
   const place = listing.neighborhood ? `${listing.neighborhood}, ${listing.county} County` : `${listing.county} County`;
-  const seoTitle = buildListingTitle(listing.name, listing.city || listing.neighborhood || listing.county);
+  const seoTitle = listing.metaTitleOverride || buildListingTitle(listing.name, listing.city || listing.neighborhood || listing.county);
+  const metaDescription = listing.metaDescriptionOverride || listing.description;
   // OpenGraph previews (social shares) aren't truncated the same way SERPs
   // are, so they get the fuller, unconstrained title.
   const socialTitle = `${listing.name} (${place})`;
 
   return {
     // `absolute` bypasses the root layout's "%s | Active Chicagoland"
-    // template — needed because buildListingTitle already decides for
-    // itself whether the brand suffix fits.
+    // template — needed because buildListingTitle (or metaTitleOverride)
+    // already decides for itself whether the brand suffix fits.
     title: { absolute: seoTitle },
-    description: listing.description,
+    description: metaDescription,
     alternates: { canonical: `/${listing.slug}` },
-    openGraph: { title: socialTitle, description: listing.description },
+    openGraph: { title: socialTitle, description: metaDescription },
   };
 }
 
@@ -151,6 +153,9 @@ export default async function ListingDetail({
 
   const guideSlug = CATEGORY_GUIDE_MAP[listing.category];
   const relatedGuide = guideSlug ? GUIDES.find((g) => g.slug === guideSlug) : undefined;
+
+  const programHighlights = Array.isArray(listing.programHighlights) ? (listing.programHighlights as string[]) : [];
+  const faqItems: FaqItem[] = Array.isArray(listing.faqs) ? (listing.faqs as FaqItem[]) : [];
 
   // No-orphans mesh: link up to this listing's city page, when it has one.
   // Chicago listings get the single /chicago hub instead of a /city page.
@@ -251,6 +256,12 @@ export default async function ListingDetail({
         </p>
       )}
 
+      {listing.upcomingEvent && (
+        <p className="mt-4 rounded-card bg-flag-blue-tint px-4 py-3 text-base font-semibold text-flag-blue-ink">
+          Coming up: {listing.upcomingEvent}
+        </p>
+      )}
+
       <p className="mt-6 text-lg leading-relaxed text-ink">{listing.description}</p>
 
       {days.length > 0 && (
@@ -287,7 +298,8 @@ export default async function ListingDetail({
         listing.residentPrice ||
         listing.nonResidentPrice ||
         listing.beginnerFriendly ||
-        listing.dropIn) && (
+        listing.dropIn ||
+        listing.perk) && (
         <dl className="mt-6 space-y-2 text-base text-ink">
           {listing.address && (
             <div>
@@ -384,7 +396,27 @@ export default async function ListingDetail({
               <dd className="inline">Yes</dd>
             </div>
           )}
+          {listing.perk && (
+            <div>
+              <dt className="inline font-semibold">Perk: </dt>
+              <dd className="inline">{listing.perk}</dd>
+            </div>
+          )}
         </dl>
+      )}
+
+      {programHighlights.length > 0 && (
+        <div className="mt-6">
+          <h2 className="text-xl font-extrabold tracking-tight text-ink">Programs you can join</h2>
+          <ul className="mt-3 flex flex-col gap-2 text-lg text-ink">
+            {programHighlights.map((program) => (
+              <li key={program} className="flex gap-2">
+                <span aria-hidden="true">•</span>
+                <span>{program}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
 
       <div className="mt-8 flex flex-wrap gap-3">
@@ -423,11 +455,13 @@ export default async function ListingDetail({
         </section>
       )}
 
+      <PageFaq items={faqItems} />
+
       {/* The exit ramp: one contextual link to affiliate content, never a
           banner. Only shown where a relevant guide actually exists. */}
-      <section className="mt-8 border-t border-flag-blue-tint-2 pt-6" aria-label="Affiliate suggestion">
-        <h2 className="text-xl font-extrabold tracking-tight text-ink">Going further</h2>
-        {relatedGuide ? (
+      {relatedGuide && (
+        <section className="mt-8 border-t border-flag-blue-tint-2 pt-6" aria-label="Affiliate suggestion">
+          <h2 className="text-xl font-extrabold tracking-tight text-ink">Going further</h2>
           <Link
             href={`/guides/${relatedGuide.slug}`}
             className="mt-3 block rounded-card bg-flag-blue-tint p-4 no-underline"
@@ -435,10 +469,8 @@ export default async function ListingDetail({
             <p className="text-base text-ink-muted">{relatedGuide.exitRampPrompt}</p>
             <p className="mt-1 text-lg font-bold text-flag-blue-ink">{relatedGuide.title} →</p>
           </Link>
-        ) : (
-          <p className="mt-2 text-base text-ink-muted">Coming soon.</p>
-        )}
-      </section>
+        </section>
+      )}
     </main>
   );
 }

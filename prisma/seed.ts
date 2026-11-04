@@ -8744,20 +8744,61 @@ const listings = [
     name: "Mather Community Programs at The Cov",
     slug: "mather-community-programs-the-cov",
     description:
-      "Free creative arts and wellness programs for adults 55+, run by Mather (the nonprofit behind Mather's senior living communities) at The Cov community space on the South Side.",
+      "Mather at The Cov is a free weekday program hub for older adults on Chicago's South Side, in the Chatham neighborhood (near Greater Grand Crossing). It's run by Mather, an Evanston-based nonprofit that has worked with older adults for more than 80 years, in partnership with Alderman William Hall and the 6th Ward and New Covenant Missionary Baptist Church -- known locally as \"The Cov,\" which is where the program's name comes from.",
     category: "senior-center-events",
     operatorType: "nonprofit",
-    activities: ["art-classes"],
-    neighborhood: "Greater Grand Crossing",
+    activities: ["art-classes", "yoga", "dance"],
+    neighborhood: "Chatham",
     county: "Cook",
     city: "Chicago",
     citySlug: "chicago",
     cost: "FREE" as const,
-    days: Prisma.DbNull,
+    days: ["Monday", "Tuesday", "Wednesday", "Thursday"],
+    time: "9:30 a.m.-2:00 p.m.",
+    hours: "Mon-Thu 9:30am-2:00pm",
+    ageEligibility: "55+",
     address: "754 E. 77th Street, Chicago, IL 60619",
     phone: "(888) 600-2560",
+    dropIn: true,
+    registration: "Call or text (888) 600-2560, email contact@mather.com, or register online -- drop-ins welcome for most classes",
+    perk: "Free coffee and tea from 9:00 a.m. on class days",
+    programHighlights: [
+      "Line dancing -- upbeat, social, and beginner-friendly",
+      "Pilates -- gentle strength and core work",
+      "Yoga -- relaxation, flexibility, and strength, open to all levels",
+      "Crafts & Conversation -- hands-on projects with time to chat",
+      "Seasonal wellness luncheons, such as the \"Growing Grateful Together\" luncheon",
+    ],
+    upcomingEvent: "Growing Grateful Together Luncheon -- Thursday, November 19, 11:00am-1:00pm",
+    faqs: [
+      {
+        question: "Is Mather at The Cov really free?",
+        answer: "Yes. Mather says all of its programs are free for adults 55+.",
+      },
+      {
+        question: "Do I have to live in the 6th Ward or be a church member?",
+        answer:
+          "Mather's program information says adults 55 and better are welcome. It doesn't mention a ward, residency, or membership requirement, but confirm when you register.",
+      },
+      {
+        question: "Do I need experience for yoga or Pilates?",
+        answer: "No. Classes are open to all levels.",
+      },
+      {
+        question: "Can I just show up?",
+        answer: "Drop-ins are welcome for most programs. Register ahead for luncheons and special events.",
+      },
+      {
+        question: "Who is Mather?",
+        answer:
+          "A Chicagoland nonprofit that runs free in-person and virtual programs for older adults, with a focus on the city's South and West sides. It isn't connected to Mather High School or Mather Park.",
+      },
+    ],
+    metaTitleOverride: "Mather at The Cov: Free Senior Programs in Chatham | Active Chicagoland",
+    metaDescriptionOverride:
+      "Free line dancing, Pilates, yoga, and crafts for adults 55+ at The Cov (754 E. 77th St). Mon-Thu, 9:30 a.m.-2 p.m., free coffee. Schedule, registration, and FAQ.",
     sourceUrl: "https://www.mather.com/programs/in-person-programs",
-    lastVerified: new Date("2026-09-27"),
+    lastVerified: new Date("2026-11-04"),
   },
   {
     name: "Mather Community Programs at the National Museum of Mexican Art",
