@@ -147,6 +147,18 @@ export default async function CategoryPage({
         {lastVerified && ` Most recently verified: ${lastVerified}.`}
       </p>
 
+      {cat.slug === "senior-center-events" && (
+        <p className="mt-2 text-base text-ink-muted">
+          Prefer to browse by area instead of by activity?{" "}
+          <Link
+            href="/senior-activity-centers-chicagoland"
+            className="font-semibold text-flag-blue-ink no-underline hover:underline"
+          >
+            See every senior activity center grouped by county →
+          </Link>
+        </p>
+      )}
+
       {listings.length === 0 ? (
         <p className="mt-6 text-lg text-ink-muted">Nothing here yet — check back soon.</p>
       ) : (

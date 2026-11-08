@@ -91,6 +91,14 @@ export default async function Home() {
         >
           See all areas →
         </Link>
+        <p className="mt-4">
+          <Link
+            href="/senior-activity-centers-chicagoland"
+            className="text-base font-semibold text-flag-blue-ink no-underline hover:underline"
+          >
+            Looking for a senior activity center near you? See them all by county →
+          </Link>
+        </p>
       </section>
 
       <section className="mt-16 text-center">
