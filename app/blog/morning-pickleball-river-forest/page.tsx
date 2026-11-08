@@ -241,6 +241,10 @@ export default function MorningPickleballPost() {
           width={1600}
           height={902}
         />
+        <TallPhoto
+          src={`${IMG}-halloween-trio.jpg`}
+          alt="A pirate, a fortune teller, and an artist from the group posing together at the Halloween party"
+        />
 
         <h2 className={H2}>Why I&apos;d Tell Anyone Over 50 to Try It</h2>
         <ul className={UL}>
