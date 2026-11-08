@@ -191,13 +191,6 @@ export default function MorningPickleballPost() {
           or grandkids, a group like this fits into real life.
         </p>
 
-        <Photo
-          src={`${IMG}-between-games.jpg`}
-          alt="A player in a turquoise sweater hitting a forehand on the River Forest courts"
-          width={1600}
-          height={1200}
-        />
-
         <h2 className={H2}>More Than a Game</h2>
         <p className={P}>
           When I started, I thought I was joining a pickleball group. What I really joined was a group of
@@ -240,10 +233,6 @@ export default function MorningPickleballPost() {
           alt="The pickleball group in Halloween costumes at Robert's Westside in Forest Park, laughing together"
           width={1600}
           height={902}
-        />
-        <TallPhoto
-          src={`${IMG}-halloween-trio.jpg`}
-          alt="A pirate, a fortune teller, and an artist from the group posing together at the Halloween party"
         />
 
         <h2 className={H2}>Why I&apos;d Tell Anyone Over 50 to Try It</h2>

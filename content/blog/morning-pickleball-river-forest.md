@@ -33,8 +33,6 @@ I'm a caregiver for my mother. Some mornings she has appointments, or my day is 
 
 That's one of the things I love most about this group: nobody keeps score of who showed up. When you come back, you're simply welcomed back. For anyone juggling caregiving, work, or grandkids, a group like this fits into real life.
 
-![Players walking to switch sides between games on the outdoor courts](/blog/morning-pickleball-river-forest-between-games.jpg)
-
 ## More Than a Game
 
 When I started, I thought I was joining a pickleball group. What I really joined was a group of friends.
@@ -54,8 +52,6 @@ We had a pirate (with a parrot on his shoulder), a fortune teller in a head scar
 Seeing everyone in costume, laughing just as hard as we do at 7:30 in the morning, reminded me that this group isn't really about pickleball. It's about each other.
 
 ![The pickleball group in Halloween costumes at Robert's Westside in Forest Park](/blog/morning-pickleball-river-forest-halloween-group.jpg)
-
-![A pirate, a fortune teller, and an artist from the group posing together at the Halloween party](/blog/morning-pickleball-river-forest-halloween-trio.jpg)
 
 ## Why I'd Tell Anyone Over 50 to Try It
 
