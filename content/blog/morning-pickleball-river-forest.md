@@ -29,6 +29,8 @@ We play -- but the playing is only half of it. We talk between games. We tease e
 
 I'm a caregiver for my mother. Some mornings she has appointments, or my day is simply too full, and I can't go. But whenever I'm free, I'm there.
 
+![The author's mother waving from a leaf-covered sidewalk on an autumn walk with the family dog](/blog/morning-pickleball-river-forest-mom-and-dog.jpg)
+
 That's one of the things I love most about this group: nobody keeps score of who showed up. When you come back, you're simply welcomed back. For anyone juggling caregiving, work, or grandkids, a group like this fits into real life.
 
 ![Players walking to switch sides between games on the outdoor courts](/blog/morning-pickleball-river-forest-between-games.jpg)

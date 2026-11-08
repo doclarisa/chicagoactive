@@ -181,6 +181,10 @@ export default function MorningPickleballPost() {
           I&apos;m a caregiver for my mother. Some mornings she has appointments, or my day is simply too
           full, and I can&apos;t go. But whenever I&apos;m free, I&apos;m there.
         </p>
+        <TallPhoto
+          src={`${IMG}-mom-and-dog.jpg`}
+          alt="The author's mother waving from a leaf-covered sidewalk on an autumn walk with the family dog"
+        />
         <p className={P}>
           That&apos;s one of the things I love most about this group: nobody keeps score of who showed
           up. When you come back, you&apos;re simply welcomed back. For anyone juggling caregiving, work,
@@ -233,9 +237,9 @@ export default function MorningPickleballPost() {
 
         <Photo
           src={`${IMG}-halloween-group.jpg`}
-          alt="The pickleball group in Halloween costumes at Robert's Westside in Forest Park, faces blurred for privacy"
+          alt="The pickleball group in Halloween costumes at Robert's Westside in Forest Park, laughing together"
           width={1600}
-          height={899}
+          height={902}
         />
 
         <h2 className={H2}>Why I&apos;d Tell Anyone Over 50 to Try It</h2>
