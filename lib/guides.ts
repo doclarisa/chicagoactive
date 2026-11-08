@@ -19,6 +19,7 @@ export type Guide = {
 // drift out of sync.
 export const INDEXED_GUIDE_SLUGS = new Set([
   "day-trips-from-chicago",
+  "senior-bus-trips-from-chicago",
   "medicare-fitness-gyms",
   "pickleball-facilities",
 ]);
@@ -43,6 +44,19 @@ export const GUIDES: Guide[] = [
       { affiliate: "roadScholar", note: "Multi-day educational tours designed for lifelong learners 50+." },
     ],
     exitRampPrompt: "Planning a day out further afield?",
+  },
+  {
+    // Rendered by a dedicated static route (app/guides/senior-bus-trips-from-chicago/page.tsx),
+    // not the generic [slug] template -- this entry exists only so the sitemap
+    // and /guides index page pick it up. dek/intro/offers below are unused
+    // dead fallback data; the real content lives in the dedicated page.
+    slug: "senior-bus-trips-from-chicago",
+    title: "Senior Bus Trips from Chicago",
+    dek: "How park district, township, and senior center bus trip programs work, what they typically cost, and the destinations that keep coming up.",
+    intro:
+      "A chartered motorcoach, a group of regulars, and someone else doing the driving -- the classic senior bus trip. This guide covers how these trip programs actually work, real cost examples, and where to find one near you.",
+    offers: [],
+    exitRampPrompt: "Want someone else to do the driving?",
   },
   {
     // Rendered by a dedicated static route (app/guides/online-learning-after-60/page.tsx),

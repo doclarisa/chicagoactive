@@ -126,6 +126,17 @@ export default function DayTripsPage() {
           </Link>
         </p>
 
+        <p className="mt-2 text-base text-ink-muted">
+          Want the full rundown first — how these trips work, what they typically cost, and the
+          destinations that keep coming up?{" "}
+          <Link
+            href="/guides/senior-bus-trips-from-chicago"
+            className="font-semibold text-flag-blue-ink no-underline hover:underline"
+          >
+            Read our senior bus trips guide →
+          </Link>
+        </p>
+
         <h3 className="mt-8 text-xl font-bold text-ink">Organized trips by area</h3>
         <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
           {COUNTY_SPOKES.map((spoke) => {

@@ -105,6 +105,14 @@ export default async function Home() {
         >
           See day trips from Chicago →
         </Link>
+        <p className="mt-4">
+          <Link
+            href="/guides/senior-bus-trips-from-chicago"
+            className="text-base font-semibold text-flag-blue-ink no-underline hover:underline"
+          >
+            Prefer someone else drives? See senior bus trips from Chicago →
+          </Link>
+        </p>
       </section>
       </main>
     </>
