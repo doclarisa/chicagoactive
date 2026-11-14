@@ -25,6 +25,7 @@ export const CATEGORY_STYLES: Record<string, CategoryStyle> = {
   "museum-senior-days": { ...PURPLE, icon: "🏛️" },
   "day-trips-near-chicago": { ...AMBER, icon: "🚌" },
   "arts-culture": { ...INDIGO, icon: "🎨" },
+  "friendly-visitors-phone-buddies": { ...BLUE, icon: "🤝" },
 };
 
 export function categoryStyle(slug: string): CategoryStyle {

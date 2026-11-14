@@ -44,6 +44,7 @@ export const CATEGORIES = [
     intro:
       "Historical societies, art centers, and community theaters across the region run adult classes, docent-led tours, and member events, many of them free or built around a modest suggested donation. This is also where the area's local-history museums live — small, volunteer-run, and often overlooked.",
   },
+  { slug: "friendly-visitors-phone-buddies", label: "Friendly Visitors & Phone Buddies" },
 ] as const;
 
 export type CategorySlug = (typeof CATEGORIES)[number]["slug"];

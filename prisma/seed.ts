@@ -9165,6 +9165,296 @@ const listings = [
     lastVerified: new Date("2026-09-28"),
     qualityNote: "Autumn 2025 session fee was $150 for the full 14-week session with 19+ classes/week -- check the current membership page for this session's price.",
   },
+
+  // ---------- Friendly Visitors & Phone Buddies ----------
+  // Social-isolation programs, not activities to attend -- each pairs a
+  // trained/screened volunteer with an isolated older adult for regular
+  // visits or calls. This site lists these organizations; it does not
+  // match people itself. Every entry's registration/phone covers how to
+  // request a visit AND how to volunteer, since most of these orgs run
+  // both sides through the same intake line.
+  {
+    name: "Little Brothers - Friends of the Elderly (Chicago Chapter)",
+    slug: "little-brothers-friends-of-the-elderly-chicago",
+    description:
+      "A nonprofit pairing volunteers with isolated older adults 70+ for regular in-person or phone visits, plus a monthly group activity and holiday celebrations. More older adults are signed up than there are volunteers to match them with.",
+    category: "friendly-visitors-phone-buddies",
+    operatorType: "nonprofit",
+    activities: ["social-clubs"],
+    neighborhood: "West Town",
+    county: "Cook",
+    city: "Chicago",
+    citySlug: "chicago",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    address: "355 N Ashland Avenue, Chicago, IL 60607",
+    phone: "(312) 455-1000",
+    ageEligibility: "70+; lives in Chicago",
+    ageMinimum: 70,
+    registration: "Call (312) 455-1000, or sign up to volunteer at lbfechicago.org/volunteer/become-a-volunteer",
+    sourceUrl:
+      "https://www.idealist.org/en/volunteer-opportunity/1b8b8a38bcdd47a0b4b108eb495f3bde-ayudenos-acabar-con-la-soledad-hazte-amigo-de-un-adulto-mayor-aislado-little-brothers-friends-of-the-elderly-chicago-chapter-chicago",
+    lastVerified: new Date("2026-11-14"),
+    faqs: [
+      {
+        question: "How does a senior request a friendly visitor?",
+        answer: "Call the Chicago chapter at (312) 455-1000 to ask about getting matched with a volunteer.",
+      },
+      {
+        question: "How do I become a volunteer?",
+        answer:
+          "Sign up for an online orientation at lbfechicago.org/volunteer/become-a-volunteer. Volunteers go through an orientation and screening before being matched.",
+      },
+    ],
+  },
+  {
+    name: "Little Brothers - Friends of the Elderly (DuPage & Kane Counties)",
+    slug: "little-brothers-friends-of-the-elderly-dupage-kane",
+    description:
+      "The same Little Brothers - Friends of the Elderly program, based in Batavia, matching volunteers with isolated older adults 70+ across DuPage and Kane Counties for regular visits or phone calls.",
+    category: "friendly-visitors-phone-buddies",
+    operatorType: "nonprofit",
+    activities: ["social-clubs"],
+    neighborhood: "Batavia (serves DuPage & Kane Counties)",
+    county: "DuPage",
+    city: "Batavia",
+    citySlug: "batavia",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    address: "39 Seavey Road, Batavia, IL 60510",
+    phone: "(312) 455-1000",
+    ageEligibility: "70+; lives in DuPage or Kane County",
+    ageMinimum: 70,
+    registration: "Call (312) 455-1000, or sign up to volunteer at lbfechicago.org/volunteer/become-a-volunteer",
+    sourceUrl: "https://search.211dupage.gov/search/e0488c73-be7f-5b37-8337-fa92835f210b",
+    lastVerified: new Date("2026-11-14"),
+    faqs: [
+      {
+        question: "How does a senior request a friendly visitor?",
+        answer: "Call (312) 455-1000 and ask about the DuPage/Kane program based in Batavia.",
+      },
+      {
+        question: "How do I become a volunteer?",
+        answer:
+          "Sign up for an online orientation at lbfechicago.org/volunteer/become-a-volunteer. This program has more seniors waiting than volunteers available.",
+      },
+    ],
+  },
+  {
+    name: "DuPage Senior Citizens Council - Friendly Visiting & Phone Calls",
+    slug: "dupage-senior-citizens-council-friendly-visiting",
+    description:
+      "Pairs DuPage County residents 60 and older with a volunteer for regular visits or weekly phone calls, focused on building a real friendship rather than a one-time check-in. No fee.",
+    category: "friendly-visitors-phone-buddies",
+    operatorType: "nonprofit",
+    activities: ["social-clubs"],
+    neighborhood: "Lombard",
+    county: "DuPage",
+    city: "Lombard",
+    citySlug: "lombard",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    address: "1990 Springer Drive, Lombard, IL 60148",
+    phone: "(630) 620-0804",
+    ageEligibility: "60+; DuPage County resident",
+    ageMinimum: 60,
+    registration: "Call (630) 620-0804, Monday-Friday 8am-5pm, to request a visitor/caller or to volunteer",
+    sourceUrl: "https://search.211dupage.gov/search/e2733da8-f085-590c-8917-88149f8e1c8b",
+    lastVerified: new Date("2026-11-14"),
+    faqs: [
+      {
+        question: "Is this really free?",
+        answer: "Yes. There's no fee to be matched with a visitor or caller.",
+      },
+      {
+        question: "Do I have to live in DuPage County?",
+        answer: "Yes, this program is for DuPage County residents 60 and older.",
+      },
+    ],
+  },
+  {
+    name: "Tri-Town YMCA - Sunshine Seniors",
+    slug: "tri-town-ymca-sunshine-seniors",
+    description:
+      "A daily check-in phone call from a volunteer for older adults who want one, run by the Tri-Town YMCA. The \"Sunshine Seniors\" program name and address are confirmed only against a Tri-Town phone-programs flyer, not the Y's own page directly -- call ahead to confirm it's still current.",
+    category: "friendly-visitors-phone-buddies",
+    operatorType: "nonprofit",
+    activities: ["social-clubs"],
+    neighborhood: "Villa Park",
+    county: "DuPage",
+    city: "Villa Park",
+    citySlug: "villa-park",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    address: "136 S Cornell Avenue, Villa Park, IL 60181",
+    phone: "(630) 629-9622",
+    registration: "Call (630) 629-9622 to request a daily check-in call or to volunteer as a caller",
+    sourceUrl:
+      "https://files.constantcontact.com/386e575b401/dd4585a5-097f-469d-aa9b-71afa6ab1f73.pdf",
+    lastVerified: new Date("2026-11-14"),
+    faqs: [
+      {
+        question: "How does a senior sign up for a daily check-in call?",
+        answer: "Call the Tri-Town YMCA at (630) 629-9622 to ask about the daily check-in call program.",
+      },
+      {
+        question: "How do I become a volunteer caller?",
+        answer: "Call (630) 629-9622 and ask about volunteering to make check-in calls.",
+      },
+    ],
+  },
+  {
+    name: "CJE SeniorLife - Friendly Visitor Program",
+    slug: "cje-seniorlife-friendly-visitor-program",
+    description:
+      "CJE SeniorLife matches volunteers with isolated older adults in Chicago, Skokie, and nearby suburbs for a few hours a month of in-person visiting. Volunteers complete a background check before being matched.",
+    category: "friendly-visitors-phone-buddies",
+    operatorType: "nonprofit",
+    activities: ["social-clubs"],
+    neighborhood: "West Ridge",
+    county: "Cook",
+    city: "Chicago",
+    citySlug: "chicago",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    address: "3003 W Touhy Avenue, Chicago, IL 60645",
+    phone: "(773) 508-4232",
+    registration: "Call (773) 508-4232 or email volunteers@cje.net to request a visitor or to volunteer",
+    sourceUrl:
+      "https://www.idealist.org/en/volunteer-opportunity/6ff1adc98e5945abb4fb25febf09629a-seeking-friendly-visitors-cje-seniorlife-chicago",
+    lastVerified: new Date("2026-11-14"),
+    faqs: [
+      {
+        question: "How does a senior request a friendly visitor?",
+        answer: "Call (773) 508-4232 to ask about CJE's Friendly Visitor program.",
+      },
+      {
+        question: "How do I become a volunteer?",
+        answer:
+          "Email volunteers@cje.net to request the prescreen form. CJE conducts a background check before placing any volunteer.",
+      },
+    ],
+  },
+  {
+    name: "RUSH Senior Connections - Friendly Caller Program",
+    slug: "rush-senior-connections-friendly-caller",
+    description:
+      "RUSH staff, students, and volunteers make weekly friendly calls to lonely or socially isolated older adults on Chicago's West Side, part of the RUSH Generations program since April 2020. No public volunteer phone line is confirmed -- email is the most reliable way to reach the program.",
+    category: "friendly-visitors-phone-buddies",
+    operatorType: "nonprofit",
+    activities: ["social-clubs"],
+    neighborhood: "Near West Side",
+    county: "Cook",
+    city: "Chicago",
+    citySlug: "chicago",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    address: "710 S Paulina Street, Chicago, IL 60612",
+    registration: "Email rush_generations@rush.edu to ask about receiving or making friendly calls",
+    sourceUrl: "https://rush.edu/clinical-trials/impact-weekly-friendly-calls-social-engagement-and-health",
+    lastVerified: new Date("2026-11-14"),
+    faqs: [
+      {
+        question: "Who is this program for?",
+        answer: "Lonely or socially isolated older adults on Chicago's West Side.",
+      },
+      {
+        question: "How do I get involved, as a senior or a volunteer?",
+        answer: "Email rush_generations@rush.edu -- the program uses RUSH staff, students, and volunteer callers.",
+      },
+    ],
+  },
+  {
+    name: "Senior Services Associates - Friendly Visiting & Phone Calls",
+    slug: "senior-services-associates-friendly-visiting",
+    description:
+      "Pairs Kane, Kendall, and McHenry County older adults with a screened volunteer, starting with weekly phone calls to get acquainted before in-person visits. Based at the Greater Elgin Senior Center.",
+    category: "friendly-visitors-phone-buddies",
+    operatorType: "nonprofit",
+    activities: ["social-clubs"],
+    neighborhood: "Elgin (serves Kane, Kendall & McHenry Counties)",
+    county: "Kane",
+    city: "Elgin",
+    citySlug: "elgin",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    address: "101 S Grove Avenue, Elgin, IL 60120",
+    phone: "(847) 741-0404",
+    registration: "Call the Elgin office at (847) 741-0404 (McHenry: (815) 344-3555) to request a visit/call or to volunteer",
+    sourceUrl:
+      "https://www.idealist.org/en/volunteer-opportunity/8a9849348bdd4c51b260c2746328d354-friendly-visiting-program-senior-services-associates-inc-elgin",
+    lastVerified: new Date("2026-11-14"),
+    faqs: [
+      {
+        question: "Does this cover Kendall and McHenry Counties too?",
+        answer:
+          "Yes -- Senior Services Associates runs this program for Kane, Kendall, and McHenry Counties, with offices including Elgin, Aurora, and Yorkville.",
+      },
+      {
+        question: "How do I become a volunteer?",
+        answer: "Call the Elgin office at (847) 741-0404 and ask for the Friendly Visiting program coordinator.",
+      },
+    ],
+  },
+  {
+    name: "Catholic Charities Diocese of Joliet - Friendly Visiting & Phone Calls",
+    slug: "catholic-charities-joliet-friendly-visiting",
+    description:
+      "Catholic Charities pairs Will County older adults with a volunteer for regular friendly visits or phone calls, focused on building an ongoing friendship. AgeGuide's own Will County partner list gives a different number, (815) 523-9918, for this same program -- confirm which line is current before calling.",
+    category: "friendly-visitors-phone-buddies",
+    operatorType: "nonprofit",
+    activities: ["social-clubs"],
+    neighborhood: "Crest Hill",
+    county: "Will",
+    city: "Crest Hill",
+    citySlug: "crest-hill",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    address: "16555 S Weber Road, Crest Hill, IL 60403",
+    phone: "(815) 933-7791",
+    registration: "Call (815) 933-7791 to request a visitor/caller or to volunteer",
+    sourceUrl: "https://www.catholiccharitiesjoliet.org",
+    lastVerified: new Date("2026-11-14"),
+    faqs: [
+      {
+        question: "How does a senior request a friendly visitor?",
+        answer: "Call (815) 933-7791 and ask about the Friendly Visiting program.",
+      },
+      {
+        question: "How do I become a volunteer?",
+        answer: "Call the same number and ask to speak with the volunteer coordinator.",
+      },
+    ],
+  },
+  {
+    name: "ElderCARE of Lake County - Friendly Visits",
+    slug: "eldercare-lake-county-friendly-visits",
+    description:
+      "A volunteer-based nonprofit supporting homebound older adults in northern Lake County, including friendly visits alongside medical transportation and grocery help. No specific street address is confirmed -- call or see the website rather than relying on a mapped location.",
+    category: "friendly-visitors-phone-buddies",
+    operatorType: "nonprofit",
+    activities: ["social-clubs"],
+    neighborhood: "Waukegan (serves northern Lake County)",
+    county: "Lake",
+    city: "Waukegan",
+    citySlug: "waukegan",
+    cost: "FREE" as const,
+    days: Prisma.DbNull,
+    phone: "(847) 406-4683",
+    registration: "Call (847) 406-4683 or see eldercarelakecounty.org to request a visit or to volunteer",
+    sourceUrl: "https://www.idealist.org/en/nonprofit/e318169f7269429a927b904ed9f6d4a0-eldercare-lake-county-waukegan",
+    lastVerified: new Date("2026-11-14"),
+    faqs: [
+      {
+        question: "How does a senior request a friendly visit?",
+        answer: "Call (847) 406-4683 or visit eldercarelakecounty.org to ask about friendly visits.",
+      },
+      {
+        question: "How do I become a volunteer?",
+        answer: "Call (847) 406-4683 or apply through eldercarelakecounty.org.",
+      },
+    ],
+  },
 ];
 
 // city/citySlug feed Stage 2's /city/[citySlug] pages. Derived from

@@ -8,6 +8,7 @@ import { GUIDES } from "@/lib/guides";
 import ListingCard from "@/components/ListingCard";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import FitnessLobby from "@/components/FitnessLobby";
+import FriendlyVisitorsLobby from "@/components/FriendlyVisitorsLobby";
 import PageFaq from "@/components/PageFaq";
 import { itemListSchema } from "@/lib/schema";
 import { buildPageFaq, formatLastVerified } from "@/lib/pageFaq";
@@ -33,6 +34,7 @@ const CATEGORY_TITLE_NOUN: Record<string, string> = {
   "museum-senior-days": "Museum Senior Discount Days",
   "day-trips-near-chicago": "Senior Day Trips",
   "arts-culture": "Senior Arts & Culture Programs",
+  "friendly-visitors-phone-buddies": "Friendly Visitors & Phone Buddies",
 };
 
 export async function generateMetadata({
@@ -54,6 +56,24 @@ export async function generateMetadata({
     const title = `${noun} in Chicagoland (${year})`;
     const description =
       "Medicare fitness benefit gyms, indoor pickleball, gentle yoga, and water aerobics for active adults 50+ across the Chicago area.";
+    return {
+      title,
+      description,
+      alternates: { canonical: `/category/${cat.slug}` },
+      openGraph: { title, description },
+    };
+  }
+
+  // friendly-visitors-phone-buddies renders a custom two-path lobby
+  // (FriendlyVisitorsLobby) instead of the flat grid, so its count/intro
+  // copy is written here directly rather than reusing the generic
+  // freePrefix formula below.
+  if (cat.slug === "friendly-visitors-phone-buddies") {
+    const all = await getPublishedListingsSafe();
+    const count = all.filter((l) => l.category === cat.slug).length;
+    const title = `${noun} in Chicagoland (${year}) — ${count} Programs`;
+    const description =
+      "Free friendly-visitor and phone-buddy programs for isolated older adults across Chicagoland, grouped by county -- plus how to volunteer with each one.";
     return {
       title,
       description,
@@ -93,6 +113,7 @@ export default async function CategoryPage({
   // directly — see components/FitnessLobby.tsx. The underlying listings
   // stay reachable via /directory?category=pickleball-fitness.
   if (cat.slug === "pickleball-fitness") return <FitnessLobby />;
+  if (cat.slug === "friendly-visitors-phone-buddies") return <FriendlyVisitorsLobby />;
 
   const all = await getPublishedListingsSafe();
   const listings = all.filter((l) => l.category === category);
