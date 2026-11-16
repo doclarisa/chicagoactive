@@ -36,7 +36,7 @@ export async function generateMetadata({
   const year = new Date().getFullYear();
   const countSuffix = count > 0 ? ` — ${count} Listing${count === 1 ? "" : "s"}` : "";
   const title = `${freePrefix}${cell.h1} (${year})${countSuffix}`;
-  const description = `Free and low-cost ${cell.h1.toLowerCase()} — real listings, not a metro-wide sample.`;
+  const description = `Free and low-cost ${cell.h1} — real listings, not a metro-wide sample.`;
   return {
     title,
     description,

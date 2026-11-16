@@ -34,7 +34,7 @@ export async function generateMetadata({
   const year = new Date().getFullYear();
   const countSuffix = count > 0 ? ` — ${count} Listing${count === 1 ? "" : "s"}` : "";
   const title = `${freePrefix}${page.h1} (${year})${countSuffix}`;
-  const description = `Free and low-cost ${page.h1.toLowerCase()} — browse by county across Cook, DuPage, Will, Lake, Kane, McHenry, and Kendall.`;
+  const description = `Free and low-cost ${page.h1} — browse by county across Cook, DuPage, Will, Lake, Kane, McHenry, and Kendall.`;
   return {
     title,
     description,

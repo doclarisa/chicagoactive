@@ -39,6 +39,13 @@ function buildListingTitle(name: string, place: string): string {
   const withPlaceAndBrand = `${name} — ${place}${BRAND_SUFFIX}`;
   if (withPlaceAndBrand.length <= TITLE_BUDGET) return withPlaceAndBrand;
 
+  // Dropping the brand suffix but keeping place was missing entirely —
+  // without it, a long name that doesn't fit with the brand fell straight
+  // to the bare name, silently discarding the one thing (often a specific
+  // Chicago neighborhood) that actually differentiates it in search.
+  const withPlaceOnly = `${name} — ${place}`;
+  if (withPlaceOnly.length <= TITLE_BUDGET) return withPlaceOnly;
+
   const withBrandOnly = `${name}${BRAND_SUFFIX}`;
   if (withBrandOnly.length <= TITLE_BUDGET) return withBrandOnly;
 
@@ -69,7 +76,16 @@ export async function generateMetadata({
   if (!listing) return {};
 
   const place = listing.neighborhood ? `${listing.neighborhood}, ${listing.county} County` : `${listing.county} County`;
-  const seoTitle = listing.metaTitleOverride || buildListingTitle(listing.name, listing.city || listing.neighborhood || listing.county);
+  // For Chicago specifically, "Chicago" as the title's place is low-value —
+  // every Chicago listing has it, so it differentiates nothing and doesn't
+  // match the neighborhood-specific way people actually search (e.g.
+  // "avondale senior center"). The real neighborhood is more useful and
+  // usually shorter, so it wins the budget tiers above more often too.
+  const titlePlace =
+    listing.citySlug === "chicago" && listing.neighborhood && listing.neighborhood !== "Citywide"
+      ? listing.neighborhood
+      : listing.city || listing.neighborhood || listing.county;
+  const seoTitle = listing.metaTitleOverride || buildListingTitle(listing.name, titlePlace);
   const metaDescription = listing.metaDescriptionOverride || listing.description;
   // OpenGraph previews (social shares) aren't truncated the same way SERPs
   // are, so they get the fuller, unconstrained title.
